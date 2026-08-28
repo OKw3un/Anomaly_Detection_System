@@ -1,0 +1,120 @@
+timestamp,pod_name,namespace,log_level,message,score_ecod,anomaly_vote_count
+2026-01-01T00:00:05.000Z,philosopher,athens,DEEP,What is the meaning of life? Is it 42? Or is it just a simulation running on a giant turtle?,1.0000000000000002,10
+2026-01-01T00:00:06.000Z,spam,inbox,ADS,"CONGRATULATIONS! You have won $1,000,000 in the Nigerian Prince Lottery. Click here to claim your prize!",0.9537202477999625,10
+2026-01-01T00:00:02.000Z,shakespeare,poetry,INFO,"To be, or not to be, that is the question: Whether tis nobler in the mind to suffer",0.9266483282202727,10
+2026-01-01T00:00:01.000Z,aliens,ufo,WEIRD,I love eating pizza with pineapples on mars while riding a dinosaur.,0.8014811201532922,10
+2026-01-01T00:00:10.000Z,random,keyboard,TYPO,asdfghjkl qwertyuiop zxcvbnm 1234567890 !@#$%^&*()_+,0.7552013679532543,10
+2025-11-06T23:59:53.000Z,k8s-apiserver,kube-system,FATAL,FATAL [k8s-apiserver] etcd cluster quorum lost! All control plane nodes are unresponsive. Cluster state is corrupted.,0.681849696173527,10
+2025-11-06T23:59:58.000Z,kubelet-node-1,kube-system,ERROR,ERROR [kubelet-node-1] NODE COMPROMISED: Unauthorized container breakout detected. Host filesystem mounted with write permissions.,0.6355699439734891,8
+2026-01-01T00:00:04.000Z,cat,living-room,MEOW,Meow meow meow purr purr hiss scratch sofa meow.,0.5857091067771922,10
+2026-01-01T00:00:03.000Z,chef,kitchen,COOKING,"Recipe: Add 2 cups of flour, 3 eggs, and a dash of cinnamon. Bake at 350F for 45 minutes.",0.5394293545771542,10
+2026-01-01T00:00:09.000Z,mechanic,garage,CAR,"The carburetor is busted, the timing belt snapped, and the blinker fluid is completely empty.",0.5123574349974648,10
+2025-11-06T21:24:31.245Z,auth-service-09,staging,INFO,2025-11-06T21:24:31.245Z INFO [auth-service-09] Completed 200 GET /login in 23ms,0.5037511245687741,3
+2026-01-01T00:00:08.000Z,gandalf,moria,MAGIC,"YOU SHALL NOT PASS! The dark fire will not avail you, flame of Udun. Go back to the Shadow!",0.4931496023771165,10
+2025-11-07T03:51:58.640Z,auth-service-19,prod,INFO,2025-11-07T03:51:58.640Z INFO [auth-service-19] Started request GET /checkout from 10.0.1.32 in 439ms,0.4666924082118982,3
+2025-11-10T14:31:15.614Z,auth-service-01,dev,WARN,2025-11-10T14:31:15.614Z WARN [auth-service-01] Established connection to upstream db.internal:9000,0.46663641048465004,5
+2026-01-01T00:00:07.000Z,toddler,playground,SCREAM,Waaaaah! I want my toy! No! Mine! Waaaaaah! Gimme!,0.46607768279742684,10
+2025-11-06T19:39:53.343Z,nginx-frontend-20,dev,INFO,"2025-11-06T19:39:53.343Z INFO [nginx-frontend-20] Graceful shutdown initiated, waiting for connections to drain",0.45496422502042216,4
+2025-11-07T02:42:38.735Z,nginx-frontend-01,staging,DEBUG,2025-11-07T02:42:38.735Z DEBUG [nginx-frontend-01] Established connection to upstream auth.internal:8080,0.44536345514003434,5
+2025-11-06T23:59:50.000Z,unknown-hacker-pod,kube-system,CRITICAL,CRITICAL [kube-system] UNAUTHORIZED ROOT ACCESS DETECTED: Multiple failed SSH login attempts followed by successful bypass. Possible bitcoin miner payload injected.,0.4333199833741203,10
+2025-11-06T23:59:56.000Z,nginx-ingress,kube-system,CRITICAL,CRITICAL [nginx-ingress] DDoS ATTACK DETECTED: 100Gbps traffic spike overwhelming the ingress controller. Dropping all packets.,0.4244044169043892,10
+2025-11-06T23:59:57.000Z,billing-service,prod,FATAL,FATAL [billing-service] ALL DATABASES DROPPED: Received unauthorized DROP DATABASE command for all production clusters.,0.422002315912762,10
+2025-11-10T03:25:38.363Z,payments-18,dev,INFO,2025-11-10T03:25:38.363Z INFO [payments-18] Completed 201 GET /api/v1/orders in 76ms,0.41363248196405705,2
+2025-11-08T17:34:07.693Z,backend-api-09,dev,INFO,2025-11-08T17:34:07.693Z INFO [backend-api-09] Started request GET /checkout from 10.0.4.38 in 72ms,0.4057683950047158,2
+2025-11-12T09:10:00.336Z,orders-16,staging,INFO,2025-11-12T09:10:00.336Z INFO [orders-16] Started request GET /login from 10.0.3.19 in 238ms,0.40506185328990224,2
+2025-11-09T10:10:18.275Z,backend-api-15,dev,ERROR,2025-11-09T10:10:18.275Z ERROR [backend-api-15] ERROR: request timeout after 17173ms while calling payments,0.38681445102532114,2
+2025-11-08T00:27:26.710Z,payments-01,prod,INFO,2025-11-08T00:27:26.710Z INFO [payments-01] Started request PUT /login from 10.0.1.47 in 225ms,0.38630607093389474,3
+2025-11-06T23:59:55.000Z,db-primary-0,prod,ERROR,ERROR [db-primary-0] RANSOMWARE ACTIVITY DETECTED: Rapid sequential encryption of database files in /var/lib/postgresql/data.,0.38463813018245524,8
+2025-11-07T10:28:19.369Z,nginx-frontend-02,dev,INFO,2025-11-07T10:28:19.369Z INFO [nginx-frontend-02] Background job reindex completed in 352ms,0.38134812687926084,4
+2025-11-13T10:08:57.124Z,orders-05,dev,INFO,2025-11-13T10:08:57.124Z INFO [orders-05] User 64657 authenticated successfully,0.37269698677096375,3
+2025-11-12T06:51:55.151Z,orders-15,prod,INFO,"2025-11-12T06:51:55.151Z INFO [orders-15] Graceful shutdown initiated, waiting for connections to drain",0.3725294889080326,4
+2025-11-07T11:14:02.053Z,backend-api-08,dev,INFO,2025-11-07T11:14:02.053Z INFO [backend-api-08] Loaded config from /etc/config/db.yml,0.36671380078307736,3
+2025-11-07T04:53:16.812Z,nginx-frontend-18,dev,DEBUG,2025-11-07T04:53:16.812Z DEBUG [nginx-frontend-18] Background job reindex completed in 178ms,0.35978408984158033,5
+2025-11-11T08:17:39.045Z,backend-api-07,dev,ERROR,2025-11-11T08:17:39.045Z ERROR [backend-api-07] ERROR: request timeout after 8964ms while calling payments,0.3561325945192322,2
+2025-11-07T08:24:31.159Z,nginx-frontend-02,dev,DEBUG,"2025-11-07T08:24:31.159Z DEBUG [nginx-frontend-02] Graceful shutdown initiated, waiting for connections to drain",0.35086852337184926,3
+2025-11-06T23:59:59.000Z,ci-cd-pipeline,dev,CRITICAL,CRITICAL [ci-cd-pipeline] MALICIOUS CODE INJECTION: Found unexpected base64 encoded payload in the build artifact before deployment.,0.35026258715722597,10
+2025-11-09T21:53:51.718Z,nginx-frontend-12,prod,INFO,2025-11-09T21:53:51.718Z INFO [nginx-frontend-12] Loaded config from /etc/config/app.yml,0.34768208237601,4
+2025-11-06T08:40:08.453Z,backend-api-01,dev,DEBUG,2025-11-06T08:40:08.453Z DEBUG [backend-api-01] Completed 200 GET /login in 210ms,0.34300443641250794,4
+2025-11-10T13:55:27.785Z,backend-api-08,staging,WARN,2025-11-10T13:55:27.785Z WARN [backend-api-08] Established connection to upstream db.internal:8080,0.34093102202715775,4
+2025-11-11T10:02:07.612Z,nginx-frontend-08,dev,INFO,2025-11-11T10:02:07.612Z INFO [nginx-frontend-08] Loaded config from /etc/config/env.yml,0.3402808101843296,4
+2025-11-07T02:18:13.406Z,backend-api-08,prod,INFO,"2025-11-07T02:18:13.406Z INFO [backend-api-08] Graceful shutdown initiated, waiting for connections to drain",0.3391968972727918,3
+2025-11-07T11:14:49.024Z,backend-api-03,dev,INFO,2025-11-07T11:14:49.024Z INFO [backend-api-03] Established connection to upstream payments.internal:8080,0.33859040169299803,3
+2025-11-08T02:32:45.423Z,orders-16,staging,ERROR,2025-11-08T02:32:45.423Z ERROR [orders-16] ERROR: request timeout after 28265ms while calling db,0.33542289268209263,2
+2025-11-10T03:29:03.193Z,auth-service-15,dev,INFO,2025-11-10T03:29:03.193Z INFO [auth-service-15] Opening database transaction; connection_id=1060,0.3292588365629298,3
+2025-11-08T17:23:46.027Z,nginx-frontend-05,staging,INFO,2025-11-08T17:23:46.027Z INFO [nginx-frontend-05] Loaded config from /etc/config/app.yml,0.32878186837742174,4
+2025-11-10T15:50:11.495Z,auth-service-10,dev,INFO,2025-11-10T15:50:11.495Z INFO [auth-service-10] User 12588 authenticated successfully,0.3249837838717547,2
+2025-11-11T00:44:09.179Z,orders-15,dev,INFO,"2025-11-11T00:44:09.179Z INFO [orders-15] Health check passed: ready=true, status=200",0.3225880279269543,4
+2025-11-12T07:11:27.269Z,nginx-frontend-12,staging,INFO,"2025-11-12T07:11:27.269Z INFO [nginx-frontend-12] Graceful shutdown initiated, waiting for connections to drain",0.32254292207639607,4
+2025-11-13T02:11:50.754Z,auth-service-08,staging,INFO,2025-11-13T02:11:50.754Z INFO [auth-service-08] Completed 204 POST /api/v1/orders in 230ms,0.3223729578717772,2
+2025-11-12T03:29:09.940Z,backend-api-20,staging,ERROR,2025-11-12T03:29:09.940Z ERROR [backend-api-20] ERROR: connection refused from payments.internal:6379,0.31164428788717774,2
+2025-11-09T03:48:55.173Z,orders-16,staging,WARN,2025-11-09T03:48:55.173Z WARN [orders-16] ERROR: connection refused from db.internal:8080,0.3100427741079039,4
+2025-11-07T17:09:55.412Z,orders-16,dev,ERROR,2025-11-07T17:09:55.412Z ERROR [orders-16] ERROR: Segmentation fault (core dumped) in worker thread,0.30898005121126965,2
+2025-11-12T13:42:56.980Z,nginx-frontend-16,staging,INFO,2025-11-12T13:42:56.980Z INFO [nginx-frontend-16] Loaded config from /etc/config/app.yml,0.3064411178094857,4
+2025-11-07T13:58:28.780Z,backend-api-16,dev,INFO,2025-11-07T13:58:28.780Z INFO [backend-api-16] Background job reindex completed in 381ms,0.30617422510636394,4
+2025-11-13T05:03:19.672Z,backend-api-20,dev,INFO,2025-11-13T05:03:19.672Z INFO [backend-api-20] Completed 200 GET /api/v1/payments in 71ms,0.30494442882685857,2
+2025-11-09T07:19:26.525Z,nginx-frontend-17,dev,DEBUG,2025-11-09T07:19:26.525Z DEBUG [nginx-frontend-17] Background job reindex completed in 245ms,0.30458877117181143,5
+2025-11-07T15:32:30.944Z,orders-16,prod,DEBUG,2025-11-07T15:32:30.944Z DEBUG [orders-16] User 60023 authenticated successfully,0.3042913650275421,5
+2025-11-07T05:48:29.643Z,backend-api-09,dev,WARN,2025-11-07T05:48:29.643Z WARN [backend-api-09] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.30398283495718814,4
+2025-11-10T18:09:57.132Z,orders-03,staging,INFO,2025-11-10T18:09:57.132Z INFO [orders-03] User 57425 authenticated successfully,0.30373336331100537,2
+2025-11-06T09:55:30.853Z,auth-service-01,dev,ERROR,2025-11-06T09:55:30.853Z ERROR [auth-service-01] ERROR: request timeout after 14839ms while calling auth,0.3031705130949765,1
+2025-11-13T06:38:12.584Z,auth-service-01,staging,INFO,"2025-11-13T06:38:12.584Z INFO [auth-service-01] Health check passed: ready=true, status=200",0.30271399131217086,2
+2025-11-06T18:37:17.531Z,orders-18,dev,ERROR,2025-11-06T18:37:17.531Z ERROR [orders-18] ERROR: request timeout after 6920ms while calling payments,0.30006448474153863,1
+2025-11-07T15:14:36.256Z,nginx-frontend-16,dev,INFO,2025-11-07T15:14:36.256Z INFO [nginx-frontend-16] Cache hit for key=session:6303; ttl=3029s,0.29996641313511324,4
+2025-11-07T00:28:49.547Z,nginx-frontend-05,dev,INFO,2025-11-07T00:28:49.547Z INFO [nginx-frontend-05] Loaded config from /etc/config/app.yml,0.2988065535861463,4
+2025-11-07T18:55:35.361Z,payments-08,dev,ERROR,2025-11-07T18:55:35.361Z ERROR [payments-08] ERROR: request timeout after 4608ms while calling payments,0.2980712749648098,4
+2025-11-12T13:23:39.438Z,auth-service-03,dev,INFO,2025-11-12T13:23:39.438Z INFO [auth-service-03] Started request GET /checkout from 10.0.0.46 in 21ms,0.2977419000874463,2
+2025-11-09T01:45:03.599Z,nginx-frontend-17,staging,INFO,2025-11-09T01:45:03.599Z INFO [nginx-frontend-17] Loaded config from /etc/config/app.yml,0.29736973430522634,3
+2025-11-08T03:17:45.193Z,orders-16,dev,INFO,2025-11-08T03:17:45.193Z INFO [orders-16] Cache hit for key=session:2137; ttl=617s,0.2972907661481882,2
+2025-11-09T12:49:45.439Z,nginx-frontend-08,staging,INFO,2025-11-09T12:49:45.439Z INFO [nginx-frontend-08] Loaded config from /etc/config/env.yml,0.2915601961889332,4
+2025-11-13T06:16:27.549Z,backend-api-02,staging,ERROR,2025-11-13T06:16:27.549Z ERROR [backend-api-02] ERROR: 503 Service Unavailable - downstream overloaded,0.2873813609855386,1
+2025-11-08T09:51:36.623Z,backend-api-09,dev,WARN,2025-11-08T09:51:36.623Z WARN [backend-api-09] User 73001 authenticated successfully,0.28582648184722964,5
+2025-11-07T22:19:46.118Z,payments-08,prod,INFO,"2025-11-07T22:19:46.118Z INFO [payments-08] Graceful shutdown initiated, waiting for connections to drain",0.285328388684992,4
+2025-11-10T22:40:49.047Z,backend-api-08,dev,ERROR,2025-11-10T22:40:49.047Z ERROR [backend-api-08] ERROR: request timeout after 22857ms while calling auth,0.2851657322839213,2
+2025-11-09T10:57:21.549Z,payments-10,dev,ERROR,2025-11-09T10:57:21.549Z ERROR [payments-10] ERROR: request timeout after 3834ms while calling db,0.2851657322839213,2
+2025-11-09T22:03:57.396Z,auth-service-01,dev,DEBUG,2025-11-09T22:03:57.396Z DEBUG [auth-service-01] Loaded config from /etc/config/app.yml,0.28332638970841506,4
+2025-11-09T08:43:27.055Z,nginx-frontend-12,staging,INFO,"2025-11-09T08:43:27.055Z INFO [nginx-frontend-12] Graceful shutdown initiated, waiting for connections to drain",0.28262679888213726,3
+2025-11-10T22:59:21.461Z,orders-16,staging,INFO,2025-11-10T22:59:21.461Z INFO [orders-16] Cache hit for key=session:5334; ttl=3256s,0.2825644284254835,2
+2025-11-07T02:20:40.330Z,backend-api-06,staging,ERROR,2025-11-07T02:20:40.330Z ERROR [backend-api-06] ERROR: database deadlock detected; rolling back transaction,0.2806080170302164,3
+2025-11-13T08:29:48.735Z,nginx-frontend-01,prod,INFO,2025-11-13T08:29:48.735Z INFO [nginx-frontend-01] Completed 200 DELETE /api/v1/payments in 36ms,0.28053822256753336,4
+2025-11-06T11:31:55.372Z,payments-13,staging,DEBUG,"2025-11-06T11:31:55.372Z DEBUG [payments-13] Health check passed: ready=true, status=200",0.28015142219656275,3
+2025-11-08T13:16:46.880Z,backend-api-15,dev,ERROR,2025-11-08T13:16:46.880Z ERROR [backend-api-15] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.2793561941676281,3
+2025-11-08T11:57:09.454Z,backend-api-09,staging,ERROR,2025-11-08T11:57:09.454Z ERROR [backend-api-09] ERROR: request timeout after 18178ms while calling inventory,0.27920887824006424,2
+2025-11-13T00:17:02.751Z,payments-02,dev,INFO,2025-11-13T00:17:02.751Z INFO [payments-02] Completed 304 GET /api/v1/orders in 209ms,0.2774118970353428,1
+2025-11-06T15:09:42.140Z,nginx-frontend-04,dev,INFO,2025-11-06T15:09:42.140Z INFO [nginx-frontend-04] Loaded config from /etc/config/app.yml,0.2770788910134012,4
+2025-11-07T16:26:48.026Z,orders-04,dev,INFO,2025-11-07T16:26:48.026Z INFO [orders-04] Established connection to upstream auth.internal:9000,0.27691300876908637,1
+2025-11-07T17:02:00.099Z,nginx-frontend-10,staging,DEBUG,2025-11-07T17:02:00.099Z DEBUG [nginx-frontend-10] Background job reindex completed in 86ms,0.27672669362468605,5
+2025-11-08T11:54:11.697Z,payments-10,dev,DEBUG,2025-11-08T11:54:11.697Z DEBUG [payments-10] Cache hit for key=session:9362; ttl=1685s,0.27479126625657657,4
+2025-11-11T09:35:15.099Z,nginx-frontend-05,staging,INFO,2025-11-11T09:35:15.099Z INFO [nginx-frontend-05] Loaded config from /etc/config/env.yml,0.2746380292180426,3
+2025-11-06T21:01:54.711Z,payments-08,staging,INFO,2025-11-06T21:01:54.711Z INFO [payments-08] Established connection to upstream db.internal:5432,0.27262039913125313,4
+2025-11-11T09:50:32.383Z,auth-service-15,dev,ERROR,2025-11-11T09:50:32.383Z ERROR [auth-service-15] ERROR: 503 Service Unavailable - downstream overloaded,0.27232152866935194,1
+2025-11-08T03:07:13.786Z,backend-api-09,staging,INFO,2025-11-08T03:07:13.786Z INFO [backend-api-09] Background job report-generator completed in 60ms,0.27195231702133105,2
+2025-11-08T17:15:44.591Z,nginx-frontend-13,prod,INFO,2025-11-08T17:15:44.591Z INFO [nginx-frontend-13] Loaded config from /etc/config/db.yml,0.2714801425559841,4
+2025-11-06T16:22:16.527Z,backend-api-03,staging,INFO,2025-11-06T16:22:16.527Z INFO [backend-api-03] Background job cleanup completed in 273ms,0.27108056189669527,3
+2025-11-13T05:56:46.536Z,nginx-frontend-08,dev,INFO,2025-11-13T05:56:46.536Z INFO [nginx-frontend-08] Loaded config from /etc/config/app.yml,0.27074546674416655,2
+2025-11-13T09:33:39.169Z,backend-api-08,staging,INFO,2025-11-13T09:33:39.169Z INFO [backend-api-08] Established connection to upstream payments.internal:9000,0.26800317071675767,2
+2025-11-11T07:44:19.184Z,payments-02,staging,INFO,2025-11-11T07:44:19.184Z INFO [payments-02] Established connection to upstream auth.internal:5432,0.2674043544249122,3
+2025-11-08T00:17:58.849Z,auth-service-09,dev,ERROR,2025-11-08T00:17:58.849Z ERROR [auth-service-09] ERROR: 503 Service Unavailable - downstream overloaded,0.2671830270455559,1
+2025-11-07T08:17:56.290Z,orders-16,dev,INFO,2025-11-07T08:17:56.290Z INFO [orders-16] Started request POST /checkout from 10.0.3.7 in 33ms,0.2656573367327126,2
+2025-11-06T11:07:28.378Z,nginx-frontend-20,dev,INFO,"2025-11-06T11:07:28.378Z INFO [nginx-frontend-20] Health check passed: ready=true, status=200",0.2652387299132707,3
+2025-11-06T11:03:27.092Z,nginx-frontend-08,dev,INFO,"2025-11-06T11:03:27.092Z INFO [nginx-frontend-08] Graceful shutdown initiated, waiting for connections to drain",0.26331920147820287,2
+2025-11-12T01:32:34.092Z,backend-api-09,staging,INFO,2025-11-12T01:32:34.092Z INFO [backend-api-09] User 17982 authenticated successfully,0.26321647493735395,2
+2025-11-13T09:04:20.752Z,auth-service-11,staging,INFO,2025-11-13T09:04:20.752Z INFO [auth-service-11] Opening database transaction; connection_id=1643,0.260608571360324,3
+2025-11-10T15:02:11.003Z,orders-02,staging,DEBUG,2025-11-10T15:02:11.003Z DEBUG [orders-02] Completed 204 POST /api/v1/payments in 23ms,0.260244446339883,4
+2025-11-06T14:56:42.429Z,payments-10,dev,DEBUG,2025-11-06T14:56:42.429Z DEBUG [payments-10] Loaded config from /etc/config/db.yml,0.2572738421275599,4
+2025-11-12T21:52:24.633Z,backend-api-06,prod,INFO,2025-11-12T21:52:24.633Z INFO [backend-api-06] Established connection to upstream auth.internal:9000,0.25638238080351233,1
+2025-11-11T23:02:38.448Z,payments-08,prod,INFO,2025-11-11T23:02:38.448Z INFO [payments-08] Background job cleanup completed in 17ms,0.25582828991402656,4
+2025-11-09T16:34:57.168Z,backend-api-11,dev,INFO,"2025-11-09T16:34:57.168Z INFO [backend-api-11] Graceful shutdown initiated, waiting for connections to drain",0.2558064443402183,3
+2025-11-12T20:13:18.665Z,backend-api-05,staging,INFO,2025-11-12T20:13:18.665Z INFO [backend-api-05] Established connection to upstream auth.internal:9000,0.2550988432178982,1
+2025-11-09T00:20:00.307Z,nginx-frontend-17,staging,INFO,2025-11-09T00:20:00.307Z INFO [nginx-frontend-17] Loaded config from /etc/config/app.yml,0.25419601045862644,3
+2025-11-12T17:41:59.462Z,nginx-frontend-01,staging,WARN,2025-11-12T17:41:59.462Z WARN [nginx-frontend-01] Opening database transaction; connection_id=6757,0.25347075575724876,7
+2025-11-07T06:12:31.426Z,orders-16,dev,INFO,"2025-11-07T06:12:31.426Z INFO [orders-16] Health check passed: ready=true, status=200",0.25271871749695274,2
+2025-11-11T21:59:37.409Z,auth-service-17,dev,INFO,2025-11-11T21:59:37.409Z INFO [auth-service-17] Loaded config from /etc/config/env.yml,0.25260350164611434,3
+2025-11-06T19:19:16.575Z,nginx-frontend-05,dev,INFO,2025-11-06T19:19:16.575Z INFO [nginx-frontend-05] Cache hit for key=session:9770; ttl=2509s,0.2525268013861084,3
+2025-11-06T03:19:09.271Z,backend-api-08,dev,ERROR,2025-11-06T03:19:09.271Z ERROR [backend-api-08] ERROR: OOMKilled - process terminated due to out-of-memory,0.25240803286061464,2
+2025-11-12T08:36:35.034Z,nginx-frontend-02,prod,INFO,2025-11-12T08:36:35.034Z INFO [nginx-frontend-02] Established connection to upstream cache.internal:9000,0.2516276867353402,4
+2025-11-10T16:04:49.789Z,auth-service-08,dev,WARN,2025-11-10T16:04:49.789Z WARN [auth-service-08] Established connection to upstream payments.internal:6379,0.25096116622956416,3
+2025-11-07T05:11:42.741Z,orders-05,dev,DEBUG,2025-11-07T05:11:42.741Z DEBUG [orders-05] Started request GET /checkout from 10.0.2.1 in 15ms,0.2509102131217809,2
+2025-11-11T22:18:41.576Z,auth-service-01,staging,ERROR,2025-11-11T22:18:41.576Z ERROR [auth-service-01] ERROR: request timeout after 21434ms while calling auth,0.2506159915470773,2
+2025-11-11T14:21:34.152Z,backend-api-02,prod,ERROR,2025-11-11T14:21:34.152Z ERROR [backend-api-02] ERROR: request timeout after 15710ms while calling payments,0.24905647423468286,1
+2025-11-06T23:59:51.000Z,backend-api-01,prod,FATAL,"FATAL [backend-api-01] KERNEL PANIC: CPU temperature exceeded 105C, physical hardware damage imminent. Initiating emergency hardware shutdown sequence.",0.24905647423468286,10
+2025-11-11T02:35:15.677Z,nginx-frontend-17,staging,ERROR,2025-11-11T02:35:15.677Z ERROR [nginx-frontend-17] ERROR: connection refused from auth.internal:5432,0.24883541752010835,2

@@ -1,0 +1,7 @@
+timestamp,pod_name,namespace,log_level,message,score_hbos,anomaly_vote_count
+2025-11-12T06:51:55.151Z,orders-15,prod,INFO,"2025-11-12T06:51:55.151Z INFO [orders-15] Graceful shutdown initiated, waiting for connections to drain",1.0,5
+2025-11-06T21:24:31.245Z,auth-service-09,staging,INFO,2025-11-06T21:24:31.245Z INFO [auth-service-09] Completed 200 GET /login in 23ms,0.9563273048682766,5
+2025-11-13T08:29:48.735Z,nginx-frontend-01,prod,INFO,2025-11-13T08:29:48.735Z INFO [nginx-frontend-01] Completed 200 DELETE /api/v1/payments in 36ms,0.906277454388192,2
+2025-11-13T06:16:27.549Z,backend-api-02,staging,ERROR,2025-11-13T06:16:27.549Z ERROR [backend-api-02] ERROR: 503 Service Unavailable - downstream overloaded,0.887759497260868,1
+2025-11-06T19:39:53.343Z,nginx-frontend-20,dev,INFO,"2025-11-06T19:39:53.343Z INFO [nginx-frontend-20] Graceful shutdown initiated, waiting for connections to drain",0.8834887452842013,6
+2025-11-10T03:25:38.363Z,payments-18,dev,INFO,2025-11-10T03:25:38.363Z INFO [payments-18] Completed 201 GET /api/v1/orders in 76ms,0.881942231117907,3

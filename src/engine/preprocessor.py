@@ -82,6 +82,12 @@ class Preprocessor:
         # 2. Datetime sütunlarını sayısala dönüştür
         # ---------------------------------------------------------
 
+        # Sadece Kaggle CreditCard veri setine özgü olacak şekilde, 
+        # Time saniye sayacını Günün Saati (Hour) değişkenine çevirelim.
+        if "Time" in working_df.columns and "V1" in working_df.columns and "V28" in working_df.columns and pd.api.types.is_numeric_dtype(working_df["Time"]):
+            print("  [Preprocessor] Creditcard veri seti algılandı. 'Time' sütunu 'Saat (Hour)' değişkenine dönüştürülüyor...")
+            working_df["Hour"] = (working_df["Time"] // 3600) % 24
+
         for col in working_df.columns:
             if pd.api.types.is_datetime64_any_dtype(working_df[col]):
                 working_df[col] = (
@@ -90,34 +96,60 @@ class Preprocessor:
                 )
 
         # ---------------------------------------------------------
-        # 3. Text/Log Sütunlarını Vektörleştir (TF-IDF)
+        # 3. Text/Log Sütunlarını Vektörleştir (BERT / TF-IDF)
         # ---------------------------------------------------------
+        
+        bert_available = False
+        if len(text_cols) > 0:
+            try:
+                from sentence_transformers import SentenceTransformer
+                bert_available = True
+                print("  [Preprocessor] sentence-transformers kütüphanesi bulundu! Metinler BERT ile (Semantik) vektörleştirilecek.")
+                # Hızlı ve hafif bir model olan MiniLM kullanıyoruz
+                bert_model = SentenceTransformer('all-MiniLM-L6-v2')
+            except ImportError:
+                bert_available = False
+                print("  [Preprocessor] UYARI: 'sentence-transformers' yüklü değil! TF-IDF (Kelime frekansı) yöntemine geri dönülüyor (Fallback).")
+                print("  [Preprocessor] Çok daha akıllı sonuçlar için terminalden 'pip install sentence-transformers' komutunu çalıştırabilirsiniz.")
 
         for col in text_cols:
             if col in working_df.columns:
                 working_df[col] = working_df[col].fillna("")
-                # max_features=15 ile boyut patlamasını engelle
-                vectorizer = TfidfVectorizer(max_features=15)
                 
-                try:
-                    tfidf_matrix = vectorizer.fit_transform(working_df[col]).toarray()
-                    vocab = vectorizer.get_feature_names_out()
+                if bert_available:
+                    print(f"    > '{col}' sütunu BERT ile 384-boyutlu semantik vektöre çevriliyor...")
+                    # Metinleri BERT embeddinglerine dönüştür (Shape: [N, 384])
+                    embeddings = bert_model.encode(working_df[col].tolist(), show_progress_bar=False)
                     
-                    # Yeni sütun isimleri oluştur
-                    tfidf_cols = [f"{col}_tfidf_{w}" for w in vocab]
-                    tfidf_df = pd.DataFrame(
-                        tfidf_matrix, 
-                        columns=tfidf_cols, 
+                    bert_cols = [f"{col}_bert_{i}" for i in range(embeddings.shape[1])]
+                    bert_df = pd.DataFrame(
+                        embeddings, 
+                        columns=bert_cols, 
                         index=working_df.index
                     )
                     
-                    # Orijinal matrise ekle ve ham metin sütununu düşür
-                    working_df = pd.concat([working_df, tfidf_df], axis=1)
+                    working_df = pd.concat([working_df, bert_df], axis=1)
                     working_df = working_df.drop(columns=[col])
-                    
-                except ValueError:
-                    # Sütun tamamen boşsa vb. hataları atla
-                    working_df = working_df.drop(columns=[col])
+                else:
+                    # Eskisi gibi TF-IDF Fallback
+                    # max_features=15 ile boyut patlamasını engelle
+                    vectorizer = TfidfVectorizer(max_features=15)
+                    try:
+                        tfidf_matrix = vectorizer.fit_transform(working_df[col]).toarray()
+                        vocab = vectorizer.get_feature_names_out()
+                        
+                        tfidf_cols = [f"{col}_tfidf_{w}" for w in vocab]
+                        tfidf_df = pd.DataFrame(
+                            tfidf_matrix, 
+                            columns=tfidf_cols, 
+                            index=working_df.index
+                        )
+                        
+                        working_df = pd.concat([working_df, tfidf_df], axis=1)
+                        working_df = working_df.drop(columns=[col])
+                        
+                    except ValueError:
+                        working_df = working_df.drop(columns=[col])
 
         # ---------------------------------------------------------
         # 4. Sütun türlerini tespit et

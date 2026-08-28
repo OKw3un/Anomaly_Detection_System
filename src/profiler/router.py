@@ -34,15 +34,21 @@ class ModelRouter:
             if meta.dataset_type == "time_series":
                 strategy = "Time-Series Anomaly Detection Pipeline"
                 recommended_models = [
-                    "lstm_autoencoder",
-                    "anomaly_transformer",
-                    "matrix_profile"
+                    "lstm_autoencoder"
                 ]
             elif meta.dataset_type == "text":
                 strategy = "Text / Log Anomaly Detection Pipeline"
                 recommended_models = [
-                    "text_embedding",
-                    "log_anomaly_detector"
+                    "isolation_forest",
+                    "lof",
+                    "pca",
+                    "ecod",
+                    "copod",
+                    "hbos",
+                    "ocsvm",
+                    "autoencoder",
+                    "vae",
+                    "deep_svdd"
                 ]
             elif meta.dataset_type == "graph":
                 strategy = "Graph Anomaly Detection Pipeline"
@@ -52,9 +58,9 @@ class ModelRouter:
             else:
                 strategy = "Tabular Anomaly Detection Pipeline"
                 if meta.high_dimensionality:
-                    recommended_models = ["autoencoder", "vae", "isolation_forest", "ecod"]
+                    recommended_models = ["autoencoder", "vae", "deep_svdd", "isolation_forest", "ecod"]
                 else:
-                    recommended_models = ["isolation_forest", "ecod", "lof", "autoencoder"]
+                    recommended_models = ["isolation_forest", "ecod", "lof", "autoencoder", "vae", "deep_svdd"]
 
         # Adjust for collective anomalies in tabular
         if meta.supervision_level == "unsupervised" and meta.dataset_type == "tabular":

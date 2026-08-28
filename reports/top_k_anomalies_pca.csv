@@ -1,0 +1,34 @@
+timestamp,pod_name,namespace,log_level,message,score_pca,anomaly_vote_count
+2026-01-01T00:00:05.000Z,philosopher,athens,DEEP,What is the meaning of life? Is it 42? Or is it just a simulation running on a giant turtle?,0.9999999999999999,10
+2026-01-01T00:00:06.000Z,spam,inbox,ADS,"CONGRATULATIONS! You have won $1,000,000 in the Nigerian Prince Lottery. Click here to claim your prize!",0.9560677237911148,10
+2026-01-01T00:00:02.000Z,shakespeare,poetry,INFO,"To be, or not to be, that is the question: Whether tis nobler in the mind to suffer",0.8334836446535986,10
+2026-01-01T00:00:04.000Z,cat,living-room,MEOW,Meow meow meow purr purr hiss scratch sofa meow.,0.6089607121927518,10
+2026-01-01T00:00:03.000Z,chef,kitchen,COOKING,"Recipe: Add 2 cups of flour, 3 eggs, and a dash of cinnamon. Bake at 350F for 45 minutes.",0.6033447314187452,10
+2026-01-01T00:00:09.000Z,mechanic,garage,CAR,"The carburetor is busted, the timing belt snapped, and the blinker fluid is completely empty.",0.5975237530771724,10
+2026-01-01T00:00:08.000Z,gandalf,moria,MAGIC,"YOU SHALL NOT PASS! The dark fire will not avail you, flame of Udun. Go back to the Shadow!",0.5937973899447575,10
+2026-01-01T00:00:01.000Z,aliens,ufo,WEIRD,I love eating pizza with pineapples on mars while riding a dinosaur.,0.5796417706028243,10
+2026-01-01T00:00:07.000Z,toddler,playground,SCREAM,Waaaaah! I want my toy! No! Mine! Waaaaaah! Gimme!,0.5676309109390155,10
+2025-11-06T23:59:50.000Z,unknown-hacker-pod,kube-system,CRITICAL,CRITICAL [kube-system] UNAUTHORIZED ROOT ACCESS DETECTED: Multiple failed SSH login attempts followed by successful bypass. Possible bitcoin miner payload injected.,0.5626223958640916,10
+2025-11-06T23:59:56.000Z,nginx-ingress,kube-system,CRITICAL,CRITICAL [nginx-ingress] DDoS ATTACK DETECTED: 100Gbps traffic spike overwhelming the ingress controller. Dropping all packets.,0.5594942318426389,10
+2026-01-01T00:00:10.000Z,random,keyboard,TYPO,asdfghjkl qwertyuiop zxcvbnm 1234567890 !@#$%^&*()_+,0.5478829101423507,10
+2025-11-06T23:59:53.000Z,k8s-apiserver,kube-system,FATAL,FATAL [k8s-apiserver] etcd cluster quorum lost! All control plane nodes are unresponsive. Cluster state is corrupted.,0.5207404546034262,10
+2025-11-06T23:59:58.000Z,kubelet-node-1,kube-system,ERROR,ERROR [kubelet-node-1] NODE COMPROMISED: Unauthorized container breakout detected. Host filesystem mounted with write permissions.,0.4482908702734907,8
+2025-11-06T23:59:59.000Z,ci-cd-pipeline,dev,CRITICAL,CRITICAL [ci-cd-pipeline] MALICIOUS CODE INJECTION: Found unexpected base64 encoded payload in the build artifact before deployment.,0.35886592461710437,10
+2025-11-06T23:59:57.000Z,billing-service,prod,FATAL,FATAL [billing-service] ALL DATABASES DROPPED: Received unauthorized DROP DATABASE command for all production clusters.,0.3016947985403636,10
+2025-11-06T23:59:51.000Z,backend-api-01,prod,FATAL,"FATAL [backend-api-01] KERNEL PANIC: CPU temperature exceeded 105C, physical hardware damage imminent. Initiating emergency hardware shutdown sequence.",0.24039768591201305,10
+2025-11-12T17:41:59.462Z,nginx-frontend-01,staging,WARN,2025-11-12T17:41:59.462Z WARN [nginx-frontend-01] Opening database transaction; connection_id=6757,0.2321641362280787,7
+2025-11-06T23:59:54.000Z,auth-service-03,prod,CRITICAL,CRITICAL [auth-service-03] MASSIVE AUTHENTICATION FAILURE: 50000 login attempts blocked in the last 10 seconds from a single botnet.,0.2088081530665744,8
+2025-11-10T13:55:27.785Z,backend-api-08,staging,WARN,2025-11-10T13:55:27.785Z WARN [backend-api-08] Established connection to upstream db.internal:8080,0.19680393711551863,4
+2025-11-09T03:48:55.173Z,orders-16,staging,WARN,2025-11-09T03:48:55.173Z WARN [orders-16] ERROR: connection refused from db.internal:8080,0.17777567988425688,4
+2025-11-09T22:48:13.740Z,auth-service-19,staging,WARN,2025-11-09T22:48:13.740Z WARN [auth-service-19] Started request DELETE /metrics from 10.0.4.37 in 366ms,0.17537491056475196,3
+2025-11-08T09:51:36.623Z,backend-api-09,dev,WARN,2025-11-08T09:51:36.623Z WARN [backend-api-09] User 73001 authenticated successfully,0.17267577944161788,5
+2025-11-06T23:59:55.000Z,db-primary-0,prod,ERROR,ERROR [db-primary-0] RANSOMWARE ACTIVITY DETECTED: Rapid sequential encryption of database files in /var/lib/postgresql/data.,0.16785448693298113,8
+2025-11-10T14:31:15.614Z,auth-service-01,dev,WARN,2025-11-10T14:31:15.614Z WARN [auth-service-01] Established connection to upstream db.internal:9000,0.1660614543368464,5
+2025-11-13T08:35:10.914Z,orders-05,staging,WARN,2025-11-13T08:35:10.914Z WARN [orders-05] User 76809 authenticated successfully,0.16518106912192457,4
+2025-11-09T15:26:27.680Z,backend-api-09,staging,WARN,2025-11-09T15:26:27.680Z WARN [backend-api-09] Cache hit for key=session:2230; ttl=2070s,0.16098019356951856,3
+2025-11-12T02:05:27.687Z,nginx-frontend-20,staging,WARN,2025-11-12T02:05:27.687Z WARN [nginx-frontend-20] ERROR: OOMKilled - process terminated due to out-of-memory,0.1599346513109837,4
+2025-11-06T10:41:58.192Z,backend-api-10,prod,WARN,2025-11-06T10:41:58.192Z WARN [backend-api-10] Opening database transaction; connection_id=3675,0.15466186596125953,3
+2025-11-06T13:22:54.101Z,auth-service-01,prod,WARN,"2025-11-06T13:22:54.101Z WARN [auth-service-01] Health check passed: ready=true, status=200",0.1511883000031559,4
+2025-11-11T16:25:30.362Z,auth-service-15,staging,WARN,2025-11-11T16:25:30.362Z WARN [auth-service-15] Loaded config from /etc/config/env.yml,0.1504709252670203,3
+2025-11-07T05:48:29.643Z,backend-api-09,dev,WARN,2025-11-07T05:48:29.643Z WARN [backend-api-09] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.14730936511034562,4
+2025-11-07T23:55:37.263Z,auth-service-10,dev,WARN,2025-11-07T23:55:37.263Z WARN [auth-service-10] ERROR: request timeout after 5612ms while calling payments,0.14229856491033968,4

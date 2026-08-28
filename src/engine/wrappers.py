@@ -44,29 +44,47 @@ class ModelWrapper:
     # Public API
     # ==========================================================
 
-    def fit(self, X: np.ndarray) -> "ModelWrapper":
+    def fit(self, X: np.ndarray, y: Optional[np.ndarray] = None) -> "ModelWrapper":
         """
         Modeli eğitir ve anomali skorlarını hesaplar.
 
         Args:
             X: (n_samples, n_features) ön işlemden geçmiş veri matrisi
+            y: (Optional) Gözetimli modeller için etiketler
         """
 
         self._X = X
 
-        # PyOD modelleri fit() ile eğitilir
-        self.model.fit(X)
+        # PyOD modelleri veya gözetimli modeller fit() ile eğitilir
+        is_supervised = self.registry_info.get("is_supervised", False)
+        
+        import warnings
+        with warnings.catch_warnings():
+            # XGBOD supervised olmasına rağmen PyOD base.py yüzünden uyarı veriyor. Gizleyelim.
+            warnings.filterwarnings("ignore", category=UserWarning)
+            try:
+                if is_supervised and y is not None:
+                    self.model.fit(X, y)
+                else:
+                    self.model.fit(X)
+            except TypeError:
+                # Parametre uyuşmazlığı durumunda (eski versiyonlar) fallback
+                self.model.fit(X)
 
-        # PyOD: decision_scores_ → ham anomali skorları (eğitim verisi)
-        raw_scores = self.model.decision_scores_
+        # Skorları al
+        module_name = self.registry_info.get("module", "")
+        is_sklearn_api = any(pkg in module_name for pkg in ["sklearn", "xgboost", "lightgbm"])
+        
+        if is_sklearn_api and hasattr(self.model, "predict_proba"):
+            # Scikit-Learn / XGBoost / LightGBM Supervised Modeller
+            # Sınıf 1 (Anomaly/Fraud) olasılığını skor olarak alıyoruz
+            raw_scores = self.model.predict_proba(X)[:, 1]
+        else:
+            # PyOD Modelleri (Unsupervised veya XGBOD)
+            raw_scores = self.model.decision_scores_
 
-        # Min-Max normalizasyonu → [0.0, 1.0] aralığına getir
-        scaler = MinMaxScaler(feature_range=(0.0, 1.0))
-        self._anomaly_scores = (
-            scaler.fit_transform(
-                raw_scores.reshape(-1, 1)
-            ).flatten()
-        )
+        # MinMaxScaler İPTAL: Ham skorlar doğrudan döndürülmeli ki Global Normalizasyon yapılabilsin.
+        self._anomaly_scores = raw_scores
 
         # Embedding hesapla
         self._embeddings = self._extract_embeddings(X)
@@ -90,6 +108,37 @@ class ModelWrapper:
             )
 
         return self._anomaly_scores
+
+    def predict_anomaly_scores(self, X: np.ndarray) -> np.ndarray:
+        """
+        Eğitilmiş model ile yeni (görülmemiş) veri üzerinde anomali skorlarını tahmin eder.
+        Cross Validation (Out-of-Fold) tahminleri için kullanılır.
+        """
+        if not self._is_fitted:
+            raise RuntimeError("Model henüz eğitilmedi. Önce fit() çağırın.")
+            
+        module_name = self.registry_info.get("module", "")
+        is_sklearn_api = any(pkg in module_name for pkg in ["sklearn", "xgboost", "lightgbm"])
+        
+        if is_sklearn_api and hasattr(self.model, "predict_proba"):
+            return self.model.predict_proba(X)[:, 1]
+        elif hasattr(self.model, "decision_function"):
+            return self.model.decision_function(X)
+        else:
+            raise NotImplementedError(f"{self.model_name} modeli predict_anomaly_scores desteklemiyor.")
+
+    def predict_labels(self, X: np.ndarray) -> np.ndarray:
+        """
+        Eğitilmiş model ile yeni veri üzerinde kesin etiket (0 veya 1) tahmin eder.
+        """
+        if not self._is_fitted:
+            raise RuntimeError("Model henüz eğitilmedi. Önce fit() çağırın.")
+            
+        if hasattr(self.model, "predict"):
+            return self.model.predict(X).astype(int)
+        else:
+            scores = self.predict_anomaly_scores(X)
+            return (scores >= 0.5).astype(int)
 
     def get_embeddings(self) -> np.ndarray:
         """
@@ -138,15 +187,25 @@ class ModelWrapper:
         """
 
         try:
-            # PyOD AutoEncoder / VAE modelleri
-            # encoding_dim_ veya intermediate model ile erişim
+            # 1. Eğer modelin kendine has kaydedilmiş bir embedding matrisi varsa ve veriyle aynı boyuttaysa direkt al
+            # (Özellikle LSTMAutoEncoder gibi sliding window yapan custom modeller için kritik)
+            if hasattr(self.model, "embeddings_") and self.model.embeddings_ is not None:
+                if len(self.model.embeddings_) == len(X):
+                    return self.model.embeddings_
+                else:
+                    print(f"      [Debug] {self.model_name}: len(embeddings_)={len(self.model.embeddings_)}, len(X)={len(X)} uyuşmuyor.")
+            else:
+                print(f"      [Debug] {self.model_name}: modelin embeddings_ özniteliği yok veya None.")
 
-            # Yöntem 1: PyOD modelinin iç encoding modeline eriş
-            if hasattr(self.model, "model_") and self.model.model_ is not None:
-
+            # 2. PyOD AutoEncoder / VAE modelleri
+            # Yeni sürüm: 'model', eski sürüm: 'model_'
+            inner_model = None
+            if hasattr(self.model, "model") and self.model.model is not None:
+                inner_model = self.model.model
+            elif hasattr(self.model, "model_") and self.model.model_ is not None:
                 inner_model = self.model.model_
 
-                # Keras/TF modeli ise ara katman çıktısını al
+            if inner_model is not None:
                 try:
                     import torch
 
@@ -155,18 +214,32 @@ class ModelWrapper:
                         inner_model.eval()
                         with torch.no_grad():
                             tensor_X = torch.FloatTensor(X)
-                            embeddings = (
-                                inner_model.encoder(tensor_X)
-                                .cpu()
-                                .numpy()
-                            )
+                            raw_out = inner_model.encoder(tensor_X)
+                            
+                            # Eğer çıktı bir tuple ise (örn: LSTM'den dönen (output, (h, c))), sadece tensor olan kısmı al
+                            if isinstance(raw_out, tuple):
+                                raw_out = raw_out[0]
+                                # Eğer hala çok boyutluysa (örn. (Batch, Seq, Features)), sadece son zaman adımını al
+                                if raw_out.dim() == 3:
+                                    raw_out = raw_out[:, -1, :]
+                                    
+                            # VAE encoder çıktısı [mu, logvar] birleşik olabilir
+                            # mu kısmını al (ilk yarısı)
+                            category = self.registry_info.get("category", "")
+                            if "vae" in self.model_name.lower() or self.registry_info.get("class", "") == "VAE":
+                                latent_dim = raw_out.shape[1] // 2
+                                if latent_dim > 0:
+                                    embeddings = raw_out[:, :latent_dim].cpu().numpy()
+                                else:
+                                    embeddings = raw_out.cpu().numpy()
+                            else:
+                                embeddings = raw_out.cpu().numpy()
                         return embeddings
 
                 except ImportError:
                     pass
 
-            # Yöntem 2: Fallback — model'in iç nöron yapısından
-            # bottleneck boyutunu al ve PCA ile eşle
+            # Fallback — PCA
             print(
                 f"[Wrapper] {self.model_name}: DL embedding "
                 f"çıkarılamadı, PCA fallback kullanılıyor."

@@ -1,0 +1,9 @@
+timestamp,pod_name,namespace,log_level,message,score_ecod,anomaly_vote_count
+2025-11-07T03:51:58.640Z,auth-service-19,prod,INFO,2025-11-07T03:51:58.640Z INFO [auth-service-19] Started request GET /checkout from 10.0.1.32 in 439ms,0.9999999999999999,4
+2025-11-06T21:24:31.245Z,auth-service-09,staging,INFO,2025-11-06T21:24:31.245Z INFO [auth-service-09] Completed 200 GET /login in 23ms,0.9578734894967321,5
+2025-11-06T19:39:53.343Z,nginx-frontend-20,dev,INFO,"2025-11-06T19:39:53.343Z INFO [nginx-frontend-20] Graceful shutdown initiated, waiting for connections to drain",0.952136635650272,6
+2025-11-09T21:53:51.718Z,nginx-frontend-12,prod,INFO,2025-11-09T21:53:51.718Z INFO [nginx-frontend-12] Loaded config from /etc/config/app.yml,0.9319274348448451,5
+2025-11-12T06:51:55.151Z,orders-15,prod,INFO,"2025-11-12T06:51:55.151Z INFO [orders-15] Graceful shutdown initiated, waiting for connections to drain",0.9218632799531942,5
+2025-11-10T14:31:15.614Z,auth-service-01,dev,WARN,2025-11-10T14:31:15.614Z WARN [auth-service-01] Established connection to upstream db.internal:9000,0.8615954448907485,1
+2025-11-07T02:42:38.735Z,nginx-frontend-01,staging,DEBUG,2025-11-07T02:42:38.735Z DEBUG [nginx-frontend-01] Established connection to upstream auth.internal:8080,0.8463228441447869,3
+2025-11-08T00:27:26.710Z,payments-01,prod,INFO,2025-11-08T00:27:26.710Z INFO [payments-01] Started request PUT /login from 10.0.1.47 in 225ms,0.8271262407968499,3

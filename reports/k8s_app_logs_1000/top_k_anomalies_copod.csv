@@ -1,0 +1,35 @@
+timestamp,pod_name,namespace,log_level,message,score_copod,anomaly_vote_count
+2025-11-06T19:39:53.343Z,nginx-frontend-20,dev,INFO,"2025-11-06T19:39:53.343Z INFO [nginx-frontend-20] Graceful shutdown initiated, waiting for connections to drain",1.0,6
+2025-11-09T21:53:51.718Z,nginx-frontend-12,prod,INFO,2025-11-09T21:53:51.718Z INFO [nginx-frontend-12] Loaded config from /etc/config/app.yml,0.9775324244888717,5
+2025-11-12T06:51:55.151Z,orders-15,prod,INFO,"2025-11-12T06:51:55.151Z INFO [orders-15] Graceful shutdown initiated, waiting for connections to drain",0.9670901326035681,5
+2025-11-07T10:28:19.369Z,nginx-frontend-02,dev,INFO,2025-11-07T10:28:19.369Z INFO [nginx-frontend-02] Background job reindex completed in 352ms,0.8013465724120685,3
+2025-11-12T02:44:51.724Z,orders-09,staging,WARN,2025-11-12T02:44:51.724Z WARN [orders-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.7569273620611094,3
+2025-11-11T00:44:09.179Z,orders-15,dev,INFO,"2025-11-11T00:44:09.179Z INFO [orders-15] Health check passed: ready=true, status=200",0.7549927051588199,1
+2025-11-07T18:55:35.361Z,payments-08,dev,ERROR,2025-11-07T18:55:35.361Z ERROR [payments-08] ERROR: request timeout after 4608ms while calling payments,0.7458446765864668,1
+2025-11-08T17:15:44.591Z,nginx-frontend-13,prod,INFO,2025-11-08T17:15:44.591Z INFO [nginx-frontend-13] Loaded config from /etc/config/db.yml,0.744913460787906,3
+2025-11-07T04:53:16.812Z,nginx-frontend-18,dev,DEBUG,2025-11-07T04:53:16.812Z DEBUG [nginx-frontend-18] Background job reindex completed in 178ms,0.7057292181812556,2
+2025-11-08T17:23:46.027Z,nginx-frontend-05,staging,INFO,2025-11-08T17:23:46.027Z INFO [nginx-frontend-05] Loaded config from /etc/config/app.yml,0.7036850216754738,3
+2025-11-07T22:19:46.118Z,payments-08,prod,INFO,"2025-11-07T22:19:46.118Z INFO [payments-08] Graceful shutdown initiated, waiting for connections to drain",0.695804216131997,2
+2025-11-13T08:29:48.735Z,nginx-frontend-01,prod,INFO,2025-11-13T08:29:48.735Z INFO [nginx-frontend-01] Completed 200 DELETE /api/v1/payments in 36ms,0.6897961054462993,2
+2025-11-12T02:05:27.687Z,nginx-frontend-20,staging,WARN,2025-11-12T02:05:27.687Z WARN [nginx-frontend-20] ERROR: OOMKilled - process terminated due to out-of-memory,0.683198319330067,1
+2025-11-07T03:51:58.640Z,auth-service-19,prod,INFO,2025-11-07T03:51:58.640Z INFO [auth-service-19] Started request GET /checkout from 10.0.1.32 in 439ms,0.6799919286852476,4
+2025-11-11T10:02:07.612Z,nginx-frontend-08,dev,INFO,2025-11-11T10:02:07.612Z INFO [nginx-frontend-08] Loaded config from /etc/config/env.yml,0.678494361146001,3
+2025-11-12T07:11:27.269Z,nginx-frontend-12,staging,INFO,"2025-11-12T07:11:27.269Z INFO [nginx-frontend-12] Graceful shutdown initiated, waiting for connections to drain",0.6731710618712206,3
+2025-11-11T08:17:39.045Z,backend-api-07,dev,ERROR,2025-11-11T08:17:39.045Z ERROR [backend-api-07] ERROR: request timeout after 8964ms while calling payments,0.6641670546257463,3
+2025-11-12T07:03:30.443Z,nginx-frontend-02,dev,ERROR,2025-11-12T07:03:30.443Z ERROR [nginx-frontend-02] ERROR: request timeout after 2741ms while calling inventory,0.6608026942164804,1
+2025-11-12T17:41:59.462Z,nginx-frontend-01,staging,WARN,2025-11-12T17:41:59.462Z WARN [nginx-frontend-01] Opening database transaction; connection_id=6757,0.6453209853697484,1
+2025-11-11T23:02:38.448Z,payments-08,prod,INFO,2025-11-11T23:02:38.448Z INFO [payments-08] Background job cleanup completed in 17ms,0.6319832221504809,1
+2025-11-12T13:42:56.980Z,nginx-frontend-16,staging,INFO,2025-11-12T13:42:56.980Z INFO [nginx-frontend-16] Loaded config from /etc/config/app.yml,0.6282988744983713,3
+2025-11-12T08:36:35.034Z,nginx-frontend-02,prod,INFO,2025-11-12T08:36:35.034Z INFO [nginx-frontend-02] Established connection to upstream cache.internal:9000,0.6220751734009549,1
+2025-11-09T10:10:18.275Z,backend-api-15,dev,ERROR,2025-11-09T10:10:18.275Z ERROR [backend-api-15] ERROR: request timeout after 17173ms while calling payments,0.6196669724790873,2
+2025-11-12T03:29:09.940Z,backend-api-20,staging,ERROR,2025-11-12T03:29:09.940Z ERROR [backend-api-20] ERROR: connection refused from payments.internal:6379,0.6117726014674376,2
+2025-11-07T00:28:49.547Z,nginx-frontend-05,dev,INFO,2025-11-07T00:28:49.547Z INFO [nginx-frontend-05] Loaded config from /etc/config/app.yml,0.6097443326810025,3
+2025-11-07T15:14:36.256Z,nginx-frontend-16,dev,INFO,2025-11-07T15:14:36.256Z INFO [nginx-frontend-16] Cache hit for key=session:6303; ttl=3029s,0.6084881003638255,3
+2025-11-09T10:57:21.549Z,payments-10,dev,ERROR,2025-11-09T10:57:21.549Z ERROR [payments-10] ERROR: request timeout after 3834ms while calling db,0.5930705760182697,1
+2025-11-08T19:39:05.304Z,auth-service-11,prod,ERROR,2025-11-08T19:39:05.304Z ERROR [auth-service-11] ERROR: 503 Service Unavailable - downstream overloaded,0.5910699910321684,1
+2025-11-09T07:19:26.525Z,nginx-frontend-17,dev,DEBUG,2025-11-09T07:19:26.525Z DEBUG [nginx-frontend-17] Background job reindex completed in 245ms,0.5892448683111465,2
+2025-11-06T15:09:42.140Z,nginx-frontend-04,dev,INFO,2025-11-06T15:09:42.140Z INFO [nginx-frontend-04] Loaded config from /etc/config/app.yml,0.5824854996476657,3
+2025-11-09T04:38:14.459Z,auth-service-11,prod,INFO,2025-11-09T04:38:14.459Z INFO [auth-service-11] Loaded config from /etc/config/db.yml,0.5720785500925848,2
+2025-11-11T14:21:34.152Z,backend-api-02,prod,ERROR,2025-11-11T14:21:34.152Z ERROR [backend-api-02] ERROR: request timeout after 15710ms while calling payments,0.5686055932725947,1
+2025-11-09T08:43:27.055Z,nginx-frontend-12,staging,INFO,"2025-11-09T08:43:27.055Z INFO [nginx-frontend-12] Graceful shutdown initiated, waiting for connections to drain",0.56695974685914,3
+2025-11-06T21:01:54.711Z,payments-08,staging,INFO,2025-11-06T21:01:54.711Z INFO [payments-08] Established connection to upstream db.internal:5432,0.5663235992401896,1

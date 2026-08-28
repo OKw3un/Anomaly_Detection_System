@@ -1,0 +1,127 @@
+timestamp,pod_name,namespace,log_level,message,score_deep_svdd,anomaly_vote_count
+2026-01-01T00:00:01.000Z,aliens,ufo,WEIRD,I love eating pizza with pineapples on mars while riding a dinosaur.,1.0,10
+2026-01-01T00:00:10.000Z,random,keyboard,TYPO,asdfghjkl qwertyuiop zxcvbnm 1234567890 !@#$%^&*()_+,0.7459824310441296,10
+2025-11-06T23:59:57.000Z,billing-service,prod,FATAL,FATAL [billing-service] ALL DATABASES DROPPED: Received unauthorized DROP DATABASE command for all production clusters.,0.741959751046974,10
+2025-11-06T23:59:51.000Z,backend-api-01,prod,FATAL,"FATAL [backend-api-01] KERNEL PANIC: CPU temperature exceeded 105C, physical hardware damage imminent. Initiating emergency hardware shutdown sequence.",0.6486602302953982,10
+2025-11-06T23:59:53.000Z,k8s-apiserver,kube-system,FATAL,FATAL [k8s-apiserver] etcd cluster quorum lost! All control plane nodes are unresponsive. Cluster state is corrupted.,0.5642945130484714,10
+2026-01-01T00:00:04.000Z,cat,living-room,MEOW,Meow meow meow purr purr hiss scratch sofa meow.,0.4120454920691732,10
+2026-01-01T00:00:03.000Z,chef,kitchen,COOKING,"Recipe: Add 2 cups of flour, 3 eggs, and a dash of cinnamon. Bake at 350F for 45 minutes.",0.4009277155886224,10
+2026-01-01T00:00:09.000Z,mechanic,garage,CAR,"The carburetor is busted, the timing belt snapped, and the blinker fluid is completely empty.",0.38958427733470496,10
+2026-01-01T00:00:08.000Z,gandalf,moria,MAGIC,"YOU SHALL NOT PASS! The dark fire will not avail you, flame of Udun. Go back to the Shadow!",0.38242169818873506,10
+2026-01-01T00:00:07.000Z,toddler,playground,SCREAM,Waaaaah! I want my toy! No! Mine! Waaaaaah! Gimme!,0.3344983707160098,10
+2025-11-06T23:59:50.000Z,unknown-hacker-pod,kube-system,CRITICAL,CRITICAL [kube-system] UNAUTHORIZED ROOT ACCESS DETECTED: Multiple failed SSH login attempts followed by successful bypass. Possible bitcoin miner payload injected.,0.32841491974815384,10
+2025-11-06T23:59:56.000Z,nginx-ingress,kube-system,CRITICAL,CRITICAL [nginx-ingress] DDoS ATTACK DETECTED: 100Gbps traffic spike overwhelming the ingress controller. Dropping all packets.,0.3231008399615862,10
+2025-11-10T14:31:15.614Z,auth-service-01,dev,WARN,2025-11-10T14:31:15.614Z WARN [auth-service-01] Established connection to upstream db.internal:9000,0.26495055721097777,5
+2025-11-13T02:18:19.122Z,auth-service-08,prod,WARN,2025-11-13T02:18:19.122Z WARN [auth-service-08] Opening database transaction; connection_id=6544,0.262228162064046,3
+2025-11-10T16:04:49.789Z,auth-service-08,dev,WARN,2025-11-10T16:04:49.789Z WARN [auth-service-08] Established connection to upstream payments.internal:6379,0.2605237008031575,3
+2025-11-08T10:01:05.272Z,nginx-frontend-14,dev,WARN,2025-11-08T10:01:05.272Z WARN [nginx-frontend-14] Opening database transaction; connection_id=1672,0.25996434868253887,3
+2025-11-06T10:41:58.192Z,backend-api-10,prod,WARN,2025-11-06T10:41:58.192Z WARN [backend-api-10] Opening database transaction; connection_id=3675,0.2594622801758166,3
+2025-11-08T22:00:36.586Z,backend-api-14,staging,WARN,2025-11-08T22:00:36.586Z WARN [backend-api-14] User 78656 authenticated successfully,0.2587052354521335,2
+2025-11-11T23:12:04.071Z,backend-api-02,dev,WARN,2025-11-11T23:12:04.071Z WARN [backend-api-02] Established connection to upstream payments.internal:6379,0.25824527712799145,2
+2025-11-07T06:10:59.865Z,payments-20,dev,WARN,2025-11-07T06:10:59.865Z WARN [payments-20] User 74814 authenticated successfully,0.257869226314756,2
+2025-11-12T19:39:31.149Z,payments-11,staging,WARN,2025-11-12T19:39:31.149Z WARN [payments-11] Opening database transaction; connection_id=9577,0.2565970357765359,2
+2025-11-09T09:08:19.587Z,backend-api-14,dev,WARN,2025-11-09T09:08:19.587Z WARN [backend-api-14] Opening database transaction; connection_id=1100,0.2564372923944744,2
+2025-11-12T18:38:18.485Z,backend-api-04,prod,WARN,2025-11-12T18:38:18.485Z WARN [backend-api-04] User 39437 authenticated successfully,0.25640151751053636,2
+2025-11-11T16:02:10.763Z,auth-service-14,dev,WARN,2025-11-11T16:02:10.763Z WARN [auth-service-14] Established connection to upstream inventory.internal:9000,0.2563763171003815,2
+2025-11-12T21:30:07.032Z,orders-13,prod,WARN,2025-11-12T21:30:07.032Z WARN [orders-13] User 43039 authenticated successfully,0.2550205006200834,2
+2025-11-12T17:41:59.462Z,nginx-frontend-01,staging,WARN,2025-11-12T17:41:59.462Z WARN [nginx-frontend-01] Opening database transaction; connection_id=6757,0.2543633189742578,7
+2025-11-08T20:24:09.482Z,payments-20,dev,WARN,2025-11-08T20:24:09.482Z WARN [payments-20] Opening database transaction; connection_id=1673,0.2538369573347171,2
+2025-11-13T04:41:25.139Z,auth-service-16,dev,WARN,2025-11-13T04:41:25.139Z WARN [auth-service-16] User 65789 authenticated successfully,0.2531520098738544,3
+2025-11-10T13:55:27.785Z,backend-api-08,staging,WARN,2025-11-10T13:55:27.785Z WARN [backend-api-08] Established connection to upstream db.internal:8080,0.25266076612431837,4
+2025-11-06T02:52:22.100Z,auth-service-08,staging,WARN,2025-11-06T02:52:22.100Z WARN [auth-service-08] ERROR: request timeout after 20294ms while calling db,0.25076924930499944,3
+2025-11-13T03:18:28.789Z,payments-20,dev,WARN,2025-11-13T03:18:28.789Z WARN [payments-20] Opening database transaction; connection_id=6135,0.250609756206341,2
+2025-11-13T08:35:10.914Z,orders-05,staging,WARN,2025-11-13T08:35:10.914Z WARN [orders-05] User 76809 authenticated successfully,0.24980550177573843,4
+2025-11-08T09:51:36.623Z,backend-api-09,dev,WARN,2025-11-08T09:51:36.623Z WARN [backend-api-09] User 73001 authenticated successfully,0.24966452964891322,5
+2025-11-07T11:05:12.135Z,auth-service-02,staging,WARN,"2025-11-07T11:05:12.135Z WARN [auth-service-02] Health check passed: ready=true, status=200",0.2493765003800237,3
+2025-11-07T04:10:00.087Z,payments-18,staging,WARN,2025-11-07T04:10:00.087Z WARN [payments-18] Opening database transaction; connection_id=8803,0.24929908459488637,3
+2025-11-12T11:53:32.223Z,payments-04,dev,WARN,2025-11-12T11:53:32.223Z WARN [payments-04] Opening database transaction; connection_id=2970,0.24919384042386108,2
+2025-11-06T07:15:35.414Z,auth-service-05,staging,WARN,"2025-11-06T07:15:35.414Z WARN [auth-service-05] Health check passed: ready=true, status=200",0.24879654680678315,2
+2025-11-07T09:54:40.812Z,backend-api-19,staging,WARN,2025-11-07T09:54:40.812Z WARN [backend-api-19] Opening database transaction; connection_id=4042,0.24780422004142474,2
+2025-11-06T13:22:54.101Z,auth-service-01,prod,WARN,"2025-11-06T13:22:54.101Z WARN [auth-service-01] Health check passed: ready=true, status=200",0.24711001209464542,4
+2025-11-07T23:55:37.263Z,auth-service-10,dev,WARN,2025-11-07T23:55:37.263Z WARN [auth-service-10] ERROR: request timeout after 5612ms while calling payments,0.2470780540326055,4
+2025-11-08T21:56:55.378Z,payments-06,dev,WARN,2025-11-08T21:56:55.378Z WARN [payments-06] Opening database transaction; connection_id=7131,0.24681830678827213,2
+2025-11-10T17:38:57.298Z,auth-service-06,staging,WARN,2025-11-10T17:38:57.298Z WARN [auth-service-06] User 98572 authenticated successfully,0.24669494835594374,2
+2025-11-09T23:20:38.146Z,nginx-frontend-17,dev,WARN,2025-11-09T23:20:38.146Z WARN [nginx-frontend-17] Established connection to upstream payments.internal:5432,0.24531513595436844,3
+2025-11-08T14:23:17.349Z,auth-service-07,prod,WARN,"2025-11-08T14:23:17.349Z WARN [auth-service-07] Health check passed: ready=true, status=200",0.24504411031418052,2
+2025-11-07T14:55:01.418Z,orders-10,staging,WARN,2025-11-07T14:55:01.418Z WARN [orders-10] Started request PUT /api/v1/orders from 10.0.3.41 in 148ms,0.24476742201199633,3
+2025-11-06T18:01:31.604Z,orders-07,staging,WARN,2025-11-06T18:01:31.604Z WARN [orders-07] User 11204 authenticated successfully,0.24441528890647457,2
+2025-11-07T13:30:47.094Z,payments-04,prod,WARN,2025-11-07T13:30:47.094Z WARN [payments-04] Started request POST /health from 10.0.2.13 in 425ms,0.24394467789498592,3
+2025-11-12T01:25:55.563Z,payments-09,staging,WARN,2025-11-12T01:25:55.563Z WARN [payments-09] Loaded config from /etc/config/app.yml,0.24361733848908887,2
+2025-11-06T22:59:50.404Z,nginx-frontend-17,dev,WARN,2025-11-06T22:59:50.404Z WARN [nginx-frontend-17] Opening database transaction; connection_id=7936,0.2428047152071934,2
+2025-11-11T13:16:16.116Z,payments-16,dev,WARN,2025-11-11T13:16:16.116Z WARN [payments-16] User 70012 authenticated successfully,0.24275260933119977,3
+2025-11-12T21:51:02.914Z,auth-service-05,staging,WARN,2025-11-12T21:51:02.914Z WARN [auth-service-05] ERROR: connection refused from db.internal:9000,0.24263916837872126,2
+2025-11-12T09:12:47.785Z,orders-06,staging,WARN,2025-11-12T09:12:47.785Z WARN [orders-06] Established connection to upstream db.internal:8080,0.2423171631378539,2
+2025-11-07T05:09:15.090Z,orders-19,prod,WARN,2025-11-07T05:09:15.090Z WARN [orders-19] Cache hit for key=session:3691; ttl=140s,0.24205109623759094,2
+2025-11-09T17:32:08.858Z,auth-service-08,prod,WARN,2025-11-09T17:32:08.858Z WARN [auth-service-08] Background job reindex completed in 83ms,0.24204487043793754,2
+2025-11-09T10:22:58.743Z,payments-19,dev,WARN,2025-11-09T10:22:58.743Z WARN [payments-19] Loaded config from /etc/config/app.yml,0.24202872715843426,3
+2025-11-10T15:06:59.210Z,nginx-frontend-10,prod,WARN,2025-11-10T15:06:59.210Z WARN [nginx-frontend-10] User 28568 authenticated successfully,0.24185534333090092,2
+2025-11-10T03:48:58.282Z,orders-12,staging,WARN,2025-11-10T03:48:58.282Z WARN [orders-12] Completed 201 DELETE /api/v1/orders in 388ms,0.2415470880344942,2
+2025-11-09T08:05:21.084Z,backend-api-01,dev,WARN,2025-11-09T08:05:21.084Z WARN [backend-api-01] Completed 304 GET /checkout in 310ms,0.2409420122646623,3
+2025-11-11T12:04:30.944Z,payments-14,dev,WARN,2025-11-11T12:04:30.944Z WARN [payments-14] User 53601 authenticated successfully,0.23981121620651022,3
+2025-11-06T13:09:31.838Z,nginx-frontend-19,dev,WARN,2025-11-06T13:09:31.838Z WARN [nginx-frontend-19] Established connection to upstream db.internal:5432,0.2391283648691489,2
+2025-11-13T04:29:55.558Z,backend-api-18,prod,WARN,2025-11-13T04:29:55.558Z WARN [backend-api-18] Loaded config from /etc/config/app.yml,0.23899591802074358,3
+2025-11-12T10:37:36.400Z,orders-19,dev,WARN,2025-11-12T10:37:36.400Z WARN [orders-19] Established connection to upstream db.internal:9000,0.23875886835253352,3
+2025-11-06T02:50:15.180Z,auth-service-16,prod,WARN,"2025-11-06T02:50:15.180Z WARN [auth-service-16] Graceful shutdown initiated, waiting for connections to drain",0.23753407523378528,2
+2025-11-09T22:48:13.740Z,auth-service-19,staging,WARN,2025-11-09T22:48:13.740Z WARN [auth-service-19] Started request DELETE /metrics from 10.0.4.37 in 366ms,0.23704397340227618,3
+2025-11-08T15:37:36.973Z,orders-17,staging,WARN,2025-11-08T15:37:36.973Z WARN [orders-17] ERROR: 5xx gateway error from upstream db.internal:8080 - response=502 Bad Gateway,0.23674621436608914,3
+2025-11-11T03:14:41.808Z,auth-service-03,staging,WARN,2025-11-11T03:14:41.808Z WARN [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.23587102023340573,2
+2025-11-07T10:18:22.481Z,nginx-frontend-19,dev,WARN,2025-11-07T10:18:22.481Z WARN [nginx-frontend-19] Completed 304 DELETE /api/v1/orders in 66ms,0.23525483813755896,2
+2025-11-10T19:55:26.655Z,nginx-frontend-15,staging,WARN,2025-11-10T19:55:26.655Z WARN [nginx-frontend-15] Started request DELETE /api/v1/orders from 10.0.3.45 in 115ms,0.23523193720617058,2
+2025-11-08T20:16:48.660Z,auth-service-13,prod,WARN,"2025-11-08T20:16:48.660Z WARN [auth-service-13] Graceful shutdown initiated, waiting for connections to drain",0.2347764214124345,3
+2025-11-07T16:13:09.531Z,backend-api-18,staging,WARN,2025-11-07T16:13:09.531Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.23393553174869558,3
+2025-11-06T07:07:48.894Z,backend-api-11,staging,WARN,"2025-11-06T07:07:48.894Z WARN [backend-api-11] Health check passed: ready=true, status=200",0.23369843515234742,3
+2025-11-11T01:39:43.296Z,nginx-frontend-13,prod,WARN,"2025-11-11T01:39:43.296Z WARN [nginx-frontend-13] Health check passed: ready=true, status=200",0.23345786587378056,3
+2025-11-09T15:26:27.680Z,backend-api-09,staging,WARN,2025-11-09T15:26:27.680Z WARN [backend-api-09] Cache hit for key=session:2230; ttl=2070s,0.23340039454733186,3
+2025-11-07T17:28:09.728Z,payments-03,prod,WARN,"2025-11-07T17:28:09.728Z WARN [payments-03] Graceful shutdown initiated, waiting for connections to drain",0.23339692186511313,3
+2025-11-07T21:40:17.278Z,nginx-frontend-17,staging,WARN,"2025-11-07T21:40:17.278Z WARN [nginx-frontend-17] Health check passed: ready=true, status=200",0.23335490553880903,3
+2025-11-10T17:49:18.460Z,orders-08,dev,WARN,2025-11-10T17:49:18.460Z WARN [orders-08] Loaded config from /etc/config/db.yml,0.23302435937680913,3
+2025-11-06T20:10:23.280Z,auth-service-03,staging,WARN,2025-11-06T20:10:23.280Z WARN [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.2327390519399289,3
+2025-11-11T16:25:30.362Z,auth-service-15,staging,WARN,2025-11-11T16:25:30.362Z WARN [auth-service-15] Loaded config from /etc/config/env.yml,0.23269273386763312,3
+2025-11-11T17:02:35.531Z,auth-service-09,prod,WARN,2025-11-11T17:02:35.531Z WARN [auth-service-09] Background job cleanup completed in 183ms,0.2321503228048653,3
+2025-11-08T04:39:52.818Z,orders-02,staging,WARN,"2025-11-08T04:39:52.818Z WARN [orders-02] Health check passed: ready=true, status=200",0.23208925365449629,2
+2025-11-09T19:00:17.340Z,backend-api-18,prod,WARN,2025-11-09T19:00:17.340Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.23144123863831115,3
+2025-11-06T18:49:53.063Z,nginx-frontend-16,staging,WARN,2025-11-06T18:49:53.063Z WARN [nginx-frontend-16] ERROR: 5xx gateway error from upstream payments.internal:9000 - response=502 Bad Gateway,0.23078164801473022,3
+2025-11-13T02:56:17.419Z,payments-20,dev,WARN,"2025-11-13T02:56:17.419Z WARN [payments-20] Graceful shutdown initiated, waiting for connections to drain",0.23072364483604982,3
+2025-11-10T05:01:56.500Z,orders-01,prod,WARN,2025-11-10T05:01:56.500Z WARN [orders-01] ERROR: connection refused from cache.internal:8080,0.2306061837064082,2
+2025-11-06T08:49:17.509Z,orders-10,dev,WARN,2025-11-06T08:49:17.509Z WARN [orders-10] Loaded config from /etc/config/db.yml,0.2300978424718944,3
+2025-11-06T14:17:42.283Z,payments-18,dev,WARN,2025-11-06T14:17:42.283Z WARN [payments-18] Completed 204 PUT /health in 157ms,0.2300729079878554,3
+2025-11-09T11:31:32.480Z,orders-01,dev,WARN,2025-11-09T11:31:32.480Z WARN [orders-01] Loaded config from /etc/config/db.yml,0.22952087665677895,3
+2025-11-10T22:12:09.302Z,auth-service-18,staging,WARN,2025-11-10T22:12:09.302Z WARN [auth-service-18] ERROR: Segmentation fault (core dumped) in worker thread,0.22937525864428276,2
+2025-11-11T11:59:08.417Z,backend-api-17,prod,WARN,2025-11-11T11:59:08.417Z WARN [backend-api-17] ERROR: database deadlock detected; rolling back transaction,0.22932778301124743,3
+2025-11-12T13:04:57.136Z,payments-04,prod,WARN,2025-11-12T13:04:57.136Z WARN [payments-04] Background job report-generator completed in 432ms,0.2287076745945137,3
+2025-11-11T03:24:38.352Z,nginx-frontend-18,prod,WARN,2025-11-11T03:24:38.352Z WARN [nginx-frontend-18] Completed 200 DELETE /api/v1/items in 214ms,0.22815470470067542,2
+2025-11-09T10:24:11.331Z,orders-19,prod,WARN,2025-11-09T10:24:11.331Z WARN [orders-19] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.22781860537566806,3
+2025-11-10T10:54:40.859Z,backend-api-17,staging,WARN,2025-11-10T10:54:40.859Z WARN [backend-api-17] Background job cleanup completed in 196ms,0.22757620589971567,2
+2025-11-10T12:01:32.099Z,nginx-frontend-09,prod,WARN,2025-11-10T12:01:32.099Z WARN [nginx-frontend-09] Background job report-generator completed in 306ms,0.22656926884069828,3
+2025-11-12T05:12:25.382Z,nginx-frontend-19,staging,WARN,2025-11-12T05:12:25.382Z WARN [nginx-frontend-19] ERROR: 503 Service Unavailable - downstream overloaded,0.22644203101562105,2
+2025-11-07T13:55:23.441Z,backend-api-20,prod,WARN,2025-11-07T13:55:23.441Z WARN [backend-api-20] Cache hit for key=session:5754; ttl=1102s,0.22612435880617074,3
+2025-11-09T22:07:49.817Z,nginx-frontend-03,dev,WARN,2025-11-09T22:07:49.817Z WARN [nginx-frontend-03] Background job cleanup completed in 96ms,0.22608181062763497,3
+2025-11-07T12:37:55.066Z,nginx-frontend-09,prod,WARN,2025-11-07T12:37:55.066Z WARN [nginx-frontend-09] Background job report-generator completed in 68ms,0.22603934066266265,2
+2025-11-07T09:37:03.709Z,backend-api-15,dev,WARN,2025-11-07T09:37:03.709Z WARN [backend-api-15] Background job report-generator completed in 291ms,0.22534294273610575,2
+2025-11-12T05:50:03.921Z,nginx-frontend-05,staging,WARN,2025-11-12T05:50:03.921Z WARN [nginx-frontend-05] Cache hit for key=session:6277; ttl=3423s,0.22506235939846,3
+2025-11-11T06:29:02.593Z,backend-api-19,prod,WARN,2025-11-11T06:29:02.593Z WARN [backend-api-19] Started request DELETE /api/v1/items from 10.0.0.11 in 245ms,0.2248623047457783,2
+2025-11-09T03:48:55.173Z,orders-16,staging,WARN,2025-11-09T03:48:55.173Z WARN [orders-16] ERROR: connection refused from db.internal:8080,0.22464447997147285,4
+2025-11-10T02:32:59.252Z,payments-05,prod,WARN,2025-11-10T02:32:59.252Z WARN [payments-05] ERROR: database deadlock detected; rolling back transaction,0.22412159101415086,3
+2025-11-06T20:30:07.854Z,payments-03,prod,WARN,2025-11-06T20:30:07.854Z WARN [payments-03] Completed 304 GET /metrics in 277ms,0.2221736509301339,3
+2025-11-08T04:00:14.200Z,nginx-frontend-06,staging,WARN,2025-11-08T04:00:14.200Z WARN [nginx-frontend-06] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.22105457126379185,3
+2025-11-12T08:16:11.156Z,nginx-frontend-12,staging,WARN,2025-11-12T08:16:11.156Z WARN [nginx-frontend-12] Cache hit for key=session:7910; ttl=229s,0.2186433722432538,3
+2025-11-09T19:41:42.913Z,nginx-frontend-14,prod,WARN,2025-11-09T19:41:42.913Z WARN [nginx-frontend-14] ERROR: 503 Service Unavailable - downstream overloaded,0.21773190265982612,3
+2025-11-11T01:33:39.471Z,nginx-frontend-04,prod,WARN,2025-11-11T01:33:39.471Z WARN [nginx-frontend-04] Loaded config from /etc/config/env.yml,0.2168261895946709,2
+2025-11-08T21:29:24.635Z,backend-api-18,prod,WARN,2025-11-08T21:29:24.635Z WARN [backend-api-18] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.21634979077948432,2
+2025-11-12T02:05:27.687Z,nginx-frontend-20,staging,WARN,2025-11-12T02:05:27.687Z WARN [nginx-frontend-20] ERROR: OOMKilled - process terminated due to out-of-memory,0.21575309950365798,4
+2025-11-07T20:16:41.167Z,auth-service-04,dev,WARN,2025-11-07T20:16:41.167Z WARN [auth-service-04] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.21574147696812412,3
+2025-11-12T07:38:03.964Z,backend-api-10,dev,WARN,2025-11-12T07:38:03.964Z WARN [backend-api-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.2142965908817294,2
+2025-11-08T00:57:44.002Z,backend-api-07,prod,WARN,2025-11-08T00:57:44.002Z WARN [backend-api-07] ERROR: Segmentation fault (core dumped) in worker thread,0.21426920049179696,3
+2025-11-07T05:48:29.643Z,backend-api-09,dev,WARN,2025-11-07T05:48:29.643Z WARN [backend-api-09] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.21359734598146163,4
+2026-01-01T00:00:05.000Z,philosopher,athens,DEEP,What is the meaning of life? Is it 42? Or is it just a simulation running on a giant turtle?,0.2130865801264798,10
+2025-11-12T12:19:21.008Z,nginx-frontend-14,prod,WARN,2025-11-12T12:19:21.008Z WARN [nginx-frontend-14] ERROR: CrashLoopBackOff: container restarted 8 times,0.21257237287470465,3
+2025-11-06T00:36:27.125Z,orders-12,prod,WARN,2025-11-06T00:36:27.125Z WARN [orders-12] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.21227644403590315,3
+2025-11-06T01:38:07.600Z,payments-11,prod,WARN,2025-11-06T01:38:07.600Z WARN [payments-11] ERROR: OOMKilled - process terminated due to out-of-memory,0.20974831573795516,2
+2025-11-06T13:59:42.322Z,nginx-frontend-10,prod,WARN,2025-11-06T13:59:42.322Z WARN [nginx-frontend-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.20887732949498725,2
+2025-11-11T14:46:28.594Z,orders-02,staging,WARN,2025-11-11T14:46:28.594Z WARN [orders-02] ERROR: Segmentation fault (core dumped) in worker thread,0.2059624194828937,3
+2025-11-12T02:44:51.724Z,orders-09,staging,WARN,2025-11-12T02:44:51.724Z WARN [orders-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.20561452555251283,5
+2026-01-01T00:00:06.000Z,spam,inbox,ADS,"CONGRATULATIONS! You have won $1,000,000 in the Nigerian Prince Lottery. Click here to claim your prize!",0.2042717081664659,10
+2026-01-01T00:00:02.000Z,shakespeare,poetry,INFO,"To be, or not to be, that is the question: Whether tis nobler in the mind to suffer",0.19890384873364603,10
+2025-11-06T23:59:59.000Z,ci-cd-pipeline,dev,CRITICAL,CRITICAL [ci-cd-pipeline] MALICIOUS CODE INJECTION: Found unexpected base64 encoded payload in the build artifact before deployment.,0.1843083374381643,10
+2025-11-06T23:59:54.000Z,auth-service-03,prod,CRITICAL,CRITICAL [auth-service-03] MASSIVE AUTHENTICATION FAILURE: 50000 login attempts blocked in the last 10 seconds from a single botnet.,0.17504120336865528,8
+2025-11-06T23:59:55.000Z,db-primary-0,prod,ERROR,ERROR [db-primary-0] RANSOMWARE ACTIVITY DETECTED: Rapid sequential encryption of database files in /var/lib/postgresql/data.,0.13841300945303914,8

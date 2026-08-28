@@ -1,0 +1,71 @@
+timestamp,pod_name,namespace,log_level,message,score_autoencoder,anomaly_vote_count
+2025-11-06T13:59:42.322Z,nginx-frontend-10,prod,WARN,2025-11-06T13:59:42.322Z WARN [nginx-frontend-10] ERROR: OOMKilled - process terminated due to out-of-memory,1.0000000000000002,1
+2025-11-06T01:38:07.600Z,payments-11,prod,WARN,2025-11-06T01:38:07.600Z WARN [payments-11] ERROR: OOMKilled - process terminated due to out-of-memory,0.9943033001017019,1
+2025-11-06T00:36:27.125Z,orders-12,prod,WARN,2025-11-06T00:36:27.125Z WARN [orders-12] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.9794951405830961,1
+2025-11-12T12:19:21.008Z,nginx-frontend-14,prod,WARN,2025-11-12T12:19:21.008Z WARN [nginx-frontend-14] ERROR: CrashLoopBackOff: container restarted 8 times,0.9788176929011103,1
+2025-11-07T04:53:16.812Z,nginx-frontend-18,dev,DEBUG,2025-11-07T04:53:16.812Z DEBUG [nginx-frontend-18] Background job reindex completed in 178ms,0.9748609750335124,2
+2025-11-08T00:57:44.002Z,backend-api-07,prod,WARN,2025-11-08T00:57:44.002Z WARN [backend-api-07] ERROR: Segmentation fault (core dumped) in worker thread,0.9681542429818537,1
+2025-11-08T21:29:24.635Z,backend-api-18,prod,WARN,2025-11-08T21:29:24.635Z WARN [backend-api-18] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.9538727990359919,1
+2025-11-11T15:59:14.910Z,nginx-frontend-04,dev,DEBUG,2025-11-11T15:59:14.910Z DEBUG [nginx-frontend-04] Cache hit for key=session:4285; ttl=818s,0.9509536346338352,1
+2025-11-09T07:19:26.525Z,nginx-frontend-17,dev,DEBUG,2025-11-09T07:19:26.525Z DEBUG [nginx-frontend-17] Background job reindex completed in 245ms,0.9508454547071181,2
+2025-11-11T01:33:39.471Z,nginx-frontend-04,prod,WARN,2025-11-11T01:33:39.471Z WARN [nginx-frontend-04] Loaded config from /etc/config/env.yml,0.9495921764954447,1
+2025-11-09T19:41:42.913Z,nginx-frontend-14,prod,WARN,2025-11-09T19:41:42.913Z WARN [nginx-frontend-14] ERROR: 503 Service Unavailable - downstream overloaded,0.9482235204754328,1
+2025-11-07T05:48:29.643Z,backend-api-09,dev,WARN,2025-11-07T05:48:29.643Z WARN [backend-api-09] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.9407425927447046,1
+2025-11-12T01:38:08.013Z,backend-api-02,dev,DEBUG,2025-11-12T01:38:08.013Z DEBUG [backend-api-02] Background job cleanup completed in 153ms,0.9259674588005957,1
+2025-11-13T02:51:44.721Z,backend-api-04,dev,DEBUG,2025-11-13T02:51:44.721Z DEBUG [backend-api-04] Completed 304 PUT /metrics in 344ms,0.9249661064456607,1
+2025-11-06T20:30:07.854Z,payments-03,prod,WARN,2025-11-06T20:30:07.854Z WARN [payments-03] Completed 304 GET /metrics in 277ms,0.9210426258549602,2
+2025-11-07T20:16:41.167Z,auth-service-04,dev,WARN,2025-11-07T20:16:41.167Z WARN [auth-service-04] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.9178088716854813,1
+2025-11-12T07:38:03.964Z,backend-api-10,dev,WARN,2025-11-12T07:38:03.964Z WARN [backend-api-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.9152292779339202,1
+2025-11-09T23:22:26.398Z,nginx-frontend-15,dev,DEBUG,"2025-11-09T23:22:26.398Z DEBUG [nginx-frontend-15] Graceful shutdown initiated, waiting for connections to drain",0.9132032859599815,1
+2025-11-10T02:32:59.252Z,payments-05,prod,WARN,2025-11-10T02:32:59.252Z WARN [payments-05] ERROR: database deadlock detected; rolling back transaction,0.9125307074332101,1
+2025-11-10T16:51:12.823Z,nginx-frontend-07,prod,DEBUG,2025-11-10T16:51:12.823Z DEBUG [nginx-frontend-07] Cache hit for key=session:1890; ttl=2683s,0.9123450444278658,2
+2025-11-09T22:03:57.396Z,auth-service-01,dev,DEBUG,2025-11-09T22:03:57.396Z DEBUG [auth-service-01] Loaded config from /etc/config/app.yml,0.9102868736890328,1
+2025-11-11T06:29:02.593Z,backend-api-19,prod,WARN,2025-11-11T06:29:02.593Z WARN [backend-api-19] Started request DELETE /api/v1/items from 10.0.0.11 in 245ms,0.909879558270239,1
+2025-11-07T12:37:55.066Z,nginx-frontend-09,prod,WARN,2025-11-07T12:37:55.066Z WARN [nginx-frontend-09] Background job report-generator completed in 68ms,0.9069305438295949,1
+2025-11-10T12:01:32.099Z,nginx-frontend-09,prod,WARN,2025-11-10T12:01:32.099Z WARN [nginx-frontend-09] Background job report-generator completed in 306ms,0.9044201767630364,1
+2025-11-07T13:55:23.441Z,backend-api-20,prod,WARN,2025-11-07T13:55:23.441Z WARN [backend-api-20] Cache hit for key=session:5754; ttl=1102s,0.902463834878902,1
+2025-11-09T10:24:11.331Z,orders-19,prod,WARN,2025-11-09T10:24:11.331Z WARN [orders-19] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.9003664991959544,1
+2025-11-08T01:02:39.189Z,orders-04,dev,DEBUG,2025-11-08T01:02:39.189Z DEBUG [orders-04] Loaded config from /etc/config/db.yml,0.8994701512317269,2
+2025-11-11T03:24:38.352Z,nginx-frontend-18,prod,WARN,2025-11-11T03:24:38.352Z WARN [nginx-frontend-18] Completed 200 DELETE /api/v1/items in 214ms,0.8982757262874259,1
+2025-11-07T09:37:03.709Z,backend-api-15,dev,WARN,2025-11-07T09:37:03.709Z WARN [backend-api-15] Background job report-generator completed in 291ms,0.8941464709633222,1
+2025-11-12T13:04:57.136Z,payments-04,prod,WARN,2025-11-12T13:04:57.136Z WARN [payments-04] Background job report-generator completed in 432ms,0.8940410431678132,1
+2025-11-09T22:07:49.817Z,nginx-frontend-03,dev,WARN,2025-11-09T22:07:49.817Z WARN [nginx-frontend-03] Background job cleanup completed in 96ms,0.8923357803308147,1
+2025-11-07T08:24:31.159Z,nginx-frontend-02,dev,DEBUG,"2025-11-07T08:24:31.159Z DEBUG [nginx-frontend-02] Graceful shutdown initiated, waiting for connections to drain",0.8906739164859434,1
+2025-11-11T11:59:08.417Z,backend-api-17,prod,WARN,2025-11-11T11:59:08.417Z WARN [backend-api-17] ERROR: database deadlock detected; rolling back transaction,0.8881559281329627,1
+2025-11-12T02:44:51.724Z,orders-09,staging,WARN,2025-11-12T02:44:51.724Z WARN [orders-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.8847746173902513,3
+2025-11-11T14:46:28.594Z,orders-02,staging,WARN,2025-11-11T14:46:28.594Z WARN [orders-02] ERROR: Segmentation fault (core dumped) in worker thread,0.884432294608448,2
+2025-11-11T17:02:35.531Z,auth-service-09,prod,WARN,2025-11-11T17:02:35.531Z WARN [auth-service-09] Background job cleanup completed in 183ms,0.8839919536151573,1
+2025-11-10T05:01:56.500Z,orders-01,prod,WARN,2025-11-10T05:01:56.500Z WARN [orders-01] ERROR: connection refused from cache.internal:8080,0.8837717831185119,1
+2025-11-07T17:02:00.099Z,nginx-frontend-10,staging,DEBUG,2025-11-07T17:02:00.099Z DEBUG [nginx-frontend-10] Background job reindex completed in 86ms,0.880781910114548,1
+2025-11-09T19:00:17.340Z,backend-api-18,prod,WARN,2025-11-09T19:00:17.340Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.8802763647818661,1
+2025-11-09T11:31:32.480Z,orders-01,dev,WARN,2025-11-09T11:31:32.480Z WARN [orders-01] Loaded config from /etc/config/db.yml,0.8781824163373284,2
+2025-11-06T14:17:42.283Z,payments-18,dev,WARN,2025-11-06T14:17:42.283Z WARN [payments-18] Completed 204 PUT /health in 157ms,0.8766863154721429,1
+2025-11-09T22:01:24.979Z,nginx-frontend-04,prod,DEBUG,"2025-11-09T22:01:24.979Z DEBUG [nginx-frontend-04] Graceful shutdown initiated, waiting for connections to drain",0.8742331080537522,1
+2025-11-13T02:56:17.419Z,payments-20,dev,WARN,"2025-11-13T02:56:17.419Z WARN [payments-20] Graceful shutdown initiated, waiting for connections to drain",0.8738486564942252,1
+2025-11-06T10:28:48.033Z,backend-api-18,dev,DEBUG,2025-11-06T10:28:48.033Z DEBUG [backend-api-18] Cache hit for key=session:8986; ttl=3159s,0.8738363777549891,1
+2025-11-07T17:28:09.728Z,payments-03,prod,WARN,"2025-11-07T17:28:09.728Z WARN [payments-03] Graceful shutdown initiated, waiting for connections to drain",0.8738065277165017,1
+2025-11-09T13:35:37.621Z,backend-api-05,dev,DEBUG,"2025-11-09T13:35:37.621Z DEBUG [backend-api-05] Graceful shutdown initiated, waiting for connections to drain",0.8734385889442231,1
+2025-11-11T01:39:43.296Z,nginx-frontend-13,prod,WARN,"2025-11-11T01:39:43.296Z WARN [nginx-frontend-13] Health check passed: ready=true, status=200",0.8730202650005969,1
+2025-11-06T08:49:17.509Z,orders-10,dev,WARN,2025-11-06T08:49:17.509Z WARN [orders-10] Loaded config from /etc/config/db.yml,0.8722619470015742,1
+2025-11-06T14:56:42.429Z,payments-10,dev,DEBUG,2025-11-06T14:56:42.429Z DEBUG [payments-10] Loaded config from /etc/config/db.yml,0.8688177606458787,1
+2025-11-08T20:16:48.660Z,auth-service-13,prod,WARN,"2025-11-08T20:16:48.660Z WARN [auth-service-13] Graceful shutdown initiated, waiting for connections to drain",0.8688086574426519,1
+2025-11-06T19:42:46.976Z,orders-18,dev,DEBUG,"2025-11-06T19:42:46.976Z DEBUG [orders-18] Graceful shutdown initiated, waiting for connections to drain",0.8643355974199405,1
+2025-11-11T08:36:05.780Z,orders-16,dev,DEBUG,"2025-11-11T08:36:05.780Z DEBUG [orders-16] Health check passed: ready=true, status=200",0.8625092408097872,1
+2025-11-12T00:48:12.609Z,orders-08,prod,DEBUG,2025-11-12T00:48:12.609Z DEBUG [orders-08] Background job report-generator completed in 382ms,0.8616414726696435,1
+2025-11-08T20:46:05.824Z,orders-19,dev,DEBUG,"2025-11-08T20:46:05.824Z DEBUG [orders-19] Graceful shutdown initiated, waiting for connections to drain",0.8590015437339054,1
+2025-11-11T06:14:21.781Z,orders-02,dev,DEBUG,2025-11-11T06:14:21.781Z DEBUG [orders-02] Opening database transaction; connection_id=3329,0.858489012222003,2
+2025-11-10T17:49:18.460Z,orders-08,dev,WARN,2025-11-10T17:49:18.460Z WARN [orders-08] Loaded config from /etc/config/db.yml,0.8572234552710933,1
+2025-11-07T10:18:22.481Z,nginx-frontend-19,dev,WARN,2025-11-07T10:18:22.481Z WARN [nginx-frontend-19] Completed 304 DELETE /api/v1/orders in 66ms,0.8567206620696197,1
+2025-11-12T22:05:44.534Z,backend-api-16,dev,DEBUG,2025-11-12T22:05:44.534Z DEBUG [backend-api-16] Completed 200 POST /api/v1/items in 407ms,0.8546053316826192,1
+2025-11-06T02:50:15.180Z,auth-service-16,prod,WARN,"2025-11-06T02:50:15.180Z WARN [auth-service-16] Graceful shutdown initiated, waiting for connections to drain",0.8544990570775077,1
+2025-11-07T02:42:38.735Z,nginx-frontend-01,staging,DEBUG,2025-11-07T02:42:38.735Z DEBUG [nginx-frontend-01] Established connection to upstream auth.internal:8080,0.8537068666943857,3
+2025-11-12T13:20:56.256Z,backend-api-04,dev,DEBUG,"2025-11-12T13:20:56.256Z DEBUG [backend-api-04] Health check passed: ready=true, status=200",0.8513067965785506,1
+2025-11-13T04:29:55.558Z,backend-api-18,prod,WARN,2025-11-13T04:29:55.558Z WARN [backend-api-18] Loaded config from /etc/config/app.yml,0.8480470030137954,2
+2025-11-06T05:13:05.417Z,orders-03,staging,DEBUG,2025-11-06T05:13:05.417Z DEBUG [orders-03] Background job report-generator completed in 123ms,0.847127791190301,1
+2025-11-06T12:25:48.635Z,nginx-frontend-08,dev,DEBUG,2025-11-06T12:25:48.635Z DEBUG [nginx-frontend-08] Started request POST /api/v1/payments from 10.0.0.27 in 153ms,0.8448541074076363,1
+2025-11-09T17:32:08.858Z,auth-service-08,prod,WARN,2025-11-09T17:32:08.858Z WARN [auth-service-08] Background job reindex completed in 83ms,0.8426583301084001,1
+2025-11-12T10:37:36.400Z,orders-19,dev,WARN,2025-11-12T10:37:36.400Z WARN [orders-19] Established connection to upstream db.internal:9000,0.8423473392818885,1
+2025-11-06T13:09:31.838Z,nginx-frontend-19,dev,WARN,2025-11-06T13:09:31.838Z WARN [nginx-frontend-19] Established connection to upstream db.internal:5432,0.8419959132968584,1
+2025-11-09T04:12:00.670Z,payments-01,dev,DEBUG,"2025-11-09T04:12:00.670Z DEBUG [payments-01] Graceful shutdown initiated, waiting for connections to drain",0.8409850343338954,1
+2025-11-10T15:06:59.210Z,nginx-frontend-10,prod,WARN,2025-11-10T15:06:59.210Z WARN [nginx-frontend-10] User 28568 authenticated successfully,0.8402963664246768,2
+2025-11-07T05:09:15.090Z,orders-19,prod,WARN,2025-11-07T05:09:15.090Z WARN [orders-19] Cache hit for key=session:3691; ttl=140s,0.8402842993878414,2

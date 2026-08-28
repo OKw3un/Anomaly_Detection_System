@@ -1,0 +1,21 @@
+timestamp,pod_name,namespace,log_level,message,score_lof,anomaly_vote_count
+2026-01-01T00:00:05.000Z,philosopher,athens,DEEP,What is the meaning of life? Is it 42? Or is it just a simulation running on a giant turtle?,0.9999999999999999,10
+2026-01-01T00:00:06.000Z,spam,inbox,ADS,"CONGRATULATIONS! You have won $1,000,000 in the Nigerian Prince Lottery. Click here to claim your prize!",0.903090367088495,10
+2026-01-01T00:00:01.000Z,aliens,ufo,WEIRD,I love eating pizza with pineapples on mars while riding a dinosaur.,0.8803986795077391,10
+2026-01-01T00:00:10.000Z,random,keyboard,TYPO,asdfghjkl qwertyuiop zxcvbnm 1234567890 !@#$%^&*()_+,0.7805140362641277,10
+2025-11-06T23:59:53.000Z,k8s-apiserver,kube-system,FATAL,FATAL [k8s-apiserver] etcd cluster quorum lost! All control plane nodes are unresponsive. Cluster state is corrupted.,0.6975417185289571,10
+2025-11-06T23:59:57.000Z,billing-service,prod,FATAL,FATAL [billing-service] ALL DATABASES DROPPED: Received unauthorized DROP DATABASE command for all production clusters.,0.6266195508213822,10
+2026-01-01T00:00:02.000Z,shakespeare,poetry,INFO,"To be, or not to be, that is the question: Whether tis nobler in the mind to suffer",0.592157380718645,10
+2025-11-06T23:59:51.000Z,backend-api-01,prod,FATAL,"FATAL [backend-api-01] KERNEL PANIC: CPU temperature exceeded 105C, physical hardware damage imminent. Initiating emergency hardware shutdown sequence.",0.5842852955189078,10
+2025-11-06T23:59:58.000Z,kubelet-node-1,kube-system,ERROR,ERROR [kubelet-node-1] NODE COMPROMISED: Unauthorized container breakout detected. Host filesystem mounted with write permissions.,0.3840894216033578,8
+2025-11-06T23:59:55.000Z,db-primary-0,prod,ERROR,ERROR [db-primary-0] RANSOMWARE ACTIVITY DETECTED: Rapid sequential encryption of database files in /var/lib/postgresql/data.,0.25290244952082447,8
+2026-01-01T00:00:04.000Z,cat,living-room,MEOW,Meow meow meow purr purr hiss scratch sofa meow.,0.20731413642049606,10
+2026-01-01T00:00:03.000Z,chef,kitchen,COOKING,"Recipe: Add 2 cups of flour, 3 eggs, and a dash of cinnamon. Bake at 350F for 45 minutes.",0.20250974275009112,10
+2026-01-01T00:00:09.000Z,mechanic,garage,CAR,"The carburetor is busted, the timing belt snapped, and the blinker fluid is completely empty.",0.19742587349117335,10
+2026-01-01T00:00:08.000Z,gandalf,moria,MAGIC,"YOU SHALL NOT PASS! The dark fire will not avail you, flame of Udun. Go back to the Shadow!",0.1941109927349615,10
+2026-01-01T00:00:07.000Z,toddler,playground,SCREAM,Waaaaah! I want my toy! No! Mine! Waaaaaah! Gimme!,0.1691676599037928,10
+2025-11-06T23:59:50.000Z,unknown-hacker-pod,kube-system,CRITICAL,CRITICAL [kube-system] UNAUTHORIZED ROOT ACCESS DETECTED: Multiple failed SSH login attempts followed by successful bypass. Possible bitcoin miner payload injected.,0.16681998228830286,10
+2025-11-06T23:59:56.000Z,nginx-ingress,kube-system,CRITICAL,CRITICAL [nginx-ingress] DDoS ATTACK DETECTED: 100Gbps traffic spike overwhelming the ingress controller. Dropping all packets.,0.16356167278850542,10
+2025-11-06T23:59:59.000Z,ci-cd-pipeline,dev,CRITICAL,CRITICAL [ci-cd-pipeline] MALICIOUS CODE INJECTION: Found unexpected base64 encoded payload in the build artifact before deployment.,0.15824707488488493,10
+2025-11-06T23:59:52.000Z,payments-11,prod,ERROR,ERROR [payments-11] SEVERE DATA LEAK: Unencrypted credit card payloads are being transmitted to external IP 185.199.108.153.,0.14822829356361028,3
+2025-11-06T23:59:54.000Z,auth-service-03,prod,CRITICAL,CRITICAL [auth-service-03] MASSIVE AUTHENTICATION FAILURE: 50000 login attempts blocked in the last 10 seconds from a single botnet.,0.13810392831073962,8
