@@ -25,6 +25,7 @@ class DataProfiler:
     ):
         self.dataset_name = dataset_name
         self.original_rows = df.shape[0]
+        self.full_missing_ratio = float(df.isnull().sum().sum() / (df.shape[0] * df.shape[1])) if df.shape[0] > 0 and df.shape[1] > 0 else 0.0
         if max_sample_size is not None and self.original_rows > max_sample_size:
             # Zaman serisi bütünlüğünü bozmamak için rastgele değil, sıralı kesit (tail) alıyoruz
             self.df = df.tail(max_sample_size).copy()
@@ -52,10 +53,7 @@ class DataProfiler:
         # Basic statistics
         # -----------------------------------------------------
 
-        missing_ratio = float(
-            self.df.isnull().sum().sum()
-            / (total_rows * total_cols)
-        )
+        missing_ratio = self.full_missing_ratio
 
         feature_to_sample_ratio = (
             total_cols / self.original_rows

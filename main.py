@@ -12,10 +12,37 @@ def main():
     # 1. Load Dataset
     # =========================================================
 
-    file_path = "data/timeseries/TimeSeries.csv"
-    df = pd.read_csv(file_path)
-
-    print(f"Dataset loaded: {df.shape}")
+    file_path = "data/apisecurity_graph/remaining_call_graphs".json"
+    
+    if file_path.endswith(".json"):
+        json_path = file_path
+        
+        # JSON isminden karşılık gelen CSV'yi bul
+        if "remaining_call_graphs" in json_path:
+            csv_path = json_path.replace("remaining_call_graphs.json", "remaining_behavior_ext.csv")
+        elif "supervised_call_graphs" in json_path:
+            csv_path = json_path.replace("supervised_call_graphs.json", "supervised_dataset.csv")
+        else:
+            csv_path = json_path.replace(".json", ".csv")
+            
+        if not os.path.exists(csv_path):
+            raise FileNotFoundError(f"JSON'a karşılık gelen CSV bulunamadı: {csv_path}")
+            
+        df = pd.read_csv(csv_path)
+        print(f"Dataset loaded from {csv_path}: {df.shape}")
+        
+        if "_id" in df.columns:
+            from src.engine.graph_feature_engineering import GraphFeatureEngineer
+            print(f"\n[Adım 1.5] Graf özellikleri {json_path} dosyasından çıkarılıyor...")
+            gfe = GraphFeatureEngineer(json_filepath=json_path)
+            df_graph = gfe.transform()
+            df = pd.merge(df, df_graph, on="_id", how="inner")
+            print(f"  [OK] Graf özellikleri tabloya eklendi. Yeni boyut: {df.shape}")
+            
+    else:
+        # Dümdüz CSV (JSON birleştirme yok)
+        df = pd.read_csv(file_path)
+        print(f"Dataset loaded: {df.shape} (Sadece CSV)")
 
     # =========================================================
     # 2. Profile Dataset (Faz 1)
