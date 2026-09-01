@@ -5,61 +5,41 @@ GerÃ§ek Anomali SayÄ±sÄ±: 443
 Normal Veri SayÄ±sÄ±: 509189
 
 ## XGBOOST Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 706
-- **Doğru Tespit Ettiği (True Positive):** 269
-- **Yanlış Alarm (False Positive):** 437
-- **Kaçırdığı Anomali (False Negative):** 174
-- **Geri Çağırma (Recall):** %60.72
-- **Hassasiyet (Precision):** %38.10
+- **Toplam Bulduğu Anomali Sayısı:** 173
+- **Doğru Tespit Ettiği (True Positive):** 138
+- **Yanlış Alarm (False Positive):** 35
+- **Kaçırdığı Anomali (False Negative):** 305
+- **Geri Çağırma (Recall):** %31.15
+- **Hassasiyet (Precision):** %79.77
 
 ```text
               precision    recall  f1-score   support
 
            0       1.00      1.00      1.00    509189
-           1       0.38      0.61      0.47       443
+           1       0.80      0.31      0.45       443
 
     accuracy                           1.00    509632
-   macro avg       0.69      0.80      0.73    509632
-weighted avg       1.00      1.00      1.00    509632
-
-```
-
-## LIGHTGBM Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 536
-- **Doğru Tespit Ettiği (True Positive):** 237
-- **Yanlış Alarm (False Positive):** 299
-- **Kaçırdığı Anomali (False Negative):** 206
-- **Geri Çağırma (Recall):** %53.50
-- **Hassasiyet (Precision):** %44.22
-
-```text
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00    509189
-           1       0.44      0.53      0.48       443
-
-    accuracy                           1.00    509632
-   macro avg       0.72      0.77      0.74    509632
+   macro avg       0.90      0.66      0.72    509632
 weighted avg       1.00      1.00      1.00    509632
 
 ```
 
 ## RANDOM_FOREST Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 693
-- **Doğru Tespit Ettiği (True Positive):** 212
-- **Yanlış Alarm (False Positive):** 481
-- **Kaçırdığı Anomali (False Negative):** 231
-- **Geri Çağırma (Recall):** %47.86
-- **Hassasiyet (Precision):** %30.59
+- **Toplam Bulduğu Anomali Sayısı:** 55
+- **Doğru Tespit Ettiği (True Positive):** 53
+- **Yanlış Alarm (False Positive):** 2
+- **Kaçırdığı Anomali (False Negative):** 390
+- **Geri Çağırma (Recall):** %11.96
+- **Hassasiyet (Precision):** %96.36
 
 ```text
               precision    recall  f1-score   support
 
            0       1.00      1.00      1.00    509189
-           1       0.31      0.48      0.37       443
+           1       0.96      0.12      0.21       443
 
     accuracy                           1.00    509632
-   macro avg       0.65      0.74      0.69    509632
+   macro avg       0.98      0.56      0.61    509632
 weighted avg       1.00      1.00      1.00    509632
 
 ```
@@ -161,85 +141,5 @@ weighted avg       1.00      0.93      0.97    509632
     accuracy                           0.97    509632
    macro avg       0.50      0.51      0.49    509632
 weighted avg       1.00      0.97      0.98    509632
-
-```
-
-## DEEP_SVDD Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 123091
-- **Doğru Tespit Ettiği (True Positive):** 378
-- **Yanlış Alarm (False Positive):** 122713
-- **Kaçırdığı Anomali (False Negative):** 65
-- **Geri Çağırma (Recall):** %85.33
-- **Hassasiyet (Precision):** %0.31
-
-```text
-              precision    recall  f1-score   support
-
-           0       1.00      0.76      0.86    509189
-           1       0.00      0.85      0.01       443
-
-    accuracy                           0.76    509632
-   macro avg       0.50      0.81      0.43    509632
-weighted avg       1.00      0.76      0.86    509632
-
-```
-
-## LSTM_AUTOENCODER Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 444
-- **Doğru Tespit Ettiği (True Positive):** 0
-- **Yanlış Alarm (False Positive):** 444
-- **Kaçırdığı Anomali (False Negative):** 443
-- **Geri Çağırma (Recall):** %0.00
-- **Hassasiyet (Precision):** %0.00
-
-```text
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00    509189
-           1       0.00      0.00      0.00       443
-
-    accuracy                           1.00    509632
-   macro avg       0.50      0.50      0.50    509632
-weighted avg       1.00      1.00      1.00    509632
-
-```
-
-## SUPERVISED_XGBOOST Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 145
-- **Doğru Tespit Ettiği (True Positive):** 94
-- **Yanlış Alarm (False Positive):** 51
-- **Kaçırdığı Anomali (False Negative):** 349
-- **Geri Çağırma (Recall):** %21.22
-- **Hassasiyet (Precision):** %64.83
-
-```text
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00    509189
-           1       0.65      0.21      0.32       443
-
-    accuracy                           1.00    509632
-   macro avg       0.82      0.61      0.66    509632
-weighted avg       1.00      1.00      1.00    509632
-
-```
-
-## SUPERVISED_LIGHTGBM Performansı
-- **Toplam Bulduğu Anomali Sayısı:** 213
-- **Doğru Tespit Ettiği (True Positive):** 136
-- **Yanlış Alarm (False Positive):** 77
-- **Kaçırdığı Anomali (False Negative):** 307
-- **Geri Çağırma (Recall):** %30.70
-- **Hassasiyet (Precision):** %63.85
-
-```text
-              precision    recall  f1-score   support
-
-           0       1.00      1.00      1.00    509189
-           1       0.64      0.31      0.41       443
-
-    accuracy                           1.00    509632
-   macro avg       0.82      0.65      0.71    509632
-weighted avg       1.00      1.00      1.00    509632
 
 ```

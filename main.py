@@ -111,17 +111,17 @@ def main():
     dataset_type = meta_vector.dataset_type
     
     if dataset_type in ["text", "log"]:
-        suitable_models = ["isolation_forest", "lof", "pca", "ecod", "copod", "hbos", "ocsvm", "autoencoder", "vae", "deep_svdd"]
+        suitable_models = ["isolation_forest", "lof", "pca", "ecod", "copod", "hbos", "ocsvm", "autoencoder", "vae", "random_forest", "xgboost"]
         print(f"  [Router Override] {dataset_type} veri seti tespit edildi. Sadece hazır Tabular modeller kullanılacak.")
     elif dataset_type == "time_series":
         # Feature Engineering eklendiği için artık tüm standart Tabular modeller (Özellikle Ağaç tabanlı Supervised modeller) zaman serisi gibi çalışabilir.
         # Ayrıca kendi yazdığımız özel (custom) supervised modeller de korundu.
-        suitable_models = ["xgboost", "lightgbm", "random_forest", "isolation_forest", "ecod", "pca", "copod", "hbos", "lstm_autoencoder", "supervised_xgboost", "supervised_lightgbm"]
+        suitable_models = ["xgboost", "random_forest", "isolation_forest", "ecod", "pca", "copod", "hbos"]
         print(f"  [Router Override] {dataset_type} veri seti tespit edildi. TS Feature Engineering ile zenginleştirilmiş standart modeller ve özel Supervised modeller kullanılacak.")
     else:
         # Hızlı sonuç alabilmek için geçici olarak DL modelleri ve OCSVM devre dışı bırakıldı.
         # Gözetimli (Supervised) modeller eklendi.
-        suitable_models = ["isolation_forest", "ecod", "pca", "lof", "copod", "hbos", "random_forest", "lightgbm", "xgboost"]
+        suitable_models = ["isolation_forest", "ecod", "pca", "copod", "hbos", "random_forest", "xgboost"]
         print(f"  [Router Override] {dataset_type} veri seti tespit edildi. İstatistiksel ve Supervised modeller çalıştırılacak.")
         
     config["recommended_models"] = suitable_models
@@ -143,12 +143,15 @@ def main():
             y_labels = df["Class"].values
         elif "label" in df.columns:
             y_labels = df["label"].values
+        elif "classification" in df.columns:
+            # classification sütunundaki 'normal' değerini 0, diğerlerini 1 yapıyoruz
+            y_labels = (~df["classification"].astype(str).str.lower().isin(["normal", "benign", "0"])).astype(int).values
+            print("  [OK] 'classification' sütunu y_labels olarak ayrıldı.")
         elif "income" in df.columns:
             # Adult dataset için özel etiket (">50K" anomali/pozitif sınıf kabul ediliyor)
             y_labels = (df["income"].astype(str).str.contains(">50K")).astype(int).values
             df = df.drop(columns=["income"]) # Eğitime sızmaması için sil
             print("  [OK] 'income' sütunu y_labels olarak ayrıldı ve eğitim setinden (df) çıkartıldı.")
-
 
     result = engine.run(df, config, y=y_labels)
 

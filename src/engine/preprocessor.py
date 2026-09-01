@@ -82,7 +82,7 @@ class Preprocessor:
         # 2. Datetime sütunlarını sayısala dönüştür
         # ---------------------------------------------------------
 
-        # Sadece Kaggle CreditCard veri setine özgü olacak şekilde, 
+        # Sadece Kaggle CreditCard veri setine özgü olacak şekilde,
         # Time saniye sayacını Günün Saati (Hour) değişkenine çevirelim.
         if "Time" in working_df.columns and "V1" in working_df.columns and "V28" in working_df.columns and pd.api.types.is_numeric_dtype(working_df["Time"]):
             print("  [Preprocessor] Creditcard veri seti algılandı. 'Time' sütunu 'Saat (Hour)' değişkenine dönüştürülüyor...")
@@ -98,7 +98,7 @@ class Preprocessor:
         # ---------------------------------------------------------
         # 3. Text/Log Sütunlarını Vektörleştir (BERT / TF-IDF)
         # ---------------------------------------------------------
-        
+       
         bert_available = False
         if len(text_cols) > 0:
             try:
@@ -115,19 +115,19 @@ class Preprocessor:
         for col in text_cols:
             if col in working_df.columns:
                 working_df[col] = working_df[col].fillna("")
-                
+               
                 if bert_available:
                     print(f"    > '{col}' sütunu BERT ile 384-boyutlu semantik vektöre çevriliyor...")
                     # Metinleri BERT embeddinglerine dönüştür (Shape: [N, 384])
                     embeddings = bert_model.encode(working_df[col].tolist(), show_progress_bar=False)
-                    
+                   
                     bert_cols = [f"{col}_bert_{i}" for i in range(embeddings.shape[1])]
                     bert_df = pd.DataFrame(
-                        embeddings, 
-                        columns=bert_cols, 
+                        embeddings,
+                        columns=bert_cols,
                         index=working_df.index
                     )
-                    
+                   
                     working_df = pd.concat([working_df, bert_df], axis=1)
                     working_df = working_df.drop(columns=[col])
                 else:
@@ -137,17 +137,17 @@ class Preprocessor:
                     try:
                         tfidf_matrix = vectorizer.fit_transform(working_df[col]).toarray()
                         vocab = vectorizer.get_feature_names_out()
-                        
+                       
                         tfidf_cols = [f"{col}_tfidf_{w}" for w in vocab]
                         tfidf_df = pd.DataFrame(
-                            tfidf_matrix, 
-                            columns=tfidf_cols, 
+                            tfidf_matrix,
+                            columns=tfidf_cols,
                             index=working_df.index
                         )
-                        
+                       
                         working_df = pd.concat([working_df, tfidf_df], axis=1)
                         working_df = working_df.drop(columns=[col])
-                        
+                       
                     except ValueError:
                         working_df = working_df.drop(columns=[col])
 
@@ -176,7 +176,7 @@ class Preprocessor:
 
         if preprocessing_steps.get("impute_missing", False):
             is_ts = meta.get("is_time_series", False) if meta else False
-            
+           
             if is_ts:
                 # Zaman serisi için ffill ve bfill
                 working_df = working_df.ffill().bfill()
@@ -210,10 +210,11 @@ class Preprocessor:
             # Adaptif Kategorik Kodlama (Kardinaliteye Göre)
             for col in self._categorical_cols:
                 nunique = working_df[col].nunique()
-                
+               
                 if nunique <= 5:
                     # Low Cardinality -> One-Hot Encoding
-                    dummies = pd.get_dummies(working_df[col], prefix=col, dummy_na=False).astype(np.float32)
+                    # drop_first=True eklenerek Dummy Variable Trap (Tam Çoklu Doğrusallık) önlendi
+                    dummies = pd.get_dummies(working_df[col], prefix=col, dummy_na=False, drop_first=True).astype(np.float32)
                     working_df = pd.concat([working_df, dummies], axis=1)
                     working_df = working_df.drop(columns=[col])
                 else:
@@ -234,12 +235,12 @@ class Preprocessor:
         # ---------------------------------------------------------
 
         # Artık tüm sütunlar sayısal olmalı.
-        # ANCAK TF-IDF (_tfidf_) ve One-Hot (_ namespace_) gibi zaten normalize 
+        # ANCAK TF-IDF (_tfidf_) ve One-Hot (_ namespace_) gibi zaten normalize
         # edilmiş olan seyrek (sparse) sütunları RobustScaler'a SOKMAMALIYIZ!
         numeric_cols = [
             col for col in working_df.columns
             if pd.api.types.is_numeric_dtype(working_df[col])
-            and "_tfidf_" not in col 
+            and "_tfidf_" not in col
             and (not col.startswith(tuple(c + "_" for c in self._categorical_cols)))
         ]
 
@@ -254,6 +255,18 @@ class Preprocessor:
                     working_df[numeric_cols]
                 )
             )
+
+        # ---------------------------------------------------------
+        # 7.5. Sabit (Sıfır Varyanslı) Sütunları Çıkar (PCA Hatasını Önlemek İçin)
+        # ---------------------------------------------------------
+       
+        numeric_df = working_df.select_dtypes(include=[np.number])
+        # Standart sapması 0 olan (hiç değişmeyen) sütunlar PCA gibi modelleri çökertir
+        zero_var_cols = numeric_df.columns[numeric_df.std(ddof=0) == 0].tolist()
+       
+        if zero_var_cols:
+            print(f"  [Preprocessor] {len(zero_var_cols)} adet sıfır varyanslı sütun tespit edildi ve çıkarılıyor (PCA çökmesini önlemek için).")
+            working_df = working_df.drop(columns=zero_var_cols)
 
         # ---------------------------------------------------------
         # 8. Sonuç
@@ -272,4 +285,4 @@ class Preprocessor:
     @property
     def feature_names(self) -> List[str]:
         """Ön işlem sonrası kullanılan özellik isimlerini döndürür."""
-        return self._feature_cols
+        return self._feature_cols 

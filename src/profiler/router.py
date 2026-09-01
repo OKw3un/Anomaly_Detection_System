@@ -20,12 +20,12 @@ class ModelRouter:
             if "collective" in meta.anomaly_characteristics:
                 recommended_models = ["lstm_classifier", "xgboost_with_lags"]
             else:
-                recommended_models = ["xgboost", "random_forest", "lightgbm"]
+                recommended_models = ["xgboost", "random_forest"]
                 
         elif meta.supervision_level == "semi-supervised":
             strategy = "Semi-Supervised Anomaly Detection Pipeline"
             if "collective" in meta.anomaly_characteristics or meta.dataset_type == "time_series":
-                recommended_models = ["deep_svdd_sequential", "one_class_svm"]
+                recommended_models = ["deep_svdd", "one_class_svm"]
             else:
                 recommended_models = ["deep_svdd", "one_class_svm"]
                 

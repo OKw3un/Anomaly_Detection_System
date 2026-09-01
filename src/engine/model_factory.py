@@ -120,8 +120,8 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "kwargs": {
             "encoder_neuron_list": [64, 32, 16],
             "decoder_neuron_list": [16, 32, 64],
-            "epoch_num": 50,
-            "batch_size": 64,
+            "epoch_num": 35,
+            "batch_size": 128,
             "contamination": 0.05,
             "preprocessing": False
         },
@@ -155,8 +155,9 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "RandomForestClassifier",
         "kwargs": {
             "n_estimators": 100,
-            "max_depth": 10,
-            "min_samples_split": 5,
+            "max_depth": 7,
+            "min_samples_split": 10,
+            "min_samples_leaf": 5,
             "random_state": 42,
             "n_jobs": -1
         },
@@ -179,30 +180,19 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "requires_y": True
     },
 
-    "lightgbm": {
-        "module": "lightgbm",
-        "class": "LGBMClassifier",
-        "kwargs": {
-            "n_estimators": 100,
-            "learning_rate": 0.1,
-            "num_leaves": 31,
-            "max_depth": 5,
-            "random_state": 42,
-            "n_jobs": -1
-        },
-        "supports_embedding": False,
-        "category": "supervised",
-        "is_supervised": True,
-        "requires_y": True
-    },
 
     "xgboost": {
         "module": "xgboost",
         "class": "XGBClassifier",
         "kwargs": {
-            "n_estimators": 100,
-            "learning_rate": 0.1,
-            "max_depth": 5,
+            "n_estimators": 300,         # 100'den 300'e ÇIKTI: Model daha uzun süre, daha fazla ağaç kurarak düşünecek.
+            "learning_rate": 0.01,       # 0.05'ten 0.01'e İNDİ: Adımları küçülttük ki hedefe koşarken hedefi ıskalamasın (daha stabil öğrenir).
+            "max_depth": 4,              
+            "min_child_weight": 5,       
+            "gamma": 1.0,                # YENİ EKLENDİ: Sadece modelin başarısına çok net bir katkısı olacaksa yaprağı ikiye böl. Gereksiz dalları keser.
+            "subsample": 0.8,            
+            "colsample_bytree": 0.8,     
+            "reg_lambda": 5.0,           
             "random_state": 42,
             "use_label_encoder": False,
             "eval_metric": "logloss",
@@ -214,25 +204,6 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "requires_y": True
     },
 
-    # ---------------------------------------------------------
-    # Yarı-gözetimli (Semi-supervised) sekanslar — gelecekte
-    # ---------------------------------------------------------
-
-    "deep_svdd_sequential": {
-        "module": "pyod.models.deep_svdd",
-        "class": "DeepSVDD",
-        "kwargs": {
-            "n_features": None,
-            "hidden_neurons": [128, 64, 32],
-            "epochs": 80,
-            "batch_size": 64,
-            "contamination": 0.05,
-            "preprocessing": False
-        },
-        "supports_embedding": True,
-        "category": "deep_learning",
-        "bottleneck_index": -1
-    },
 
     # ---------------------------------------------------------
     # Zaman Serisi Modelleri
@@ -252,34 +223,6 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "category": "time_series"
     },
 
-
-    "supervised_xgboost": {
-        "module": "src.engine.custom_models",
-        "class": "SupervisedXGBoost",
-        "kwargs": {
-            "seq_len": 21,
-            "contamination": 0.00087
-        },
-        "supports_embedding": False,
-        "category": "time_series",
-        "is_supervised": True,
-        "requires_y": True
-    },
-
-    "supervised_lightgbm": {
-        "module": "src.engine.custom_models",
-        "class": "SupervisedLightGBM",
-        "kwargs": {
-            "seq_len": 21,
-            "contamination": 0.00087,
-            "is_unbalance": True,
-            "min_child_samples": 5
-        },
-        "supports_embedding": False,
-        "category": "time_series",
-        "is_supervised": True,
-        "requires_y": True
-    },
 
     # ---------------------------------------------------------
     # Grafik / Ağ (Graph/Network) Modelleri
@@ -308,7 +251,8 @@ class ModelFactory:
     def create_models(
         self,
         recommended_models: List[str],
-        n_features: Optional[int] = None
+        n_features: Optional[int] = None,
+        dataset_name: str = ""
     ) -> List[Tuple[str, Any, Dict[str, Any]]]:
         """
         Önerilen model adlarından PyOD nesnelerini oluşturur.

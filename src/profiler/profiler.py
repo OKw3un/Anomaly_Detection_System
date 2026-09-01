@@ -20,8 +20,10 @@ class DataProfiler:
         high_cardinality_threshold: int = 20,
         text_length_threshold: int = 30,
         data_dir: str = None,
-        max_sample_size: int = 15000
+        max_sample_size: int = 15000,
+        dataset_name: str = None
     ):
+        self.dataset_name = dataset_name
         self.original_rows = df.shape[0]
         if max_sample_size is not None and self.original_rows > max_sample_size:
             # Zaman serisi bütünlüğünü bozmamak için rastgele değil, sıralı kesit (tail) alıyoruz
@@ -748,7 +750,8 @@ class DataProfiler:
                 "source",
                 "source_id",
                 "src",
-                "from"
+                "from",
+                "fromid"
             ]
         ]
 
@@ -758,7 +761,8 @@ class DataProfiler:
                 "target",
                 "target_id",
                 "dst",
-                "to"
+                "to",
+                "toid"
             ]
         ]
 
@@ -766,15 +770,9 @@ class DataProfiler:
         if source_candidates and target_candidates:
             return "graph"
 
-        # Companion file scanning for graph
-        if self.data_dir:
-            import os
-            try:
-                for fname in os.listdir(self.data_dir):
-                    if fname.endswith(".json") and "graph" in fname.lower():
-                        return "graph"
-            except Exception:
-                pass
+        # Check if the specific provided file is a graph JSON
+        if self.dataset_name and self.dataset_name.endswith(".json") and "graph" in self.dataset_name.lower():
+            return "graph"
 
         # Text / logs
         if len(text_cols) > 0:

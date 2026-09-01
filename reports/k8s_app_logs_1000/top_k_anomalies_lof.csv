@@ -1,220 +1,145 @@
 timestamp,pod_name,namespace,log_level,message,score_lof,anomaly_vote_count
-2025-11-11T10:02:07.612Z,nginx-frontend-08,dev,INFO,2025-11-11T10:02:07.612Z INFO [nginx-frontend-08] Loaded config from /etc/config/env.yml,1.0,3
-2025-11-06T19:39:53.343Z,nginx-frontend-20,dev,INFO,"2025-11-06T19:39:53.343Z INFO [nginx-frontend-20] Graceful shutdown initiated, waiting for connections to drain",0.9513671038115411,6
-2025-11-06T15:09:42.140Z,nginx-frontend-04,dev,INFO,2025-11-06T15:09:42.140Z INFO [nginx-frontend-04] Loaded config from /etc/config/app.yml,0.9162559389165003,3
-2025-11-09T21:53:51.718Z,nginx-frontend-12,prod,INFO,2025-11-09T21:53:51.718Z INFO [nginx-frontend-12] Loaded config from /etc/config/app.yml,0.8997497636845077,5
-2025-11-07T13:58:28.780Z,backend-api-16,dev,INFO,2025-11-07T13:58:28.780Z INFO [backend-api-16] Background job reindex completed in 381ms,0.8859408713391551,2
-2025-11-08T17:15:44.591Z,nginx-frontend-13,prod,INFO,2025-11-08T17:15:44.591Z INFO [nginx-frontend-13] Loaded config from /etc/config/db.yml,0.8707132115804322,3
-2025-11-07T00:28:49.547Z,nginx-frontend-05,dev,INFO,2025-11-07T00:28:49.547Z INFO [nginx-frontend-05] Loaded config from /etc/config/app.yml,0.8082099288331418,3
-2025-11-07T15:14:36.256Z,nginx-frontend-16,dev,INFO,2025-11-07T15:14:36.256Z INFO [nginx-frontend-16] Cache hit for key=session:6303; ttl=3029s,0.7545389076427435,3
-2025-11-08T17:23:46.027Z,nginx-frontend-05,staging,INFO,2025-11-08T17:23:46.027Z INFO [nginx-frontend-05] Loaded config from /etc/config/app.yml,0.7274481678532511,3
-2025-11-06T21:24:31.245Z,auth-service-09,staging,INFO,2025-11-06T21:24:31.245Z INFO [auth-service-09] Completed 200 GET /login in 23ms,0.7253021890529582,5
-2025-11-13T05:56:46.536Z,nginx-frontend-08,dev,INFO,2025-11-13T05:56:46.536Z INFO [nginx-frontend-08] Loaded config from /etc/config/app.yml,0.6866680263093684,2
-2025-11-10T03:25:38.363Z,payments-18,dev,INFO,2025-11-10T03:25:38.363Z INFO [payments-18] Completed 201 GET /api/v1/orders in 76ms,0.6793792130940927,3
-2025-11-06T11:03:27.092Z,nginx-frontend-08,dev,INFO,"2025-11-06T11:03:27.092Z INFO [nginx-frontend-08] Graceful shutdown initiated, waiting for connections to drain",0.6739311642800988,2
-2025-11-06T17:47:02.272Z,nginx-frontend-19,prod,INFO,"2025-11-06T17:47:02.272Z INFO [nginx-frontend-19] Graceful shutdown initiated, waiting for connections to drain",0.6584321401481333,2
-2025-11-12T07:11:27.269Z,nginx-frontend-12,staging,INFO,"2025-11-12T07:11:27.269Z INFO [nginx-frontend-12] Graceful shutdown initiated, waiting for connections to drain",0.6563208012075433,3
-2025-11-08T00:05:33.589Z,nginx-frontend-03,dev,INFO,2025-11-08T00:05:33.589Z INFO [nginx-frontend-03] Loaded config from /etc/config/env.yml,0.6534582173617346,2
-2025-11-09T12:49:45.439Z,nginx-frontend-08,staging,INFO,2025-11-09T12:49:45.439Z INFO [nginx-frontend-08] Loaded config from /etc/config/env.yml,0.6451638327143011,2
-2025-11-11T18:39:19.202Z,nginx-frontend-18,dev,INFO,2025-11-11T18:39:19.202Z INFO [nginx-frontend-18] Loaded config from /etc/config/env.yml,0.6314800726308719,2
-2025-11-12T13:42:56.980Z,nginx-frontend-16,staging,INFO,2025-11-12T13:42:56.980Z INFO [nginx-frontend-16] Loaded config from /etc/config/app.yml,0.6175954690612174,3
-2025-11-06T19:19:16.575Z,nginx-frontend-05,dev,INFO,2025-11-06T19:19:16.575Z INFO [nginx-frontend-05] Cache hit for key=session:9770; ttl=2509s,0.6121783366040922,2
-2025-11-09T16:34:57.168Z,backend-api-11,dev,INFO,"2025-11-09T16:34:57.168Z INFO [backend-api-11] Graceful shutdown initiated, waiting for connections to drain",0.580105211521759,2
-2025-11-06T19:40:52.046Z,nginx-frontend-06,prod,INFO,2025-11-06T19:40:52.046Z INFO [nginx-frontend-06] Completed 204 DELETE /metrics in 170ms,0.5503209123484613,2
-2025-11-06T19:48:16.489Z,orders-03,dev,INFO,2025-11-06T19:48:16.489Z INFO [orders-03] Background job reindex completed in 139ms,0.5498040224549788,2
-2025-11-12T13:23:39.438Z,auth-service-03,dev,INFO,2025-11-12T13:23:39.438Z INFO [auth-service-03] Started request GET /checkout from 10.0.0.46 in 21ms,0.5336540623274882,2
-2025-11-13T05:03:19.672Z,backend-api-20,dev,INFO,2025-11-13T05:03:19.672Z INFO [backend-api-20] Completed 200 GET /api/v1/payments in 71ms,0.5308790372150004,2
-2025-11-07T11:14:02.053Z,backend-api-08,dev,INFO,2025-11-07T11:14:02.053Z INFO [backend-api-08] Loaded config from /etc/config/db.yml,0.5236977542482487,2
-2025-11-07T02:18:13.406Z,backend-api-08,prod,INFO,"2025-11-07T02:18:13.406Z INFO [backend-api-08] Graceful shutdown initiated, waiting for connections to drain",0.5190221630222883,3
-2025-11-11T09:35:15.099Z,nginx-frontend-05,staging,INFO,2025-11-11T09:35:15.099Z INFO [nginx-frontend-05] Loaded config from /etc/config/env.yml,0.5169218817567826,2
-2025-11-13T08:25:32.135Z,backend-api-17,dev,INFO,2025-11-13T08:25:32.135Z INFO [backend-api-17] Loaded config from /etc/config/db.yml,0.5109446442066105,2
-2025-11-09T08:43:27.055Z,nginx-frontend-12,staging,INFO,"2025-11-09T08:43:27.055Z INFO [nginx-frontend-12] Graceful shutdown initiated, waiting for connections to drain",0.5085737884017963,3
-2025-11-12T15:30:13.010Z,nginx-frontend-03,prod,INFO,"2025-11-12T15:30:13.010Z INFO [nginx-frontend-03] Graceful shutdown initiated, waiting for connections to drain",0.5037766755833276,2
-2025-11-11T07:25:37.747Z,backend-api-02,prod,INFO,2025-11-11T07:25:37.747Z INFO [backend-api-02] Background job report-generator completed in 316ms,0.5029722861376528,2
-2025-11-13T04:09:34.446Z,nginx-frontend-06,prod,INFO,"2025-11-13T04:09:34.446Z INFO [nginx-frontend-06] Graceful shutdown initiated, waiting for connections to drain",0.502011848073186,2
-2025-11-09T01:45:03.599Z,nginx-frontend-17,staging,INFO,2025-11-09T01:45:03.599Z INFO [nginx-frontend-17] Loaded config from /etc/config/app.yml,0.48951046938984477,2
-2025-11-09T21:11:32.593Z,backend-api-16,staging,INFO,"2025-11-09T21:11:32.593Z INFO [backend-api-16] Graceful shutdown initiated, waiting for connections to drain",0.4838192645574152,2
-2025-11-09T02:08:13.563Z,nginx-frontend-05,prod,INFO,"2025-11-09T02:08:13.563Z INFO [nginx-frontend-05] Graceful shutdown initiated, waiting for connections to drain",0.48086032097158593,2
-2025-11-10T15:50:11.495Z,auth-service-10,dev,INFO,2025-11-10T15:50:11.495Z INFO [auth-service-10] User 12588 authenticated successfully,0.447962947761794,2
-2025-11-08T17:34:07.693Z,backend-api-09,dev,INFO,2025-11-08T17:34:07.693Z INFO [backend-api-09] Started request GET /checkout from 10.0.4.38 in 72ms,0.4411680064224782,2
-2025-11-13T10:08:57.124Z,orders-05,dev,INFO,2025-11-13T10:08:57.124Z INFO [orders-05] User 64657 authenticated successfully,0.43568170707936626,2
-2025-11-07T03:51:58.640Z,auth-service-19,prod,INFO,2025-11-07T03:51:58.640Z INFO [auth-service-19] Started request GET /checkout from 10.0.1.32 in 439ms,0.4329603906744307,4
-2025-11-13T02:11:50.754Z,auth-service-08,staging,INFO,2025-11-13T02:11:50.754Z INFO [auth-service-08] Completed 204 POST /api/v1/orders in 230ms,0.4324032192502839,2
-2025-11-09T21:28:46.390Z,nginx-frontend-13,staging,INFO,2025-11-09T21:28:46.390Z INFO [nginx-frontend-13] Cache hit for key=session:8975; ttl=209s,0.4299142268555386,2
-2025-11-07T06:11:39.790Z,orders-11,prod,INFO,"2025-11-07T06:11:39.790Z INFO [orders-11] Graceful shutdown initiated, waiting for connections to drain",0.42267979934833055,2
-2025-11-06T11:24:04.131Z,orders-07,dev,INFO,"2025-11-06T11:24:04.131Z INFO [orders-07] Graceful shutdown initiated, waiting for connections to drain",0.41657833220358864,2
-2025-11-07T15:55:19.327Z,backend-api-16,prod,INFO,2025-11-07T15:55:19.327Z INFO [backend-api-16] Loaded config from /etc/config/env.yml,0.41584965398221574,2
-2025-11-08T00:27:26.710Z,payments-01,prod,INFO,2025-11-08T00:27:26.710Z INFO [payments-01] Started request PUT /login from 10.0.1.47 in 225ms,0.41150015133782347,3
-2025-11-09T13:30:04.271Z,backend-api-01,dev,INFO,2025-11-09T13:30:04.271Z INFO [backend-api-01] Background job cleanup completed in 334ms,0.4100783374221343,2
-2025-11-07T13:42:33.277Z,nginx-frontend-04,prod,INFO,2025-11-07T13:42:33.277Z INFO [nginx-frontend-04] Established connection to upstream cache.internal:5432,0.4018849386849096,2
-2025-11-07T10:28:19.369Z,nginx-frontend-02,dev,INFO,2025-11-07T10:28:19.369Z INFO [nginx-frontend-02] Background job reindex completed in 352ms,0.39541913242948123,3
-2025-11-06T04:02:55.631Z,backend-api-01,dev,INFO,"2025-11-06T04:02:55.631Z INFO [backend-api-01] Graceful shutdown initiated, waiting for connections to drain",0.3812452239729268,2
-2025-11-10T13:51:30.565Z,auth-service-02,dev,INFO,"2025-11-10T13:51:30.565Z INFO [auth-service-02] Health check passed: ready=true, status=200",0.37364826268974005,2
-2025-11-07T11:14:49.024Z,backend-api-03,dev,INFO,2025-11-07T11:14:49.024Z INFO [backend-api-03] Established connection to upstream payments.internal:8080,0.3727320553256105,2
-2025-11-08T17:20:17.744Z,backend-api-07,dev,INFO,"2025-11-08T17:20:17.744Z INFO [backend-api-07] Graceful shutdown initiated, waiting for connections to drain",0.3650689736587561,1
-2025-11-11T08:21:03.366Z,backend-api-07,dev,INFO,"2025-11-11T08:21:03.366Z INFO [backend-api-07] Graceful shutdown initiated, waiting for connections to drain",0.3629179173545979,1
-2025-11-13T01:46:58.700Z,auth-service-03,prod,INFO,2025-11-13T01:46:58.700Z INFO [auth-service-03] User 22488 authenticated successfully,0.3580323431354545,2
-2025-11-09T18:14:23.565Z,auth-service-07,dev,INFO,2025-11-09T18:14:23.565Z INFO [auth-service-07] Started request POST /health from 10.0.4.25 in 350ms,0.3545190489609594,1
-2025-11-06T02:42:18.008Z,payments-04,staging,INFO,2025-11-06T02:42:18.008Z INFO [payments-04] Loaded config from /etc/config/db.yml,0.3538291854358008,2
-2025-11-10T03:29:03.193Z,auth-service-15,dev,INFO,2025-11-10T03:29:03.193Z INFO [auth-service-15] Opening database transaction; connection_id=1060,0.3524475402173567,1
-2025-11-11T14:34:39.205Z,nginx-frontend-13,staging,INFO,2025-11-11T14:34:39.205Z INFO [nginx-frontend-13] Cache hit for key=session:8190; ttl=133s,0.34848877970375025,2
-2025-11-10T18:09:57.132Z,orders-03,staging,INFO,2025-11-10T18:09:57.132Z INFO [orders-03] User 57425 authenticated successfully,0.34770605427456724,2
-2025-11-07T16:26:48.026Z,orders-04,dev,INFO,2025-11-07T16:26:48.026Z INFO [orders-04] Established connection to upstream auth.internal:9000,0.3340089798476692,1
-2025-11-07T21:56:56.016Z,auth-service-03,prod,INFO,2025-11-07T21:56:56.016Z INFO [auth-service-03] Completed 304 PUT /checkout in 418ms,0.3336192532176566,2
-2025-11-11T20:06:25.198Z,backend-api-04,dev,INFO,2025-11-11T20:06:25.198Z INFO [backend-api-04] Background job report-generator completed in 144ms,0.33283066045067355,1
-2025-11-06T04:41:41.694Z,payments-18,dev,INFO,2025-11-06T04:41:41.694Z INFO [payments-18] Established connection to upstream auth.internal:5432,0.3268639164084898,1
-2025-11-09T00:20:00.307Z,nginx-frontend-17,staging,INFO,2025-11-09T00:20:00.307Z INFO [nginx-frontend-17] Loaded config from /etc/config/app.yml,0.3240948714672208,2
-2025-11-12T20:13:18.665Z,backend-api-05,staging,INFO,2025-11-12T20:13:18.665Z INFO [backend-api-05] Established connection to upstream auth.internal:9000,0.3195781496955331,2
-2025-11-12T16:04:36.533Z,nginx-frontend-09,staging,INFO,2025-11-12T16:04:36.533Z INFO [nginx-frontend-09] Established connection to upstream cache.internal:5432,0.3141152068702012,2
-2025-11-06T11:29:20.872Z,payments-12,dev,INFO,2025-11-06T11:29:20.872Z INFO [payments-12] Completed 200 GET /api/v1/payments in 28ms,0.30965760981018875,1
-2025-11-12T01:49:30.989Z,auth-service-18,dev,INFO,2025-11-12T01:49:30.989Z INFO [auth-service-18] Established connection to upstream cache.internal:5432,0.30663423834198056,1
-2025-11-07T08:42:51.749Z,auth-service-02,prod,INFO,2025-11-07T08:42:51.749Z INFO [auth-service-02] Completed 201 PUT /api/v1/items in 321ms,0.30555950002383614,2
-2025-11-12T15:51:02.962Z,orders-17,staging,INFO,2025-11-12T15:51:02.962Z INFO [orders-17] Cache hit for key=session:8489; ttl=287s,0.3043315339223803,2
-2025-11-10T13:01:23.976Z,backend-api-16,prod,INFO,2025-11-10T13:01:23.976Z INFO [backend-api-16] Completed 304 GET /checkout in 386ms,0.3016761122342738,2
-2025-11-13T06:37:52.439Z,backend-api-02,dev,INFO,"2025-11-13T06:37:52.439Z INFO [backend-api-02] Graceful shutdown initiated, waiting for connections to drain",0.2967806086742383,1
-2025-11-13T00:17:02.751Z,payments-02,dev,INFO,2025-11-13T00:17:02.751Z INFO [payments-02] Completed 304 GET /api/v1/orders in 209ms,0.29113611687736907,1
-2025-11-12T06:51:55.151Z,orders-15,prod,INFO,"2025-11-12T06:51:55.151Z INFO [orders-15] Graceful shutdown initiated, waiting for connections to drain",0.2887051208601067,5
-2025-11-12T09:10:00.336Z,orders-16,staging,INFO,2025-11-12T09:10:00.336Z INFO [orders-16] Started request GET /login from 10.0.3.19 in 238ms,0.2878712818920134,2
-2025-11-12T19:00:52.040Z,backend-api-07,prod,INFO,2025-11-12T19:00:52.040Z INFO [backend-api-07] Background job report-generator completed in 266ms,0.2866743449808452,1
-2025-11-12T12:59:08.750Z,nginx-frontend-17,prod,INFO,"2025-11-12T12:59:08.750Z INFO [nginx-frontend-17] Graceful shutdown initiated, waiting for connections to drain",0.28630278453132807,1
-2025-11-10T14:22:29.026Z,orders-08,prod,INFO,"2025-11-10T14:22:29.026Z INFO [orders-08] Graceful shutdown initiated, waiting for connections to drain",0.2857172919189551,1
-2025-11-12T05:17:39.564Z,auth-service-02,staging,INFO,2025-11-12T05:17:39.564Z INFO [auth-service-02] User 83608 authenticated successfully,0.280483062434398,1
-2025-11-07T06:52:41.068Z,payments-16,dev,INFO,2025-11-07T06:52:41.068Z INFO [payments-16] Established connection to upstream auth.internal:5432,0.2680567179748433,1
-2025-11-13T11:36:04.467Z,orders-19,dev,INFO,2025-11-13T11:36:04.467Z INFO [orders-19] Background job reindex completed in 134ms,0.26359393057754643,1
-2025-11-10T02:38:28.680Z,backend-api-16,staging,INFO,"2025-11-10T02:38:28.680Z INFO [backend-api-16] Graceful shutdown initiated, waiting for connections to drain",0.2613238350161028,1
-2025-11-10T06:59:34.894Z,auth-service-02,staging,INFO,2025-11-10T06:59:34.894Z INFO [auth-service-02] User 24184 authenticated successfully,0.2610049677733651,1
-2025-11-12T05:17:02.750Z,orders-01,staging,INFO,2025-11-12T05:17:02.750Z INFO [orders-01] Started request POST /login from 10.0.2.21 in 359ms,0.26086403883274956,1
-2025-11-11T14:23:34.348Z,nginx-frontend-11,prod,INFO,2025-11-11T14:23:34.348Z INFO [nginx-frontend-11] Background job cleanup completed in 441ms,0.26085693032733814,1
-2025-11-12T11:30:35.614Z,auth-service-12,staging,INFO,2025-11-12T11:30:35.614Z INFO [auth-service-12] User 81516 authenticated successfully,0.2590731468027664,1
-2025-11-10T12:41:51.930Z,payments-20,staging,INFO,2025-11-10T12:41:51.930Z INFO [payments-20] Started request PUT /api/v1/items from 10.0.4.32 in 245ms,0.2582696600244453,1
-2025-11-07T02:17:16.799Z,payments-12,dev,INFO,2025-11-07T02:17:16.799Z INFO [payments-12] Started request POST /login from 10.0.2.40 in 106ms,0.2554810949016503,1
-2025-11-10T07:18:10.347Z,backend-api-14,staging,INFO,2025-11-10T07:18:10.347Z INFO [backend-api-14] Background job report-generator completed in 16ms,0.2524616726031149,1
-2025-11-09T12:01:07.768Z,nginx-frontend-08,dev,INFO,2025-11-09T12:01:07.768Z INFO [nginx-frontend-08] Established connection to upstream cache.internal:6379,0.2515217702209477,1
-2025-11-12T00:11:11.298Z,auth-service-02,staging,INFO,2025-11-12T00:11:11.298Z INFO [auth-service-02] Established connection to upstream cache.internal:9000,0.25128718954237306,1
-2025-11-09T13:27:23.121Z,payments-11,dev,INFO,2025-11-09T13:27:23.121Z INFO [payments-11] Completed 201 GET /api/v1/items in 186ms,0.2497692415535019,1
-2025-11-06T07:21:58.760Z,backend-api-15,dev,INFO,2025-11-06T07:21:58.760Z INFO [backend-api-15] User 42145 authenticated successfully,0.24714541322277916,1
-2025-11-11T19:58:55.895Z,payments-18,prod,INFO,"2025-11-11T19:58:55.895Z INFO [payments-18] Graceful shutdown initiated, waiting for connections to drain",0.24712679570860663,1
-2025-11-07T18:55:32.786Z,auth-service-04,prod,INFO,2025-11-07T18:55:32.786Z INFO [auth-service-04] Loaded config from /etc/config/env.yml,0.24626993872299086,1
-2025-11-08T16:02:32.175Z,auth-service-07,dev,INFO,"2025-11-08T16:02:32.175Z INFO [auth-service-07] Health check passed: ready=true, status=200",0.24372125744947393,1
-2025-11-08T22:20:25.551Z,orders-03,staging,INFO,2025-11-08T22:20:25.551Z INFO [orders-03] Completed 200 PUT /login in 286ms,0.24190193139784533,1
-2025-11-09T06:33:15.207Z,payments-05,prod,INFO,2025-11-09T06:33:15.207Z INFO [payments-05] Started request PUT /api/v1/orders from 10.0.0.29 in 441ms,0.2413625876539366,2
-2025-11-06T07:39:20.369Z,orders-19,staging,INFO,"2025-11-06T07:39:20.369Z INFO [orders-19] Graceful shutdown initiated, waiting for connections to drain",0.24120078453076388,1
-2025-11-12T13:44:35.109Z,nginx-frontend-07,dev,INFO,2025-11-12T13:44:35.109Z INFO [nginx-frontend-07] Cache hit for key=session:5410; ttl=378s,0.23913503029154193,1
-2025-11-09T01:17:51.963Z,nginx-frontend-07,prod,INFO,2025-11-09T01:17:51.963Z INFO [nginx-frontend-07] Completed 200 GET /checkout in 32ms,0.238905752783671,2
-2025-11-06T16:22:16.527Z,backend-api-03,staging,INFO,2025-11-06T16:22:16.527Z INFO [backend-api-03] Background job cleanup completed in 273ms,0.23873887215663314,1
-2025-11-11T06:49:02.206Z,backend-api-20,staging,INFO,2025-11-11T06:49:02.206Z INFO [backend-api-20] Completed 304 GET /checkout in 208ms,0.23744286750338295,1
-2025-11-07T04:54:05.089Z,nginx-frontend-03,dev,INFO,2025-11-07T04:54:05.089Z INFO [nginx-frontend-03] Background job cleanup completed in 389ms,0.2370735637222504,1
-2025-11-10T19:03:25.563Z,orders-13,dev,INFO,"2025-11-10T19:03:25.563Z INFO [orders-13] Graceful shutdown initiated, waiting for connections to drain",0.23679046467340792,1
-2025-11-06T22:50:56.208Z,backend-api-17,prod,INFO,"2025-11-06T22:50:56.208Z INFO [backend-api-17] Graceful shutdown initiated, waiting for connections to drain",0.23556464240691743,1
-2025-11-11T04:28:01.863Z,orders-03,staging,INFO,2025-11-11T04:28:01.863Z INFO [orders-03] Completed 200 PUT /login in 216ms,0.23450852160294533,1
-2025-11-10T14:30:59.594Z,nginx-frontend-11,staging,INFO,2025-11-10T14:30:59.594Z INFO [nginx-frontend-11] Cache hit for key=session:6621; ttl=1528s,0.2340277384036159,1
-2025-11-12T08:45:39.326Z,auth-service-14,prod,INFO,"2025-11-12T08:45:39.326Z INFO [auth-service-14] Health check passed: ready=true, status=200",0.23361916859259202,2
-2025-11-13T06:38:12.584Z,auth-service-01,staging,INFO,"2025-11-13T06:38:12.584Z INFO [auth-service-01] Health check passed: ready=true, status=200",0.2330354813149268,1
-2025-11-13T03:59:56.781Z,payments-18,dev,INFO,2025-11-13T03:59:56.781Z INFO [payments-18] Cache hit for key=session:6647; ttl=1696s,0.23295830325617495,1
-2025-11-12T15:08:16.699Z,backend-api-16,prod,INFO,2025-11-12T15:08:16.699Z INFO [backend-api-16] Completed 304 GET /login in 25ms,0.23256835095932382,2
-2025-11-09T00:32:20.005Z,auth-service-06,staging,INFO,"2025-11-09T00:32:20.005Z INFO [auth-service-06] Health check passed: ready=true, status=200",0.23183843157033934,1
-2025-11-08T01:39:15.037Z,orders-13,prod,INFO,2025-11-08T01:39:15.037Z INFO [orders-13] Established connection to upstream inventory.internal:6379,0.2294963482874285,1
-2025-11-09T12:53:07.110Z,payments-06,dev,INFO,2025-11-09T12:53:07.110Z INFO [payments-06] Completed 200 DELETE /api/v1/orders in 84ms,0.22922994858463175,1
-2025-11-12T21:52:24.633Z,backend-api-06,prod,INFO,2025-11-12T21:52:24.633Z INFO [backend-api-06] Established connection to upstream auth.internal:9000,0.22471661181552072,1
-2025-11-11T07:58:18.165Z,backend-api-12,dev,INFO,2025-11-11T07:58:18.165Z INFO [backend-api-12] User 53412 authenticated successfully,0.2224892801199646,1
-2025-11-06T18:58:42.407Z,auth-service-01,prod,INFO,2025-11-06T18:58:42.407Z INFO [auth-service-01] Loaded config from /etc/config/db.yml,0.219108113879385,1
-2025-11-07T17:40:26.386Z,nginx-frontend-14,staging,INFO,2025-11-07T17:40:26.386Z INFO [nginx-frontend-14] Completed 200 GET /checkout in 309ms,0.2183587871422933,1
-2025-11-11T07:44:19.184Z,payments-02,staging,INFO,2025-11-11T07:44:19.184Z INFO [payments-02] Established connection to upstream auth.internal:5432,0.21650448273070422,1
-2025-11-13T01:00:55.493Z,nginx-frontend-05,dev,INFO,2025-11-13T01:00:55.493Z INFO [nginx-frontend-05] Cache hit for key=session:5017; ttl=1965s,0.21632643159516263,1
-2025-11-07T04:10:24.028Z,auth-service-14,prod,INFO,2025-11-07T04:10:24.028Z INFO [auth-service-14] User 53724 authenticated successfully,0.21620863350548902,1
-2025-11-07T13:04:17.635Z,orders-19,staging,INFO,2025-11-07T13:04:17.635Z INFO [orders-19] Background job reindex completed in 8ms,0.21168830106438585,1
-2025-11-07T16:51:58.147Z,auth-service-06,prod,INFO,"2025-11-07T16:51:58.147Z INFO [auth-service-06] Health check passed: ready=true, status=200",0.2116817567260706,1
-2025-11-13T06:04:27.767Z,payments-19,staging,INFO,2025-11-13T06:04:27.767Z INFO [payments-19] Loaded config from /etc/config/env.yml,0.2115086702609753,1
-2025-11-11T06:59:29.206Z,auth-service-03,dev,INFO,2025-11-11T06:59:29.206Z INFO [auth-service-03] Cache hit for key=session:2552; ttl=2454s,0.21139583684174756,1
-2025-11-12T20:43:44.580Z,payments-11,staging,INFO,2025-11-12T20:43:44.580Z INFO [payments-11] User 99073 authenticated successfully,0.2100768141709749,1
-2025-11-06T02:15:05.509Z,auth-service-06,prod,INFO,2025-11-06T02:15:05.509Z INFO [auth-service-06] Established connection to upstream db.internal:9000,0.20930650041790677,1
-2025-11-08T17:45:06.190Z,auth-service-20,prod,INFO,2025-11-08T17:45:06.190Z INFO [auth-service-20] Established connection to upstream payments.internal:8080,0.20837190120644322,1
-2025-11-06T11:09:07.150Z,orders-04,staging,INFO,2025-11-06T11:09:07.150Z INFO [orders-04] Completed 304 PUT /metrics in 159ms,0.20781709928410008,1
-2025-11-11T08:53:43.153Z,auth-service-20,staging,INFO,2025-11-11T08:53:43.153Z INFO [auth-service-20] Cache hit for key=session:6276; ttl=114s,0.20763555031256276,1
-2025-11-09T08:31:53.655Z,payments-09,staging,INFO,2025-11-09T08:31:53.655Z INFO [payments-09] Cache hit for key=session:7620; ttl=2735s,0.2074028878021149,1
-2025-11-08T08:11:50.895Z,nginx-frontend-17,prod,INFO,2025-11-08T08:11:50.895Z INFO [nginx-frontend-17] Background job cleanup completed in 395ms,0.2067256616199099,1
-2025-11-09T04:07:05.619Z,auth-service-05,staging,INFO,2025-11-09T04:07:05.619Z INFO [auth-service-05] Opening database transaction; connection_id=4093,0.20601514957903266,1
-2025-11-07T15:10:49.032Z,nginx-frontend-07,staging,INFO,2025-11-07T15:10:49.032Z INFO [nginx-frontend-07] Cache hit for key=session:7194; ttl=61s,0.20468044306298727,1
-2025-11-06T21:30:49.452Z,payments-19,staging,INFO,2025-11-06T21:30:49.452Z INFO [payments-19] Background job reindex completed in 159ms,0.20411311663110998,1
-2025-11-07T03:27:47.038Z,auth-service-12,prod,INFO,2025-11-07T03:27:47.038Z INFO [auth-service-12] User 38499 authenticated successfully,0.20301095979209316,1
-2025-11-06T20:47:41.657Z,auth-service-10,prod,INFO,2025-11-06T20:47:41.657Z INFO [auth-service-10] Opening database transaction; connection_id=1730,0.20244758252988893,1
-2025-11-07T05:39:33.693Z,nginx-frontend-18,prod,INFO,2025-11-07T05:39:33.693Z INFO [nginx-frontend-18] Background job reindex completed in 390ms,0.20243009334990847,1
-2025-11-13T11:26:14.396Z,auth-service-08,dev,INFO,2025-11-13T11:26:14.396Z INFO [auth-service-08] Cache hit for key=session:9789; ttl=1505s,0.20211077477349393,1
-2025-11-11T02:26:15.111Z,nginx-frontend-06,prod,INFO,2025-11-11T02:26:15.111Z INFO [nginx-frontend-06] Background job report-generator completed in 363ms,0.20028242204832714,1
-2025-11-07T15:53:48.523Z,auth-service-14,dev,INFO,2025-11-07T15:53:48.523Z INFO [auth-service-14] Cache hit for key=session:8773; ttl=1484s,0.19949856828495183,1
-2025-11-08T14:37:45.855Z,payments-05,prod,INFO,2025-11-08T14:37:45.855Z INFO [payments-05] User 63004 authenticated successfully,0.19918432721240242,1
-2025-11-09T21:01:54.462Z,auth-service-05,staging,INFO,2025-11-09T21:01:54.462Z INFO [auth-service-05] Opening database transaction; connection_id=4677,0.1985870999244298,1
-2025-11-09T04:38:14.459Z,auth-service-11,prod,INFO,2025-11-09T04:38:14.459Z INFO [auth-service-11] Loaded config from /etc/config/db.yml,0.19755456130507654,2
-2025-11-07T10:03:41.506Z,orders-12,staging,INFO,2025-11-07T10:03:41.506Z INFO [orders-12] Started request POST /login from 10.0.3.39 in 103ms,0.19752522461607736,1
-2025-11-07T21:33:04.196Z,auth-service-06,prod,INFO,"2025-11-07T21:33:04.196Z INFO [auth-service-06] Health check passed: ready=true, status=200",0.19686018444314868,1
-2025-11-07T07:26:46.502Z,auth-service-03,prod,INFO,"2025-11-07T07:26:46.502Z INFO [auth-service-03] Health check passed: ready=true, status=200",0.19682656008421884,1
-2025-11-13T10:28:45.697Z,auth-service-20,prod,INFO,2025-11-13T10:28:45.697Z INFO [auth-service-20] Started request POST /api/v1/orders from 10.0.4.14 in 386ms,0.1949915501873175,1
-2025-11-09T12:46:42.377Z,nginx-frontend-17,dev,INFO,"2025-11-09T12:46:42.377Z INFO [nginx-frontend-17] Health check passed: ready=true, status=200",0.19497180433895267,1
-2025-11-12T05:28:33.883Z,orders-04,dev,INFO,2025-11-12T05:28:33.883Z INFO [orders-04] Loaded config from /etc/config/env.yml,0.19477220202033874,1
-2025-11-11T03:45:03.118Z,backend-api-15,staging,INFO,2025-11-11T03:45:03.118Z INFO [backend-api-15] User 40783 authenticated successfully,0.19470912813899044,1
-2025-11-09T04:07:36.770Z,auth-service-09,prod,INFO,2025-11-09T04:07:36.770Z INFO [auth-service-09] User 10268 authenticated successfully,0.19439567690037574,1
-2025-11-09T18:13:23.442Z,auth-service-06,dev,INFO,2025-11-09T18:13:23.442Z INFO [auth-service-06] Cache hit for key=session:4304; ttl=60s,0.1941807292367469,1
-2025-11-10T09:46:56.645Z,nginx-frontend-11,dev,INFO,2025-11-10T09:46:56.645Z INFO [nginx-frontend-11] Background job reindex completed in 258ms,0.19292692428228786,1
-2025-11-09T01:27:11.398Z,backend-api-16,staging,INFO,2025-11-09T01:27:11.398Z INFO [backend-api-16] Background job report-generator completed in 422ms,0.1928756979099583,1
-2025-11-06T03:42:33.682Z,auth-service-14,staging,INFO,2025-11-06T03:42:33.682Z INFO [auth-service-14] Cache hit for key=session:8763; ttl=2418s,0.18976352654081785,1
-2025-11-09T07:36:44.802Z,auth-service-16,prod,INFO,2025-11-09T07:36:44.802Z INFO [auth-service-16] Background job report-generator completed in 304ms,0.1895125850164553,1
-2025-11-10T12:26:34.373Z,auth-service-09,staging,INFO,"2025-11-10T12:26:34.373Z INFO [auth-service-09] Health check passed: ready=true, status=200",0.18788834794667164,1
-2025-11-08T03:17:45.193Z,orders-16,dev,INFO,2025-11-08T03:17:45.193Z INFO [orders-16] Cache hit for key=session:2137; ttl=617s,0.18782414573113104,1
-2025-11-07T21:24:33.639Z,orders-06,dev,INFO,2025-11-07T21:24:33.639Z INFO [orders-06] Background job cleanup completed in 389ms,0.18755221719079207,1
-2025-11-07T22:19:46.118Z,payments-08,prod,INFO,"2025-11-07T22:19:46.118Z INFO [payments-08] Graceful shutdown initiated, waiting for connections to drain",0.1874222330918417,2
-2025-11-10T09:38:23.101Z,payments-18,dev,INFO,2025-11-10T09:38:23.101Z INFO [payments-18] Background job report-generator completed in 439ms,0.18624504202903835,1
-2025-11-06T02:04:59.357Z,nginx-frontend-19,staging,INFO,"2025-11-06T02:04:59.357Z INFO [nginx-frontend-19] Health check passed: ready=true, status=200",0.1854324157437598,1
-2025-11-09T05:25:11.121Z,auth-service-16,dev,INFO,"2025-11-09T05:25:11.121Z INFO [auth-service-16] Health check passed: ready=true, status=200",0.18431468789288952,1
-2025-11-11T13:37:11.536Z,payments-07,staging,INFO,2025-11-11T13:37:11.536Z INFO [payments-07] Cache hit for key=session:8753; ttl=3248s,0.18388479256563162,1
-2025-11-10T09:10:03.407Z,backend-api-14,staging,INFO,2025-11-10T09:10:03.407Z INFO [backend-api-14] Started request PUT /login from 10.0.1.41 in 162ms,0.18318048636281203,1
-2025-11-12T11:39:40.593Z,payments-05,prod,INFO,2025-11-12T11:39:40.593Z INFO [payments-05] Cache hit for key=session:2678; ttl=922s,0.18266720713874485,1
-2025-11-07T00:45:39.907Z,payments-03,prod,INFO,2025-11-07T00:45:39.907Z INFO [payments-03] Cache hit for key=session:5789; ttl=2943s,0.18205350617156502,1
-2025-11-10T08:20:23.870Z,nginx-frontend-18,staging,INFO,2025-11-10T08:20:23.870Z INFO [nginx-frontend-18] Background job report-generator completed in 170ms,0.18102356272085374,1
-2025-11-06T16:19:03.855Z,orders-10,dev,INFO,2025-11-06T16:19:03.855Z INFO [orders-10] User 46760 authenticated successfully,0.18070808048069298,1
-2025-11-09T21:05:12.683Z,payments-03,dev,INFO,2025-11-09T21:05:12.683Z INFO [payments-03] Cache hit for key=session:9335; ttl=948s,0.18041268258915466,1
-2025-11-12T14:33:41.049Z,orders-07,prod,INFO,2025-11-12T14:33:41.049Z INFO [orders-07] Established connection to upstream inventory.internal:6379,0.17966888468960518,1
-2025-11-06T09:33:05.812Z,orders-19,prod,INFO,2025-11-06T09:33:05.812Z INFO [orders-19] Cache hit for key=session:3028; ttl=2494s,0.17908553591219756,1
-2025-11-06T11:28:57.316Z,auth-service-02,dev,INFO,"2025-11-06T11:28:57.316Z INFO [auth-service-02] Health check passed: ready=true, status=200",0.17699191181842633,1
-2025-11-10T13:39:23.872Z,payments-15,staging,INFO,2025-11-10T13:39:23.872Z INFO [payments-15] Cache hit for key=session:5631; ttl=1252s,0.17660658569176346,1
-2025-11-10T14:39:36.483Z,orders-07,prod,INFO,2025-11-10T14:39:36.483Z INFO [orders-07] User 66468 authenticated successfully,0.17609296796743845,1
-2025-11-06T08:50:42.901Z,auth-service-06,prod,INFO,2025-11-06T08:50:42.901Z INFO [auth-service-06] Established connection to upstream payments.internal:8080,0.1752177191344887,1
-2025-11-08T04:21:43.797Z,orders-18,prod,INFO,2025-11-08T04:21:43.797Z INFO [orders-18] User 42778 authenticated successfully,0.1752158009663619,1
-2025-11-09T22:09:34.046Z,backend-api-08,prod,INFO,"2025-11-09T22:09:34.046Z INFO [backend-api-08] Health check passed: ready=true, status=200",0.17436345731751512,1
-2025-11-12T22:10:54.727Z,payments-07,dev,INFO,2025-11-12T22:10:54.727Z INFO [payments-07] Cache hit for key=session:5556; ttl=3481s,0.17433761846451212,1
-2025-11-07T10:26:07.476Z,payments-06,staging,INFO,2025-11-07T10:26:07.476Z INFO [payments-06] Cache hit for key=session:4590; ttl=577s,0.17403951257091232,1
-2025-11-09T12:18:29.683Z,nginx-frontend-19,staging,INFO,2025-11-09T12:18:29.683Z INFO [nginx-frontend-19] Cache hit for key=session:7830; ttl=3362s,0.17402800356215098,1
-2025-11-12T14:39:04.949Z,nginx-frontend-15,prod,INFO,"2025-11-12T14:39:04.949Z INFO [nginx-frontend-15] Health check passed: ready=true, status=200",0.17401920255545134,1
-2025-11-06T10:28:51.711Z,payments-13,staging,INFO,"2025-11-06T10:28:51.711Z INFO [payments-13] Graceful shutdown initiated, waiting for connections to drain",0.17323173812266057,1
-2025-11-12T11:31:16.988Z,auth-service-01,prod,INFO,2025-11-12T11:31:16.988Z INFO [auth-service-01] User 85936 authenticated successfully,0.1717366953178926,1
-2025-11-12T06:19:58.783Z,nginx-frontend-07,staging,INFO,2025-11-12T06:19:58.783Z INFO [nginx-frontend-07] Cache hit for key=session:9470; ttl=612s,0.17062235246959923,1
-2025-11-06T13:55:06.144Z,auth-service-10,dev,INFO,2025-11-06T13:55:06.144Z INFO [auth-service-10] Completed 200 DELETE /login in 32ms,0.1694934541102252,1
-2025-11-08T13:42:42.228Z,auth-service-18,staging,INFO,2025-11-08T13:42:42.228Z INFO [auth-service-18] Loaded config from /etc/config/db.yml,0.16847344000040632,1
-2025-11-07T19:37:30.361Z,payments-13,dev,INFO,"2025-11-07T19:37:30.361Z INFO [payments-13] Graceful shutdown initiated, waiting for connections to drain",0.1670532057525863,1
-2025-11-06T21:34:27.469Z,auth-service-08,staging,INFO,2025-11-06T21:34:27.469Z INFO [auth-service-08] Loaded config from /etc/config/env.yml,0.1663751897364466,1
-2025-11-13T07:00:25.146Z,orders-06,dev,INFO,2025-11-13T07:00:25.146Z INFO [orders-06] Cache hit for key=session:4765; ttl=1579s,0.16543517452085987,1
-2025-11-10T16:38:57.181Z,nginx-frontend-04,staging,INFO,2025-11-10T16:38:57.181Z INFO [nginx-frontend-04] Established connection to upstream db.internal:8080,0.1647675391792892,1
-2025-11-06T09:10:49.511Z,payments-12,prod,INFO,2025-11-06T09:10:49.511Z INFO [payments-12] Loaded config from /etc/config/db.yml,0.16435152236259631,1
-2025-11-06T10:18:01.566Z,auth-service-08,staging,INFO,2025-11-06T10:18:01.566Z INFO [auth-service-08] User 16903 authenticated successfully,0.16422526176648045,1
-2025-11-10T14:41:29.822Z,auth-service-13,prod,INFO,2025-11-10T14:41:29.822Z INFO [auth-service-13] Cache hit for key=session:2383; ttl=2694s,0.16258500235116646,1
-2025-11-12T00:13:58.174Z,orders-16,prod,INFO,"2025-11-12T00:13:58.174Z INFO [orders-16] Graceful shutdown initiated, waiting for connections to drain",0.16252802147445633,1
-2025-11-09T07:01:29.678Z,payments-04,prod,INFO,2025-11-09T07:01:29.678Z INFO [payments-04] Background job report-generator completed in 368ms,0.16212915533748629,1
-2025-11-06T11:07:28.378Z,nginx-frontend-20,dev,INFO,"2025-11-06T11:07:28.378Z INFO [nginx-frontend-20] Health check passed: ready=true, status=200",0.16188441965118117,1
-2025-11-06T04:00:28.423Z,nginx-frontend-11,prod,INFO,"2025-11-06T04:00:28.423Z INFO [nginx-frontend-11] Health check passed: ready=true, status=200",0.16166179931504476,1
-2025-11-13T08:02:40.720Z,backend-api-13,prod,INFO,2025-11-13T08:02:40.720Z INFO [backend-api-13] Cache hit for key=session:5285; ttl=1503s,0.16135590791551835,1
-2025-11-09T15:01:07.010Z,backend-api-19,dev,INFO,2025-11-09T15:01:07.010Z INFO [backend-api-19] Started request GET /login from 10.0.1.40 in 252ms,0.16087196538045034,1
-2025-11-13T02:26:23.860Z,orders-10,prod,INFO,"2025-11-13T02:26:23.860Z INFO [orders-10] Graceful shutdown initiated, waiting for connections to drain",0.16028624710123884,1
-2025-11-07T20:55:12.389Z,backend-api-13,staging,INFO,2025-11-07T20:55:12.389Z INFO [backend-api-13] Completed 304 GET /login in 189ms,0.15907746268105172,1
-2025-11-06T09:23:53.676Z,orders-03,dev,INFO,2025-11-06T09:23:53.676Z INFO [orders-03] User 51331 authenticated successfully,0.15899814078733476,1
-2025-11-06T01:13:03.013Z,orders-12,staging,INFO,2025-11-06T01:13:03.013Z INFO [orders-12] Background job cleanup completed in 201ms,0.15874516826142593,1
-2025-11-09T14:06:03.265Z,auth-service-13,staging,INFO,2025-11-09T14:06:03.265Z INFO [auth-service-13] Opening database transaction; connection_id=3967,0.15564822940388134,1
-2025-11-11T09:52:56.617Z,auth-service-06,dev,INFO,2025-11-11T09:52:56.617Z INFO [auth-service-06] Loaded config from /etc/config/env.yml,0.1556018548685788,1
-2025-11-08T17:46:42.450Z,backend-api-05,prod,INFO,2025-11-08T17:46:42.450Z INFO [backend-api-05] Started request DELETE /api/v1/payments from 10.0.2.15 in 217ms,0.1554160182271106,1
-2025-11-08T23:33:53.888Z,backend-api-16,staging,INFO,2025-11-08T23:33:53.888Z INFO [backend-api-16] Opening database transaction; connection_id=6133,0.15524575259749585,1
-2025-11-12T15:02:29.205Z,payments-07,dev,INFO,2025-11-12T15:02:29.205Z INFO [payments-07] Cache hit for key=session:1139; ttl=3184s,0.15384357169675222,1
-2025-11-07T10:59:21.577Z,auth-service-01,dev,INFO,2025-11-07T10:59:21.577Z INFO [auth-service-01] Opening database transaction; connection_id=9202,0.15354140380006032,1
-2025-11-12T01:32:34.092Z,backend-api-09,staging,INFO,2025-11-12T01:32:34.092Z INFO [backend-api-09] User 17982 authenticated successfully,0.15257340589650525,1
-2025-11-12T19:38:48.090Z,auth-service-08,staging,INFO,2025-11-12T19:38:48.090Z INFO [auth-service-08] Cache hit for key=session:6918; ttl=3194s,0.15217013925618528,1
-2025-11-12T14:18:48.708Z,payments-18,prod,INFO,2025-11-12T14:18:48.708Z INFO [payments-18] Started request GET /health from 10.0.1.27 in 57ms,0.15195925359564855,1
-2025-11-13T02:47:05.385Z,backend-api-07,staging,INFO,2025-11-13T02:47:05.385Z INFO [backend-api-07] Loaded config from /etc/config/db.yml,0.1517285092533277,1
-2025-11-13T00:23:24.993Z,orders-08,prod,INFO,"2025-11-13T00:23:24.993Z INFO [orders-08] Graceful shutdown initiated, waiting for connections to drain",0.15121331186113374,1
-2025-11-12T07:24:55.093Z,payments-17,dev,INFO,"2025-11-12T07:24:55.093Z INFO [payments-17] Graceful shutdown initiated, waiting for connections to drain",0.15086612343016992,1
+2025-11-11T12:26:19.011Z,auth-service-13,staging,DEBUG,2025-11-11T12:26:19.011Z DEBUG [auth-service-13] Cache hit for key=session:9225; ttl=1557s,1.0,4
+2025-11-08T11:25:10.771Z,orders-02,staging,DEBUG,2025-11-08T11:25:10.771Z DEBUG [orders-02] Completed 304 POST /metrics in 292ms,0.9756222665984522,4
+2025-11-09T05:05:37.876Z,auth-service-12,staging,DEBUG,2025-11-09T05:05:37.876Z DEBUG [auth-service-12] User 94188 authenticated successfully,0.9337441618668825,3
+2025-11-08T11:07:48.761Z,backend-api-07,staging,DEBUG,2025-11-08T11:07:48.761Z DEBUG [backend-api-07] User 32966 authenticated successfully,0.9257419173831964,4
+2025-11-10T04:12:42.360Z,backend-api-09,staging,DEBUG,2025-11-10T04:12:42.360Z DEBUG [backend-api-09] User 52189 authenticated successfully,0.9145406235043652,4
+2025-11-09T09:59:52.783Z,auth-service-13,staging,DEBUG,2025-11-09T09:59:52.783Z DEBUG [auth-service-13] Started request DELETE /api/v1/orders from 10.0.2.39 in 117ms,0.9134183816612476,4
+2025-11-12T08:16:11.156Z,nginx-frontend-12,staging,WARN,2025-11-12T08:16:11.156Z WARN [nginx-frontend-12] Cache hit for key=session:7910; ttl=229s,0.9014988530028223,7
+2025-11-07T02:42:38.735Z,nginx-frontend-01,staging,DEBUG,2025-11-07T02:42:38.735Z DEBUG [nginx-frontend-01] Established connection to upstream auth.internal:8080,0.8770339808228673,4
+2025-11-07T14:12:09.904Z,payments-13,staging,DEBUG,2025-11-07T14:12:09.904Z DEBUG [payments-13] User 21297 authenticated successfully,0.8749928209529152,3
+2025-11-12T05:50:03.921Z,nginx-frontend-05,staging,WARN,2025-11-12T05:50:03.921Z WARN [nginx-frontend-05] Cache hit for key=session:6277; ttl=3423s,0.8724407109732146,6
+2025-11-11T07:31:34.818Z,auth-service-04,prod,DEBUG,2025-11-11T07:31:34.818Z DEBUG [auth-service-04] Opening database transaction; connection_id=3572,0.8712854620170649,3
+2025-11-10T12:01:32.099Z,nginx-frontend-09,prod,WARN,2025-11-10T12:01:32.099Z WARN [nginx-frontend-09] Background job report-generator completed in 306ms,0.8694799729341671,5
+2025-11-08T02:35:50.180Z,backend-api-19,staging,DEBUG,2025-11-08T02:35:50.180Z DEBUG [backend-api-19] User 74517 authenticated successfully,0.8671958807122939,4
+2025-11-12T14:57:35.433Z,auth-service-08,staging,DEBUG,"2025-11-12T14:57:35.433Z DEBUG [auth-service-08] Health check passed: ready=true, status=200",0.8651494397042558,3
+2025-11-06T11:48:52.875Z,nginx-frontend-06,staging,DEBUG,2025-11-06T11:48:52.875Z DEBUG [nginx-frontend-06] Started request GET /metrics from 10.0.4.23 in 268ms,0.8617813938903831,4
+2025-11-07T23:42:26.825Z,auth-service-14,prod,DEBUG,2025-11-07T23:42:26.825Z DEBUG [auth-service-14] Opening database transaction; connection_id=7708,0.860882280131368,3
+2025-11-07T17:02:00.099Z,nginx-frontend-10,staging,DEBUG,2025-11-07T17:02:00.099Z DEBUG [nginx-frontend-10] Background job reindex completed in 86ms,0.8561219942897695,4
+2025-11-13T08:58:54.262Z,payments-07,staging,DEBUG,2025-11-13T08:58:54.262Z DEBUG [payments-07] Background job cleanup completed in 236ms,0.8517914610598583,3
+2025-11-08T08:33:34.670Z,orders-01,staging,DEBUG,2025-11-08T08:33:34.670Z DEBUG [orders-01] User 97519 authenticated successfully,0.8349954615219577,4
+2025-11-09T22:48:13.740Z,auth-service-19,staging,WARN,2025-11-09T22:48:13.740Z WARN [auth-service-19] Started request DELETE /metrics from 10.0.4.37 in 366ms,0.832581981416995,5
+2025-11-07T12:37:55.066Z,nginx-frontend-09,prod,WARN,2025-11-07T12:37:55.066Z WARN [nginx-frontend-09] Background job report-generator completed in 68ms,0.8256168204248011,5
+2025-11-08T21:46:27.067Z,payments-06,prod,DEBUG,2025-11-08T21:46:27.067Z DEBUG [payments-06] User 73077 authenticated successfully,0.8223095076989093,3
+2025-11-06T05:13:05.417Z,orders-03,staging,DEBUG,2025-11-06T05:13:05.417Z DEBUG [orders-03] Background job report-generator completed in 123ms,0.8113966959879857,4
+2025-11-06T20:30:07.854Z,payments-03,prod,WARN,2025-11-06T20:30:07.854Z WARN [payments-03] Completed 304 GET /metrics in 277ms,0.8091258066113252,6
+2025-11-11T17:02:35.531Z,auth-service-09,prod,WARN,2025-11-11T17:02:35.531Z WARN [auth-service-09] Background job cleanup completed in 183ms,0.8089231429373029,5
+2025-11-10T17:38:57.298Z,auth-service-06,staging,WARN,2025-11-10T17:38:57.298Z WARN [auth-service-06] User 98572 authenticated successfully,0.8061069760533393,5
+2025-11-06T13:22:54.101Z,auth-service-01,prod,WARN,"2025-11-06T13:22:54.101Z WARN [auth-service-01] Health check passed: ready=true, status=200",0.8053016024953381,3
+2025-11-08T19:49:41.858Z,auth-service-16,staging,DEBUG,2025-11-08T19:49:41.858Z DEBUG [auth-service-16] Opening database transaction; connection_id=9379,0.8006152525869323,3
+2025-11-08T14:23:17.349Z,auth-service-07,prod,WARN,"2025-11-08T14:23:17.349Z WARN [auth-service-07] Health check passed: ready=true, status=200",0.7973019985806937,3
+2025-11-12T04:52:06.024Z,payments-01,prod,DEBUG,2025-11-12T04:52:06.024Z DEBUG [payments-01] User 88880 authenticated successfully,0.7957011535986007,3
+2025-11-06T07:57:53.349Z,orders-14,staging,DEBUG,2025-11-06T07:57:53.349Z DEBUG [orders-14] Started request GET /health from 10.0.2.2 in 374ms,0.7932540062383442,4
+2025-11-12T02:00:00.282Z,nginx-frontend-09,staging,DEBUG,2025-11-12T02:00:00.282Z DEBUG [nginx-frontend-09] Started request PUT /api/v1/orders from 10.0.0.39 in 179ms,0.790402191672305,3
+2025-11-12T18:38:18.485Z,backend-api-04,prod,WARN,2025-11-12T18:38:18.485Z WARN [backend-api-04] User 39437 authenticated successfully,0.7897532718300795,3
+2025-11-12T09:09:16.255Z,orders-01,staging,DEBUG,2025-11-12T09:09:16.255Z DEBUG [orders-01] User 33568 authenticated successfully,0.7882527684716054,4
+2025-11-07T21:40:17.278Z,nginx-frontend-17,staging,WARN,"2025-11-07T21:40:17.278Z WARN [nginx-frontend-17] Health check passed: ready=true, status=200",0.7801673460630765,4
+2025-11-06T21:51:42.083Z,backend-api-20,staging,DEBUG,2025-11-06T21:51:42.083Z DEBUG [backend-api-20] Started request GET /api/v1/items from 10.0.1.48 in 275ms,0.7782621754988197,4
+2025-11-06T10:38:03.329Z,orders-20,staging,DEBUG,2025-11-06T10:38:03.329Z DEBUG [orders-20] Cache hit for key=session:6128; ttl=2700s,0.7776383410624987,3
+2025-11-11T06:29:02.593Z,backend-api-19,prod,WARN,2025-11-11T06:29:02.593Z WARN [backend-api-19] Started request DELETE /api/v1/items from 10.0.0.11 in 245ms,0.774280857524797,5
+2025-11-09T01:24:54.135Z,orders-09,staging,DEBUG,2025-11-09T01:24:54.135Z DEBUG [orders-09] Started request GET /health from 10.0.0.45 in 307ms,0.767598237420164,3
+2025-11-06T11:31:55.372Z,payments-13,staging,DEBUG,"2025-11-06T11:31:55.372Z DEBUG [payments-13] Health check passed: ready=true, status=200",0.763542323370686,3
+2025-11-07T19:08:55.964Z,payments-05,staging,DEBUG,2025-11-07T19:08:55.964Z DEBUG [payments-05] Started request POST /api/v1/payments from 10.0.1.5 in 278ms,0.762344165167594,3
+2025-11-09T17:32:08.858Z,auth-service-08,prod,WARN,2025-11-09T17:32:08.858Z WARN [auth-service-08] Background job reindex completed in 83ms,0.7603828825111814,3
+2025-11-13T09:33:26.054Z,payments-19,prod,DEBUG,2025-11-13T09:33:26.054Z DEBUG [payments-19] Completed 200 GET /health in 378ms,0.7578974468998068,3
+2025-11-10T10:54:40.859Z,backend-api-17,staging,WARN,2025-11-10T10:54:40.859Z WARN [backend-api-17] Background job cleanup completed in 196ms,0.7548324063835761,4
+2025-11-09T15:26:27.680Z,backend-api-09,staging,WARN,2025-11-09T15:26:27.680Z WARN [backend-api-09] Cache hit for key=session:2230; ttl=2070s,0.7543227765583485,4
+2025-11-10T15:02:11.003Z,orders-02,staging,DEBUG,2025-11-10T15:02:11.003Z DEBUG [orders-02] Completed 204 POST /api/v1/payments in 23ms,0.7536408496030891,3
+2025-11-10T03:48:58.282Z,orders-12,staging,WARN,2025-11-10T03:48:58.282Z WARN [orders-12] Completed 201 DELETE /api/v1/orders in 388ms,0.7520307626293468,3
+2025-11-13T08:35:10.914Z,orders-05,staging,WARN,2025-11-13T08:35:10.914Z WARN [orders-05] User 76809 authenticated successfully,0.7483069001369795,4
+2025-11-09T19:26:47.948Z,nginx-frontend-14,staging,DEBUG,"2025-11-09T19:26:47.948Z DEBUG [nginx-frontend-14] Health check passed: ready=true, status=200",0.7456201211361044,4
+2025-11-07T13:30:47.094Z,payments-04,prod,WARN,2025-11-07T13:30:47.094Z WARN [payments-04] Started request POST /health from 10.0.2.13 in 425ms,0.7439460003630787,3
+2025-11-07T09:25:51.557Z,backend-api-05,staging,DEBUG,2025-11-07T09:25:51.557Z DEBUG [backend-api-05] Completed 204 GET /api/v1/orders in 162ms,0.7428884524615054,3
+2025-11-11T12:52:48.973Z,payments-12,prod,DEBUG,2025-11-11T12:52:48.973Z DEBUG [payments-12] Loaded config from /etc/config/app.yml,0.7411120096380772,4
+2025-11-11T01:39:43.296Z,nginx-frontend-13,prod,WARN,"2025-11-11T01:39:43.296Z WARN [nginx-frontend-13] Health check passed: ready=true, status=200",0.7404360239631638,4
+2025-11-07T03:49:58.753Z,orders-13,prod,DEBUG,2025-11-07T03:49:58.753Z DEBUG [orders-13] Cache hit for key=session:5490; ttl=1909s,0.736527321637813,3
+2025-11-10T15:06:59.210Z,nginx-frontend-10,prod,WARN,2025-11-10T15:06:59.210Z WARN [nginx-frontend-10] User 28568 authenticated successfully,0.7331493736900301,4
+2025-11-06T18:01:31.604Z,orders-07,staging,WARN,2025-11-06T18:01:31.604Z WARN [orders-07] User 11204 authenticated successfully,0.7308943277276256,4
+2025-11-06T14:08:21.475Z,payments-02,prod,DEBUG,2025-11-06T14:08:21.475Z DEBUG [payments-02] Loaded config from /etc/config/app.yml,0.7279355701153598,4
+2025-11-07T16:54:07.578Z,payments-14,prod,DEBUG,2025-11-07T16:54:07.578Z DEBUG [payments-14] Cache hit for key=session:2514; ttl=2036s,0.7141828263990888,3
+2025-11-07T13:55:23.441Z,backend-api-20,prod,WARN,2025-11-07T13:55:23.441Z WARN [backend-api-20] Cache hit for key=session:5754; ttl=1102s,0.7102833660653873,5
+2025-11-11T21:42:05.259Z,payments-15,prod,DEBUG,2025-11-11T21:42:05.259Z DEBUG [payments-15] Cache hit for key=session:2847; ttl=1135s,0.70778538775106,3
+2025-11-07T07:05:54.645Z,payments-16,prod,DEBUG,2025-11-07T07:05:54.645Z DEBUG [payments-16] Loaded config from /etc/config/env.yml,0.7031162015414321,4
+2025-11-12T02:05:27.687Z,nginx-frontend-20,staging,WARN,2025-11-12T02:05:27.687Z WARN [nginx-frontend-20] ERROR: OOMKilled - process terminated due to out-of-memory,0.7029980360767745,7
+2025-11-07T06:23:00.691Z,orders-06,prod,DEBUG,2025-11-07T06:23:00.691Z DEBUG [orders-06] Opening database transaction; connection_id=9591,0.700555509712343,4
+2025-11-12T19:39:31.149Z,payments-11,staging,WARN,2025-11-12T19:39:31.149Z WARN [payments-11] Opening database transaction; connection_id=9577,0.6983955242354725,3
+2025-11-12T21:30:07.032Z,orders-13,prod,WARN,2025-11-12T21:30:07.032Z WARN [orders-13] User 43039 authenticated successfully,0.6982186061096165,3
+2025-11-12T01:25:55.563Z,payments-09,staging,WARN,2025-11-12T01:25:55.563Z WARN [payments-09] Loaded config from /etc/config/app.yml,0.6958797220801083,4
+2025-11-11T16:25:30.362Z,auth-service-15,staging,WARN,2025-11-11T16:25:30.362Z WARN [auth-service-15] Loaded config from /etc/config/env.yml,0.6948776261284308,5
+2025-11-11T03:24:38.352Z,nginx-frontend-18,prod,WARN,2025-11-11T03:24:38.352Z WARN [nginx-frontend-18] Completed 200 DELETE /api/v1/items in 214ms,0.6937930123941713,6
+2025-11-10T11:30:42.955Z,payments-03,prod,DEBUG,"2025-11-10T11:30:42.955Z DEBUG [payments-03] Health check passed: ready=true, status=200",0.6913881141385971,3
+2025-11-09T06:23:54.567Z,orders-04,prod,DEBUG,"2025-11-09T06:23:54.567Z DEBUG [orders-04] Health check passed: ready=true, status=200",0.6844704833891706,4
+2025-11-11T01:33:39.471Z,nginx-frontend-04,prod,WARN,2025-11-11T01:33:39.471Z WARN [nginx-frontend-04] Loaded config from /etc/config/env.yml,0.6822108164309411,7
+2025-11-09T09:49:39.059Z,auth-service-17,staging,DEBUG,2025-11-09T09:49:39.059Z DEBUG [auth-service-17] Established connection to upstream cache.internal:8080,0.6814364695591903,3
+2025-11-07T11:05:12.135Z,auth-service-02,staging,WARN,"2025-11-07T11:05:12.135Z WARN [auth-service-02] Health check passed: ready=true, status=200",0.6812984998267124,3
+2025-11-06T07:15:35.414Z,auth-service-05,staging,WARN,"2025-11-06T07:15:35.414Z WARN [auth-service-05] Health check passed: ready=true, status=200",0.6811493076758044,3
+2025-11-12T22:24:58.745Z,payments-15,prod,DEBUG,"2025-11-12T22:24:58.745Z DEBUG [payments-15] Health check passed: ready=true, status=200",0.6784156585744228,3
+2025-11-07T13:05:08.553Z,payments-03,staging,DEBUG,2025-11-07T13:05:08.553Z DEBUG [payments-03] Established connection to upstream auth.internal:8080,0.6779350750086648,3
+2025-11-07T05:09:15.090Z,orders-19,prod,WARN,2025-11-07T05:09:15.090Z WARN [orders-19] Cache hit for key=session:3691; ttl=140s,0.6722103213242452,4
+2025-11-09T00:23:10.079Z,orders-04,prod,DEBUG,2025-11-09T00:23:10.079Z DEBUG [orders-04] Opening database transaction; connection_id=1877,0.6716762662353739,4
+2025-11-09T07:19:26.525Z,nginx-frontend-17,dev,DEBUG,2025-11-09T07:19:26.525Z DEBUG [nginx-frontend-17] Background job reindex completed in 245ms,0.6699301899559353,4
+2025-11-11T15:59:14.910Z,nginx-frontend-04,dev,DEBUG,2025-11-11T15:59:14.910Z DEBUG [nginx-frontend-04] Cache hit for key=session:4285; ttl=818s,0.6656148399980193,4
+2025-11-10T19:55:26.655Z,nginx-frontend-15,staging,WARN,2025-11-10T19:55:26.655Z WARN [nginx-frontend-15] Started request DELETE /api/v1/orders from 10.0.3.45 in 115ms,0.6654814912613665,4
+2025-11-12T23:02:14.692Z,orders-13,staging,DEBUG,"2025-11-12T23:02:14.692Z DEBUG [orders-13] Health check passed: ready=true, status=200",0.6583717591140887,3
+2025-11-12T13:04:57.136Z,payments-04,prod,WARN,2025-11-12T13:04:57.136Z WARN [payments-04] Background job report-generator completed in 432ms,0.656791378542076,4
+2025-11-07T15:32:30.944Z,orders-16,prod,DEBUG,2025-11-07T15:32:30.944Z DEBUG [orders-16] User 60023 authenticated successfully,0.654379878863895,3
+2025-11-13T02:18:19.122Z,auth-service-08,prod,WARN,2025-11-13T02:18:19.122Z WARN [auth-service-08] Opening database transaction; connection_id=6544,0.6528661726602083,2
+2025-11-10T16:51:12.823Z,nginx-frontend-07,prod,DEBUG,2025-11-10T16:51:12.823Z DEBUG [nginx-frontend-07] Cache hit for key=session:1890; ttl=2683s,0.6437608304589642,5
+2025-11-12T17:41:59.462Z,nginx-frontend-01,staging,WARN,2025-11-12T17:41:59.462Z WARN [nginx-frontend-01] Opening database transaction; connection_id=6757,0.635213308467975,4
+2025-11-08T22:00:36.586Z,backend-api-14,staging,WARN,2025-11-08T22:00:36.586Z WARN [backend-api-14] User 78656 authenticated successfully,0.6348040202663672,3
+2025-11-09T10:53:04.465Z,orders-17,staging,DEBUG,"2025-11-09T10:53:04.465Z DEBUG [orders-17] Health check passed: ready=true, status=200",0.6323694156090633,4
+2025-11-09T08:03:24.230Z,orders-10,prod,DEBUG,2025-11-09T08:03:24.230Z DEBUG [orders-10] Opening database transaction; connection_id=1681,0.6315178320928156,4
+2025-11-11T08:36:05.780Z,orders-16,dev,DEBUG,"2025-11-11T08:36:05.780Z DEBUG [orders-16] Health check passed: ready=true, status=200",0.6313085669961875,4
+2025-11-08T15:21:32.653Z,payments-15,prod,DEBUG,2025-11-08T15:21:32.653Z DEBUG [payments-15] Established connection to upstream cache.internal:6379,0.6305817503672042,3
+2025-11-12T20:36:52.917Z,backend-api-08,staging,DEBUG,2025-11-12T20:36:52.917Z DEBUG [backend-api-08] Established connection to upstream db.internal:5432,0.6303672041324901,4
+2025-11-13T03:43:16.938Z,orders-03,prod,DEBUG,2025-11-13T03:43:16.938Z DEBUG [orders-03] Opening database transaction; connection_id=5576,0.6298331490436189,3
+2025-11-07T14:55:01.418Z,orders-10,staging,WARN,2025-11-07T14:55:01.418Z WARN [orders-10] Started request PUT /api/v1/orders from 10.0.3.41 in 148ms,0.6279662667304802,3
+2025-11-06T00:14:44.720Z,orders-12,prod,DEBUG,2025-11-06T00:14:44.720Z DEBUG [orders-12] Started request POST /checkout from 10.0.3.33 in 307ms,0.6273345105870316,3
+2025-11-12T00:48:12.609Z,orders-08,prod,DEBUG,2025-11-12T00:48:12.609Z DEBUG [orders-08] Background job report-generator completed in 382ms,0.6268149786278947,4
+2025-11-07T16:13:09.531Z,backend-api-18,staging,WARN,2025-11-07T16:13:09.531Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.6260993844173424,6
+2025-11-07T09:54:40.812Z,backend-api-19,staging,WARN,2025-11-07T09:54:40.812Z WARN [backend-api-19] Opening database transaction; connection_id=4042,0.6251883880976354,4
+2025-11-11T19:27:58.111Z,nginx-frontend-08,prod,DEBUG,"2025-11-11T19:27:58.111Z DEBUG [nginx-frontend-08] Health check passed: ready=true, status=200",0.6218474081164489,4
+2025-11-13T04:41:25.139Z,auth-service-16,dev,WARN,2025-11-13T04:41:25.139Z WARN [auth-service-16] User 65789 authenticated successfully,0.6202227980129722,3
+2025-11-12T09:01:56.225Z,backend-api-17,prod,DEBUG,"2025-11-12T09:01:56.225Z DEBUG [backend-api-17] Health check passed: ready=true, status=200",0.6202029937451519,4
+2025-11-09T23:22:26.398Z,nginx-frontend-15,dev,DEBUG,"2025-11-09T23:22:26.398Z DEBUG [nginx-frontend-15] Graceful shutdown initiated, waiting for connections to drain",0.6156486722888781,4
+2025-11-11T13:07:27.844Z,backend-api-11,prod,DEBUG,2025-11-11T13:07:27.844Z DEBUG [backend-api-11] Started request GET /api/v1/payments from 10.0.4.33 in 235ms,0.6148842275510376,3
+2025-11-07T08:24:31.159Z,nginx-frontend-02,dev,DEBUG,"2025-11-07T08:24:31.159Z DEBUG [nginx-frontend-02] Graceful shutdown initiated, waiting for connections to drain",0.6143726172990283,4
+2025-11-07T04:10:00.087Z,payments-18,staging,WARN,2025-11-07T04:10:00.087Z WARN [payments-18] Opening database transaction; connection_id=8803,0.6127453666265081,4
+2025-11-07T04:53:16.812Z,nginx-frontend-18,dev,DEBUG,2025-11-07T04:53:16.812Z DEBUG [nginx-frontend-18] Background job reindex completed in 178ms,0.611890482398957,4
+2025-11-11T23:58:26.660Z,nginx-frontend-03,prod,DEBUG,2025-11-11T23:58:26.660Z DEBUG [nginx-frontend-03] Opening database transaction; connection_id=8326,0.6052395491228362,4
+2025-11-08T04:39:52.818Z,orders-02,staging,WARN,"2025-11-08T04:39:52.818Z WARN [orders-02] Health check passed: ready=true, status=200",0.6014377898437111,4
+2025-11-08T10:06:14.160Z,orders-16,prod,DEBUG,2025-11-08T10:06:14.160Z DEBUG [orders-16] Loaded config from /etc/config/app.yml,0.60113478454607,4
+2025-11-09T02:33:22.202Z,backend-api-20,prod,DEBUG,2025-11-09T02:33:22.202Z DEBUG [backend-api-20] Completed 200 POST /api/v1/payments in 257ms,0.6007710461604479,3
+2025-11-07T04:25:44.482Z,backend-api-09,dev,DEBUG,"2025-11-07T04:25:44.482Z DEBUG [backend-api-09] Health check passed: ready=true, status=200",0.5992487581073718,4
+2025-11-12T13:20:56.256Z,backend-api-04,dev,DEBUG,"2025-11-12T13:20:56.256Z DEBUG [backend-api-04] Health check passed: ready=true, status=200",0.5951387123925205,4
+2025-11-06T14:17:42.283Z,payments-18,dev,WARN,2025-11-06T14:17:42.283Z WARN [payments-18] Completed 204 PUT /health in 157ms,0.5928830062878552,4
+2025-11-09T19:00:17.340Z,backend-api-18,prod,WARN,2025-11-09T19:00:17.340Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.5924090241447031,5
+2025-11-10T03:14:21.189Z,orders-16,prod,DEBUG,2025-11-10T03:14:21.189Z DEBUG [orders-16] Opening database transaction; connection_id=2161,0.5910689353555689,4
+2025-11-10T13:55:27.785Z,backend-api-08,staging,WARN,2025-11-10T13:55:27.785Z WARN [backend-api-08] Established connection to upstream db.internal:8080,0.5901473767596919,4
+2025-11-13T08:19:47.862Z,backend-api-06,dev,DEBUG,"2025-11-13T08:19:47.862Z DEBUG [backend-api-06] Health check passed: ready=true, status=200",0.5847401515026487,4
+2025-11-10T22:37:50.918Z,orders-04,dev,DEBUG,"2025-11-10T22:37:50.918Z DEBUG [orders-04] Health check passed: ready=true, status=200",0.5798722624725627,4
+2025-11-11T09:05:27.350Z,orders-06,prod,DEBUG,2025-11-11T09:05:27.350Z DEBUG [orders-06] Established connection to upstream inventory.internal:9000,0.5787130526628488,4
+2025-11-08T21:56:55.378Z,payments-06,dev,WARN,2025-11-08T21:56:55.378Z WARN [payments-06] Opening database transaction; connection_id=7131,0.5780172627201159,3
+2025-11-12T01:38:08.013Z,backend-api-02,dev,DEBUG,2025-11-12T01:38:08.013Z DEBUG [backend-api-02] Background job cleanup completed in 153ms,0.5750789695179312,4
+2025-11-12T09:12:47.785Z,orders-06,staging,WARN,2025-11-12T09:12:47.785Z WARN [orders-06] Established connection to upstream db.internal:8080,0.5714336639545818,4
+2025-11-11T15:03:28.713Z,nginx-frontend-11,prod,DEBUG,"2025-11-11T15:03:28.713Z DEBUG [nginx-frontend-11] Health check passed: ready=true, status=200",0.5683679632960903,4
+2025-11-13T04:29:55.558Z,backend-api-18,prod,WARN,2025-11-13T04:29:55.558Z WARN [backend-api-18] Loaded config from /etc/config/app.yml,0.5682656412456888,4
+2025-11-06T13:59:42.322Z,nginx-frontend-10,prod,WARN,2025-11-06T13:59:42.322Z WARN [nginx-frontend-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.5676629313617081,8
+2025-11-08T04:00:14.200Z,nginx-frontend-06,staging,WARN,2025-11-08T04:00:14.200Z WARN [nginx-frontend-06] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.5656052679352399,8
+2025-11-07T09:37:03.709Z,backend-api-15,dev,WARN,2025-11-07T09:37:03.709Z WARN [backend-api-15] Background job report-generator completed in 291ms,0.5655082270229235,5
+2025-11-09T22:03:57.396Z,auth-service-01,dev,DEBUG,2025-11-09T22:03:57.396Z DEBUG [auth-service-01] Loaded config from /etc/config/app.yml,0.5614463716930995,4
+2025-11-06T10:28:48.033Z,backend-api-18,dev,DEBUG,2025-11-06T10:28:48.033Z DEBUG [backend-api-18] Cache hit for key=session:8986; ttl=3159s,0.5514887858333468,4
+2025-11-12T11:53:32.223Z,payments-04,dev,WARN,2025-11-12T11:53:32.223Z WARN [payments-04] Opening database transaction; connection_id=2970,0.5509666133051674,3
+2025-11-07T17:15:57.356Z,payments-11,staging,DEBUG,"2025-11-07T17:15:57.356Z DEBUG [payments-11] Graceful shutdown initiated, waiting for connections to drain",0.5458954004587993,4
+2025-11-11T13:16:16.116Z,payments-16,dev,WARN,2025-11-11T13:16:16.116Z WARN [payments-16] User 70012 authenticated successfully,0.5454610268512861,4
+2025-11-06T07:07:48.894Z,backend-api-11,staging,WARN,"2025-11-06T07:07:48.894Z WARN [backend-api-11] Health check passed: ready=true, status=200",0.5440687868235603,4
+2025-11-09T22:07:49.817Z,nginx-frontend-03,dev,WARN,2025-11-09T22:07:49.817Z WARN [nginx-frontend-03] Background job cleanup completed in 96ms,0.5425504596240494,4
+2025-11-12T07:23:47.996Z,payments-14,staging,DEBUG,"2025-11-12T07:23:47.996Z DEBUG [payments-14] Graceful shutdown initiated, waiting for connections to drain",0.540206954598716,4
+2025-11-08T06:44:22.109Z,backend-api-06,prod,DEBUG,2025-11-08T06:44:22.109Z DEBUG [backend-api-06] Opening database transaction; connection_id=8808,0.5282233921410064,3
+2025-11-06T10:41:58.192Z,backend-api-10,prod,WARN,2025-11-06T10:41:58.192Z WARN [backend-api-10] Opening database transaction; connection_id=3675,0.5274998762233265,3
+2025-11-12T18:36:50.799Z,nginx-frontend-18,prod,DEBUG,2025-11-12T18:36:50.799Z DEBUG [nginx-frontend-18] Completed 200 DELETE /health in 102ms,0.5191180499397623,4
+2025-11-07T06:10:59.865Z,payments-20,dev,WARN,2025-11-07T06:10:59.865Z WARN [payments-20] User 74814 authenticated successfully,0.5163811001270773,3
+2025-11-08T20:24:09.482Z,payments-20,dev,WARN,2025-11-08T20:24:09.482Z WARN [payments-20] Opening database transaction; connection_id=1673,0.5114775634149158,3
+2025-11-09T22:01:24.979Z,nginx-frontend-04,prod,DEBUG,"2025-11-09T22:01:24.979Z DEBUG [nginx-frontend-04] Graceful shutdown initiated, waiting for connections to drain",0.5065826085521428,4
+2025-11-11T04:50:07.806Z,nginx-frontend-04,prod,DEBUG,2025-11-11T04:50:07.806Z DEBUG [nginx-frontend-04] Opening database transaction; connection_id=2591,0.5059020018814051,4
+2025-11-13T03:18:28.789Z,payments-20,dev,WARN,2025-11-13T03:18:28.789Z WARN [payments-20] Opening database transaction; connection_id=6135,0.5046285874605978,3

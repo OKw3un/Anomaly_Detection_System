@@ -1,36 +1,51 @@
 timestamp,pod_name,namespace,log_level,message,score_vae,anomaly_vote_count
-2025-11-07T21:40:17.278Z,nginx-frontend-17,staging,WARN,"2025-11-07T21:40:17.278Z WARN [nginx-frontend-17] Health check passed: ready=true, status=200",0.9999999999999999,1
-2025-11-12T21:51:02.914Z,auth-service-05,staging,WARN,2025-11-12T21:51:02.914Z WARN [auth-service-05] ERROR: connection refused from db.internal:9000,0.900316726960629,1
-2025-11-08T01:02:39.189Z,orders-04,dev,DEBUG,2025-11-08T01:02:39.189Z DEBUG [orders-04] Loaded config from /etc/config/db.yml,0.8934840974585924,2
-2025-11-08T15:37:36.973Z,orders-17,staging,WARN,2025-11-08T15:37:36.973Z WARN [orders-17] ERROR: 5xx gateway error from upstream db.internal:8080 - response=502 Bad Gateway,0.8803457001331502,1
-2025-11-11T03:04:21.830Z,payments-20,prod,ERROR,2025-11-11T03:04:21.830Z ERROR [payments-20] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.8400738112726532,1
-2025-11-06T21:51:42.083Z,backend-api-20,staging,DEBUG,2025-11-06T21:51:42.083Z DEBUG [backend-api-20] Started request GET /api/v1/items from 10.0.1.48 in 275ms,0.8318745791465046,1
-2025-11-08T09:51:36.623Z,backend-api-09,dev,WARN,2025-11-08T09:51:36.623Z WARN [backend-api-09] User 73001 authenticated successfully,0.8240689396243138,1
-2025-11-12T20:36:52.917Z,backend-api-08,staging,DEBUG,2025-11-12T20:36:52.917Z DEBUG [backend-api-08] Established connection to upstream db.internal:5432,0.8131918200408684,1
-2025-11-11T14:46:28.594Z,orders-02,staging,WARN,2025-11-11T14:46:28.594Z WARN [orders-02] ERROR: Segmentation fault (core dumped) in worker thread,0.8117262438379836,2
-2025-11-11T03:14:41.808Z,auth-service-03,staging,WARN,2025-11-11T03:14:41.808Z WARN [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.7977005368702857,1
-2025-11-11T14:30:02.291Z,backend-api-13,prod,DEBUG,"2025-11-11T14:30:02.291Z DEBUG [backend-api-13] Graceful shutdown initiated, waiting for connections to drain",0.7900704411839342,1
-2025-11-06T20:30:07.854Z,payments-03,prod,WARN,2025-11-06T20:30:07.854Z WARN [payments-03] Completed 304 GET /metrics in 277ms,0.7891709324726671,2
-2025-11-10T16:51:12.823Z,nginx-frontend-07,prod,DEBUG,2025-11-10T16:51:12.823Z DEBUG [nginx-frontend-07] Cache hit for key=session:1890; ttl=2683s,0.7765206513550958,2
-2025-11-06T18:49:53.063Z,nginx-frontend-16,staging,WARN,2025-11-06T18:49:53.063Z WARN [nginx-frontend-16] ERROR: 5xx gateway error from upstream payments.internal:9000 - response=502 Bad Gateway,0.7637781483447456,1
-2025-11-07T03:49:58.753Z,orders-13,prod,DEBUG,2025-11-07T03:49:58.753Z DEBUG [orders-13] Cache hit for key=session:5490; ttl=1909s,0.7431358658268131,1
-2025-11-12T02:44:51.724Z,orders-09,staging,WARN,2025-11-12T02:44:51.724Z WARN [orders-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.7409384222069396,3
-2025-11-06T14:43:35.940Z,payments-07,staging,ERROR,2025-11-06T14:43:35.940Z ERROR [payments-07] ERROR: database deadlock detected; rolling back transaction,0.7345424273070712,1
-2025-11-07T05:11:42.741Z,orders-05,dev,DEBUG,2025-11-07T05:11:42.741Z DEBUG [orders-05] Started request GET /checkout from 10.0.2.1 in 15ms,0.7218014587708103,1
-2025-11-12T05:50:03.921Z,nginx-frontend-05,staging,WARN,2025-11-12T05:50:03.921Z WARN [nginx-frontend-05] Cache hit for key=session:6277; ttl=3423s,0.6952491492971552,1
-2025-11-10T15:06:59.210Z,nginx-frontend-10,prod,WARN,2025-11-10T15:06:59.210Z WARN [nginx-frontend-10] User 28568 authenticated successfully,0.6902133122302226,2
-2025-11-06T13:22:54.101Z,auth-service-01,prod,WARN,"2025-11-06T13:22:54.101Z WARN [auth-service-01] Health check passed: ready=true, status=200",0.6834892467700183,1
-2025-11-10T03:14:21.189Z,orders-16,prod,DEBUG,2025-11-10T03:14:21.189Z DEBUG [orders-16] Opening database transaction; connection_id=2161,0.6715803468087906,1
-2025-11-08T02:35:50.180Z,backend-api-19,staging,DEBUG,2025-11-08T02:35:50.180Z DEBUG [backend-api-19] User 74517 authenticated successfully,0.6679935136245763,1
-2025-11-13T04:29:55.558Z,backend-api-18,prod,WARN,2025-11-13T04:29:55.558Z WARN [backend-api-18] Loaded config from /etc/config/app.yml,0.6533033793761235,2
-2025-11-11T06:14:21.781Z,orders-02,dev,DEBUG,2025-11-11T06:14:21.781Z DEBUG [orders-02] Opening database transaction; connection_id=3329,0.6524408514904135,2
-2025-11-07T14:12:09.904Z,payments-13,staging,DEBUG,2025-11-07T14:12:09.904Z DEBUG [payments-13] User 21297 authenticated successfully,0.6486994200416817,1
-2025-11-10T22:12:09.302Z,auth-service-18,staging,WARN,2025-11-10T22:12:09.302Z WARN [auth-service-18] ERROR: Segmentation fault (core dumped) in worker thread,0.6480845562740176,1
-2025-11-08T12:13:46.398Z,payments-07,dev,DEBUG,2025-11-08T12:13:46.398Z DEBUG [payments-07] Established connection to upstream auth.internal:5432,0.6417531627333172,1
-2025-11-09T01:24:54.135Z,orders-09,staging,DEBUG,2025-11-09T01:24:54.135Z DEBUG [orders-09] Started request GET /health from 10.0.0.45 in 307ms,0.6383854524490838,1
-2025-11-07T04:10:00.087Z,payments-18,staging,WARN,2025-11-07T04:10:00.087Z WARN [payments-18] Opening database transaction; connection_id=8803,0.6377101304022934,1
-2025-11-09T11:31:32.480Z,orders-01,dev,WARN,2025-11-09T11:31:32.480Z WARN [orders-01] Loaded config from /etc/config/db.yml,0.6291543632214488,2
-2025-11-08T22:09:53.338Z,payments-02,dev,ERROR,2025-11-08T22:09:53.338Z ERROR [payments-02] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.6264360423718933,1
-2025-11-11T08:17:39.045Z,backend-api-07,dev,ERROR,2025-11-11T08:17:39.045Z ERROR [backend-api-07] ERROR: request timeout after 8964ms while calling payments,0.6246476895442815,3
-2025-11-07T05:09:15.090Z,orders-19,prod,WARN,2025-11-07T05:09:15.090Z WARN [orders-19] Cache hit for key=session:3691; ttl=140s,0.6229663662844125,2
-2025-11-09T15:26:27.680Z,backend-api-09,staging,WARN,2025-11-09T15:26:27.680Z WARN [backend-api-09] Cache hit for key=session:2230; ttl=2070s,0.621188064262087,1
+2025-11-12T21:51:02.914Z,auth-service-05,staging,WARN,2025-11-12T21:51:02.914Z WARN [auth-service-05] ERROR: connection refused from db.internal:9000,1.0,4
+2025-11-08T05:51:02.379Z,auth-service-12,prod,ERROR,2025-11-08T05:51:02.379Z ERROR [auth-service-12] ERROR: OOMKilled - process terminated due to out-of-memory,0.9977663448916303,2
+2025-11-07T15:00:54.320Z,nginx-frontend-08,staging,ERROR,2025-11-07T15:00:54.320Z ERROR [nginx-frontend-08] ERROR: CrashLoopBackOff: container restarted 7 times,0.9681996323884285,3
+2025-11-08T13:05:52.975Z,backend-api-19,prod,ERROR,2025-11-08T13:05:52.975Z ERROR [backend-api-19] ERROR: CrashLoopBackOff: container restarted 16 times,0.9673862844398489,3
+2025-11-09T16:18:43.659Z,backend-api-15,prod,ERROR,2025-11-09T16:18:43.659Z ERROR [backend-api-15] ERROR: OOMKilled - process terminated due to out-of-memory,0.9628421153285798,2
+2025-11-10T02:32:59.252Z,payments-05,prod,WARN,2025-11-10T02:32:59.252Z WARN [payments-05] ERROR: database deadlock detected; rolling back transaction,0.9623872915174227,6
+2025-11-07T04:13:13.685Z,nginx-frontend-18,prod,ERROR,2025-11-07T04:13:13.685Z ERROR [nginx-frontend-18] ERROR: CrashLoopBackOff: container restarted 4 times,0.9540277564594817,4
+2025-11-12T15:29:22.243Z,nginx-frontend-14,prod,ERROR,2025-11-12T15:29:22.243Z ERROR [nginx-frontend-14] ERROR: ImagePullBackOff: failed to pull image nginx:1.25.0,0.9507748167763075,4
+2025-11-06T00:36:27.125Z,orders-12,prod,WARN,2025-11-06T00:36:27.125Z WARN [orders-12] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.9471418776763567,7
+2025-11-08T21:27:47.116Z,backend-api-07,prod,ERROR,2025-11-08T21:27:47.116Z ERROR [backend-api-07] ERROR: OOMKilled - process terminated due to out-of-memory,0.9425253707820009,2
+2025-11-08T04:03:30.300Z,payments-14,prod,ERROR,2025-11-08T04:03:30.300Z ERROR [payments-14] ERROR: OOMKilled - process terminated due to out-of-memory,0.9401144881050687,2
+2025-11-06T20:10:23.280Z,auth-service-03,staging,WARN,2025-11-06T20:10:23.280Z WARN [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.9346909628181534,7
+2025-11-11T09:03:40.753Z,payments-03,prod,ERROR,2025-11-11T09:03:40.753Z ERROR [payments-03] ERROR: Segmentation fault (core dumped) in worker thread,0.934272081842968,4
+2025-11-11T14:46:28.594Z,orders-02,staging,WARN,2025-11-11T14:46:28.594Z WARN [orders-02] ERROR: Segmentation fault (core dumped) in worker thread,0.9244567489004094,8
+2025-11-08T22:52:57.216Z,backend-api-03,prod,ERROR,2025-11-08T22:52:57.216Z ERROR [backend-api-03] ERROR: 5xx gateway error from upstream cache.internal:8080 - response=502 Bad Gateway,0.9141142543636072,2
+2025-11-09T10:24:11.331Z,orders-19,prod,WARN,2025-11-09T10:24:11.331Z WARN [orders-19] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.9126650120905824,4
+2025-11-11T15:09:21.671Z,backend-api-04,staging,ERROR,2025-11-11T15:09:21.671Z ERROR [backend-api-04] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.9093779380160143,4
+2025-11-10T23:07:53.062Z,orders-11,staging,ERROR,2025-11-10T23:07:53.062Z ERROR [orders-11] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.9059371461523873,2
+2025-11-12T12:19:21.008Z,nginx-frontend-14,prod,WARN,2025-11-12T12:19:21.008Z WARN [nginx-frontend-14] ERROR: CrashLoopBackOff: container restarted 8 times,0.9037091424333212,7
+2025-11-11T03:04:21.830Z,payments-20,prod,ERROR,2025-11-11T03:04:21.830Z ERROR [payments-20] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.9029344499875784,4
+2025-11-12T05:32:34.110Z,orders-14,staging,ERROR,2025-11-12T05:32:34.110Z ERROR [orders-14] ERROR: Segmentation fault (core dumped) in worker thread,0.9002362506784491,4
+2025-11-08T21:29:24.635Z,backend-api-18,prod,WARN,2025-11-08T21:29:24.635Z WARN [backend-api-18] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.8998775004854545,7
+2025-11-08T18:55:24.583Z,backend-api-18,prod,ERROR,2025-11-08T18:55:24.583Z ERROR [backend-api-18] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.8982783833680972,4
+2025-11-11T12:28:55.474Z,backend-api-13,prod,ERROR,2025-11-11T12:28:55.474Z ERROR [backend-api-13] ERROR: CrashLoopBackOff: container restarted 12 times,0.8977747315533566,3
+2025-11-10T04:29:52.498Z,auth-service-20,prod,ERROR,2025-11-10T04:29:52.498Z ERROR [auth-service-20] ERROR: connection refused from auth.internal:6379,0.891496490148159,2
+2025-11-10T05:49:26.952Z,nginx-frontend-14,prod,ERROR,2025-11-10T05:49:26.952Z ERROR [nginx-frontend-14] ERROR: CrashLoopBackOff: container restarted 5 times,0.8909464969411292,3
+2025-11-08T06:48:23.823Z,orders-18,prod,ERROR,2025-11-08T06:48:23.823Z ERROR [orders-18] ERROR: CrashLoopBackOff: container restarted 17 times,0.8885457867649436,4
+2025-11-12T08:06:19.302Z,backend-api-18,staging,ERROR,2025-11-12T08:06:19.302Z ERROR [backend-api-18] ERROR: Segmentation fault (core dumped) in worker thread,0.8865910842326015,2
+2025-11-07T17:28:09.728Z,payments-03,prod,WARN,"2025-11-07T17:28:09.728Z WARN [payments-03] Graceful shutdown initiated, waiting for connections to drain",0.8862526790410996,4
+2025-11-07T16:24:33.107Z,payments-14,prod,ERROR,"2025-11-07T16:24:33.107Z ERROR [payments-14] WARN: latency spike: p95=1863ms, p99=8436ms for endpoint /api/v1/payments",0.8857237090022791,2
+2025-11-06T13:58:55.969Z,payments-03,staging,ERROR,2025-11-06T13:58:55.969Z ERROR [payments-03] ERROR: Segmentation fault (core dumped) in worker thread,0.8837484354128713,4
+2025-11-11T00:27:52.433Z,payments-12,prod,ERROR,2025-11-11T00:27:52.433Z ERROR [payments-12] ERROR: Segmentation fault (core dumped) in worker thread,0.883467900447839,4
+2025-11-08T22:32:41.032Z,orders-04,prod,ERROR,2025-11-08T22:32:41.032Z ERROR [orders-04] ERROR: CrashLoopBackOff: container restarted 17 times,0.8832251167633545,2
+2025-11-11T06:44:36.386Z,nginx-frontend-16,prod,ERROR,2025-11-11T06:44:36.386Z ERROR [nginx-frontend-16] ERROR: CrashLoopBackOff: container restarted 11 times,0.8830704947520069,3
+2025-11-06T01:38:07.600Z,payments-11,prod,WARN,2025-11-06T01:38:07.600Z WARN [payments-11] ERROR: OOMKilled - process terminated due to out-of-memory,0.8823012276399957,6
+2025-11-11T21:58:08.007Z,backend-api-09,prod,ERROR,2025-11-11T21:58:08.007Z ERROR [backend-api-09] ERROR: CrashLoopBackOff: container restarted 5 times,0.8815699378641049,3
+2025-11-09T11:38:54.502Z,orders-03,prod,ERROR,2025-11-09T11:38:54.502Z ERROR [orders-03] ERROR: OOMKilled - process terminated due to out-of-memory,0.8812640846749922,4
+2025-11-11T11:59:08.417Z,backend-api-17,prod,WARN,2025-11-11T11:59:08.417Z WARN [backend-api-17] ERROR: database deadlock detected; rolling back transaction,0.8808994570371214,7
+2025-11-08T00:39:21.045Z,auth-service-17,prod,ERROR,2025-11-08T00:39:21.045Z ERROR [auth-service-17] ERROR: CrashLoopBackOff: container restarted 5 times,0.8783337262932696,3
+2025-11-06T13:59:42.322Z,nginx-frontend-10,prod,WARN,2025-11-06T13:59:42.322Z WARN [nginx-frontend-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.8782231851184905,8
+2025-11-08T04:00:14.200Z,nginx-frontend-06,staging,WARN,2025-11-08T04:00:14.200Z WARN [nginx-frontend-06] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.8780317160488833,8
+2025-11-12T08:15:02.880Z,orders-14,prod,ERROR,2025-11-12T08:15:02.880Z ERROR [orders-14] ERROR: connection refused from auth.internal:5432,0.8777328705825069,2
+2025-11-12T02:04:47.151Z,payments-03,prod,ERROR,2025-11-12T02:04:47.151Z ERROR [payments-03] ERROR: OOMKilled - process terminated due to out-of-memory,0.8776788433007643,2
+2025-11-09T11:56:58.678Z,auth-service-18,prod,ERROR,2025-11-09T11:56:58.678Z ERROR [auth-service-18] ERROR: CrashLoopBackOff: container restarted 2 times,0.8764601777113277,3
+2025-11-07T16:32:47.135Z,orders-19,prod,ERROR,2025-11-07T16:32:47.135Z ERROR [orders-19] ERROR: CrashLoopBackOff: container restarted 15 times,0.8748194663686952,2
+2025-11-10T03:37:13.986Z,payments-06,prod,ERROR,2025-11-10T03:37:13.986Z ERROR [payments-06] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.8746431430224217,2
+2025-11-09T03:48:55.173Z,orders-16,staging,WARN,2025-11-09T03:48:55.173Z WARN [orders-16] ERROR: connection refused from db.internal:8080,0.8740709963693214,7
+2025-11-09T13:28:16.206Z,nginx-frontend-07,prod,ERROR,2025-11-09T13:28:16.206Z ERROR [nginx-frontend-07] ERROR: OOMKilled - process terminated due to out-of-memory,0.8730905933529263,2
+2025-11-10T05:07:12.493Z,orders-08,prod,ERROR,2025-11-10T05:07:12.493Z ERROR [orders-08] ERROR: CrashLoopBackOff: container restarted 6 times,0.8699201639535854,2
+2025-11-12T02:44:51.724Z,orders-09,staging,WARN,2025-11-12T02:44:51.724Z WARN [orders-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.8697678024979592,7

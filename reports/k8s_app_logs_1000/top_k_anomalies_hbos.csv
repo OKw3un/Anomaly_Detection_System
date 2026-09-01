@@ -1,7 +1,441 @@
 timestamp,pod_name,namespace,log_level,message,score_hbos,anomaly_vote_count
-2025-11-12T06:51:55.151Z,orders-15,prod,INFO,"2025-11-12T06:51:55.151Z INFO [orders-15] Graceful shutdown initiated, waiting for connections to drain",1.0,5
-2025-11-06T21:24:31.245Z,auth-service-09,staging,INFO,2025-11-06T21:24:31.245Z INFO [auth-service-09] Completed 200 GET /login in 23ms,0.9563273048682766,5
-2025-11-13T08:29:48.735Z,nginx-frontend-01,prod,INFO,2025-11-13T08:29:48.735Z INFO [nginx-frontend-01] Completed 200 DELETE /api/v1/payments in 36ms,0.906277454388192,2
-2025-11-13T06:16:27.549Z,backend-api-02,staging,ERROR,2025-11-13T06:16:27.549Z ERROR [backend-api-02] ERROR: 503 Service Unavailable - downstream overloaded,0.887759497260868,1
-2025-11-06T19:39:53.343Z,nginx-frontend-20,dev,INFO,"2025-11-06T19:39:53.343Z INFO [nginx-frontend-20] Graceful shutdown initiated, waiting for connections to drain",0.8834887452842013,6
-2025-11-10T03:25:38.363Z,payments-18,dev,INFO,2025-11-10T03:25:38.363Z INFO [payments-18] Completed 201 GET /api/v1/orders in 76ms,0.881942231117907,3
+2025-11-11T14:46:28.594Z,orders-02,staging,WARN,2025-11-11T14:46:28.594Z WARN [orders-02] ERROR: Segmentation fault (core dumped) in worker thread,1.0,8
+2025-11-12T02:44:51.724Z,orders-09,staging,WARN,2025-11-12T02:44:51.724Z WARN [orders-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.9830361719855114,7
+2025-11-06T00:36:27.125Z,orders-12,prod,WARN,2025-11-06T00:36:27.125Z WARN [orders-12] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.9760809097766745,7
+2025-11-06T01:38:07.600Z,payments-11,prod,WARN,2025-11-06T01:38:07.600Z WARN [payments-11] ERROR: OOMKilled - process terminated due to out-of-memory,0.962585362128614,6
+2025-11-06T13:59:42.322Z,nginx-frontend-10,prod,WARN,2025-11-06T13:59:42.322Z WARN [nginx-frontend-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.9538340899807474,8
+2025-11-07T20:16:41.167Z,auth-service-04,dev,WARN,2025-11-07T20:16:41.167Z WARN [auth-service-04] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.9511825803060998,4
+2025-11-09T03:48:55.173Z,orders-16,staging,WARN,2025-11-09T03:48:55.173Z WARN [orders-16] ERROR: connection refused from db.internal:8080,0.9448073528613992,7
+2025-11-12T12:19:21.008Z,nginx-frontend-14,prod,WARN,2025-11-12T12:19:21.008Z WARN [nginx-frontend-14] ERROR: CrashLoopBackOff: container restarted 8 times,0.9444183944586668,7
+2025-11-12T02:05:27.687Z,nginx-frontend-20,staging,WARN,2025-11-12T02:05:27.687Z WARN [nginx-frontend-20] ERROR: OOMKilled - process terminated due to out-of-memory,0.9444099701964106,7
+2025-11-08T00:57:44.002Z,backend-api-07,prod,WARN,2025-11-08T00:57:44.002Z WARN [backend-api-07] ERROR: Segmentation fault (core dumped) in worker thread,0.9423711059239426,6
+2025-11-08T21:29:24.635Z,backend-api-18,prod,WARN,2025-11-08T21:29:24.635Z WARN [backend-api-18] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.9379919648945645,7
+2025-11-07T05:48:29.643Z,backend-api-09,dev,WARN,2025-11-07T05:48:29.643Z WARN [backend-api-09] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.9366569147318367,4
+2025-11-10T02:32:59.252Z,payments-05,prod,WARN,2025-11-10T02:32:59.252Z WARN [payments-05] ERROR: database deadlock detected; rolling back transaction,0.9351782793252039,6
+2025-11-08T04:00:14.200Z,nginx-frontend-06,staging,WARN,2025-11-08T04:00:14.200Z WARN [nginx-frontend-06] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.9348561646426319,8
+2025-11-11T01:33:39.471Z,nginx-frontend-04,prod,WARN,2025-11-11T01:33:39.471Z WARN [nginx-frontend-04] Loaded config from /etc/config/env.yml,0.9348193075746178,7
+2025-11-12T07:38:03.964Z,backend-api-10,dev,WARN,2025-11-12T07:38:03.964Z WARN [backend-api-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.9313839242675228,4
+2025-11-09T19:41:42.913Z,nginx-frontend-14,prod,WARN,2025-11-09T19:41:42.913Z WARN [nginx-frontend-14] ERROR: 503 Service Unavailable - downstream overloaded,0.9303183171185361,6
+2025-11-10T22:12:09.302Z,auth-service-18,staging,WARN,2025-11-10T22:12:09.302Z WARN [auth-service-18] ERROR: Segmentation fault (core dumped) in worker thread,0.9283881628794126,5
+2025-11-12T08:16:11.156Z,nginx-frontend-12,staging,WARN,2025-11-12T08:16:11.156Z WARN [nginx-frontend-12] Cache hit for key=session:7910; ttl=229s,0.9253896734578948,7
+2025-11-06T20:30:07.854Z,payments-03,prod,WARN,2025-11-06T20:30:07.854Z WARN [payments-03] Completed 304 GET /metrics in 277ms,0.924961251822904,6
+2025-11-11T03:24:38.352Z,nginx-frontend-18,prod,WARN,2025-11-11T03:24:38.352Z WARN [nginx-frontend-18] Completed 200 DELETE /api/v1/items in 214ms,0.921108258308299,6
+2025-11-09T11:31:32.480Z,orders-01,dev,WARN,2025-11-09T11:31:32.480Z WARN [orders-01] Loaded config from /etc/config/db.yml,0.9168393282878995,4
+2025-11-06T13:09:31.838Z,nginx-frontend-19,dev,WARN,2025-11-06T13:09:31.838Z WARN [nginx-frontend-19] Established connection to upstream db.internal:5432,0.9166491755777773,3
+2025-11-06T08:49:17.509Z,orders-10,dev,WARN,2025-11-06T08:49:17.509Z WARN [orders-10] Loaded config from /etc/config/db.yml,0.91452259570536,4
+2025-11-09T10:24:11.331Z,orders-19,prod,WARN,2025-11-09T10:24:11.331Z WARN [orders-19] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.911482230042211,4
+2025-11-11T06:29:02.593Z,backend-api-19,prod,WARN,2025-11-11T06:29:02.593Z WARN [backend-api-19] Started request DELETE /api/v1/items from 10.0.0.11 in 245ms,0.9114064122312304,5
+2025-11-09T19:00:17.340Z,backend-api-18,prod,WARN,2025-11-09T19:00:17.340Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.9094310381941528,5
+2025-11-06T18:49:53.063Z,nginx-frontend-16,staging,WARN,2025-11-06T18:49:53.063Z WARN [nginx-frontend-16] ERROR: 5xx gateway error from upstream payments.internal:9000 - response=502 Bad Gateway,0.9080266527414342,4
+2025-11-10T17:49:18.460Z,orders-08,dev,WARN,2025-11-10T17:49:18.460Z WARN [orders-08] Loaded config from /etc/config/db.yml,0.9078264535869862,4
+2025-11-12T05:50:03.921Z,nginx-frontend-05,staging,WARN,2025-11-12T05:50:03.921Z WARN [nginx-frontend-05] Cache hit for key=session:6277; ttl=3423s,0.9062135178874255,6
+2025-11-09T22:48:13.740Z,auth-service-19,staging,WARN,2025-11-09T22:48:13.740Z WARN [auth-service-19] Started request DELETE /metrics from 10.0.4.37 in 366ms,0.9058728298908849,5
+2025-11-11T11:59:08.417Z,backend-api-17,prod,WARN,2025-11-11T11:59:08.417Z WARN [backend-api-17] ERROR: database deadlock detected; rolling back transaction,0.9048516736909913,7
+2025-11-06T20:10:23.280Z,auth-service-03,staging,WARN,2025-11-06T20:10:23.280Z WARN [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.9046954400936928,7
+2025-11-07T09:37:03.709Z,backend-api-15,dev,WARN,2025-11-07T09:37:03.709Z WARN [backend-api-15] Background job report-generator completed in 291ms,0.9043946396852096,5
+2025-11-12T13:04:57.136Z,payments-04,prod,WARN,2025-11-12T13:04:57.136Z WARN [payments-04] Background job report-generator completed in 432ms,0.9033826814927619,4
+2025-11-08T15:37:36.973Z,orders-17,staging,WARN,2025-11-08T15:37:36.973Z WARN [orders-17] ERROR: 5xx gateway error from upstream db.internal:8080 - response=502 Bad Gateway,0.9030842952880311,4
+2025-11-12T05:12:25.382Z,nginx-frontend-19,staging,WARN,2025-11-12T05:12:25.382Z WARN [nginx-frontend-19] ERROR: 503 Service Unavailable - downstream overloaded,0.9005948348910531,5
+2025-11-10T05:01:56.500Z,orders-01,prod,WARN,2025-11-10T05:01:56.500Z WARN [orders-01] ERROR: connection refused from cache.internal:8080,0.9001073175557122,3
+2025-11-09T23:22:26.398Z,nginx-frontend-15,dev,DEBUG,"2025-11-09T23:22:26.398Z DEBUG [nginx-frontend-15] Graceful shutdown initiated, waiting for connections to drain",0.8988198700577561,4
+2025-11-11T16:25:30.362Z,auth-service-15,staging,WARN,2025-11-11T16:25:30.362Z WARN [auth-service-15] Loaded config from /etc/config/env.yml,0.8985112295057038,5
+2025-11-11T03:14:41.808Z,auth-service-03,staging,WARN,2025-11-11T03:14:41.808Z WARN [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.8981927150116826,4
+2025-11-12T21:51:02.914Z,auth-service-05,staging,WARN,2025-11-12T21:51:02.914Z WARN [auth-service-05] ERROR: connection refused from db.internal:9000,0.8980305776471909,4
+2025-11-07T16:13:09.531Z,backend-api-18,staging,WARN,2025-11-07T16:13:09.531Z WARN [backend-api-18] Loaded config from /etc/config/env.yml,0.89780626564517,6
+2025-11-07T12:37:55.066Z,nginx-frontend-09,prod,WARN,2025-11-07T12:37:55.066Z WARN [nginx-frontend-09] Background job report-generator completed in 68ms,0.8970994769020506,5
+2025-11-08T01:02:39.189Z,orders-04,dev,DEBUG,2025-11-08T01:02:39.189Z DEBUG [orders-04] Loaded config from /etc/config/db.yml,0.8966160364703586,4
+2025-11-07T13:55:23.441Z,backend-api-20,prod,WARN,2025-11-07T13:55:23.441Z WARN [backend-api-20] Cache hit for key=session:5754; ttl=1102s,0.8962546440763157,5
+2025-11-09T22:07:49.817Z,nginx-frontend-03,dev,WARN,2025-11-09T22:07:49.817Z WARN [nginx-frontend-03] Background job cleanup completed in 96ms,0.8958319084289155,4
+2025-11-06T14:17:42.283Z,payments-18,dev,WARN,2025-11-06T14:17:42.283Z WARN [payments-18] Completed 204 PUT /health in 157ms,0.8949463985946364,4
+2025-11-06T22:59:50.404Z,nginx-frontend-17,dev,WARN,2025-11-06T22:59:50.404Z WARN [nginx-frontend-17] Opening database transaction; connection_id=7936,0.8946831202681955,3
+2025-11-08T11:25:10.771Z,orders-02,staging,DEBUG,2025-11-08T11:25:10.771Z DEBUG [orders-02] Completed 304 POST /metrics in 292ms,0.8936927947945952,4
+2025-11-12T10:37:36.400Z,orders-19,dev,WARN,2025-11-12T10:37:36.400Z WARN [orders-19] Established connection to upstream db.internal:9000,0.8928865886387296,3
+2025-11-10T10:54:40.859Z,backend-api-17,staging,WARN,2025-11-10T10:54:40.859Z WARN [backend-api-17] Background job cleanup completed in 196ms,0.8920963057878359,4
+2025-11-13T04:29:55.558Z,backend-api-18,prod,WARN,2025-11-13T04:29:55.558Z WARN [backend-api-18] Loaded config from /etc/config/app.yml,0.8911338474914081,4
+2025-11-12T09:12:47.785Z,orders-06,staging,WARN,2025-11-12T09:12:47.785Z WARN [orders-06] Established connection to upstream db.internal:8080,0.8903215283039159,4
+2025-11-11T17:02:35.531Z,auth-service-09,prod,WARN,2025-11-11T17:02:35.531Z WARN [auth-service-09] Background job cleanup completed in 183ms,0.8900918895412295,5
+2025-11-10T12:01:32.099Z,nginx-frontend-09,prod,WARN,2025-11-10T12:01:32.099Z WARN [nginx-frontend-09] Background job report-generator completed in 306ms,0.8899341487768528,5
+2025-11-10T15:06:59.210Z,nginx-frontend-10,prod,WARN,2025-11-10T15:06:59.210Z WARN [nginx-frontend-10] User 28568 authenticated successfully,0.8897035158119815,4
+2025-11-13T02:51:44.721Z,backend-api-04,dev,DEBUG,2025-11-13T02:51:44.721Z DEBUG [backend-api-04] Completed 304 PUT /metrics in 344ms,0.8896775568281292,3
+2025-11-09T10:22:58.743Z,payments-19,dev,WARN,2025-11-09T10:22:58.743Z WARN [payments-19] Loaded config from /etc/config/app.yml,0.8890465064061805,3
+2025-11-07T10:18:22.481Z,nginx-frontend-19,dev,WARN,2025-11-07T10:18:22.481Z WARN [nginx-frontend-19] Completed 304 DELETE /api/v1/orders in 66ms,0.8887559391337638,3
+2025-11-09T15:26:27.680Z,backend-api-09,staging,WARN,2025-11-09T15:26:27.680Z WARN [backend-api-09] Cache hit for key=session:2230; ttl=2070s,0.887186870582219,4
+2025-11-07T02:42:38.735Z,nginx-frontend-01,staging,DEBUG,2025-11-07T02:42:38.735Z DEBUG [nginx-frontend-01] Established connection to upstream auth.internal:8080,0.8868151497938093,4
+2025-11-06T14:56:42.429Z,payments-10,dev,DEBUG,2025-11-06T14:56:42.429Z DEBUG [payments-10] Loaded config from /etc/config/db.yml,0.8860188296971692,3
+2025-11-08T10:06:14.160Z,orders-16,prod,DEBUG,2025-11-08T10:06:14.160Z DEBUG [orders-16] Loaded config from /etc/config/app.yml,0.8858847632359836,4
+2025-11-11T01:39:43.296Z,nginx-frontend-13,prod,WARN,"2025-11-11T01:39:43.296Z WARN [nginx-frontend-13] Health check passed: ready=true, status=200",0.8858477818233861,4
+2025-11-11T15:59:14.910Z,nginx-frontend-04,dev,DEBUG,2025-11-11T15:59:14.910Z DEBUG [nginx-frontend-04] Cache hit for key=session:4285; ttl=818s,0.8850152708162602,4
+2025-11-10T19:55:26.655Z,nginx-frontend-15,staging,WARN,2025-11-10T19:55:26.655Z WARN [nginx-frontend-15] Started request DELETE /api/v1/orders from 10.0.3.45 in 115ms,0.8843538524959427,4
+2025-11-06T05:13:05.417Z,orders-03,staging,DEBUG,2025-11-06T05:13:05.417Z DEBUG [orders-03] Background job report-generator completed in 123ms,0.8842087980891633,4
+2025-11-11T12:04:30.944Z,payments-14,dev,WARN,2025-11-11T12:04:30.944Z WARN [payments-14] User 53601 authenticated successfully,0.8825805005880039,3
+2025-11-11T13:16:16.116Z,payments-16,dev,WARN,2025-11-11T13:16:16.116Z WARN [payments-16] User 70012 authenticated successfully,0.8825559563486789,4
+2025-11-07T07:05:54.645Z,payments-16,prod,DEBUG,2025-11-07T07:05:54.645Z DEBUG [payments-16] Loaded config from /etc/config/env.yml,0.8816469576951018,4
+2025-11-07T04:53:16.812Z,nginx-frontend-18,dev,DEBUG,2025-11-07T04:53:16.812Z DEBUG [nginx-frontend-18] Background job reindex completed in 178ms,0.881474264530512,4
+2025-11-10T16:51:12.823Z,nginx-frontend-07,prod,DEBUG,2025-11-10T16:51:12.823Z DEBUG [nginx-frontend-07] Cache hit for key=session:1890; ttl=2683s,0.8814578466143161,5
+2025-11-10T17:38:57.298Z,auth-service-06,staging,WARN,2025-11-10T17:38:57.298Z WARN [auth-service-06] User 98572 authenticated successfully,0.8800863004288209,5
+2025-11-09T22:01:24.979Z,nginx-frontend-04,prod,DEBUG,"2025-11-09T22:01:24.979Z DEBUG [nginx-frontend-04] Graceful shutdown initiated, waiting for connections to drain",0.8792376820061985,4
+2025-11-10T13:55:27.785Z,backend-api-08,staging,WARN,2025-11-10T13:55:27.785Z WARN [backend-api-08] Established connection to upstream db.internal:8080,0.8779703579607117,4
+2025-11-07T08:24:31.159Z,nginx-frontend-02,dev,DEBUG,"2025-11-07T08:24:31.159Z DEBUG [nginx-frontend-02] Graceful shutdown initiated, waiting for connections to drain",0.8778392932891386,4
+2025-11-07T21:40:17.278Z,nginx-frontend-17,staging,WARN,"2025-11-07T21:40:17.278Z WARN [nginx-frontend-17] Health check passed: ready=true, status=200",0.8763359548730016,4
+2025-11-12T00:48:12.609Z,orders-08,prod,DEBUG,2025-11-12T00:48:12.609Z DEBUG [orders-08] Background job report-generator completed in 382ms,0.8758225207838097,4
+2025-11-07T09:54:40.812Z,backend-api-19,staging,WARN,2025-11-07T09:54:40.812Z WARN [backend-api-19] Opening database transaction; connection_id=4042,0.8755918007823476,4
+2025-11-08T02:35:50.180Z,backend-api-19,staging,DEBUG,2025-11-08T02:35:50.180Z DEBUG [backend-api-19] User 74517 authenticated successfully,0.8754385980931674,4
+2025-11-12T01:25:55.563Z,payments-09,staging,WARN,2025-11-12T01:25:55.563Z WARN [payments-09] Loaded config from /etc/config/app.yml,0.8746704426994567,4
+2025-11-06T07:07:48.894Z,backend-api-11,staging,WARN,"2025-11-06T07:07:48.894Z WARN [backend-api-11] Health check passed: ready=true, status=200",0.8733637435590538,4
+2025-11-06T02:52:22.100Z,auth-service-08,staging,WARN,2025-11-06T02:52:22.100Z WARN [auth-service-08] ERROR: request timeout after 20294ms while calling db,0.8726569245680196,3
+2025-11-11T08:36:05.780Z,orders-16,dev,DEBUG,"2025-11-11T08:36:05.780Z DEBUG [orders-16] Health check passed: ready=true, status=200",0.871902118166576,4
+2025-11-07T05:09:15.090Z,orders-19,prod,WARN,2025-11-07T05:09:15.090Z WARN [orders-19] Cache hit for key=session:3691; ttl=140s,0.8717693340275243,4
+2025-11-08T09:51:36.623Z,backend-api-09,dev,WARN,2025-11-08T09:51:36.623Z WARN [backend-api-09] User 73001 authenticated successfully,0.8712335010486498,3
+2025-11-09T19:26:47.948Z,nginx-frontend-14,staging,DEBUG,"2025-11-09T19:26:47.948Z DEBUG [nginx-frontend-14] Health check passed: ready=true, status=200",0.8711824416272327,4
+2025-11-09T23:20:38.146Z,nginx-frontend-17,dev,WARN,2025-11-09T23:20:38.146Z WARN [nginx-frontend-17] Established connection to upstream payments.internal:5432,0.8692992958230148,2
+2025-11-12T01:38:08.013Z,backend-api-02,dev,DEBUG,2025-11-12T01:38:08.013Z DEBUG [backend-api-02] Background job cleanup completed in 153ms,0.8684739507382027,4
+2025-11-08T20:16:48.660Z,auth-service-13,prod,WARN,"2025-11-08T20:16:48.660Z WARN [auth-service-13] Graceful shutdown initiated, waiting for connections to drain",0.8682409393170221,3
+2025-11-06T11:48:52.875Z,nginx-frontend-06,staging,DEBUG,2025-11-06T11:48:52.875Z DEBUG [nginx-frontend-06] Started request GET /metrics from 10.0.4.23 in 268ms,0.8677597392752987,4
+2025-11-07T17:02:00.099Z,nginx-frontend-10,staging,DEBUG,2025-11-07T17:02:00.099Z DEBUG [nginx-frontend-10] Background job reindex completed in 86ms,0.8673979453008611,4
+2025-11-11T09:05:27.350Z,orders-06,prod,DEBUG,2025-11-11T09:05:27.350Z DEBUG [orders-06] Established connection to upstream inventory.internal:9000,0.8666888800148596,4
+2025-11-13T02:56:17.419Z,payments-20,dev,WARN,"2025-11-13T02:56:17.419Z WARN [payments-20] Graceful shutdown initiated, waiting for connections to drain",0.8661314736034367,3
+2025-11-09T07:19:26.525Z,nginx-frontend-17,dev,DEBUG,2025-11-09T07:19:26.525Z DEBUG [nginx-frontend-17] Background job reindex completed in 245ms,0.8652389321703935,4
+2025-11-12T18:36:50.799Z,nginx-frontend-18,prod,DEBUG,2025-11-12T18:36:50.799Z DEBUG [nginx-frontend-18] Completed 200 DELETE /health in 102ms,0.864965439121439,4
+2025-11-08T04:39:52.818Z,orders-02,staging,WARN,"2025-11-08T04:39:52.818Z WARN [orders-02] Health check passed: ready=true, status=200",0.8642193864243319,4
+2025-11-09T08:05:21.084Z,backend-api-01,dev,WARN,2025-11-09T08:05:21.084Z WARN [backend-api-01] Completed 304 GET /checkout in 310ms,0.8634592887762764,2
+2025-11-09T22:03:57.396Z,auth-service-01,dev,DEBUG,2025-11-09T22:03:57.396Z DEBUG [auth-service-01] Loaded config from /etc/config/app.yml,0.8631468980972588,4
+2025-11-13T08:35:10.914Z,orders-05,staging,WARN,2025-11-13T08:35:10.914Z WARN [orders-05] User 76809 authenticated successfully,0.8630593437860394,4
+2025-11-06T21:51:42.083Z,backend-api-20,staging,DEBUG,2025-11-06T21:51:42.083Z DEBUG [backend-api-20] Started request GET /api/v1/items from 10.0.1.48 in 275ms,0.8627027189904548,4
+2025-11-12T20:36:52.917Z,backend-api-08,staging,DEBUG,2025-11-12T20:36:52.917Z DEBUG [backend-api-08] Established connection to upstream db.internal:5432,0.8625407681991977,4
+2025-11-09T00:23:10.079Z,orders-04,prod,DEBUG,2025-11-09T00:23:10.079Z DEBUG [orders-04] Opening database transaction; connection_id=1877,0.8618592500278766,4
+2025-11-06T07:57:53.349Z,orders-14,staging,DEBUG,2025-11-06T07:57:53.349Z DEBUG [orders-14] Started request GET /health from 10.0.2.2 in 374ms,0.8618327913393764,4
+2025-11-12T17:41:59.462Z,nginx-frontend-01,staging,WARN,2025-11-12T17:41:59.462Z WARN [nginx-frontend-01] Opening database transaction; connection_id=6757,0.8615568917019938,4
+2025-11-07T17:15:57.356Z,payments-11,staging,DEBUG,"2025-11-07T17:15:57.356Z DEBUG [payments-11] Graceful shutdown initiated, waiting for connections to drain",0.8603306902584746,4
+2025-11-09T09:08:19.587Z,backend-api-14,dev,WARN,2025-11-09T09:08:19.587Z WARN [backend-api-14] Opening database transaction; connection_id=1100,0.8600942091175363,2
+2025-11-10T03:48:58.282Z,orders-12,staging,WARN,2025-11-10T03:48:58.282Z WARN [orders-12] Completed 201 DELETE /api/v1/orders in 388ms,0.8600686127888193,3
+2025-11-06T02:50:15.180Z,auth-service-16,prod,WARN,"2025-11-06T02:50:15.180Z WARN [auth-service-16] Graceful shutdown initiated, waiting for connections to drain",0.8595463491152633,3
+2025-11-12T22:05:44.534Z,backend-api-16,dev,DEBUG,2025-11-12T22:05:44.534Z DEBUG [backend-api-16] Completed 200 POST /api/v1/items in 407ms,0.8584823825865433,3
+2025-11-11T12:52:48.973Z,payments-12,prod,DEBUG,2025-11-11T12:52:48.973Z DEBUG [payments-12] Loaded config from /etc/config/app.yml,0.8574255710625871,4
+2025-11-09T17:32:08.858Z,auth-service-08,prod,WARN,2025-11-09T17:32:08.858Z WARN [auth-service-08] Background job reindex completed in 83ms,0.8572816745767291,3
+2025-11-11T14:30:02.291Z,backend-api-13,prod,DEBUG,"2025-11-11T14:30:02.291Z DEBUG [backend-api-13] Graceful shutdown initiated, waiting for connections to drain",0.85711838594163,3
+2025-11-11T15:03:28.713Z,nginx-frontend-11,prod,DEBUG,"2025-11-11T15:03:28.713Z DEBUG [nginx-frontend-11] Health check passed: ready=true, status=200",0.8570356597595152,4
+2025-11-11T04:05:14.887Z,backend-api-18,prod,DEBUG,"2025-11-11T04:05:14.887Z DEBUG [backend-api-18] Graceful shutdown initiated, waiting for connections to drain",0.8568450018303184,3
+2025-11-07T23:55:37.263Z,auth-service-10,dev,WARN,2025-11-07T23:55:37.263Z WARN [auth-service-10] ERROR: request timeout after 5612ms while calling payments,0.8563498557221889,2
+2025-11-11T12:26:19.011Z,auth-service-13,staging,DEBUG,2025-11-11T12:26:19.011Z DEBUG [auth-service-13] Cache hit for key=session:9225; ttl=1557s,0.8551435816276967,4
+2025-11-06T10:28:48.033Z,backend-api-18,dev,DEBUG,2025-11-06T10:28:48.033Z DEBUG [backend-api-18] Cache hit for key=session:8986; ttl=3159s,0.854831858586635,4
+2025-11-08T20:46:05.824Z,orders-19,dev,DEBUG,"2025-11-08T20:46:05.824Z DEBUG [orders-19] Graceful shutdown initiated, waiting for connections to drain",0.8541828154183744,3
+2025-11-09T13:35:37.621Z,backend-api-05,dev,DEBUG,"2025-11-09T13:35:37.621Z DEBUG [backend-api-05] Graceful shutdown initiated, waiting for connections to drain",0.8541071835048104,3
+2025-11-11T19:27:58.111Z,nginx-frontend-08,prod,DEBUG,"2025-11-11T19:27:58.111Z DEBUG [nginx-frontend-08] Health check passed: ready=true, status=200",0.8540597968961188,4
+2025-11-08T22:56:40.128Z,orders-07,prod,DEBUG,"2025-11-08T22:56:40.128Z DEBUG [orders-07] Graceful shutdown initiated, waiting for connections to drain",0.8539795332216302,3
+2025-11-13T03:18:28.789Z,payments-20,dev,WARN,2025-11-13T03:18:28.789Z WARN [payments-20] Opening database transaction; connection_id=6135,0.8539557761319818,3
+2025-11-13T04:41:25.139Z,auth-service-16,dev,WARN,2025-11-13T04:41:25.139Z WARN [auth-service-16] User 65789 authenticated successfully,0.8532046327422731,3
+2025-11-06T18:01:31.604Z,orders-07,staging,WARN,2025-11-06T18:01:31.604Z WARN [orders-07] User 11204 authenticated successfully,0.8529766688694362,4
+2025-11-06T19:42:46.976Z,orders-18,dev,DEBUG,"2025-11-06T19:42:46.976Z DEBUG [orders-18] Graceful shutdown initiated, waiting for connections to drain",0.852737860400044,3
+2025-11-07T04:10:00.087Z,payments-18,staging,WARN,2025-11-07T04:10:00.087Z WARN [payments-18] Opening database transaction; connection_id=8803,0.8526446478511915,4
+2025-11-12T19:39:31.149Z,payments-11,staging,WARN,2025-11-12T19:39:31.149Z WARN [payments-11] Opening database transaction; connection_id=9577,0.8525203983629446,3
+2025-11-12T21:30:07.032Z,orders-13,prod,WARN,2025-11-12T21:30:07.032Z WARN [orders-13] User 43039 authenticated successfully,0.8519050723822517,3
+2025-11-09T10:53:04.465Z,orders-17,staging,DEBUG,"2025-11-09T10:53:04.465Z DEBUG [orders-17] Health check passed: ready=true, status=200",0.8516700447530252,4
+2025-11-12T17:03:31.750Z,backend-api-01,prod,DEBUG,"2025-11-12T17:03:31.750Z DEBUG [backend-api-01] Graceful shutdown initiated, waiting for connections to drain",0.8516344129008226,3
+2025-11-12T13:20:56.256Z,backend-api-04,dev,DEBUG,"2025-11-12T13:20:56.256Z DEBUG [backend-api-04] Health check passed: ready=true, status=200",0.8516020949100733,4
+2025-11-07T14:55:01.418Z,orders-10,staging,WARN,2025-11-07T14:55:01.418Z WARN [orders-10] Started request PUT /api/v1/orders from 10.0.3.41 in 148ms,0.8515086147764093,3
+2025-11-09T01:24:54.135Z,orders-09,staging,DEBUG,2025-11-09T01:24:54.135Z DEBUG [orders-09] Started request GET /health from 10.0.0.45 in 307ms,0.850649119623887,3
+2025-11-08T11:07:48.761Z,backend-api-07,staging,DEBUG,2025-11-08T11:07:48.761Z DEBUG [backend-api-07] User 32966 authenticated successfully,0.8505564952049007,4
+2025-11-10T04:12:42.360Z,backend-api-09,staging,DEBUG,2025-11-10T04:12:42.360Z DEBUG [backend-api-09] User 52189 authenticated successfully,0.8503211805846256,4
+2025-11-08T15:21:32.653Z,payments-15,prod,DEBUG,2025-11-08T15:21:32.653Z DEBUG [payments-15] Established connection to upstream cache.internal:6379,0.8496280887801908,3
+2025-11-10T03:14:21.189Z,orders-16,prod,DEBUG,2025-11-10T03:14:21.189Z DEBUG [orders-16] Opening database transaction; connection_id=2161,0.849603885893849,4
+2025-11-07T13:30:47.094Z,payments-04,prod,WARN,2025-11-07T13:30:47.094Z WARN [payments-04] Started request POST /health from 10.0.2.13 in 425ms,0.8495901872232121,3
+2025-11-08T10:01:05.272Z,nginx-frontend-14,dev,WARN,2025-11-08T10:01:05.272Z WARN [nginx-frontend-14] Opening database transaction; connection_id=1672,0.8494570261134302,2
+2025-11-09T09:59:52.783Z,auth-service-13,staging,DEBUG,2025-11-09T09:59:52.783Z DEBUG [auth-service-13] Started request DELETE /api/v1/orders from 10.0.2.39 in 117ms,0.849372129949928,4
+2025-11-09T08:03:24.230Z,orders-10,prod,DEBUG,2025-11-09T08:03:24.230Z DEBUG [orders-10] Opening database transaction; connection_id=1681,0.8483942200449235,4
+2025-11-06T10:41:58.192Z,backend-api-10,prod,WARN,2025-11-06T10:41:58.192Z WARN [backend-api-10] Opening database transaction; connection_id=3675,0.8481603926057248,3
+2025-11-11T16:02:10.763Z,auth-service-14,dev,WARN,2025-11-11T16:02:10.763Z WARN [auth-service-14] Established connection to upstream inventory.internal:9000,0.8480538184999533,2
+2025-11-07T06:10:59.865Z,payments-20,dev,WARN,2025-11-07T06:10:59.865Z WARN [payments-20] User 74814 authenticated successfully,0.8479569447995057,3
+2025-11-07T05:11:42.741Z,orders-05,dev,DEBUG,2025-11-07T05:11:42.741Z DEBUG [orders-05] Started request GET /checkout from 10.0.2.1 in 15ms,0.8478935139417803,2
+2025-11-13T02:18:19.122Z,auth-service-08,prod,WARN,2025-11-13T02:18:19.122Z WARN [auth-service-08] Opening database transaction; connection_id=6544,0.8470663879238676,2
+2025-11-12T18:38:18.485Z,backend-api-04,prod,WARN,2025-11-12T18:38:18.485Z WARN [backend-api-04] User 39437 authenticated successfully,0.8465331252435604,3
+2025-11-08T22:00:36.586Z,backend-api-14,staging,WARN,2025-11-08T22:00:36.586Z WARN [backend-api-14] User 78656 authenticated successfully,0.8463248680780415,3
+2025-11-10T14:31:15.614Z,auth-service-01,dev,WARN,2025-11-10T14:31:15.614Z WARN [auth-service-01] Established connection to upstream db.internal:9000,0.8462713390729686,2
+2025-11-12T23:02:14.692Z,orders-13,staging,DEBUG,"2025-11-12T23:02:14.692Z DEBUG [orders-13] Health check passed: ready=true, status=200",0.8461932439105708,3
+2025-11-06T07:15:35.414Z,auth-service-05,staging,WARN,"2025-11-06T07:15:35.414Z WARN [auth-service-05] Health check passed: ready=true, status=200",0.8455047081686482,3
+2025-11-12T09:09:16.255Z,orders-01,staging,DEBUG,2025-11-12T09:09:16.255Z DEBUG [orders-01] User 33568 authenticated successfully,0.845424342783601,4
+2025-11-06T14:08:21.475Z,payments-02,prod,DEBUG,2025-11-06T14:08:21.475Z DEBUG [payments-02] Loaded config from /etc/config/app.yml,0.8451846472909419,4
+2025-11-07T17:28:09.728Z,payments-03,prod,WARN,"2025-11-07T17:28:09.728Z WARN [payments-03] Graceful shutdown initiated, waiting for connections to drain",0.8450613534858493,4
+2025-11-08T20:24:09.482Z,payments-20,dev,WARN,2025-11-08T20:24:09.482Z WARN [payments-20] Opening database transaction; connection_id=1673,0.8442095083166219,3
+2025-11-12T11:53:32.223Z,payments-04,dev,WARN,2025-11-12T11:53:32.223Z WARN [payments-04] Opening database transaction; connection_id=2970,0.8435793983628637,3
+2025-11-08T21:56:55.378Z,payments-06,dev,WARN,2025-11-08T21:56:55.378Z WARN [payments-06] Opening database transaction; connection_id=7131,0.841631468564835,3
+2025-11-07T04:25:44.482Z,backend-api-09,dev,DEBUG,"2025-11-07T04:25:44.482Z DEBUG [backend-api-09] Health check passed: ready=true, status=200",0.8416153980354895,4
+2025-11-11T04:50:07.806Z,nginx-frontend-04,prod,DEBUG,2025-11-11T04:50:07.806Z DEBUG [nginx-frontend-04] Opening database transaction; connection_id=2591,0.8410212250139817,4
+2025-11-12T09:01:56.225Z,backend-api-17,prod,DEBUG,"2025-11-12T09:01:56.225Z DEBUG [backend-api-17] Health check passed: ready=true, status=200",0.840851870084693,4
+2025-11-07T06:23:00.691Z,orders-06,prod,DEBUG,2025-11-07T06:23:00.691Z DEBUG [orders-06] Opening database transaction; connection_id=9591,0.8401190466237125,4
+2025-11-06T13:22:54.101Z,auth-service-01,prod,WARN,"2025-11-06T13:22:54.101Z WARN [auth-service-01] Health check passed: ready=true, status=200",0.8401087846874664,3
+2025-11-09T09:49:39.059Z,auth-service-17,staging,DEBUG,2025-11-09T09:49:39.059Z DEBUG [auth-service-17] Established connection to upstream cache.internal:8080,0.8394025415458466,3
+2025-11-08T08:33:34.670Z,orders-01,staging,DEBUG,2025-11-08T08:33:34.670Z DEBUG [orders-01] User 97519 authenticated successfully,0.8393684149695138,4
+2025-11-08T06:26:24.161Z,payments-20,dev,DEBUG,2025-11-08T06:26:24.161Z DEBUG [payments-20] Established connection to upstream db.internal:9000,0.839337737475498,2
+2025-11-06T12:25:48.635Z,nginx-frontend-08,dev,DEBUG,2025-11-06T12:25:48.635Z DEBUG [nginx-frontend-08] Started request POST /api/v1/payments from 10.0.0.27 in 153ms,0.8388513619107631,2
+2025-11-09T04:12:00.670Z,payments-01,dev,DEBUG,"2025-11-09T04:12:00.670Z DEBUG [payments-01] Graceful shutdown initiated, waiting for connections to drain",0.838609581462876,3
+2025-11-13T08:58:54.262Z,payments-07,staging,DEBUG,2025-11-13T08:58:54.262Z DEBUG [payments-07] Background job cleanup completed in 236ms,0.8382299565632207,3
+2025-11-07T14:12:09.904Z,payments-13,staging,DEBUG,2025-11-07T14:12:09.904Z DEBUG [payments-13] User 21297 authenticated successfully,0.837874221197072,3
+2025-11-12T07:23:47.996Z,payments-14,staging,DEBUG,"2025-11-12T07:23:47.996Z DEBUG [payments-14] Graceful shutdown initiated, waiting for connections to drain",0.836549473353144,4
+2025-11-12T05:26:49.820Z,backend-api-01,prod,DEBUG,2025-11-12T05:26:49.820Z DEBUG [backend-api-01] Loaded config from /etc/config/app.yml,0.8361454465129214,2
+2025-11-09T05:05:37.876Z,auth-service-12,staging,DEBUG,2025-11-09T05:05:37.876Z DEBUG [auth-service-12] User 94188 authenticated successfully,0.8356726466006608,3
+2025-11-11T06:14:21.781Z,orders-02,dev,DEBUG,2025-11-11T06:14:21.781Z DEBUG [orders-02] Opening database transaction; connection_id=3329,0.835355873218596,3
+2025-11-12T02:00:00.282Z,nginx-frontend-09,staging,DEBUG,2025-11-12T02:00:00.282Z DEBUG [nginx-frontend-09] Started request PUT /api/v1/orders from 10.0.0.39 in 179ms,0.834896358825906,3
+2025-11-12T04:52:06.024Z,payments-01,prod,DEBUG,2025-11-12T04:52:06.024Z DEBUG [payments-01] User 88880 authenticated successfully,0.8344581259588226,3
+2025-11-06T02:44:12.980Z,nginx-frontend-18,dev,DEBUG,2025-11-06T02:44:12.980Z DEBUG [nginx-frontend-18] Completed 200 POST /api/v1/orders in 393ms,0.8342354238539227,2
+2025-11-08T14:23:17.349Z,auth-service-07,prod,WARN,"2025-11-08T14:23:17.349Z WARN [auth-service-07] Health check passed: ready=true, status=200",0.8337953741864172,3
+2025-11-09T06:23:54.567Z,orders-04,prod,DEBUG,"2025-11-09T06:23:54.567Z DEBUG [orders-04] Health check passed: ready=true, status=200",0.8333322753982015,4
+2025-11-13T09:33:26.054Z,payments-19,prod,DEBUG,2025-11-13T09:33:26.054Z DEBUG [payments-19] Completed 200 GET /health in 378ms,0.8331339119179475,3
+2025-11-11T23:58:26.660Z,nginx-frontend-03,prod,DEBUG,2025-11-11T23:58:26.660Z DEBUG [nginx-frontend-03] Opening database transaction; connection_id=8326,0.8330665655807539,4
+2025-11-08T12:46:37.833Z,orders-17,dev,DEBUG,2025-11-08T12:46:37.833Z DEBUG [orders-17] Cache hit for key=session:3130; ttl=926s,0.8325050874339319,2
+2025-11-13T08:19:47.862Z,backend-api-06,dev,DEBUG,"2025-11-13T08:19:47.862Z DEBUG [backend-api-06] Health check passed: ready=true, status=200",0.8320560465821174,4
+2025-11-06T10:38:03.329Z,orders-20,staging,DEBUG,2025-11-06T10:38:03.329Z DEBUG [orders-20] Cache hit for key=session:6128; ttl=2700s,0.831979315769837,3
+2025-11-12T15:08:12.223Z,auth-service-04,dev,DEBUG,2025-11-12T15:08:12.223Z DEBUG [auth-service-04] Established connection to upstream inventory.internal:8080,0.8319438293609109,2
+2025-11-11T11:02:07.940Z,nginx-frontend-11,dev,DEBUG,2025-11-11T11:02:07.940Z DEBUG [nginx-frontend-11] Started request POST /api/v1/payments from 10.0.3.49 in 59ms,0.8315706043303508,2
+2025-11-07T03:49:58.753Z,orders-13,prod,DEBUG,2025-11-07T03:49:58.753Z DEBUG [orders-13] Cache hit for key=session:5490; ttl=1909s,0.831522520521256,3
+2025-11-06T00:14:44.720Z,orders-12,prod,DEBUG,2025-11-06T00:14:44.720Z DEBUG [orders-12] Started request POST /checkout from 10.0.3.33 in 307ms,0.8299761805591723,3
+2025-11-08T21:46:27.067Z,payments-06,prod,DEBUG,2025-11-08T21:46:27.067Z DEBUG [payments-06] User 73077 authenticated successfully,0.8290354596565921,3
+2025-11-07T11:05:12.135Z,auth-service-02,staging,WARN,"2025-11-07T11:05:12.135Z WARN [auth-service-02] Health check passed: ready=true, status=200",0.8289735987535751,3
+2025-11-08T06:44:22.109Z,backend-api-06,prod,DEBUG,2025-11-08T06:44:22.109Z DEBUG [backend-api-06] Opening database transaction; connection_id=8808,0.8284621437891335,3
+2025-11-07T16:54:07.578Z,payments-14,prod,DEBUG,2025-11-07T16:54:07.578Z DEBUG [payments-14] Cache hit for key=session:2514; ttl=2036s,0.8280222113903237,3
+2025-11-12T14:57:35.433Z,auth-service-08,staging,DEBUG,"2025-11-12T14:57:35.433Z DEBUG [auth-service-08] Health check passed: ready=true, status=200",0.8279212595488064,3
+2025-11-07T15:32:30.944Z,orders-16,prod,DEBUG,2025-11-07T15:32:30.944Z DEBUG [orders-16] User 60023 authenticated successfully,0.8278318906446382,3
+2025-11-10T22:37:50.918Z,orders-04,dev,DEBUG,"2025-11-10T22:37:50.918Z DEBUG [orders-04] Health check passed: ready=true, status=200",0.8277955071613126,4
+2025-11-07T23:16:15.149Z,payments-06,dev,DEBUG,"2025-11-07T23:16:15.149Z DEBUG [payments-06] Graceful shutdown initiated, waiting for connections to drain",0.8270107897470265,3
+2025-11-11T23:12:04.071Z,backend-api-02,dev,WARN,2025-11-11T23:12:04.071Z WARN [backend-api-02] Established connection to upstream payments.internal:6379,0.8248517218760383,2
+2025-11-12T22:24:58.745Z,payments-15,prod,DEBUG,"2025-11-12T22:24:58.745Z DEBUG [payments-15] Health check passed: ready=true, status=200",0.8244268829676931,3
+2025-11-08T14:42:47.661Z,backend-api-14,dev,DEBUG,2025-11-08T14:42:47.661Z DEBUG [backend-api-14] Completed 200 PUT /checkout in 16ms,0.8241404706884281,2
+2025-11-11T21:42:05.259Z,payments-15,prod,DEBUG,2025-11-11T21:42:05.259Z DEBUG [payments-15] Cache hit for key=session:2847; ttl=1135s,0.8237689333671048,3
+2025-11-08T11:54:11.697Z,payments-10,dev,DEBUG,2025-11-08T11:54:11.697Z DEBUG [payments-10] Cache hit for key=session:9362; ttl=1685s,0.8236837664417256,2
+2025-11-07T23:42:26.825Z,auth-service-14,prod,DEBUG,2025-11-07T23:42:26.825Z DEBUG [auth-service-14] Opening database transaction; connection_id=7708,0.8229085574935389,3
+2025-11-11T13:07:27.844Z,backend-api-11,prod,DEBUG,2025-11-11T13:07:27.844Z DEBUG [backend-api-11] Started request GET /api/v1/payments from 10.0.4.33 in 235ms,0.8224089973653039,3
+2025-11-07T19:08:55.964Z,payments-05,staging,DEBUG,2025-11-07T19:08:55.964Z DEBUG [payments-05] Started request POST /api/v1/payments from 10.0.1.5 in 278ms,0.8222504027731063,3
+2025-11-10T15:02:11.003Z,orders-02,staging,DEBUG,2025-11-10T15:02:11.003Z DEBUG [orders-02] Completed 204 POST /api/v1/payments in 23ms,0.8218656939582987,3
+2025-11-07T09:25:51.557Z,backend-api-05,staging,DEBUG,2025-11-07T09:25:51.557Z DEBUG [backend-api-05] Completed 204 GET /api/v1/orders in 162ms,0.8211584268647987,3
+2025-11-13T03:43:16.938Z,orders-03,prod,DEBUG,2025-11-13T03:43:16.938Z DEBUG [orders-03] Opening database transaction; connection_id=5576,0.8208242709638833,3
+2025-11-11T07:31:34.818Z,auth-service-04,prod,DEBUG,2025-11-11T07:31:34.818Z DEBUG [auth-service-04] Opening database transaction; connection_id=3572,0.8203944380992558,3
+2025-11-06T11:31:55.372Z,payments-13,staging,DEBUG,"2025-11-06T11:31:55.372Z DEBUG [payments-13] Health check passed: ready=true, status=200",0.8197424171041616,3
+2025-11-07T13:05:08.553Z,payments-03,staging,DEBUG,2025-11-07T13:05:08.553Z DEBUG [payments-03] Established connection to upstream auth.internal:8080,0.8188527492455515,3
+2025-11-10T16:04:49.789Z,auth-service-08,dev,WARN,2025-11-10T16:04:49.789Z WARN [auth-service-08] Established connection to upstream payments.internal:6379,0.8182766129053327,2
+2025-11-10T02:11:27.809Z,payments-19,dev,DEBUG,"2025-11-10T02:11:27.809Z DEBUG [payments-19] Health check passed: ready=true, status=200",0.8153696112152891,2
+2025-11-08T19:49:41.858Z,auth-service-16,staging,DEBUG,2025-11-08T19:49:41.858Z DEBUG [auth-service-16] Opening database transaction; connection_id=9379,0.8134173353775096,3
+2025-11-08T12:13:46.398Z,payments-07,dev,DEBUG,2025-11-08T12:13:46.398Z DEBUG [payments-07] Established connection to upstream auth.internal:5432,0.8109437020379673,2
+2025-11-09T02:33:22.202Z,backend-api-20,prod,DEBUG,2025-11-09T02:33:22.202Z DEBUG [backend-api-20] Completed 200 POST /api/v1/payments in 257ms,0.8086249399275021,3
+2025-11-10T11:30:42.955Z,payments-03,prod,DEBUG,"2025-11-10T11:30:42.955Z DEBUG [payments-03] Health check passed: ready=true, status=200",0.7998184890426501,3
+2025-11-06T08:40:08.453Z,backend-api-01,dev,DEBUG,2025-11-06T08:40:08.453Z DEBUG [backend-api-01] Completed 200 GET /login in 210ms,0.7960579219023733,1
+2025-11-07T04:43:06.714Z,orders-17,staging,ERROR,2025-11-07T04:43:06.714Z ERROR [orders-17] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.6580154876593869,3
+2025-11-11T15:09:21.671Z,backend-api-04,staging,ERROR,2025-11-11T15:09:21.671Z ERROR [backend-api-04] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.6508519333184997,4
+2025-11-07T17:09:55.412Z,orders-16,dev,ERROR,2025-11-07T17:09:55.412Z ERROR [orders-16] ERROR: Segmentation fault (core dumped) in worker thread,0.6488421977410384,2
+2025-11-12T05:32:34.110Z,orders-14,staging,ERROR,2025-11-12T05:32:34.110Z ERROR [orders-14] ERROR: Segmentation fault (core dumped) in worker thread,0.6466928881319065,4
+2025-11-08T18:55:24.583Z,backend-api-18,prod,ERROR,2025-11-08T18:55:24.583Z ERROR [backend-api-18] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.64032396107562,4
+2025-11-07T01:03:01.730Z,payments-05,dev,ERROR,2025-11-07T01:03:01.730Z ERROR [payments-05] ERROR: Segmentation fault (core dumped) in worker thread,0.639952256411795,2
+2025-11-06T13:58:55.969Z,payments-03,staging,ERROR,2025-11-06T13:58:55.969Z ERROR [payments-03] ERROR: Segmentation fault (core dumped) in worker thread,0.6377447658267963,4
+2025-11-09T11:38:54.502Z,orders-03,prod,ERROR,2025-11-09T11:38:54.502Z ERROR [orders-03] ERROR: OOMKilled - process terminated due to out-of-memory,0.6374310311596338,4
+2025-11-08T13:16:46.880Z,backend-api-15,dev,ERROR,2025-11-08T13:16:46.880Z ERROR [backend-api-15] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.6372904897129086,2
+2025-11-07T02:54:24.630Z,orders-02,staging,ERROR,2025-11-07T02:54:24.630Z ERROR [orders-02] ERROR: OOMKilled - process terminated due to out-of-memory,0.6343290424545094,3
+2025-11-13T01:48:44.927Z,orders-02,staging,ERROR,2025-11-13T01:48:44.927Z ERROR [orders-02] ERROR: OOMKilled - process terminated due to out-of-memory,0.6322017261411714,3
+2025-11-13T04:49:40.681Z,orders-18,staging,ERROR,2025-11-13T04:49:40.681Z ERROR [orders-18] ERROR: Segmentation fault (core dumped) in worker thread,0.6318592130746756,3
+2025-11-09T10:53:53.363Z,payments-17,staging,ERROR,2025-11-09T10:53:53.363Z ERROR [payments-17] ERROR: database deadlock detected; rolling back transaction,0.6310715365547441,1
+2025-11-07T02:20:40.330Z,backend-api-06,staging,ERROR,2025-11-07T02:20:40.330Z ERROR [backend-api-06] ERROR: database deadlock detected; rolling back transaction,0.6302246479925251,2
+2025-11-11T03:04:21.830Z,payments-20,prod,ERROR,2025-11-11T03:04:21.830Z ERROR [payments-20] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.6289913065297603,4
+2025-11-10T14:48:50.474Z,payments-15,staging,ERROR,2025-11-10T14:48:50.474Z ERROR [payments-15] ERROR: Segmentation fault (core dumped) in worker thread,0.6286118592109249,3
+2025-11-11T05:02:59.278Z,orders-03,staging,ERROR,2025-11-11T05:02:59.278Z ERROR [orders-03] ERROR: Segmentation fault (core dumped) in worker thread,0.6281236908750332,3
+2025-11-10T16:27:28.775Z,orders-18,dev,ERROR,2025-11-10T16:27:28.775Z ERROR [orders-18] ERROR: Segmentation fault (core dumped) in worker thread,0.6273988674255544,2
+2025-11-13T06:34:31.992Z,orders-01,dev,ERROR,2025-11-13T06:34:31.992Z ERROR [orders-01] ERROR: OOMKilled - process terminated due to out-of-memory,0.6252050281044452,1
+2025-11-09T13:28:16.206Z,nginx-frontend-07,prod,ERROR,2025-11-09T13:28:16.206Z ERROR [nginx-frontend-07] ERROR: OOMKilled - process terminated due to out-of-memory,0.6247952460460526,2
+2025-11-12T03:47:26.377Z,orders-19,dev,ERROR,2025-11-12T03:47:26.377Z ERROR [orders-19] ERROR: OOMKilled - process terminated due to out-of-memory,0.6247856411265085,2
+2025-11-09T04:29:42.148Z,orders-14,prod,ERROR,2025-11-09T04:29:42.148Z ERROR [orders-14] ERROR: database deadlock detected; rolling back transaction,0.6245510323194257,2
+2025-11-08T22:09:53.338Z,payments-02,dev,ERROR,2025-11-08T22:09:53.338Z ERROR [payments-02] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.6242454765970527,2
+2025-11-07T22:23:23.250Z,auth-service-03,prod,ERROR,2025-11-07T22:23:23.250Z ERROR [auth-service-03] ERROR: ImagePullBackOff: failed to pull image myorg/backend:1.4.2,0.6237319207828831,1
+2025-11-10T01:28:25.067Z,payments-04,dev,ERROR,2025-11-10T01:28:25.067Z ERROR [payments-04] ERROR: OOMKilled - process terminated due to out-of-memory,0.6236947898973728,1
+2025-11-11T12:28:55.474Z,backend-api-13,prod,ERROR,2025-11-11T12:28:55.474Z ERROR [backend-api-13] ERROR: CrashLoopBackOff: container restarted 12 times,0.6210848665379727,3
+2025-11-12T15:29:22.243Z,nginx-frontend-14,prod,ERROR,2025-11-12T15:29:22.243Z ERROR [nginx-frontend-14] ERROR: ImagePullBackOff: failed to pull image nginx:1.25.0,0.6205071430218596,4
+2025-11-11T00:27:52.433Z,payments-12,prod,ERROR,2025-11-11T00:27:52.433Z ERROR [payments-12] ERROR: Segmentation fault (core dumped) in worker thread,0.6203561305263774,4
+2025-11-13T06:08:11.723Z,orders-20,dev,ERROR,2025-11-13T06:08:11.723Z ERROR [orders-20] ERROR: Segmentation fault (core dumped) in worker thread,0.620222355696082,2
+2025-11-11T09:03:40.753Z,payments-03,prod,ERROR,2025-11-11T09:03:40.753Z ERROR [payments-03] ERROR: Segmentation fault (core dumped) in worker thread,0.6201819376186033,4
+2025-11-06T15:11:02.676Z,payments-07,staging,ERROR,2025-11-06T15:11:02.676Z ERROR [payments-07] ERROR: Segmentation fault (core dumped) in worker thread,0.6186960127965024,3
+2025-11-11T15:53:07.436Z,orders-06,dev,ERROR,2025-11-11T15:53:07.436Z ERROR [orders-06] ERROR: database deadlock detected; rolling back transaction,0.6184656461014248,1
+2025-11-12T16:55:34.493Z,nginx-frontend-13,staging,ERROR,2025-11-12T16:55:34.493Z ERROR [nginx-frontend-13] ERROR: ImagePullBackOff: failed to pull image nginx:1.25.0,0.6183413510217686,1
+2025-11-08T16:22:37.901Z,payments-19,staging,ERROR,2025-11-08T16:22:37.901Z ERROR [payments-19] ERROR: OOMKilled - process terminated due to out-of-memory,0.6175810943375857,3
+2025-11-12T02:04:47.151Z,payments-03,prod,ERROR,2025-11-12T02:04:47.151Z ERROR [payments-03] ERROR: OOMKilled - process terminated due to out-of-memory,0.6173080777125888,2
+2025-11-12T11:43:16.873Z,payments-03,staging,ERROR,2025-11-12T11:43:16.873Z ERROR [payments-03] ERROR: OOMKilled - process terminated due to out-of-memory,0.6168639245476388,1
+2025-11-09T00:14:56.006Z,payments-13,prod,ERROR,2025-11-09T00:14:56.006Z ERROR [payments-13] ERROR: OOMKilled - process terminated due to out-of-memory,0.6167051744008991,2
+2025-11-09T07:21:33.767Z,nginx-frontend-13,dev,ERROR,2025-11-09T07:21:33.767Z ERROR [nginx-frontend-13] ERROR: OOMKilled - process terminated due to out-of-memory,0.6164456387552968,1
+2025-11-07T05:58:39.574Z,payments-20,dev,ERROR,2025-11-07T05:58:39.574Z ERROR [payments-20] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.6157654339725922,1
+2025-11-11T18:18:58.142Z,backend-api-18,staging,ERROR,2025-11-11T18:18:58.142Z ERROR [backend-api-18] ERROR: CrashLoopBackOff: container restarted 2 times,0.6153972313801748,2
+2025-11-08T13:05:52.975Z,backend-api-19,prod,ERROR,2025-11-08T13:05:52.975Z ERROR [backend-api-19] ERROR: CrashLoopBackOff: container restarted 16 times,0.6153783432818023,3
+2025-11-08T23:35:28.465Z,backend-api-04,dev,ERROR,2025-11-08T23:35:28.465Z ERROR [backend-api-04] ERROR: Segmentation fault (core dumped) in worker thread,0.6151784914646532,1
+2025-11-12T10:37:37.170Z,payments-06,prod,ERROR,2025-11-12T10:37:37.170Z ERROR [payments-06] ERROR: Segmentation fault (core dumped) in worker thread,0.614901564336265,2
+2025-11-07T23:15:28.185Z,orders-06,dev,ERROR,2025-11-07T23:15:28.185Z ERROR [orders-06] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.6144319512552929,1
+2025-11-12T00:35:26.975Z,payments-17,dev,ERROR,2025-11-12T00:35:26.975Z ERROR [payments-17] ERROR: OOMKilled - process terminated due to out-of-memory,0.6131685954114445,1
+2025-11-06T13:37:44.281Z,auth-service-04,prod,ERROR,2025-11-06T13:37:44.281Z ERROR [auth-service-04] ERROR: Segmentation fault (core dumped) in worker thread,0.6122424572106553,2
+2025-11-12T12:52:24.195Z,nginx-frontend-10,staging,ERROR,2025-11-12T12:52:24.195Z ERROR [nginx-frontend-10] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.6110159056237188,1
+2025-11-07T06:43:59.784Z,orders-12,dev,ERROR,2025-11-07T06:43:59.784Z ERROR [orders-12] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.6106779522911707,1
+2025-11-06T15:26:53.416Z,backend-api-08,staging,ERROR,2025-11-06T15:26:53.416Z ERROR [backend-api-08] ERROR: Segmentation fault (core dumped) in worker thread,0.6102017586444894,2
+2025-11-10T23:07:53.062Z,orders-11,staging,ERROR,2025-11-10T23:07:53.062Z ERROR [orders-11] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.6098168859652864,2
+2025-11-07T16:02:24.005Z,orders-06,staging,ERROR,2025-11-07T16:02:24.005Z ERROR [orders-06] ERROR: database deadlock detected; rolling back transaction,0.609654821109932,1
+2025-11-08T22:32:41.032Z,orders-04,prod,ERROR,2025-11-08T22:32:41.032Z ERROR [orders-04] ERROR: CrashLoopBackOff: container restarted 17 times,0.6092095039169934,2
+2025-11-07T15:00:54.320Z,nginx-frontend-08,staging,ERROR,2025-11-07T15:00:54.320Z ERROR [nginx-frontend-08] ERROR: CrashLoopBackOff: container restarted 7 times,0.6090723678764798,3
+2025-11-08T06:48:23.823Z,orders-18,prod,ERROR,2025-11-08T06:48:23.823Z ERROR [orders-18] ERROR: CrashLoopBackOff: container restarted 17 times,0.6082009635708499,4
+2025-11-08T07:01:36.152Z,nginx-frontend-08,prod,ERROR,2025-11-08T07:01:36.152Z ERROR [nginx-frontend-08] ERROR: OOMKilled - process terminated due to out-of-memory,0.607016412798723,1
+2025-11-07T04:13:13.685Z,nginx-frontend-18,prod,ERROR,2025-11-07T04:13:13.685Z ERROR [nginx-frontend-18] ERROR: CrashLoopBackOff: container restarted 4 times,0.6064309986274212,4
+2025-11-12T08:06:19.302Z,backend-api-18,staging,ERROR,2025-11-12T08:06:19.302Z ERROR [backend-api-18] ERROR: Segmentation fault (core dumped) in worker thread,0.6054038185809825,2
+2025-11-08T04:03:30.300Z,payments-14,prod,ERROR,2025-11-08T04:03:30.300Z ERROR [payments-14] ERROR: OOMKilled - process terminated due to out-of-memory,0.605260247814182,2
+2025-11-06T14:43:35.940Z,payments-07,staging,ERROR,2025-11-06T14:43:35.940Z ERROR [payments-07] ERROR: database deadlock detected; rolling back transaction,0.6048466972236373,1
+2025-11-10T03:37:13.986Z,payments-06,prod,ERROR,2025-11-10T03:37:13.986Z ERROR [payments-06] ERROR: ImagePullBackOff: failed to pull image myorg/auth:0.9.8,0.6047376849922315,2
+2025-11-07T16:32:47.135Z,orders-19,prod,ERROR,2025-11-07T16:32:47.135Z ERROR [orders-19] ERROR: CrashLoopBackOff: container restarted 15 times,0.6044363662900922,2
+2025-11-12T14:18:22.826Z,nginx-frontend-20,staging,ERROR,2025-11-12T14:18:22.826Z ERROR [nginx-frontend-20] ERROR: Segmentation fault (core dumped) in worker thread,0.6028885002502129,1
+2025-11-10T16:53:00.426Z,payments-18,prod,ERROR,2025-11-10T16:53:00.426Z ERROR [payments-18] ERROR: OOMKilled - process terminated due to out-of-memory,0.6024519292274859,1
+2025-11-10T19:55:03.633Z,nginx-frontend-07,prod,ERROR,2025-11-10T19:55:03.633Z ERROR [nginx-frontend-07] ERROR: Segmentation fault (core dumped) in worker thread,0.6023897215904359,1
+2025-11-11T22:14:49.313Z,nginx-frontend-14,staging,ERROR,2025-11-11T22:14:49.313Z ERROR [nginx-frontend-14] ERROR: 5xx gateway error from upstream db.internal:8080 - response=502 Bad Gateway,0.6015674198935161,1
+2025-11-11T07:39:21.305Z,nginx-frontend-18,dev,ERROR,2025-11-11T07:39:21.305Z ERROR [nginx-frontend-18] ERROR: connection refused from db.internal:8080,0.6004895015118001,1
+2025-11-08T19:04:19.477Z,orders-07,prod,ERROR,2025-11-08T19:04:19.477Z ERROR [orders-07] ERROR: CrashLoopBackOff: container restarted 2 times,0.6004339341453857,3
+2025-11-11T07:35:37.535Z,nginx-frontend-04,prod,ERROR,2025-11-11T07:35:37.535Z ERROR [nginx-frontend-04] ERROR: Segmentation fault (core dumped) in worker thread,0.5997369349697932,1
+2025-11-13T05:53:21.787Z,nginx-frontend-17,prod,ERROR,2025-11-13T05:53:21.787Z ERROR [nginx-frontend-17] ERROR: CrashLoopBackOff: container restarted 7 times,0.5994804698699712,2
+2025-11-11T21:58:08.007Z,backend-api-09,prod,ERROR,2025-11-11T21:58:08.007Z ERROR [backend-api-09] ERROR: CrashLoopBackOff: container restarted 5 times,0.5992864801966946,3
+2025-11-13T09:05:33.012Z,nginx-frontend-10,dev,ERROR,2025-11-13T09:05:33.012Z ERROR [nginx-frontend-10] ERROR: OOMKilled - process terminated due to out-of-memory,0.5992725115646622,1
+2025-11-09T03:50:56.378Z,backend-api-07,dev,ERROR,2025-11-09T03:50:56.378Z ERROR [backend-api-07] ERROR: CrashLoopBackOff: container restarted 11 times,0.59913320720635,1
+2025-11-08T00:39:21.045Z,auth-service-17,prod,ERROR,2025-11-08T00:39:21.045Z ERROR [auth-service-17] ERROR: CrashLoopBackOff: container restarted 5 times,0.5988348516778665,3
+2025-11-13T02:05:33.027Z,payments-13,prod,ERROR,2025-11-13T02:05:33.027Z ERROR [payments-13] ERROR: CrashLoopBackOff: container restarted 11 times,0.5980945065258387,1
+2025-11-10T05:07:12.493Z,orders-08,prod,ERROR,2025-11-10T05:07:12.493Z ERROR [orders-08] ERROR: CrashLoopBackOff: container restarted 6 times,0.597426620364029,2
+2025-11-11T06:44:36.386Z,nginx-frontend-16,prod,ERROR,2025-11-11T06:44:36.386Z ERROR [nginx-frontend-16] ERROR: CrashLoopBackOff: container restarted 11 times,0.5970454673656707,3
+2025-11-08T13:04:59.639Z,payments-12,dev,ERROR,2025-11-08T13:04:59.639Z ERROR [payments-12] ERROR: connection refused from payments.internal:8080,0.5965555724926577,1
+2025-11-08T22:52:57.216Z,backend-api-03,prod,ERROR,2025-11-08T22:52:57.216Z ERROR [backend-api-03] ERROR: 5xx gateway error from upstream cache.internal:8080 - response=502 Bad Gateway,0.5964732050415944,2
+2025-11-08T00:20:44.630Z,backend-api-07,prod,ERROR,2025-11-08T00:20:44.630Z ERROR [backend-api-07] ERROR: Segmentation fault (core dumped) in worker thread,0.5959040692155235,2
+2025-11-09T16:18:43.659Z,backend-api-15,prod,ERROR,2025-11-09T16:18:43.659Z ERROR [backend-api-15] ERROR: OOMKilled - process terminated due to out-of-memory,0.5955999507431531,2
+2025-11-08T05:51:02.379Z,auth-service-12,prod,ERROR,2025-11-08T05:51:02.379Z ERROR [auth-service-12] ERROR: OOMKilled - process terminated due to out-of-memory,0.5955272241929195,2
+2025-11-07T01:31:32.128Z,backend-api-01,prod,ERROR,2025-11-07T01:31:32.128Z ERROR [backend-api-01] ERROR: 5xx gateway error from upstream cache.internal:5432 - response=502 Bad Gateway,0.5951172492057406,1
+2025-11-09T19:01:58.649Z,auth-service-09,dev,ERROR,2025-11-09T19:01:58.649Z ERROR [auth-service-09] ERROR: CrashLoopBackOff: container restarted 9 times,0.5948197727604354,1
+2025-11-06T03:19:09.271Z,backend-api-08,dev,ERROR,2025-11-06T03:19:09.271Z ERROR [backend-api-08] ERROR: OOMKilled - process terminated due to out-of-memory,0.594772760381673,1
+2025-11-09T19:32:26.126Z,auth-service-04,dev,ERROR,2025-11-09T19:32:26.126Z ERROR [auth-service-04] ERROR: CrashLoopBackOff: container restarted 11 times,0.5946523082587643,1
+2025-11-08T21:00:11.309Z,backend-api-17,prod,ERROR,2025-11-08T21:00:11.309Z ERROR [backend-api-17] ERROR: OOMKilled - process terminated due to out-of-memory,0.5939892935178617,1
+2025-11-10T03:55:42.322Z,backend-api-12,dev,ERROR,2025-11-10T03:55:42.322Z ERROR [backend-api-12] ERROR: Segmentation fault (core dumped) in worker thread,0.5939327569383335,1
+2025-11-08T21:27:47.116Z,backend-api-07,prod,ERROR,2025-11-08T21:27:47.116Z ERROR [backend-api-07] ERROR: OOMKilled - process terminated due to out-of-memory,0.5938100838480644,2
+2025-11-10T07:58:34.882Z,nginx-frontend-11,staging,ERROR,2025-11-10T07:58:34.882Z ERROR [nginx-frontend-11] ERROR: CrashLoopBackOff: container restarted 7 times,0.5929608227111531,1
+2025-11-12T20:02:05.495Z,backend-api-11,staging,ERROR,2025-11-12T20:02:05.495Z ERROR [backend-api-11] ERROR: Segmentation fault (core dumped) in worker thread,0.5917951429865522,1
+2025-11-09T22:48:57.694Z,auth-service-08,dev,ERROR,2025-11-09T22:48:57.694Z ERROR [auth-service-08] ERROR: Segmentation fault (core dumped) in worker thread,0.5914652419572275,1
+2025-11-06T19:52:03.938Z,auth-service-13,staging,ERROR,2025-11-06T19:52:03.938Z ERROR [auth-service-13] ERROR: connection refused from payments.internal:8080,0.5913987841304484,1
+2025-11-11T05:46:12.685Z,nginx-frontend-07,dev,ERROR,2025-11-11T05:46:12.685Z ERROR [nginx-frontend-07] ERROR: CrashLoopBackOff: container restarted 10 times,0.590837430948306,1
+2025-11-10T05:49:26.952Z,nginx-frontend-14,prod,ERROR,2025-11-10T05:49:26.952Z ERROR [nginx-frontend-14] ERROR: CrashLoopBackOff: container restarted 5 times,0.5904139141525384,3
+2025-11-10T20:34:05.192Z,nginx-frontend-09,staging,ERROR,2025-11-10T20:34:05.192Z ERROR [nginx-frontend-09] ERROR: OOMKilled - process terminated due to out-of-memory,0.5901161504924413,1
+2025-11-06T19:29:36.460Z,auth-service-07,staging,ERROR,2025-11-06T19:29:36.460Z ERROR [auth-service-07] ERROR: CrashLoopBackOff: container restarted 13 times,0.5900336872722525,1
+2025-11-12T22:18:37.620Z,auth-service-06,dev,ERROR,2025-11-12T22:18:37.620Z ERROR [auth-service-06] ERROR: OOMKilled - process terminated due to out-of-memory,0.5899168130083883,1
+2025-11-06T15:40:13.993Z,nginx-frontend-10,prod,ERROR,2025-11-06T15:40:13.993Z ERROR [nginx-frontend-10] ERROR: database deadlock detected; rolling back transaction,0.5887020523256661,2
+2025-11-09T12:35:07.767Z,nginx-frontend-04,prod,ERROR,2025-11-09T12:35:07.767Z ERROR [nginx-frontend-04] ERROR: 503 Service Unavailable - downstream overloaded,0.5883964273863946,2
+2025-11-07T10:57:09.119Z,nginx-frontend-04,staging,ERROR,2025-11-07T10:57:09.119Z ERROR [nginx-frontend-04] ERROR: 503 Service Unavailable - downstream overloaded,0.5882494375073652,1
+2025-11-10T15:59:09.945Z,nginx-frontend-06,dev,ERROR,2025-11-10T15:59:09.945Z ERROR [nginx-frontend-06] ERROR: Segmentation fault (core dumped) in worker thread,0.5881636143213229,1
+2025-11-08T11:55:23.388Z,backend-api-14,dev,ERROR,2025-11-08T11:55:23.388Z ERROR [backend-api-14] ERROR: OOMKilled - process terminated due to out-of-memory,0.5875346868422859,1
+2025-11-09T03:48:53.720Z,auth-service-07,dev,ERROR,2025-11-09T03:48:53.720Z ERROR [auth-service-07] ERROR: database deadlock detected; rolling back transaction,0.5873875198806298,1
+2025-11-12T07:31:18.141Z,orders-01,staging,ERROR,2025-11-12T07:31:18.141Z ERROR [orders-01] ERROR: CrashLoopBackOff: container restarted 6 times,0.5872326999612145,1
+2025-11-12T12:31:23.710Z,backend-api-18,prod,ERROR,2025-11-12T12:31:23.710Z ERROR [backend-api-18] ERROR: connection refused from cache.internal:8080,0.5868240877103141,2
+2025-11-07T18:32:23.140Z,nginx-frontend-10,staging,ERROR,2025-11-07T18:32:23.140Z ERROR [nginx-frontend-10] ERROR: connection refused from auth.internal:9000,0.5867478026552191,1
+2025-11-09T11:56:58.678Z,auth-service-18,prod,ERROR,2025-11-09T11:56:58.678Z ERROR [auth-service-18] ERROR: CrashLoopBackOff: container restarted 2 times,0.5865873599732727,3
+2025-11-06T05:45:00.049Z,nginx-frontend-14,staging,ERROR,2025-11-06T05:45:00.049Z ERROR [nginx-frontend-14] ERROR: 503 Service Unavailable - downstream overloaded,0.5862859746356479,1
+2025-11-10T05:36:19.924Z,orders-13,dev,ERROR,2025-11-10T05:36:19.924Z ERROR [orders-13] ERROR: connection refused from inventory.internal:8080,0.5862171813835761,1
+2025-11-11T02:35:15.677Z,nginx-frontend-17,staging,ERROR,2025-11-11T02:35:15.677Z ERROR [nginx-frontend-17] ERROR: connection refused from auth.internal:5432,0.585230115345766,1
+2025-11-12T06:06:50.588Z,backend-api-05,staging,ERROR,2025-11-12T06:06:50.588Z ERROR [backend-api-05] ERROR: Segmentation fault (core dumped) in worker thread,0.584299711465984,1
+2025-11-10T18:59:50.271Z,nginx-frontend-17,prod,ERROR,2025-11-10T18:59:50.271Z ERROR [nginx-frontend-17] ERROR: database deadlock detected; rolling back transaction,0.5841761281922357,2
+2025-11-10T18:56:15.931Z,orders-05,prod,ERROR,2025-11-10T18:56:15.931Z ERROR [orders-05] ERROR: 503 Service Unavailable - downstream overloaded,0.5841302566187041,2
+2025-11-09T10:30:26.612Z,orders-14,staging,ERROR,2025-11-09T10:30:26.612Z ERROR [orders-14] ERROR: 5xx gateway error from upstream payments.internal:5432 - response=502 Bad Gateway,0.5833347926666881,1
+2025-11-12T17:08:16.295Z,nginx-frontend-13,dev,ERROR,2025-11-12T17:08:16.295Z ERROR [nginx-frontend-13] ERROR: 503 Service Unavailable - downstream overloaded,0.5828187628343549,1
+2025-11-07T23:40:46.591Z,backend-api-15,dev,ERROR,2025-11-07T23:40:46.591Z ERROR [backend-api-15] ERROR: connection refused from cache.internal:6379,0.5826060393573593,1
+2025-11-10T03:53:29.858Z,nginx-frontend-19,prod,ERROR,2025-11-10T03:53:29.858Z ERROR [nginx-frontend-19] ERROR: ImagePullBackOff: failed to pull image myorg/payments:2.1.0,0.582461115022002,1
+2025-11-07T15:38:23.003Z,auth-service-07,dev,ERROR,2025-11-07T15:38:23.003Z ERROR [auth-service-07] ERROR: Segmentation fault (core dumped) in worker thread,0.5815865025627751,1
+2025-11-09T08:13:32.339Z,backend-api-15,dev,ERROR,2025-11-09T08:13:32.339Z ERROR [backend-api-15] ERROR: 5xx gateway error from upstream inventory.internal:5432 - response=502 Bad Gateway,0.5811393392982045,1
+2025-11-07T17:17:40.926Z,auth-service-16,dev,ERROR,2025-11-07T17:17:40.926Z ERROR [auth-service-16] ERROR: connection refused from db.internal:5432,0.5802864119792268,1
+2025-11-11T05:11:20.246Z,backend-api-08,dev,ERROR,2025-11-11T05:11:20.246Z ERROR [backend-api-08] ERROR: OOMKilled - process terminated due to out-of-memory,0.5796452637536929,1
+2025-11-12T18:27:09.625Z,backend-api-06,prod,ERROR,2025-11-12T18:27:09.625Z ERROR [backend-api-06] ERROR: OOMKilled - process terminated due to out-of-memory,0.5796236559408761,1
+2025-11-11T07:00:39.413Z,nginx-frontend-18,prod,ERROR,2025-11-11T07:00:39.413Z ERROR [nginx-frontend-18] ERROR: database deadlock detected; rolling back transaction,0.5794847470017852,2
+2025-11-10T17:33:03.316Z,backend-api-08,dev,ERROR,2025-11-10T17:33:03.316Z ERROR [backend-api-08] ERROR: connection refused from cache.internal:6379,0.5791868887623348,1
+2025-11-08T11:28:44.971Z,auth-service-03,dev,ERROR,2025-11-08T11:28:44.971Z ERROR [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.5784841512586496,1
+2025-11-07T18:59:35.385Z,auth-service-06,prod,ERROR,2025-11-07T18:59:35.385Z ERROR [auth-service-06] ERROR: database deadlock detected; rolling back transaction,0.5761573512030393,2
+2025-11-06T04:08:21.701Z,auth-service-03,staging,ERROR,2025-11-06T04:08:21.701Z ERROR [auth-service-03] ERROR: database deadlock detected; rolling back transaction,0.5757783527745799,1
+2025-11-08T08:21:37.301Z,auth-service-06,dev,ERROR,2025-11-08T08:21:37.301Z ERROR [auth-service-06] ERROR: connection refused from payments.internal:5432,0.5747084597102252,1
+2025-11-10T02:34:37.820Z,orders-20,dev,ERROR,2025-11-10T02:34:37.820Z ERROR [orders-20] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.5743630454633881,1
+2025-11-08T10:36:00.706Z,payments-09,prod,ERROR,2025-11-08T10:36:00.706Z ERROR [payments-09] ERROR: 503 Service Unavailable - downstream overloaded,0.5741560282479172,2
+2025-11-07T06:35:46.435Z,nginx-frontend-13,prod,ERROR,2025-11-07T06:35:46.435Z ERROR [nginx-frontend-13] ERROR: connection refused from payments.internal:5432,0.5739994175660832,2
+2025-11-13T05:06:50.099Z,payments-19,staging,ERROR,2025-11-13T05:06:50.099Z ERROR [payments-19] ERROR: 5xx gateway error from upstream db.internal:5432 - response=502 Bad Gateway,0.5739168754019333,1
+2025-11-13T03:56:38.427Z,backend-api-12,staging,ERROR,2025-11-13T03:56:38.427Z ERROR [backend-api-12] ERROR: OOMKilled - process terminated due to out-of-memory,0.573426253938206,1
+2025-11-13T00:55:25.775Z,nginx-frontend-16,dev,ERROR,2025-11-13T00:55:25.775Z ERROR [nginx-frontend-16] ERROR: connection refused from auth.internal:6379,0.572096587897954,1
+2025-11-09T00:18:04.809Z,auth-service-14,dev,ERROR,2025-11-09T00:18:04.809Z ERROR [auth-service-14] ERROR: 5xx gateway error from upstream inventory.internal:8080 - response=502 Bad Gateway,0.5719898427646437,1
+2025-11-10T19:53:16.986Z,payments-10,staging,ERROR,2025-11-10T19:53:16.986Z ERROR [payments-10] ERROR: connection refused from auth.internal:8080,0.5718642957437203,1
+2025-11-11T23:36:40.993Z,nginx-frontend-20,dev,ERROR,2025-11-11T23:36:40.993Z ERROR [nginx-frontend-20] ERROR: database deadlock detected; rolling back transaction,0.5711849107927036,1
+2025-11-08T08:52:33.203Z,backend-api-15,prod,ERROR,2025-11-08T08:52:33.203Z ERROR [backend-api-15] ERROR: connection refused from inventory.internal:8080,0.5704685374927809,2
+2025-11-06T19:04:41.889Z,payments-04,staging,ERROR,2025-11-06T19:04:41.889Z ERROR [payments-04] ERROR: 503 Service Unavailable - downstream overloaded,0.5703572470905587,1
+2025-11-13T11:05:45.381Z,payments-01,prod,ERROR,2025-11-13T11:05:45.381Z ERROR [payments-01] ERROR: 503 Service Unavailable - downstream overloaded,0.5700426635616433,2
+2025-11-13T08:19:52.660Z,auth-service-09,staging,ERROR,2025-11-13T08:19:52.660Z ERROR [auth-service-09] ERROR: CrashLoopBackOff: container restarted 6 times,0.5692283822360822,1
+2025-11-07T10:19:02.762Z,payments-17,staging,ERROR,2025-11-07T10:19:02.762Z ERROR [payments-17] ERROR: connection refused from inventory.internal:8080,0.5686947545867302,1
+2025-11-08T08:04:57.176Z,backend-api-08,dev,ERROR,2025-11-08T08:04:57.176Z ERROR [backend-api-08] ERROR: connection refused from cache.internal:6379,0.5684337980733467,1
+2025-11-12T19:50:22.798Z,auth-service-13,dev,ERROR,2025-11-12T19:50:22.798Z ERROR [auth-service-13] ERROR: connection refused from db.internal:6379,0.5682994080047976,1
+2025-11-07T18:55:35.361Z,payments-08,dev,ERROR,2025-11-07T18:55:35.361Z ERROR [payments-08] ERROR: request timeout after 4608ms while calling payments,0.5671595171188377,1
+2025-11-06T17:24:38.364Z,backend-api-18,prod,ERROR,"2025-11-06T17:24:38.364Z ERROR [backend-api-18] WARN: latency spike: p95=3803ms, p99=2780ms for endpoint /api/v1/items",0.5656633182933377,2
+2025-11-11T04:24:12.214Z,payments-03,dev,ERROR,2025-11-11T04:24:12.214Z ERROR [payments-03] ERROR: 503 Service Unavailable - downstream overloaded,0.5654942528349873,1
+2025-11-11T16:04:47.998Z,orders-09,dev,ERROR,2025-11-11T16:04:47.998Z ERROR [orders-09] ERROR: 503 Service Unavailable - downstream overloaded,0.5654518798551811,1
+2025-11-12T08:15:02.880Z,orders-14,prod,ERROR,2025-11-12T08:15:02.880Z ERROR [orders-14] ERROR: connection refused from auth.internal:5432,0.5618915751906846,2
+2025-11-09T17:52:08.509Z,nginx-frontend-03,staging,ERROR,"2025-11-09T17:52:08.509Z ERROR [nginx-frontend-03] WARN: latency spike: p95=1952ms, p99=5254ms for endpoint /health",0.5612876532814393,1
+2025-11-06T15:45:57.312Z,orders-02,staging,ERROR,2025-11-06T15:45:57.312Z ERROR [orders-02] ERROR: connection refused from inventory.internal:6379,0.5596725100812101,1
+2025-11-11T19:19:14.962Z,orders-02,dev,ERROR,2025-11-11T19:19:14.962Z ERROR [orders-02] ERROR: connection refused from auth.internal:5432,0.5591749353903492,1
+2025-11-09T01:19:36.772Z,auth-service-20,staging,ERROR,2025-11-09T01:19:36.772Z ERROR [auth-service-20] ERROR: connection refused from inventory.internal:9000,0.5590948757458438,1
+2025-11-07T14:34:42.728Z,nginx-frontend-08,prod,ERROR,2025-11-07T14:34:42.728Z ERROR [nginx-frontend-08] ERROR: request timeout after 8147ms while calling auth,0.5586449375686802,2
+2025-11-11T02:37:15.436Z,payments-19,staging,ERROR,2025-11-11T02:37:15.436Z ERROR [payments-19] ERROR: connection refused from payments.internal:6379,0.5584984899061882,1
+2025-11-13T10:33:38.054Z,payments-18,prod,ERROR,2025-11-13T10:33:38.054Z ERROR [payments-18] ERROR: 503 Service Unavailable - downstream overloaded,0.5578229466885132,2
+2025-11-08T19:26:58.905Z,backend-api-05,dev,ERROR,2025-11-08T19:26:58.905Z ERROR [backend-api-05] ERROR: 503 Service Unavailable - downstream overloaded,0.5570071395777179,1
+2025-11-13T03:58:30.809Z,backend-api-10,staging,ERROR,2025-11-13T03:58:30.809Z ERROR [backend-api-10] ERROR: 5xx gateway error from upstream cache.internal:9000 - response=502 Bad Gateway,0.5567502888688685,1
+2025-11-08T16:41:13.442Z,payments-13,prod,ERROR,2025-11-08T16:41:13.442Z ERROR [payments-13] ERROR: request timeout after 18961ms while calling db,0.5563570013086903,1
+2025-11-07T14:21:44.335Z,auth-service-12,dev,ERROR,2025-11-07T14:21:44.335Z ERROR [auth-service-12] ERROR: 5xx gateway error from upstream auth.internal:5432 - response=502 Bad Gateway,0.5554547795569977,1
+2025-11-08T11:30:17.106Z,auth-service-01,dev,ERROR,2025-11-08T11:30:17.106Z ERROR [auth-service-01] ERROR: 5xx gateway error from upstream db.internal:8080 - response=502 Bad Gateway,0.5554284756766599,1
+2025-11-07T16:24:33.107Z,payments-14,prod,ERROR,"2025-11-07T16:24:33.107Z ERROR [payments-14] WARN: latency spike: p95=1863ms, p99=8436ms for endpoint /api/v1/payments",0.5539474107645783,2
+2025-11-11T17:05:30.809Z,orders-03,prod,ERROR,2025-11-11T17:05:30.809Z ERROR [orders-03] ERROR: 503 Service Unavailable - downstream overloaded,0.5536237529750543,2
+2025-11-13T08:47:41.662Z,orders-01,staging,ERROR,2025-11-13T08:47:41.662Z ERROR [orders-01] ERROR: 5xx gateway error from upstream inventory.internal:9000 - response=502 Bad Gateway,0.5534735517142271,1
+2025-11-12T18:37:46.913Z,orders-02,prod,ERROR,2025-11-12T18:37:46.913Z ERROR [orders-02] ERROR: connection refused from payments.internal:9000,0.5529890996579532,1
+2025-11-08T05:54:29.515Z,orders-16,dev,ERROR,"2025-11-08T05:54:29.515Z ERROR [orders-16] WARN: latency spike: p95=1482ms, p99=2734ms for endpoint /login",0.5526093511561325,1
+2025-11-08T22:58:26.044Z,backend-api-19,dev,ERROR,2025-11-08T22:58:26.044Z ERROR [backend-api-19] ERROR: 503 Service Unavailable - downstream overloaded,0.5525483936446105,1
+2025-11-07T05:02:35.538Z,auth-service-01,dev,ERROR,2025-11-07T05:02:35.538Z ERROR [auth-service-01] ERROR: connection refused from db.internal:9000,0.5518089569657967,1
+2025-11-12T21:47:11.851Z,auth-service-05,prod,ERROR,2025-11-12T21:47:11.851Z ERROR [auth-service-05] ERROR: connection refused from payments.internal:8080,0.5503279479571561,1
+2025-11-08T20:32:09.738Z,auth-service-19,dev,ERROR,"2025-11-08T20:32:09.738Z ERROR [auth-service-19] WARN: latency spike: p95=2135ms, p99=3065ms for endpoint /api/v1/items",0.5499693595231085,1
+2025-11-08T12:30:22.233Z,backend-api-19,dev,ERROR,2025-11-08T12:30:22.233Z ERROR [backend-api-19] ERROR: request timeout after 11448ms while calling inventory,0.5492751409504706,1
+2025-11-13T06:16:27.549Z,backend-api-02,staging,ERROR,2025-11-13T06:16:27.549Z ERROR [backend-api-02] ERROR: 503 Service Unavailable - downstream overloaded,0.5483859029264373,1
+2025-11-07T18:01:15.203Z,orders-17,staging,ERROR,2025-11-07T18:01:15.203Z ERROR [orders-17] ERROR: 5xx gateway error from upstream db.internal:6379 - response=502 Bad Gateway,0.5481272589382176,1
+2025-11-10T07:46:04.807Z,nginx-frontend-12,prod,ERROR,"2025-11-10T07:46:04.807Z ERROR [nginx-frontend-12] WARN: latency spike: p95=3340ms, p99=7789ms for endpoint /api/v1/payments",0.5478335001123571,1
+2025-11-08T19:39:05.304Z,auth-service-11,prod,ERROR,2025-11-08T19:39:05.304Z ERROR [auth-service-11] ERROR: 503 Service Unavailable - downstream overloaded,0.5472366023880166,1
+2025-11-09T12:36:38.198Z,nginx-frontend-04,prod,ERROR,2025-11-09T12:36:38.198Z ERROR [nginx-frontend-04] ERROR: request timeout after 14567ms while calling inventory,0.5472281766475877,2
+2025-11-10T00:22:02.365Z,backend-api-08,prod,ERROR,2025-11-10T00:22:02.365Z ERROR [backend-api-08] ERROR: request timeout after 16920ms while calling db,0.5471570654518563,1
+2025-11-09T08:57:07.200Z,nginx-frontend-03,dev,ERROR,2025-11-09T08:57:07.200Z ERROR [nginx-frontend-03] ERROR: request timeout after 7371ms while calling db,0.5452612941682191,1
+2025-11-10T04:29:52.498Z,auth-service-20,prod,ERROR,2025-11-10T04:29:52.498Z ERROR [auth-service-20] ERROR: connection refused from auth.internal:6379,0.5448823309740276,2
+2025-11-10T15:26:59.619Z,payments-05,staging,ERROR,2025-11-10T15:26:59.619Z ERROR [payments-05] ERROR: request timeout after 26976ms while calling db,0.544564211745957,1
+2025-11-10T19:16:13.223Z,backend-api-04,dev,ERROR,2025-11-10T19:16:13.223Z ERROR [backend-api-04] ERROR: connection refused from auth.internal:9000,0.5427513971526059,1
+2025-11-11T02:06:44.176Z,backend-api-17,prod,ERROR,2025-11-11T02:06:44.176Z ERROR [backend-api-17] ERROR: connection refused from inventory.internal:5432,0.5426620952569592,1
+2025-11-09T10:57:21.549Z,payments-10,dev,ERROR,2025-11-09T10:57:21.549Z ERROR [payments-10] ERROR: request timeout after 3834ms while calling db,0.542384003381843,1
+2025-11-12T15:58:34.934Z,auth-service-18,dev,ERROR,"2025-11-12T15:58:34.934Z ERROR [auth-service-18] WARN: latency spike: p95=2963ms, p99=6965ms for endpoint /login",0.5417994797416097,1
+2025-11-12T16:59:37.393Z,payments-12,dev,ERROR,"2025-11-12T16:59:37.393Z ERROR [payments-12] WARN: latency spike: p95=1846ms, p99=3664ms for endpoint /api/v1/items",0.5413898833635846,1
+2025-11-11T09:50:32.383Z,auth-service-15,dev,ERROR,2025-11-11T09:50:32.383Z ERROR [auth-service-15] ERROR: 503 Service Unavailable - downstream overloaded,0.5408457081095159,1
+2025-11-08T11:57:09.454Z,backend-api-09,staging,ERROR,2025-11-08T11:57:09.454Z ERROR [backend-api-09] ERROR: request timeout after 18178ms while calling inventory,0.5405536060080292,1
+2025-11-08T02:32:45.423Z,orders-16,staging,ERROR,2025-11-08T02:32:45.423Z ERROR [orders-16] ERROR: request timeout after 28265ms while calling db,0.5393197223197865,1
+2025-11-07T23:08:44.927Z,auth-service-07,dev,ERROR,2025-11-07T23:08:44.927Z ERROR [auth-service-07] ERROR: request timeout after 18770ms while calling inventory,0.5378998379595146,1
+2025-11-12T03:01:55.267Z,orders-11,dev,ERROR,2025-11-12T03:01:55.267Z ERROR [orders-11] ERROR: 5xx gateway error from upstream auth.internal:5432 - response=502 Bad Gateway,0.5374802424814868,1
+2025-11-07T03:36:33.734Z,auth-service-10,dev,ERROR,"2025-11-07T03:36:33.734Z ERROR [auth-service-10] WARN: latency spike: p95=2146ms, p99=7020ms for endpoint /checkout",0.5372716641941548,1
+2025-11-12T07:03:30.443Z,nginx-frontend-02,dev,ERROR,2025-11-12T07:03:30.443Z ERROR [nginx-frontend-02] ERROR: request timeout after 2741ms while calling inventory,0.5371671134260998,1
+2025-11-10T04:46:38.745Z,auth-service-07,dev,ERROR,"2025-11-10T04:46:38.745Z ERROR [auth-service-07] WARN: latency spike: p95=1602ms, p99=4821ms for endpoint /login",0.5369453329729543,1
+2025-11-09T01:16:54.644Z,payments-09,staging,ERROR,"2025-11-09T01:16:54.644Z ERROR [payments-09] WARN: latency spike: p95=2227ms, p99=3709ms for endpoint /api/v1/orders",0.5362843061647258,1
+2025-11-10T05:38:07.477Z,auth-service-18,staging,ERROR,2025-11-10T05:38:07.477Z ERROR [auth-service-18] ERROR: connection refused from db.internal:9000,0.5362664461380104,1
+2025-11-07T03:56:57.171Z,orders-18,prod,ERROR,"2025-11-07T03:56:57.171Z ERROR [orders-18] WARN: latency spike: p95=1642ms, p99=5605ms for endpoint /api/v1/payments",0.5359160423489437,1
+2025-11-10T10:00:49.822Z,payments-14,staging,ERROR,"2025-11-10T10:00:49.822Z ERROR [payments-14] WARN: latency spike: p95=2117ms, p99=8244ms for endpoint /api/v1/payments",0.5349145049279582,1
+2025-11-06T00:09:54.067Z,backend-api-02,staging,ERROR,2025-11-06T00:09:54.067Z ERROR [backend-api-02] ERROR: request timeout after 6426ms while calling db,0.5342401114796616,1
+2025-11-10T02:18:05.243Z,auth-service-13,staging,ERROR,2025-11-10T02:18:05.243Z ERROR [auth-service-13] ERROR: 5xx gateway error from upstream payments.internal:5432 - response=502 Bad Gateway,0.5331728137805438,1
+2025-11-10T20:19:00.876Z,backend-api-13,prod,ERROR,2025-11-10T20:19:00.876Z ERROR [backend-api-13] ERROR: request timeout after 22964ms while calling db,0.5323738857098586,1
+2025-11-12T02:18:45.866Z,orders-16,dev,ERROR,2025-11-12T02:18:45.866Z ERROR [orders-16] ERROR: connection refused from auth.internal:9000,0.5321176041496427,1
+2025-11-07T13:14:01.196Z,auth-service-18,dev,ERROR,2025-11-07T13:14:01.196Z ERROR [auth-service-18] ERROR: 503 Service Unavailable - downstream overloaded,0.5315631438356232,1
+2025-11-10T22:40:49.047Z,backend-api-08,dev,ERROR,2025-11-10T22:40:49.047Z ERROR [backend-api-08] ERROR: request timeout after 22857ms while calling auth,0.5298482901157606,1
+2025-11-08T12:07:36.229Z,backend-api-09,dev,ERROR,2025-11-08T12:07:36.229Z ERROR [backend-api-09] ERROR: request timeout after 17344ms while calling db,0.529627053000858,1
+2025-11-09T18:30:45.564Z,nginx-frontend-18,staging,ERROR,2025-11-09T18:30:45.564Z ERROR [nginx-frontend-18] ERROR: request timeout after 22224ms while calling payments,0.5283557701813493,1
+2025-11-06T17:27:37.861Z,payments-09,dev,ERROR,2025-11-06T17:27:37.861Z ERROR [payments-09] ERROR: request timeout after 15704ms while calling auth,0.5276852362510702,1
+2025-11-08T18:53:40.253Z,auth-service-12,prod,ERROR,2025-11-08T18:53:40.253Z ERROR [auth-service-12] ERROR: request timeout after 21149ms while calling inventory,0.5276665114349472,1
+2025-11-08T00:17:58.849Z,auth-service-09,dev,ERROR,2025-11-08T00:17:58.849Z ERROR [auth-service-09] ERROR: 503 Service Unavailable - downstream overloaded,0.5254265543416423,1
+2025-11-06T18:37:17.531Z,orders-18,dev,ERROR,2025-11-06T18:37:17.531Z ERROR [orders-18] ERROR: request timeout after 6920ms while calling payments,0.5246862959164091,1
+2025-11-11T02:51:46.646Z,orders-19,staging,ERROR,2025-11-11T02:51:46.646Z ERROR [orders-19] ERROR: request timeout after 12259ms while calling payments,0.5245009304382533,1
+2025-11-07T19:49:42.764Z,payments-14,staging,ERROR,2025-11-07T19:49:42.764Z ERROR [payments-14] ERROR: request timeout after 9746ms while calling auth,0.5241170959297761,1
+2025-11-07T01:17:26.486Z,payments-18,prod,ERROR,2025-11-07T01:17:26.486Z ERROR [payments-18] ERROR: request timeout after 25544ms while calling auth,0.5229808964362159,1
+2025-11-07T08:31:36.804Z,backend-api-14,dev,ERROR,2025-11-07T08:31:36.804Z ERROR [backend-api-14] ERROR: request timeout after 12046ms while calling auth,0.5227158007913575,1
+2025-11-12T03:29:09.940Z,backend-api-20,staging,ERROR,2025-11-12T03:29:09.940Z ERROR [backend-api-20] ERROR: connection refused from payments.internal:6379,0.5219792091068953,1
+2025-11-07T09:55:19.991Z,payments-03,dev,ERROR,2025-11-07T09:55:19.991Z ERROR [payments-03] ERROR: request timeout after 17615ms while calling auth,0.5216872006542199,1
+2025-11-11T22:18:41.576Z,auth-service-01,staging,ERROR,2025-11-11T22:18:41.576Z ERROR [auth-service-01] ERROR: request timeout after 21434ms while calling auth,0.5152007690232514,1
+2025-11-09T10:10:18.275Z,backend-api-15,dev,ERROR,2025-11-09T10:10:18.275Z ERROR [backend-api-15] ERROR: request timeout after 17173ms while calling payments,0.5131375649507732,1
+2025-11-06T09:55:30.853Z,auth-service-01,dev,ERROR,2025-11-06T09:55:30.853Z ERROR [auth-service-01] ERROR: request timeout after 14839ms while calling auth,0.5121828237362109,1
+2025-11-10T03:44:17.618Z,auth-service-07,dev,ERROR,2025-11-10T03:44:17.618Z ERROR [auth-service-07] ERROR: request timeout after 2254ms while calling payments,0.5118424109454827,1
+2025-11-06T09:46:05.285Z,auth-service-18,dev,ERROR,2025-11-06T09:46:05.285Z ERROR [auth-service-18] ERROR: request timeout after 29763ms while calling auth,0.5108675657923101,1
+2025-11-11T14:21:34.152Z,backend-api-02,prod,ERROR,2025-11-11T14:21:34.152Z ERROR [backend-api-02] ERROR: request timeout after 15710ms while calling payments,0.510468550949466,1
+2025-11-11T08:17:39.045Z,backend-api-07,dev,ERROR,2025-11-11T08:17:39.045Z ERROR [backend-api-07] ERROR: request timeout after 8964ms while calling payments,0.50727875474275,1
