@@ -17,55 +17,57 @@ class ModelRouter:
 
         if meta.supervision_level == "supervised":
             strategy = "Supervised Classification Pipeline"
-            if "collective" in meta.anomaly_characteristics:
-                recommended_models = ["lstm_classifier", "xgboost_with_lags"]
-            else:
-                recommended_models = ["xgboost", "random_forest"]
+            recommended_models = ["xgboost", "random_forest"]
                 
         elif meta.supervision_level == "semi-supervised":
             strategy = "Semi-Supervised Anomaly Detection Pipeline"
-            if "collective" in meta.anomaly_characteristics or meta.dataset_type == "time_series":
-                recommended_models = ["deep_svdd", "one_class_svm"]
+            if meta.total_rows >= 5000:
+                # Yeterli veri → Deep SVDD hipersfer öğrenebilir
+                recommended_models = ["deep_svdd", "isolation_forest"]
             else:
-                recommended_models = ["deep_svdd", "one_class_svm"]
+                # Az veri → DL overfitting riski, sadece geleneksel one-class
+                recommended_models = ["ocsvm", "xgbod"]
                 
         else:
             # Unsupervised
             if meta.dataset_type == "time_series":
                 strategy = "Time-Series Anomaly Detection Pipeline"
-                recommended_models = [
-                    "lstm_autoencoder"
-                ]
+                if meta.total_rows >= 5000:
+                    # Yeterli veri → LSTM temporal bağlamı öğrenebilir
+                    recommended_models = ["isolation_forest"] #time serieste lstm autoencoder ve autoencoder cok fazla vakit istiyor.
+                else:
+                    # Az veri → DL overfitting yapar, hızlı geleneksel yöntemler
+                    recommended_models = ["isolation_forest", "ecod", "ocsvm"]
+
             elif meta.dataset_type == "text":
                 strategy = "Text / Log Anomaly Detection Pipeline"
-                recommended_models = [
-                    "isolation_forest",
-                    "lof",
-                    "pca",
-                    "ecod",
-                    "copod",
-                    "hbos",
-                    "ocsvm",
-                    "autoencoder",
-                    "vae",
-                    "deep_svdd"
-                ]
+                if meta.high_dimensionality:
+                    # Yüksek boyutlu TF-IDF → boyut indirgeme odaklı modeller
+                    recommended_models = ["autoencoder", "deep_svdd", "isolation_forest", "pca"]
+                else:
+                    # Düşük boyut → hızlı geleneksel yoğunluk/histogram modelleri
+                    recommended_models = ["isolation_forest", "lof", "copod", "hbos"]
+
             elif meta.dataset_type == "graph":
                 strategy = "Graph Anomaly Detection Pipeline"
-                recommended_models = [
-                    "graph_anomaly_detector"
-                ]
+                recommended_models = ["graph_dominant"]
+
             else:
                 strategy = "Tabular Anomaly Detection Pipeline"
-                if meta.high_dimensionality:
+                if meta.high_dimensionality and meta.total_rows >= 5000:
+                    # Yüksek boyut + büyük veri → DL modelleri tam kapasiteyle çalışır
                     recommended_models = ["autoencoder", "vae", "deep_svdd", "isolation_forest", "ecod"]
+                elif meta.high_dimensionality:
+                    # Yüksek boyut + az veri → DL overfitting yapar, PCA + geleneksel
+                    recommended_models = ["pca", "isolation_forest", "ecod", "ocsvm"]
+                elif meta.total_rows >= 5000:
+                    # Düşük boyut + büyük veri → LOF O(n²) çöker, ölçeklenebilir modeller
+                    recommended_models = ["isolation_forest", "ecod", "copod", "autoencoder", "deep_svdd"]
                 else:
-                    recommended_models = ["isolation_forest", "ecod", "lof", "autoencoder", "vae", "deep_svdd"]
+                    # Düşük boyut + az veri → yoğunluk/sınır modelleri parlar
+                    recommended_models = ["lof", "ocsvm", "isolation_forest", "hbos", "copod"]
 
-        # Adjust for collective anomalies in tabular
-        if meta.supervision_level == "unsupervised" and meta.dataset_type == "tabular":
-            if "collective" in meta.anomaly_characteristics:
-                recommended_models.insert(0, "sliding_window_isolation_forest")
+
 
         # =====================================================
         # Preprocessing

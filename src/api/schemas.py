@@ -32,6 +32,9 @@ class AnalysisResponse(BaseModel):
     # Tüm modellerin KESİŞİMİ (Ortak anomaliler)
     common_anomalies: List[int] = Field(..., description="Tüm modellerin de anomali olarak işaretlediği ortak satır indeksleri")
     
+    # Dinamik oylama tabanlı kesişimler (N-1, N-2 vb.)
+    consensus_levels: Optional[dict] = Field(default_factory=dict, description="Farklı seviyelerdeki (N, N-1, N-2) ortak anomaliler")
+    
     execution_time_sec: float = Field(..., description="Analizin kaç saniye sürdüğü")
     
 class RecommendationResponse(BaseModel):

@@ -21,7 +21,8 @@ def get_available_models():
 
 DATA_FOLDER = "data"
 
-@router.post("/", response_model=AnalysisResponse)
+@router.post("", response_model=AnalysisResponse)
+@router.post("/", response_model=AnalysisResponse, include_in_schema=False)
 def run_analysis(request: AnalysisRequest):
     """
     Kullanıcının seçtiği veri setini ve algoritmaları alır.
@@ -39,7 +40,27 @@ def run_analysis(request: AnalysisRequest):
 
     # Veriyi Oku
     try:
-        df = pd.read_csv(file_path)
+        if file_path.endswith(".csv"):
+            df = pd.read_csv(file_path)
+        elif file_path.endswith(".json"):
+            # Graf JSON dosyaları özel işlem gerektirir (iç içe list/dict yapıları var)
+            from src.engine.graph_feature_engineering import GraphFeatureEngineer
+            try:
+                graph_engineer = GraphFeatureEngineer(file_path)
+                df = graph_engineer.transform()
+            except Exception:
+                # Graf formatı değilse düz json_normalize dene
+                import json
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    json_data = json.load(f)
+                if isinstance(json_data, list):
+                    df = pd.json_normalize(json_data)
+                else:
+                    df = pd.json_normalize(json_data)
+        else:
+            raise ValueError("Sadece .csv ve .json formatları desteklenmektedir.")
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Veri seti okunamadı: {str(e)}")
 
@@ -58,14 +79,30 @@ def run_analysis(request: AnalysisRequest):
 
     config["recommended_models"] = alg_list
 
-    # --- 2. Anomaly Engine'in Çalışması ---
+    # --- 2. Label Sütununu Çıkar (Supervised modeller için) ---
+    y = None
+    label_cols = config.get("metadata", {}).get("label_columns", [])
+    if label_cols:
+        label_col = label_cols[0]
+        if label_col in df.columns:
+            y_series = df[label_col]
+            # Sayısal değilse encode et (string label → 0/1)
+            if not pd.api.types.is_numeric_dtype(y_series):
+                from sklearn.preprocessing import LabelEncoder
+                le = LabelEncoder()
+                y = le.fit_transform(y_series.fillna("unknown"))
+            else:
+                y = y_series.fillna(0).values.astype(int)
+            print(f"  [BİLGİ] Label sütunu '{label_col}' tespit edildi. Sınıf dağılımı: {np.bincount(y)}")
+
+    # --- 3. Anomaly Engine'in Çalışması ---
     # `main.py`'deki gibi AnomalyEngine sınıfını kullanıyoruz
     from src.engine.executor import AnomalyEngine
     engine = AnomalyEngine()
     
     try:
         # Motoru çalıştır
-        engine_result = engine.run(df, config)
+        engine_result = engine.run(df, config, y=y)
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Analiz sırasında motor bir hata verdi: {str(e)}")
 
@@ -74,8 +111,9 @@ def run_analysis(request: AnalysisRequest):
     # --- 3. Sonuçların Formatlanıp Dönülmesi ---
     model_results_list = []
     
-    # Ortak kesişimi (tüm modellerin '1' dediği) bulmak için
-    common_anomalies_set = None
+    from collections import Counter
+    vote_counter = Counter()
+    num_models = len(engine_result.model_results)
 
     for model_name, model_data in engine_result.model_results.items():
         labels = model_data.get("labels", [])
@@ -88,13 +126,28 @@ def run_analysis(request: AnalysisRequest):
             "anomalies": anomaly_indices
         })
         
-        # Kesişim hesabı
-        if common_anomalies_set is None:
-            common_anomalies_set = set(anomaly_indices)
-        else:
-            common_anomalies_set = common_anomalies_set.intersection(set(anomaly_indices))
+        # Oyları say
+        vote_counter.update(anomaly_indices)
 
-    common_anomalies = list(common_anomalies_set) if common_anomalies_set else []
+    consensus_levels = {}
+    common_anomalies = []
+
+    if num_models > 0:
+        tam_kesisim = [idx for idx, count in vote_counter.items() if count == num_models]
+        n_eksi_1 = [idx for idx, count in vote_counter.items() if count >= num_models - 1]
+        n_eksi_2 = [idx for idx, count in vote_counter.items() if count >= num_models - 2]
+        
+        common_anomalies = tam_kesisim
+
+        if num_models <= 3:
+            consensus_levels[f"Tam Kesişim ({num_models}/{num_models})"] = tam_kesisim
+        elif 3 < num_models <= 6:
+            consensus_levels[f"Tam Kesişim ({num_models}/{num_models})"] = tam_kesisim
+            consensus_levels[f"Çoğunluk Kesişimi (Min {num_models-1}/{num_models})"] = n_eksi_1
+        else:
+            consensus_levels[f"Tam Kesişim ({num_models}/{num_models})"] = tam_kesisim
+            consensus_levels[f"Güçlü Kesişim (Min {num_models-1}/{num_models})"] = n_eksi_1
+            consensus_levels[f"Çoğunluk Kesişimi (Min {num_models-2}/{num_models})"] = n_eksi_2
 
     return AnalysisResponse(
         dataset_name=request.dataset_name,
@@ -102,5 +155,6 @@ def run_analysis(request: AnalysisRequest):
         total_rows=meta_vector.total_rows,
         model_results=model_results_list,
         common_anomalies=common_anomalies,
+        consensus_levels=consensus_levels,
         execution_time_sec=execution_time
     )

@@ -115,12 +115,27 @@ if 'results' in st.session_state:
     st.header("📊 Analiz Sonuçları")
     
     # --- 1. SKOR KARTLARI (METRİKLER) ---
-    # Ekranı 3 sütuna bölüyoruz
-    col1, col2, col3 = st.columns(3)
+    consensus_levels = results.get("consensus_levels", {})
     
-    col1.metric(label="Toplam İncelenen Satır", value=results.get("total_rows", 0))
-    col2.metric(label="Kesin Anomali Sayısı (Kesişim)", value=len(results.get("common_anomalies", [])))
-    col3.metric(label="Çalışma Süresi", value=f"{results.get('execution_time_sec', 0)} sn")
+    if consensus_levels:
+        # Toplam Satır, [Dinamik Kesişim Seviyeleri...], Süre
+        num_metrics = 2 + len(consensus_levels)
+        cols = st.columns(num_metrics)
+        
+        cols[0].metric(label="Toplam İncelenen Satır", value=results.get("total_rows", 0))
+        
+        col_idx = 1
+        for level_name, indices in consensus_levels.items():
+            cols[col_idx].metric(label=level_name, value=len(indices))
+            col_idx += 1
+            
+        cols[-1].metric(label="Çalışma Süresi", value=f"{results.get('execution_time_sec', 0)} sn")
+    else:
+        # Geriye dönük uyumluluk (Eski versiyon)
+        col1, col2, col3 = st.columns(3)
+        col1.metric(label="Toplam İncelenen Satır", value=results.get("total_rows", 0))
+        col2.metric(label="Kesin Anomali Sayısı (Kesişim)", value=len(results.get("common_anomalies", [])))
+        col3.metric(label="Çalışma Süresi", value=f"{results.get('execution_time_sec', 0)} sn")
     
     # --- 2. MODEL BAZLI DETAYLAR ---
     st.subheader("🤖 Algoritma Performansları")
@@ -146,10 +161,36 @@ if 'results' in st.session_state:
     file_path = os.path.join("data", dataset_name)
     
     if os.path.exists(file_path):
-        df = pd.read_csv(file_path) # Tüm orijinal veriyi okuyoruz
+        # CSV ve JSON dosyalarını backend ile aynı şekilde oku
+        if file_path.endswith(".json"):
+            try:
+                from src.engine.graph_feature_engineering import GraphFeatureEngineer
+                graph_engineer = GraphFeatureEngineer(file_path)
+                df = graph_engineer.transform()
+            except Exception:
+                import json
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    json_data = json.load(f)
+                df = pd.json_normalize(json_data if isinstance(json_data, list) else json_data)
+        else:
+            df = pd.read_csv(file_path)
+            
+        # Streamlit (Glide Data Grid) iç içe JSON (liste/sözlük) yapılarını "[object Object]" olarak
+        # gösterdiği için bunları okunabilir string formatına dönüştürüyoruz.
+        for col in df.columns:
+            if df[col].apply(lambda x: isinstance(x, (dict, list))).any():
+                df[col] = df[col].astype(str)
+        
+        consensus_levels = results.get("consensus_levels", {})
         
         # Sekme başlıklarını dinamik olarak oluştur
-        tab_names = ["🚨 Kesişim (Consensus)"]
+        tab_names = []
+        if consensus_levels:
+            for level in consensus_levels.keys():
+                tab_names.append(f"🚨 {level}")
+        else:
+            tab_names.append("🚨 Kesişim (Consensus)")
+            
         for model in model_results:
             tab_names.append(f"🔍 {model.get('name', 'Model')} Anomalileri")
         tab_names.append("📂 Tüm Veri Seti")
@@ -157,24 +198,38 @@ if 'results' in st.session_state:
         # Streamlit Tabs (Sekmeler) oluşturuyoruz
         tabs = st.tabs(tab_names)
         
-        # 1. Sekme: Kesişim (Ortak Anomaliler)
-        with tabs[0]:
-            if len(common_indices) > 0:
-                st.error("Aşağıdaki tablo, çalışan algoritmaların ortaklaşa 'Anomali' olarak tespit ettiği riskli satırları göstermektedir.")
-                st.dataframe(df.iloc[common_indices].copy(), use_container_width=True, key="df_consensus")
-            else:
-                st.success("Harika! Tüm modellerin ortaklaşa anomali dediği hiçbir satır bulunamadı.")
+        tab_idx = 0
+        
+        # 1. Consensus Sekmeleri
+        if consensus_levels:
+            for level_name, indices in consensus_levels.items():
+                with tabs[tab_idx]:
+                    if len(indices) > 0:
+                        st.error(f"Aşağıdaki tablo, algoritmaların '{level_name}' koşulunu sağlayarak 'Anomali' olarak tespit ettiği riskli satırları göstermektedir.")
+                        st.dataframe(df.iloc[indices].copy(), use_container_width=True, key=f"df_consensus_{tab_idx}")
+                    else:
+                        st.success("Bu seviyede ortak anomali bulunamadı.")
+                tab_idx += 1
+        else:
+            with tabs[0]:
+                if len(common_indices) > 0:
+                    st.error("Aşağıdaki tablo, çalışan algoritmaların ortaklaşa 'Anomali' olarak tespit ettiği riskli satırları göstermektedir.")
+                    st.dataframe(df.iloc[common_indices].copy(), use_container_width=True, key="df_consensus_legacy")
+                else:
+                    st.success("Harika! Tüm modellerin ortaklaşa anomali dediği hiçbir satır bulunamadı.")
+            tab_idx += 1
                 
         # Ara Sekmeler: Her bir modelin buldukları
         for i, model in enumerate(model_results):
-            with tabs[i + 1]:
+            with tabs[tab_idx]:
                 m_name = model.get('name', f'Model {i+1}')
                 m_indices = model.get('anomalies', [])
                 if len(m_indices) > 0:
                     st.info(f"{m_name} algoritmasının tespit ettiği tüm anomaliler:")
-                    st.dataframe(df.iloc[m_indices].copy(), use_container_width=True, key=f"df_model_{i}")
+                    st.dataframe(df.iloc[m_indices].copy(), use_container_width=True, key=f"df_model_{tab_idx}")
                 else:
                     st.info(f"{m_name} herhangi bir anomali tespit etmedi.")
+            tab_idx += 1
                 
         # Son Sekme: Orijinal Veri Seti
         with tabs[-1]:
