@@ -165,14 +165,6 @@ class AnomalyEngine:
         )
 
         if not model_tuples:
-            print("  [Fallback] Önerilen modeller bulunamadı, genel amaçlı modellere geçiliyor...")
-            fallback_models = ["isolation_forest", "ecod"]
-            model_tuples = self.factory.create_models(
-                recommended_models=fallback_models,
-                n_features=n_features
-            )
-
-        if not model_tuples:
             raise RuntimeError(f"Hiçbir model oluşturulamadı. Önerilen modeller: {recommended}")
 
         # ---------------------------------------------------------

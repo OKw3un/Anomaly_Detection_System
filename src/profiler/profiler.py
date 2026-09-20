@@ -31,7 +31,16 @@ class DataProfiler:
             self.df = df.tail(max_sample_size).copy()
         else:
             self.df = df
-            
+
+            # =========================================================
+        # YENİ EKLENEN KISIM: Hata Veren Tipleri Temizleme
+        # Hücrelerde liste (list) veya sözlük (dict) varsa string'e çevir.
+        # Bu sayede nunique() ve value_counts() fonksiyonları çökmez.
+        # =========================================================
+        for col in self.df.columns:
+            if self.df[col].apply(lambda x: isinstance(x, (list, dict))).any():
+                self.df[col] = self.df[col].astype(str)
+
         self.cat_threshold = categorical_threshold
         self.high_cardinality_threshold = high_cardinality_threshold
         self.text_length_threshold = text_length_threshold
