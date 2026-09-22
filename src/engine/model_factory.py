@@ -40,7 +40,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "IForest",
         "kwargs": {
             "n_estimators": 200,
-            "contamination": 0.05,
+            "contamination": 0.002,
             "random_state": 42
         },
         "supports_embedding": False,
@@ -83,7 +83,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
     "copod": {
         "module": "pyod.models.copod",
         "class": "COPOD",
-        "kwargs": {"contamination": 0.05},
+        "kwargs": {"contamination": 0.002},
         "supports_embedding": False,
         "category": "traditional"
     },

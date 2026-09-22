@@ -327,13 +327,18 @@ class AnomalyEngine:
                         wrapper = ModelWrapper(model_name, fresh_model, registry_info)
                         wrapper.fit(X_c, y_c)
                         scores_c = wrapper.get_anomaly_scores()
-                        labels_c = np.zeros(len(X_c))
+                        try:
+                            if hasattr(wrapper.model, 'labels_') and wrapper.model.labels_ is not None:
+                                labels_c = wrapper.model.labels_.astype(int)
+                            else:
+                                labels_c = wrapper.predict_labels(X_c)
+                        except Exception:
+                            labels_c = np.zeros(len(X_c))
                     
                     # YEREL MIN-MAX NORMALİZASYONU İPTAL: Ham skor doğrudan atanıyor
                         
                     final_scores[mask] = scores_c
-                    if is_supervised_c:
-                        final_labels[mask] = labels_c
+                    final_labels[mask] = labels_c  # Hem supervised hem unsupervised için kendi ürettiği etiketleri kaydet
                     last_wrapper = wrapper
                     
                     # Embeddingleri birleştir
@@ -370,24 +375,29 @@ class AnomalyEngine:
                 if is_supervised:
                     labels = final_labels
                 else:
-                    # --- GERÇEK DİNAMİK EŞİKLEME (MAD YÖNTEMİ) ---
-                    median_score = np.median(scores)
-                    
-                    # Medyandan mutlak sapmaların medyanını al
-                    mad = np.median(np.abs(scores - median_score))
-                    
-                    # Eğer MAD 0 çıkarsa (çok yoğun yığılma varsa) standart sapmayı yedek olarak kullan
-                    if mad == 0:
-                        mad = np.std(scores)
+                    # Eğer model (örn. PyOD contamination ile) kendi anomali etiketlerini ürettiyse onu kullan
+                    if np.sum(final_labels) > 0:
+                        labels = final_labels
+                        print(f"      [MODEL KENDİ ETİKETİ] {model_name} algoritmasının iç etiketleme mekanizması kullanılıyor.")
+                    else:
+                        # --- GERÇEK DİNAMİK EŞİKLEME (MAD YÖNTEMİ) ---
+                        median_score = np.median(scores)
                         
-                    # Dinamik Eşik: Medyan + 3 * MAD (Genellikle 3 veya 5 çarpanı kullanılır)
-                    # Veri setinin skor yayılımına göre threshold kendi kendine genişler veya daralır.
-                    dynamic_threshold = median_score + (5 * mad)
-                    
-                    labels = (scores >= dynamic_threshold).astype(int)
-                    
-                    dynamic_contam = np.sum(labels) / len(labels)
-                    print(f"      [DİNAMİK EŞİK] MAD Yöntemi ile Threshold: {dynamic_threshold:.4f}, Hesaplanan Anomali Oranı: {dynamic_contam:.2%}")
+                        # Medyandan mutlak sapmaların medyanını al
+                        mad = np.median(np.abs(scores - median_score))
+                        
+                        # Eğer MAD 0 çıkarsa (çok yoğun yığılma varsa) standart sapmayı yedek olarak kullan
+                        if mad == 0:
+                            mad = np.std(scores)
+                            
+                        # Dinamik Eşik: Medyan + 3 * MAD (Genellikle 3 veya 5 çarpanı kullanılır)
+                        # Veri setinin skor yayılımına göre threshold kendi kendine genişler veya daralır.
+                        dynamic_threshold = median_score + (5 * mad)
+                        
+                        labels = (scores >= dynamic_threshold).astype(int)
+                        
+                        dynamic_contam = np.sum(labels) / len(labels)
+                        print(f"      [DİNAMİK EŞİK] MAD Yöntemi ile Threshold: {dynamic_threshold:.4f}, Hesaplanan Anomali Oranı: {dynamic_contam:.2%}")
                 
                 # Her ihtimale karşı 0 tespit edildiyse
                 if np.sum(labels) == 0 and hasattr(wrapper.model, 'labels_'):

@@ -35,6 +35,9 @@ class AnalysisResponse(BaseModel):
     # Dinamik oylama tabanlı kesişimler (N-1, N-2 vb.)
     consensus_levels: Optional[dict] = Field(default_factory=dict, description="Farklı seviyelerdeki (N, N-1, N-2) ortak anomaliler")
     
+    # Tespit edilen etiket sütunları (label, class vb.)
+    label_columns: Optional[List[str]] = Field(default_factory=list, description="Veri profilinden tespit edilen etiket sütunları")
+    
     execution_time_sec: float = Field(..., description="Analizin kaç saniye sürdüğü")
     
 class RecommendationResponse(BaseModel):

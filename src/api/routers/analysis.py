@@ -156,5 +156,6 @@ def run_analysis(request: AnalysisRequest):
         model_results=model_results_list,
         common_anomalies=common_anomalies,
         consensus_levels=consensus_levels,
+        label_columns=label_cols,
         execution_time_sec=execution_time
     )
