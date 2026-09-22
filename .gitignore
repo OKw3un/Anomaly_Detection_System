@@ -42,4 +42,5 @@ htmlcov/
 *.temp
 
 # Dataset
-data/
+data/*
+!data/.gitkeep
