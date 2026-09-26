@@ -123,7 +123,8 @@ def run_analysis(request: AnalysisRequest):
         
         model_results_list.append({
             "name": model_name,
-            "anomalies": anomaly_indices
+            "anomalies": anomaly_indices,
+            "auprc": model_data.get("auprc")
         })
         
         # Oyları say

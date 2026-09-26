@@ -212,7 +212,10 @@ if 'results' in st.session_state:
                 except Exception:
                     tp_text = ""
                     
-            cols[idx].info(f"**{model_name}** toplam **{anomaly_count}** satıra anomali dedi.{tp_text}")
+            auprc_val = model.get("auprc")
+            auprc_text = f"\n\n📈 **AUPRC:** {auprc_val:.4f}" if auprc_val is not None else ""
+                    
+            cols[idx].info(f"**{model_name}** toplam **{anomaly_count}** satıra anomali dedi.{tp_text}{auprc_text}")
     else:
         st.info("Herhangi bir model sonucu dönmedi.")
 

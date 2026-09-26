@@ -644,44 +644,39 @@ class DataProfiler:
         )
 
         # -------------------------------------------------
-        # Keyword-based detection (word-boundary)
+        # Keyword-based detection (Priority: Exact Match > Token Match)
         # -------------------------------------------------
 
-        label_keywords = [
-            "label",
-            "target",
-            "class",
-            "classification",
-            "response",
-            "ground_truth",
-            "groundtruth",
-            "anomaly",
-            "fraud",
-            "is_fraud",
-            "is_anomaly",
-            "behavior",
-            "outlier"
+        exact_keywords = [
+            "label", "target", "class", "ground_truth", 
+            "groundtruth", "anomaly", "fraud", "outlier"
+        ]
+        
+        partial_keywords = [
+            "is_fraud", "is_anomaly", "classification"
         ]
 
+        # 1. Önce tam eşleşme (Exact Match) ara
         for col in self.df.columns:
-
-            name = col.lower().strip()
-
             if col in graph_structural_cols:
                 continue
-
-            tokens = re.split(r'[_\-\s.]+', name)
-
-            if any(
-                keyword == name
-                or any(
-                    keyword == token
-                    for token in tokens
-                )
-                for keyword in label_keywords
-            ):
-
+                
+            name = col.lower().strip()
+            if name in exact_keywords:
                 label_cols.append(col)
+
+        # 2. Eğer tam eşleşme bulunamazsa, token veya kısmi eşleşmelere bak
+        if not label_cols:
+            for col in self.df.columns:
+                if col in graph_structural_cols:
+                    continue
+                    
+                name = col.lower().strip()
+                tokens = re.split(r'[_\-\s.]+', name)
+                
+                if any(keyword == token for keyword in exact_keywords) or \
+                   any(keyword in name for keyword in partial_keywords):
+                    label_cols.append(col)
 
         # -------------------------------------------------
         # Binary label candidate detection

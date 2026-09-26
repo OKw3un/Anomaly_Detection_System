@@ -404,10 +404,20 @@ class AnomalyEngine:
                     if len(wrapper.model.labels_) == len(labels):
                         labels = wrapper.model.labels_.astype(int)
 
+                auprc_score = None
+                if y is not None:
+                    from sklearn.metrics import average_precision_score
+                    try:
+                        auprc_score = average_precision_score(y, scores)
+                        print(f"      [METRİK] {model_name} AUPRC Skoru: {auprc_score:.4f}")
+                    except Exception as e:
+                        print(f"      [METRİK] AUPRC hesaplanamadı: {e}")
+
                 result.model_results[model_name] = {
                     "scores": scores,
                     "labels": labels,
-                    "is_supervised": is_supervised
+                    "is_supervised": is_supervised,
+                    "auprc": auprc_score
                 }
 
                 # Modelin kendi ürettiği embedding'i varsa kaydet

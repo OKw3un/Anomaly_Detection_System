@@ -20,6 +20,7 @@ class DatasetListResponse(BaseModel):
 class ModelResult(BaseModel):
     name: str
     anomalies: List[int] = Field(..., description="Modelin anomali bulduğu satır indeksleri")
+    auprc: Optional[float] = Field(default=None, description="Eğer etiket (y) mevcutsa hesaplanan AUPRC skoru")
 
 class AnalysisResponse(BaseModel):
     dataset_name: str

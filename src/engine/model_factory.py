@@ -28,7 +28,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "module": "pyod.models.pca",
         "class": "PCA",
         "kwargs": {
-            "contamination": 0.05,
+            "contamination": 0.0244311804382717,
             "n_components": 15  # 0-Varyans/Sıfıra bölünme hatasını önlemek için boyut sınırlandırıldı
         },
         "supports_embedding": False,
@@ -40,7 +40,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "IForest",
         "kwargs": {
             "n_estimators": 200,
-            "contamination": 0.002,
+            "contamination": 0.0244311804382717,
             "random_state": 42
         },
         "supports_embedding": False,
@@ -51,7 +51,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "module": "pyod.models.ecod",
         "class": "ECOD",
         "kwargs": {
-            "contamination": 0.05
+            "contamination": 0.0244311804382717
         },
         "supports_embedding": False,
         "category": "traditional"
@@ -83,14 +83,14 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
     "copod": {
         "module": "pyod.models.copod",
         "class": "COPOD",
-        "kwargs": {"contamination": 0.002},
+        "kwargs": {"contamination": 0.0244311804382717},
         "supports_embedding": False,
         "category": "traditional"
     },
     "hbos": {
         "module": "pyod.models.hbos",
         "class": "HBOS",
-        "kwargs": {"contamination": 0.05, "n_bins": 20},
+        "kwargs": {"contamination": 0.0244311804382717, "n_bins": 20},
         "supports_embedding": False,
         "category": "traditional"
     },
