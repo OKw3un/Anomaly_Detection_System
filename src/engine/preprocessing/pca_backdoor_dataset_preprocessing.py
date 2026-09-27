@@ -1,36 +1,75 @@
 """
-Preprocessor — Faz 1 Router çıktısındaki preprocessing_steps sözlüğünü
-alarak ham DataFrame'i modele beslenebilir sayısal matrise dönüştürür.
+PCA × UNSW-NB15 Backdoor Preprocessor
+======================================
+PCA (Principal Component Analysis) tabanlı anomali tespiti için özel,
+UNSW-NB15 Backdoor veri setine optimize edilmiş ön işleme (preprocessing) modülü.
 
-Desteklenen işlemler:
-  - Eksik veri doldurma (imputation)
-  - Kategorik kodlama (one-hot / ordinal)
-  - Sürekli değişken ölçekleme (StandardScaler / RobustScaler)
-  - ID ve Label sütunlarını ayırma
-  - Mevsimsellik çıkarma ve trend arındırma
+Tasarım Prensipleri & Uygulanan Kurallar:
+  1. Tamamen Unsupervised:
+     - ID, Label, Class sütunları pipeline'dan tamamen çıkarılır.
+     - Label veya Class bilgisi içeren hiçbir istatistik (KS-testi vb.)
+       feature seçiminde veya türetiminde kullanılmaz.
+  2. Kategorik Bilgi Korunur:
+     - proto, service, state sütunları one-hot kodlama ile korunur.
+     - Asla idxmax / frequency encoding ile tek bir sütuna indirgenmez.
+     - Mevcut one-hot grupları doğrudan korunur.
+  3. Log1p Dönüşümü:
+     - Yalnızca pozitif ve belirgin sağa çarpık (skew > skewness_threshold)
+       sayısal özelliklere uygulanır.
+     - Binary (one-hot) sütunlar log dönüşümüne sokulmaz.
+  4. Eksik Değer Doldurma (Imputation):
+     - Sayısal değişkenler -> Median (Medyan)
+     - Kategorik değişkenler -> Mode (Mod)
+     - Zaman serisi özel durumu -> ffill().bfill()
+  5. Ölçeklendirme (Scaling):
+     - RobustScaler (varsayılan) ve StandardScaler desteği.
+     - PCA her zaman scaling sonrası uygulanır.
+  6. Sabit Sütun Temizliği:
+     - Körlemesine VarianceThreshold(0.001) UYGULANMAZ (nadir anomali sinyallerini silmemek için).
+     - Yalnızca standart sapması kesin olarak 0 olan (tamamen sabit) sütunlar elenir.
+  7. Kademeli Test ve Ablation Desteği:
+     - use_log_transform, scaler_type, scale_onehot parametreleri ile
+       adım adım karşılaştırma olanağı sunar.
 """
 
+from typing import Dict, Any, List, Tuple, Optional
 import numpy as np
 import pandas as pd
-from typing import Dict, Any, List, Tuple, Optional
-
-from sklearn.preprocessing import RobustScaler, OrdinalEncoder
+from sklearn.preprocessing import StandardScaler, RobustScaler
 from sklearn.impute import SimpleImputer
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-class Preprocessor:
-    """Faz 1 Router çıktısına göre dinamik ön işleme pipeline'ı."""
+class PCABackdoorPreprocessor:
+    """UNSW-NB15 Backdoor veri seti ve PCA anomali tespit modeline özel preprocessor."""
 
-    def __init__(self):
-        self.scaler: Optional[RobustScaler] = None
-        self.encoder: Optional[OrdinalEncoder] = None
+    # Sıkça karşılaşılan ID ve Label sütun adları (Unsupervised garanti)
+    DEFAULT_EXCLUDE_CANDIDATES = {
+        "id", "ID", "Id", "label", "Label", "class", "Class",
+        "attack_cat", "Attack_cat", "uuid", "guid", "index"
+    }
+
+    def __init__(
+        self,
+        scaler_type: str = "robust",            # "standard" | "robust" | "none"
+        use_log_transform: bool = True,        # Sağa çarpık değişkenlere log1p uygula
+        skewness_threshold: float = 2.0,       # log1p için skew eşiği (skew > 2)
+        scale_onehot: bool = False,            # One-hot sütunları da ölçekle mi (False: 0/1 kalır)
+        only_numeric_features: bool = False,   # True ise one-hot/kategorik sütunlar elenir, sadece continuous sayısal sütunlar verilir
+        **kwargs
+    ):
+        self.scaler_type = str(scaler_type).lower()
+        self.use_log_transform = use_log_transform
+        self.skewness_threshold = skewness_threshold
+        self.scale_onehot = scale_onehot
+        self.only_numeric_features = kwargs.get("numeric_only", only_numeric_features)
+
+        self.scaler: Optional[Any] = None
         self.imputer: Optional[SimpleImputer] = None
 
-        # Fit sonrası saklanan sütun bilgileri
         self._feature_cols: List[str] = []
-        self._continuous_cols: List[str] = []
-        self._categorical_cols: List[str] = []
+        self._dropped_zero_var_cols: List[str] = []
+        self._log_transformed_cols: List[str] = []
+        self._scaled_cols: List[str] = []
 
     # ==========================================================
     # Public API
@@ -39,250 +78,265 @@ class Preprocessor:
     def fit_transform(
         self,
         df: pd.DataFrame,
-        preprocessing_steps: Dict[str, Any],
+        preprocessing_steps: Optional[Dict[str, Any]] = None,
         meta: Optional[Dict[str, Any]] = None
     ) -> Tuple[np.ndarray, pd.Index]:
         """
-        Ham DataFrame'i alır, ön işlemden geçirir ve sayısal matris döndürür.
+        Ham DataFrame'i alır, PCA ve Backdoor veri setine özel
+        unsupervised pipeline'dan geçirir ve sayısal matris döndürür.
 
         Returns:
-            X:        (n_samples, n_features) numpy dizisi
-            row_ids:  Orijinal satır indeksleri (sonuçları eşlemek için)
+            X:        (n_samples, n_features) numpy float32 dizisi
+            row_ids:  Orijinal satır indeksleri
         """
+        if preprocessing_steps is None:
+            preprocessing_steps = {}
 
         working_df = df.copy()
         row_ids = working_df.index.copy()
 
         # ---------------------------------------------------------
-        # 1. ID ve Label sütunlarını ayır
+        # 1. ID ve Label sütunlarını çıkar (Tamamen Unsupervised)
         # ---------------------------------------------------------
-
-        exclude_cols: List[str] = []
-
-        id_cols = preprocessing_steps.get("exclude_id_columns", [])
-        label_cols = preprocessing_steps.get("exclude_label_columns", [])
-        text_cols = preprocessing_steps.get("text_columns", [])
-
-        exclude_cols.extend(
-            col for col in id_cols if col in working_df.columns
-        )
-        exclude_cols.extend(
-            col for col in label_cols if col in working_df.columns
-        )
-
-        # Benzersizleştir
-        exclude_cols = list(dict.fromkeys(exclude_cols))
-
-        working_df = working_df.drop(
-            columns=[c for c in exclude_cols if c in working_df.columns],
-            errors="ignore"
-        )
+        working_df = self._drop_id_and_label_columns(working_df, preprocessing_steps)
 
         # ---------------------------------------------------------
-        # 2. Datetime sütunlarını sayısala dönüştür
+        # 2. Eksik Veri Doldurma (Imputation)
         # ---------------------------------------------------------
-
-        # Sadece Kaggle CreditCard veri setine özgü olacak şekilde,
-        # Time saniye sayacını Günün Saati (Hour) değişkenine çevirelim.
-        if "Time" in working_df.columns and "V1" in working_df.columns and "V28" in working_df.columns and pd.api.types.is_numeric_dtype(working_df["Time"]):
-            print("  [Preprocessor] Creditcard veri seti algılandı. 'Time' sütunu 'Saat (Hour)' değişkenine dönüştürülüyor...")
-            working_df["Hour"] = (working_df["Time"] // 3600) % 24
-
-        for col in working_df.columns:
-            if pd.api.types.is_datetime64_any_dtype(working_df[col]):
-                working_df[col] = (
-                    working_df[col]
-                    .astype(np.int64) // 10**9  # Unix timestamp (saniye)
-                )
+        working_df = self._impute_missing(working_df, meta)
 
         # ---------------------------------------------------------
-        # 3. Text/Log Sütunlarını Vektörleştir (BERT / TF-IDF)
+        # 3. Kategorik Değişkenleri Koru (One-Hot Encoding)
+        #    (Frekans kodlamaya indirgenmez, kategori kimliği korunur)
         # ---------------------------------------------------------
-       
-        bert_available = False
-        if len(text_cols) > 0:
-            try:
-                from sentence_transformers import SentenceTransformer
-                bert_available = True
-                print("  [Preprocessor] sentence-transformers kütüphanesi bulundu! Metinler BERT ile (Semantik) vektörleştirilecek.")
-                # Hızlı ve hafif bir model olan MiniLM kullanıyoruz
-                bert_model = SentenceTransformer('all-MiniLM-L6-v2')
-            except ImportError:
-                bert_available = False
-                print("  [Preprocessor] UYARI: 'sentence-transformers' yüklü değil! TF-IDF (Kelime frekansı) yöntemine geri dönülüyor (Fallback).")
-                print("  [Preprocessor] Çok daha akıllı sonuçlar için terminalden 'pip install sentence-transformers' komutunu çalıştırabilirsiniz.")
-
-        for col in text_cols:
-            if col in working_df.columns:
-                working_df[col] = working_df[col].fillna("")
-               
-                if bert_available:
-                    print(f"    > '{col}' sütunu BERT ile 384-boyutlu semantik vektöre çevriliyor...")
-                    # Metinleri BERT embeddinglerine dönüştür (Shape: [N, 384])
-                    embeddings = bert_model.encode(working_df[col].tolist(), show_progress_bar=False)
-                   
-                    bert_cols = [f"{col}_bert_{i}" for i in range(embeddings.shape[1])]
-                    bert_df = pd.DataFrame(
-                        embeddings,
-                        columns=bert_cols,
-                        index=working_df.index
-                    )
-                   
-                    working_df = pd.concat([working_df, bert_df], axis=1)
-                    working_df = working_df.drop(columns=[col])
-                else:
-                    # Eskisi gibi TF-IDF Fallback
-                    # max_features=15 ile boyut patlamasını engelle
-                    vectorizer = TfidfVectorizer(max_features=15)
-                    try:
-                        tfidf_matrix = vectorizer.fit_transform(working_df[col]).toarray()
-                        vocab = vectorizer.get_feature_names_out()
-                       
-                        tfidf_cols = [f"{col}_tfidf_{w}" for w in vocab]
-                        tfidf_df = pd.DataFrame(
-                            tfidf_matrix,
-                            columns=tfidf_cols,
-                            index=working_df.index
-                        )
-                       
-                        working_df = pd.concat([working_df, tfidf_df], axis=1)
-                        working_df = working_df.drop(columns=[col])
-                       
-                    except ValueError:
-                        working_df = working_df.drop(columns=[col])
+        working_df = self._preserve_and_encode_categoricals(working_df)
 
         # ---------------------------------------------------------
-        # 4. Sütun türlerini tespit et
+        # 4. Log1p Dönüşümü
+        #    Yalnızca pozitif ve sağa çarpık (skew > 2) numeric sütunlara
         # ---------------------------------------------------------
-
-        self._categorical_cols = [
-            col for col in working_df.columns
-            if (
-                pd.api.types.is_object_dtype(working_df[col])
-                or pd.api.types.is_string_dtype(working_df[col])
-                or pd.api.types.is_categorical_dtype(working_df[col])
-            )
-        ]
-
-        self._continuous_cols = [
-            col for col in working_df.columns
-            if col not in self._categorical_cols
-            and pd.api.types.is_numeric_dtype(working_df[col])
-        ]
+        if self.use_log_transform:
+            working_df = self._apply_log1p_transform(working_df)
 
         # ---------------------------------------------------------
-        # 5. Eksik veri doldurma (Imputation)
+        # 5. Sıfır Varyanslı (Tamamen Sabit) Sütunları Çıkar
+        #    VarianceThreshold(0.001) körlemesine uygulanmaz!
+        #    Yalnızca sayısal kararlılık için std == 0 olanlar çıkarılır.
         # ---------------------------------------------------------
-
-        if preprocessing_steps.get("impute_missing", False):
-            is_ts = meta.get("is_time_series", False) if meta else False
-           
-            if is_ts:
-                # Zaman serisi için ffill ve bfill
-                working_df = working_df.ffill().bfill()
-            else:
-                self.imputer = SimpleImputer(strategy="median")
-
-                if self._continuous_cols:
-                    working_df[self._continuous_cols] = (
-                        self.imputer.fit_transform(
-                            working_df[self._continuous_cols]
-                        )
-                    )
-
-                # Kategorikler için en sık görülen değer
-                for col in self._categorical_cols:
-                    if working_df[col].isnull().any():
-                        mode_val = working_df[col].mode()
-                        if len(mode_val) > 0:
-                            working_df[col] = working_df[col].fillna(
-                                mode_val.iloc[0]
-                            )
+        working_df = self._drop_zero_variance_columns(working_df)
 
         # ---------------------------------------------------------
-        # 6. Kategorik kodlama
+        # 6. Ölçekleme (RobustScaler veya StandardScaler)
+        #    PCA scaling sonrası uygulanır.
         # ---------------------------------------------------------
-
-        if (
-            preprocessing_steps.get("encode_categorical", False)
-            and self._categorical_cols
-        ):
-            # Adaptif Kategorik Kodlama (Kardinaliteye Göre)
-            for col in self._categorical_cols:
-                nunique = working_df[col].nunique()
-               
-                if nunique <= 5:
-                    # Low Cardinality -> One-Hot Encoding
-                    # drop_first=True eklenerek Dummy Variable Trap (Tam Çoklu Doğrusallık) önlendi
-                    dummies = pd.get_dummies(working_df[col], prefix=col, dummy_na=False, drop_first=True).astype(np.float32)
-                    working_df = pd.concat([working_df, dummies], axis=1)
-                    working_df = working_df.drop(columns=[col])
-                else:
-                    # High Cardinality -> Frequency Encoding
-                    freq = working_df[col].value_counts(normalize=True)
-                    working_df[col] = working_df[col].map(freq).astype(np.float32)
-                    working_df[col] = working_df[col].fillna(0.0)
-
-        else:
-            # Kategorik sütunlar encode edilmeyecekse düşür
-            working_df = working_df.drop(
-                columns=self._categorical_cols,
-                errors="ignore"
-            )
+        working_df = self._apply_scaling(working_df)
 
         # ---------------------------------------------------------
-        # 7. Sürekli değişken ölçekleme
+        # 7. Sonuç Matrisi Hazırlığı
         # ---------------------------------------------------------
-
-        # Artık tüm sütunlar sayısal olmalı.
-        # ANCAK TF-IDF (_tfidf_) ve One-Hot (_ namespace_) gibi zaten normalize
-        # edilmiş olan seyrek (sparse) sütunları RobustScaler'a SOKMAMALIYIZ!
-        numeric_cols = [
-            col for col in working_df.columns
-            if pd.api.types.is_numeric_dtype(working_df[col])
-            and "_tfidf_" not in col
-            and (not col.startswith(tuple(c + "_" for c in self._categorical_cols)))
-        ]
-
-        if (
-            preprocessing_steps.get("scale_continuous", False)
-            and numeric_cols
-        ):
-            self.scaler = RobustScaler()
-
-            working_df[numeric_cols] = (
-                self.scaler.fit_transform(
-                    working_df[numeric_cols]
-                )
-            )
-
-        # ---------------------------------------------------------
-        # 7.5. Sabit (Sıfır Varyanslı) Sütunları Çıkar (PCA Hatasını Önlemek İçin)
-        # ---------------------------------------------------------
-       
-        numeric_df = working_df.select_dtypes(include=[np.number])
-        # Standart sapması 0 olan (hiç değişmeyen) sütunlar PCA gibi modelleri çökertir
-        zero_var_cols = numeric_df.columns[numeric_df.std(ddof=0) == 0].tolist()
-       
-        if zero_var_cols:
-            print(f"  [Preprocessor] {len(zero_var_cols)} adet sıfır varyanslı sütun tespit edildi ve çıkarılıyor (PCA çökmesini önlemek için).")
-            working_df = working_df.drop(columns=zero_var_cols)
-
-        # ---------------------------------------------------------
-        # 8. Sonuç
-        # ---------------------------------------------------------
-
         self._feature_cols = list(working_df.columns)
-
         X = working_df.values.astype(np.float32)
+
+        print(
+            f"  [PCABackdoorPreprocessor] Tamamlandı: "
+            f"{X.shape[0]} satır × {X.shape[1]} özellik "
+            f"(Scaler: {self.scaler_type}, Log: {self.use_log_transform}, ScaleOneHot: {self.scale_onehot}, OnlyNumeric: {self.only_numeric_features})"
+        )
 
         return X, row_ids
 
     # ==========================================================
-    # Getter
+    # Private — Adımlar
+    # ==========================================================
+
+    def _drop_id_and_label_columns(
+        self,
+        df: pd.DataFrame,
+        preprocessing_steps: Dict[str, Any]
+    ) -> pd.DataFrame:
+        """
+        ID, Label ve Class sütunlarını tamamen ayıklar.
+        Modelin unsupervised kalmasını sağlar, kesinlikle PCA'ya sızdırılmaz.
+        """
+        exclude_cols = set()
+
+        for col in preprocessing_steps.get("exclude_id_columns", []):
+            if col in df.columns:
+                exclude_cols.add(col)
+        for col in preprocessing_steps.get("exclude_label_columns", []):
+            if col in df.columns:
+                exclude_cols.add(col)
+
+        for col in df.columns:
+            if col.lower() in {c.lower() for c in self.DEFAULT_EXCLUDE_CANDIDATES}:
+                exclude_cols.add(col)
+
+        if exclude_cols:
+            print(f"  [PCABackdoorPreprocessor] ID/Label sütunları çıkarıldı: {sorted(list(exclude_cols))}")
+            df = df.drop(columns=list(exclude_cols), errors="ignore")
+
+        return df
+
+    def _impute_missing(
+        self,
+        df: pd.DataFrame,
+        meta: Optional[Dict[str, Any]]
+    ) -> pd.DataFrame:
+        """
+        Eksik değerleri doldurur:
+          - Zaman serisi varsa: ffill().bfill()
+          - Sayısal değişkenler: Median
+          - Kategorik değişkenler: Mode
+        """
+        is_ts = meta.get("is_time_series", False) if meta else False
+
+        if is_ts:
+            df = df.ffill().bfill()
+            return df
+
+        numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+        if numeric_cols and df[numeric_cols].isnull().any().any():
+            self.imputer = SimpleImputer(strategy="median")
+            df[numeric_cols] = self.imputer.fit_transform(df[numeric_cols])
+
+        cat_cols = df.select_dtypes(include=["object", "string", "category"]).columns.tolist()
+        for col in cat_cols:
+            if df[col].isnull().any():
+                mode_series = df[col].mode(dropna=True)
+                mode_val = mode_series.iloc[0] if len(mode_series) > 0 else "UNKNOWN"
+                df[col] = df[col].fillna(mode_val)
+
+        if df.isnull().any().any():
+            df = df.fillna(0)
+
+        return df
+
+    def _preserve_and_encode_categoricals(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        only_numeric_features=True ise tüm kategorik ve one-hot sütunları eler,
+        PCA'ya yalnızca continuous sayısal değişkenlerin gitmesini sağlar.
+
+        only_numeric_features=False ise proto, service, state gibi kategorik
+        değişkenlerin kimliğini korur (One-Hot Encoding).
+        """
+        if self.only_numeric_features:
+            cat_cols = df.select_dtypes(include=["object", "string", "category"]).columns.tolist()
+            onehot_cols = [
+                c for c in df.columns
+                if any(c.startswith(p) for p in ["proto=", "service=", "state="])
+            ]
+            drop_cols = list(set(cat_cols + onehot_cols))
+            if drop_cols:
+                print(
+                    f"  [PCABackdoorPreprocessor] only_numeric_features=True: "
+                    f"{len(drop_cols)} adet kategorik/one-hot sütun çıkarıldı."
+                )
+                df = df.drop(columns=drop_cols, errors="ignore")
+            return df
+
+        cat_cols = df.select_dtypes(include=["object", "string", "category"]).columns.tolist()
+
+        if cat_cols:
+            print(f"  [PCABackdoorPreprocessor] Kategorik sütunlar One-Hot kodlanıyor: {cat_cols}")
+            dummies = pd.get_dummies(df[cat_cols], prefix=cat_cols, drop_first=False, dtype=np.float32)
+            df = df.drop(columns=cat_cols)
+            df = pd.concat([df, dummies], axis=1)
+
+        return df
+
+    def _apply_log1p_transform(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Yalnızca pozitif, ikili olmayan (nunique > 2) ve belirgin sağa çarpık
+        (skew > skewness_threshold) sayısal değişkenlere np.log1p uygular.
+        """
+        numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+        transformed = []
+
+        for col in numeric_cols:
+            if df[col].nunique() <= 2:
+                continue
+
+            if (df[col] >= 0).all():
+                skew_val = float(df[col].skew())
+                if skew_val > self.skewness_threshold:
+                    df[col] = np.log1p(df[col].astype(np.float32))
+                    transformed.append(col)
+
+        self._log_transformed_cols = transformed
+        if transformed:
+            sample_shown = transformed[:6]
+            more_str = f" (+{len(transformed) - 6} daha)" if len(transformed) > 6 else ""
+            print(
+                f"  [PCABackdoorPreprocessor] Log1p uygulandı ({len(transformed)} sütun, skew > {self.skewness_threshold}): "
+                f"{sample_shown}{more_str}"
+            )
+
+        return df
+
+    def _drop_zero_variance_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Körlemesine VarianceThreshold(0.001) UYGULAMAZ.
+        Sadece sayısal olarak hiçbir değişimi olmayan (std == 0) sütunları çıkarır.
+        Nadir anomali göstergesi olabilecek seyrek sütunlar korunur.
+        """
+        numeric_cols = df.select_dtypes(include=[np.number]).columns
+        zero_var_cols = [c for c in numeric_cols if df[c].std(ddof=0) == 0.0]
+
+        self._dropped_zero_var_cols = zero_var_cols
+        if zero_var_cols:
+            print(
+                f"  [PCABackdoorPreprocessor] {len(zero_var_cols)} adet sıfır varyanslı (sabit) sütun çıkarıldı: "
+                f"{zero_var_cols}"
+            )
+            df = df.drop(columns=zero_var_cols)
+
+        return df
+
+    def _apply_scaling(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Ölçeklendirme uygular:
+          - scaler_type == 'standard': StandardScaler
+          - scaler_type == 'robust': RobustScaler
+          - scaler_type == 'none': Ölçekleme yapılmaz
+
+        scale_onehot=False ise one-hot/ikili sütunlar 0/1 olarak korunur,
+        yalnızca sürekli sayısal değişkenler ölçeklenir.
+        """
+        if self.scaler_type == "none":
+            return df
+
+        if self.scale_onehot or self.only_numeric_features:
+            cols_to_scale = df.select_dtypes(include=[np.number]).columns.tolist()
+        else:
+            cols_to_scale = [
+                c for c in df.select_dtypes(include=[np.number]).columns
+                if df[c].nunique() > 2
+                and not any(c.startswith(p) for p in ["proto=", "service=", "state="])
+            ]
+
+        self._scaled_cols = cols_to_scale
+
+        if cols_to_scale:
+            if self.scaler_type == "robust":
+                self.scaler = RobustScaler()
+                print(f"  [PCABackdoorPreprocessor] RobustScaler uygulanıyor ({len(cols_to_scale)} sütun)...")
+            else:
+                self.scaler = StandardScaler()
+                print(f"  [PCABackdoorPreprocessor] StandardScaler uygulanıyor ({len(cols_to_scale)} sütun)...")
+
+            df[cols_to_scale] = self.scaler.fit_transform(df[cols_to_scale]).astype(np.float32)
+
+        return df
+
+    # ==========================================================
+    # Getters
     # ==========================================================
 
     @property
     def feature_names(self) -> List[str]:
         """Ön işlem sonrası kullanılan özellik isimlerini döndürür."""
-        return self._feature_cols 
+        return self._feature_cols
+
+
+# Geriye dönük uyumluluk için alias
+Preprocessor = PCABackdoorPreprocessor

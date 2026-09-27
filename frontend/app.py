@@ -141,6 +141,12 @@ if 'results' in st.session_state:
                     target_col = col
                     has_label = True
                     break
+        if not has_label:
+            for candidate in ["class", "Class", "label", "Label", "y", "target", "Target"]:
+                if candidate in df.columns:
+                    target_col = candidate
+                    has_label = True
+                    break
     
     # --- 1. SKOR KARTLARI (METRİKLER) ---
     consensus_levels = results.get("consensus_levels", {})
@@ -214,6 +220,34 @@ if 'results' in st.session_state:
     else:
         st.info("Herhangi bir model sonucu dönmedi.")
 
+    # --- Model Bazlı ve Birleşim (Union) True Positive Analizi ---
+    model_tp_map = {}
+    model_pred_map = {}
+    row_detector_models = {}
+    union_tp_indices = []
+    union_pred_indices = []
+
+    if has_label and df is not None and model_results:
+        try:
+            for model in model_results:
+                m_name = model.get("name", "Model")
+                m_indices = model.get("anomalies", [])
+                model_pred_map[m_name] = set(m_indices)
+                
+                tp_indices = set()
+                for idx in m_indices:
+                    if 0 <= idx < len(df):
+                        val = df.iloc[idx][target_col]
+                        if str(val) in ["1", "1.0", "True"] or val == 1:
+                            tp_indices.add(idx)
+                            row_detector_models.setdefault(idx, []).append(m_name)
+                model_tp_map[m_name] = tp_indices
+
+            union_tp_indices = sorted(list(set().union(*model_tp_map.values()) if model_tp_map else set()))
+            union_pred_indices = sorted(list(set().union(*model_pred_map.values()) if model_pred_map else set()))
+        except Exception as e:
+            print(f"Error computing union TP: {e}")
+
     if has_label:
         st.subheader("🎯 Ortak Karar (Consensus) Gerçek Anomali Başarısı")
         if consensus_levels:
@@ -238,6 +272,46 @@ if 'results' in st.session_state:
             else:
                 st.success("**Ortak Karar**: 0 anomali.")
 
+        # --- MODELLERİN BİRLEŞİMİ (UNION TP) BAŞARI KARTI ---
+        if union_tp_indices:
+            st.markdown("---")
+            st.subheader("🌐 Modellerin Birleşimi — Gerçek Anomali Başarısı (Union TP)")
+            
+            try:
+                tot_anom = sum(str(x) in ["1", "1.0", "True"] or x == 1 for x in df[target_col])
+            except Exception:
+                tot_anom = len(union_tp_indices)
+                
+            rec_pct = (len(union_tp_indices) / tot_anom * 100) if tot_anom > 0 else 0.0
+            prec_pct = (len(union_tp_indices) / len(union_pred_indices) * 100) if len(union_pred_indices) > 0 else 0.0
+            
+            u_cols = st.columns(4)
+            u_cols[0].metric(
+                label="🎯 Yakalanan Gerçek Anomali (Birleşim)",
+                value=f"{len(union_tp_indices):,} adet",
+                help="Modellerin en az birinin 1 dediği VE etiket sütununda da 1 olan benzersiz satır sayısı."
+            )
+            u_cols[1].metric(
+                label="📈 Genel Kapsama (Overall Recall)",
+                value=f"%{rec_pct:.2f}",
+                help=f"Toplam {tot_anom:,} gerçek anomali içinden en az 1 modelin yakaladığı oran."
+            )
+            u_cols[2].metric(
+                label="🚨 Birleşim Toplam Tahmin (Model=1)",
+                value=f"{len(union_pred_indices):,} satır",
+                help="En az bir modelin anomali dediği toplam benzersiz satır sayısı."
+            )
+            u_cols[3].metric(
+                label="🎯 Birleşim Doğruluğu (Precision)",
+                value=f"%{prec_pct:.2f}",
+                help="Birleşim havuzundaki tahminlerin doğruluk oranı."
+            )
+            
+            st.success(
+                f"💡 **Modellerin Birleşik Gücü (Ensemble Union):** Veri setindeki **{tot_anom:,}** gerçek anomaliden "
+                f"**{len(union_tp_indices):,}** tanesi (%{rec_pct:.2f}) modellerin en az biri tarafından doğru tespit edilmiştir."
+            )
+
     # --- 3. SEKMELİ VERİ TABLOLARI (TABS) ---
     st.subheader("🔍 Detaylı Veri İncelemesi")
     
@@ -249,6 +323,11 @@ if 'results' in st.session_state:
         
         # Sekme başlıklarını dinamik olarak oluştur
         tab_names = []
+        
+        # 1. En öne Gerçek Anomali Birleşimi sekmesi (Etiketli veri setlerinde)
+        if has_label and union_tp_indices:
+            tab_names.append("🎯 Gerçek Anomali Birleşimi (Model=1 & Etiket=1)")
+
         if consensus_levels:
             for level in consensus_levels.keys():
                 tab_names.append(f"🚨 {level}")
@@ -264,6 +343,19 @@ if 'results' in st.session_state:
         
         tab_idx = 0
         
+        # 0. Gerçek Anomali Birleşimi Sekmesi (Varsa ilk sırada açılır)
+        if has_label and union_tp_indices:
+            with tabs[tab_idx]:
+                st.success(
+                    f"Aşağıdaki tablo, modellerin en az birinin '1' (anomali) tahmini yaptığı ve etiket sütununda da "
+                    f"değeri '1' olan **{len(union_tp_indices):,}** adet benzersiz gerçek anomali satırını göstermektedir."
+                )
+                df_union_tp = df.iloc[union_tp_indices].copy()
+                df_union_tp.insert(0, "Tespit Eden Modeller", [", ".join(row_detector_models.get(i, [])) for i in union_tp_indices])
+                df_union_tp.insert(1, "Model Sayısı", [len(row_detector_models.get(i, [])) for i in union_tp_indices])
+                st.dataframe(df_union_tp, use_container_width=True, key="df_tab_union_tp")
+            tab_idx += 1
+        
         # 1. Consensus Sekmeleri
         if consensus_levels:
             for level_name, indices in consensus_levels.items():
@@ -275,7 +367,7 @@ if 'results' in st.session_state:
                         st.success("Bu seviyede ortak anomali bulunamadı.")
                 tab_idx += 1
         else:
-            with tabs[0]:
+            with tabs[tab_idx]:
                 if len(common_indices) > 0:
                     st.error("Aşağıdaki tablo, çalışan algoritmaların ortaklaşa 'Anomali' olarak tespit ettiği riskli satırları göstermektedir.")
                     st.dataframe(df.iloc[common_indices].copy(), use_container_width=True, key="df_consensus_legacy")
@@ -296,7 +388,7 @@ if 'results' in st.session_state:
             tab_idx += 1
                 
         # Son Sekme: Orijinal Veri Seti
-        with tabs[-1]:
+        with tabs[tab_idx]:
             st.write("Veri setinin orijinal hali:")
             st.dataframe(df, use_container_width=True, key="df_all_data")
             

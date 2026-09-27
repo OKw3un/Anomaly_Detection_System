@@ -130,18 +130,23 @@ def run_analysis(request: AnalysisRequest):
         tam_kesisim = [idx for idx, count in vote_counter.items() if count == num_models]
         n_eksi_1 = [idx for idx, count in vote_counter.items() if count >= num_models - 1]
         n_eksi_2 = [idx for idx, count in vote_counter.items() if count >= num_models - 2]
+        birlesim = [idx for idx, count in vote_counter.items() if count >= 1]
         
         common_anomalies = tam_kesisim
 
         if num_models <= 3:
             consensus_levels[f"Tam Kesişim ({num_models}/{num_models})"] = tam_kesisim
+            if num_models > 1:
+                consensus_levels[f"En Az 1 Model (Birleşim / Min 1/{num_models})"] = birlesim
         elif 3 < num_models <= 6:
             consensus_levels[f"Tam Kesişim ({num_models}/{num_models})"] = tam_kesisim
             consensus_levels[f"Çoğunluk Kesişimi (Min {num_models-1}/{num_models})"] = n_eksi_1
+            consensus_levels[f"En Az 1 Model (Birleşim / Min 1/{num_models})"] = birlesim
         else:
             consensus_levels[f"Tam Kesişim ({num_models}/{num_models})"] = tam_kesisim
             consensus_levels[f"Güçlü Kesişim (Min {num_models-1}/{num_models})"] = n_eksi_1
             consensus_levels[f"Çoğunluk Kesişimi (Min {num_models-2}/{num_models})"] = n_eksi_2
+            consensus_levels[f"En Az 1 Model (Birleşim / Min 1/{num_models})"] = birlesim
 
     return AnalysisResponse(
         dataset_name=request.dataset_name,

@@ -29,7 +29,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "PCA",
         "kwargs": {
             "contamination": 0.0244311804382717,
-            "n_components": 30  # 0-Varyans/Sıfıra bölünme hatasını önlemek için boyut sınırlandırıldı
+            "n_components": 180
         },
         "supports_embedding": False,
         "category": "traditional"
