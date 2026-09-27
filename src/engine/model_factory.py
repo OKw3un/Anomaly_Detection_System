@@ -29,7 +29,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "PCA",
         "kwargs": {
             "contamination": 0.0244311804382717,
-            "n_components": 15  # 0-Varyans/Sıfıra bölünme hatasını önlemek için boyut sınırlandırıldı
+            "n_components": 30  # 0-Varyans/Sıfıra bölünme hatasını önlemek için boyut sınırlandırıldı
         },
         "supports_embedding": False,
         "category": "traditional"
@@ -40,6 +40,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "IForest",
         "kwargs": {
             "n_estimators": 200,
+            "max_samples": 8,
             "contamination": 0.0244311804382717,
             "random_state": 42
         },
@@ -221,29 +222,8 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         },
         "supports_embedding": True,
         "category": "time_series"
-    },
-
-
-    # ---------------------------------------------------------
-    # Grafik / Ağ (Graph/Network) Modelleri
-    # ---------------------------------------------------------
-
-    "graph_dominant": {
-        "module": "src.engine.custom_models",
-        "class": "GraphDominantDetector",
-        "kwargs": {
-            "hid_dim": 32,
-            "num_layers": 3,
-            "epoch": 40,
-            "weight": 0.5,
-            "k_neighbors": 5,
-            "contamination": 0.05
-        },
-        "supports_embedding": True,
-        "category": "graph"
     }
 }
-
 
 class ModelFactory:
     """Router'ın önerdiği model adlarından PyOD nesneleri üretir."""
@@ -286,6 +266,7 @@ class ModelFactory:
 
                 # Kwargs kopyala
                 kwargs = dict(registry["kwargs"])
+
 
                 # n_features sadece DL modelleri için
                 # (registry'de n_features: None olarak tanımlananlar)

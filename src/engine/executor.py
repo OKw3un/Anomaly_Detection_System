@@ -154,6 +154,55 @@ class AnomalyEngine:
             self.X_raw = X
 
         # ---------------------------------------------------------
+        # Adım 1.9: IForest'a Özel Preprocessing (Backdoor Veri Seti)
+        # ---------------------------------------------------------
+        self.X_iforest = None
+        self._iforest_feature_names = []
+
+        has_iforest = "isolation_forest" in config.get("recommended_models", [])
+        is_backdoor = any(c.startswith("proto=") for c in df_raw.columns)
+
+        if has_iforest and is_backdoor:
+            try:
+                from src.engine.preprocessing.iforest_backdoor_dataset_preprocessing import IForestBackdoorPreprocessor
+                print("\n[Adım 1.9] IForest × Backdoor özel preprocessing başlatılıyor...")
+                iforest_prep = IForestBackdoorPreprocessor()
+                self.X_iforest, _ = iforest_prep.fit_transform(
+                    df_raw,
+                    preprocessing_steps,
+                    meta=config.get("metadata")
+                )
+                self._iforest_feature_names = iforest_prep.feature_names
+                print(f"  IForest özel veri hazır: {self.X_iforest.shape[0]} satır × {self.X_iforest.shape[1]} özellik")
+            except Exception as e:
+                print(f"  [UYARI] IForest özel preprocessing başarısız, standart veri kullanılacak: {e}")
+                self.X_iforest = None
+
+        # ---------------------------------------------------------
+        # Adım 1.9b: PCA'ya Özel Preprocessing (Backdoor Veri Seti)
+        # ---------------------------------------------------------
+        self.X_pca = None
+        self._pca_feature_names = []
+
+        has_pca = "pca" in config.get("recommended_models", [])
+
+        if has_pca and is_backdoor:
+            try:
+                from src.engine.preprocessing.pca_backdoor_dataset_preprocessing import PCABackdoorPreprocessor
+                print("\n[Adım 1.9b] PCA × Backdoor özel preprocessing başlatılıyor...")
+                pca_prep = PCABackdoorPreprocessor()
+                self.X_pca, _ = pca_prep.fit_transform(
+                    df_raw,
+                    preprocessing_steps,
+                    meta=config.get("metadata")
+                )
+                self._pca_feature_names = pca_prep.feature_names
+                print(f"  PCA özel veri hazır: {self.X_pca.shape[0]} satır × {self.X_pca.shape[1]} özellik")
+            except Exception as e:
+                print(f"  [UYARI] PCA özel preprocessing başarısız, standart veri kullanılacak: {e}")
+                self.X_pca = None
+
+        # ---------------------------------------------------------
         # Adım 2: Model Oluşturma
         # ---------------------------------------------------------
         print("\n[Adım 2] Modeller oluşturuluyor...")
@@ -255,6 +304,10 @@ class AnomalyEngine:
                     
                     if dataset_type == "time_series" and model_name in ["lstm_autoencoder", "supervised_xgboost", "supervised_lightgbm"]:
                         X_c = self.X_raw[mask]
+                    elif model_name == "isolation_forest" and self.X_iforest is not None:
+                        X_c = self.X_iforest[mask]
+                    elif model_name == "pca" and self.X_pca is not None:
+                        X_c = self.X_pca[mask]
                     else:
                         X_c = X_combined[mask]
                         
@@ -408,8 +461,10 @@ class AnomalyEngine:
                 if y is not None:
                     from sklearn.metrics import average_precision_score
                     try:
-                        auprc_score = average_precision_score(y, scores)
-                        print(f"      [METRİK] {model_name} AUPRC Skoru: {auprc_score:.4f}")
+                        # Ham (normalize edilmemiş) skorlar üzerinden hesapla
+                        # MinMaxScaler skor sıralamasını bozabilir, AUPRC ranking-tabanlı bir metriktir
+                        auprc_score = average_precision_score(y, final_scores)
+                        print(f"      [METRİK] {model_name} AUPRC Skoru: {auprc_score:.4f} (Ham skorlardan)")
                     except Exception as e:
                         print(f"      [METRİK] AUPRC hesaplanamadı: {e}")
 

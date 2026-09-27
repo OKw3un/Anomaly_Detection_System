@@ -124,15 +124,10 @@ if 'results' in st.session_state:
     
     if file_path and os.path.exists(file_path):
         if file_path.endswith(".json"):
-            try:
-                from src.engine.graph_feature_engineering import GraphFeatureEngineer
-                graph_engineer = GraphFeatureEngineer(file_path)
-                df = graph_engineer.transform()
-            except Exception:
-                import json
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    json_data = json.load(f)
-                df = pd.json_normalize(json_data if isinstance(json_data, list) else json_data)
+            import json
+            with open(file_path, 'r', encoding='utf-8') as f:
+                json_data = json.load(f)
+            df = pd.json_normalize(json_data if isinstance(json_data, list) else json_data)
         else:
             df = pd.read_csv(file_path)
             

@@ -636,14 +636,6 @@ class DataProfiler:
         label_cols = []
 
         # -------------------------------------------------
-        # Graph structural columns to exclude
-        # -------------------------------------------------
-
-        graph_structural_cols = (
-            self._detect_graph_structural_cols()
-        )
-
-        # -------------------------------------------------
         # Keyword-based detection (Priority: Exact Match > Token Match)
         # -------------------------------------------------
 
@@ -658,9 +650,6 @@ class DataProfiler:
 
         # 1. Önce tam eşleşme (Exact Match) ara
         for col in self.df.columns:
-            if col in graph_structural_cols:
-                continue
-                
             name = col.lower().strip()
             if name in exact_keywords:
                 label_cols.append(col)
@@ -668,13 +657,10 @@ class DataProfiler:
         # 2. Eğer tam eşleşme bulunamazsa, token veya kısmi eşleşmelere bak
         if not label_cols:
             for col in self.df.columns:
-                if col in graph_structural_cols:
-                    continue
-                    
                 name = col.lower().strip()
                 tokens = re.split(r'[_\-\s.]+', name)
                 
-                if any(keyword == token for keyword in exact_keywords) or \
+                if any(keyword in tokens for keyword in exact_keywords) or \
                    any(keyword in name for keyword in partial_keywords):
                     label_cols.append(col)
 
@@ -685,9 +671,6 @@ class DataProfiler:
         for col in self.df.columns:
 
             if col in label_cols:
-                continue
-
-            if col in graph_structural_cols:
                 continue
 
             series = self.df[col].dropna()
@@ -745,36 +728,6 @@ class DataProfiler:
         text_cols,
         continuous_cols=None
     ):
-
-        source_candidates = [
-            col for col in self.df.columns
-            if col.lower() in [
-                "source",
-                "source_id",
-                "src",
-                "from",
-                "fromid"
-            ]
-        ]
-
-        target_candidates = [
-            col for col in self.df.columns
-            if col.lower() in [
-                "target",
-                "target_id",
-                "dst",
-                "to",
-                "toid"
-            ]
-        ]
-
-        # Graph
-        if source_candidates and target_candidates:
-            return "graph"
-
-        # Check if the specific provided file is a graph JSON
-        if self.dataset_name and self.dataset_name.endswith(".json") and "graph" in self.dataset_name.lower():
-            return "graph"
 
         # Text / logs
         if len(text_cols) > 0:
@@ -1039,39 +992,7 @@ class DataProfiler:
 
         return True
 
-    # =========================================================
-    # Graph Structural Column Detection
-    # =========================================================
 
-    def _detect_graph_structural_cols(self):
-
-        structural = set()
-
-        source_names = {
-            "source", "source_id", "src", "from"
-        }
-
-        target_names = {
-            "target", "target_id", "dst", "to"
-        }
-
-        sources = [
-            c for c in self.df.columns
-            if c.lower() in source_names
-        ]
-
-        targets = [
-            c for c in self.df.columns
-            if c.lower() in target_names
-        ]
-
-        # Her ikisi de varsa graph yapısı olarak kabul et
-
-        if sources and targets:
-            structural.update(sources)
-            structural.update(targets)
-
-        return structural
 
     # =========================================================
     # Implicit Time-Series Detection
@@ -1304,7 +1225,7 @@ class DataProfiler:
         is_collective = False
         
         # Rule-based fallback (metadata)
-        if dataset_type in ["time_series", "graph", "text"] or has_seasonality or has_trend:
+        if dataset_type in ["time_series", "text"] or has_seasonality or has_trend:
             is_collective = True
             
         # Statistical verification if not already found (checks up to 5 continuous cols for performance)

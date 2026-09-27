@@ -1,0 +1,14 @@
+﻿Feature,KS Statistic (D),p-value,Significant (p<0.05)
+ttl_diff,0.757018,0.0,✅ Evet
+dmean,0.697507,0.0,✅ Evet
+dload,0.695221,0.0,✅ Evet
+dttl,0.694479,0.0,✅ Evet
+sttl,0.688212,0.0,✅ Evet
+ct_state_ttl,0.670561,0.0,✅ Evet
+swin,0.581411,0.0,✅ Evet
+sinpkt,0.559913,0.0,✅ Evet
+stcpb,0.554561,0.0,✅ Evet
+dtcpb,0.554368,0.0,✅ Evet
+smean,0.466783,0.0,✅ Evet
+service,0.265812,0.0,✅ Evet
+trans_depth,0.063739,1.8145432e-08,✅ Evet

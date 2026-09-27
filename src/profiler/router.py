@@ -48,10 +48,6 @@ class ModelRouter:
                     # Düşük boyut → hızlı geleneksel yoğunluk/histogram modelleri
                     recommended_models = ["isolation_forest", "lof", "copod", "hbos"]
 
-            elif meta.dataset_type == "graph":
-                strategy = "Graph Anomaly Detection Pipeline"
-                recommended_models = ["graph_dominant"]
-
             else:
                 strategy = "Tabular Anomaly Detection Pipeline"
                 if meta.high_dimensionality and meta.total_rows >= 5000:

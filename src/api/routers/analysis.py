@@ -43,20 +43,13 @@ def run_analysis(request: AnalysisRequest):
         if file_path.endswith(".csv"):
             df = pd.read_csv(file_path)
         elif file_path.endswith(".json"):
-            # Graf JSON dosyaları özel işlem gerektirir (iç içe list/dict yapıları var)
-            from src.engine.graph_feature_engineering import GraphFeatureEngineer
-            try:
-                graph_engineer = GraphFeatureEngineer(file_path)
-                df = graph_engineer.transform()
-            except Exception:
-                # Graf formatı değilse düz json_normalize dene
-                import json
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    json_data = json.load(f)
-                if isinstance(json_data, list):
-                    df = pd.json_normalize(json_data)
-                else:
-                    df = pd.json_normalize(json_data)
+            import json
+            with open(file_path, 'r', encoding='utf-8') as f:
+                json_data = json.load(f)
+            if isinstance(json_data, list):
+                df = pd.json_normalize(json_data)
+            else:
+                df = pd.json_normalize(json_data)
         else:
             raise ValueError("Sadece .csv ve .json formatları desteklenmektedir.")
     except HTTPException:
