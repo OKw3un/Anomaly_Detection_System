@@ -39,84 +39,56 @@ class IForestBackdoorPreprocessor:
         self._dropped_corr_cols: List[str] = []
 
     # ==========================================================
-    # Public API
+    # Düzeltilmiş fit_transform Akışı
     # ==========================================================
-
     def fit_transform(
         self,
         df: pd.DataFrame,
         preprocessing_steps: Dict[str, Any],
         meta: Optional[Dict[str, Any]] = None
     ) -> Tuple[np.ndarray, pd.Index]:
-        """
-        Ham DataFrame'i alır, IForest'a özel ön işlemden geçirir.
-
-        Returns:
-            X:        (n_samples, n_features) numpy dizisi
-            row_ids:  Orijinal satır indeksleri
-        """
 
         working_df = df.copy()
         row_ids = working_df.index.copy()
 
-        # ---------------------------------------------------------
-        # 1. Label sütununu ayır
-        # ---------------------------------------------------------
+        # 1. Label ve ID sütunlarını ayır
         label_cols = preprocessing_steps.get("exclude_label_columns", [])
         id_cols = preprocessing_steps.get("exclude_id_columns", [])
         exclude_cols = list(dict.fromkeys(id_cols + label_cols))
+        working_df = working_df.drop(columns=[c for c in exclude_cols if c in working_df.columns], errors="ignore")
 
-        working_df = working_df.drop(
-            columns=[c for c in exclude_cols if c in working_df.columns],
-            errors="ignore"
-        )
-
-        # ---------------------------------------------------------
         # 2. One-Hot sütunlarını frekans kodlamasına dönüştür
-        #    (UNSW-NB15 verisindeki proto=*, service=*, state=*)
-        # ---------------------------------------------------------
         working_df = self._collapse_onehot_groups(working_df)
 
-        # ---------------------------------------------------------
         # 3. Kalan kategorik sütunları frekans kodla
-        # ---------------------------------------------------------
         working_df = self._frequency_encode_categoricals(working_df)
 
-        # ---------------------------------------------------------
-        # 4. Eksik veri doldurma (Median Imputation)
-        # ---------------------------------------------------------
+        # 4. Eksik veri doldurma (Imputation)
         if preprocessing_steps.get("impute_missing", False):
             numeric_cols = working_df.select_dtypes(include=[np.number]).columns.tolist()
             if numeric_cols:
                 self.imputer = SimpleImputer(strategy="median")
                 working_df[numeric_cols] = self.imputer.fit_transform(working_df[numeric_cols])
-
-        # Kalan NaN'ları sıfırla (güvenlik ağı)
         working_df = working_df.fillna(0)
 
         # ---------------------------------------------------------
-        # 5. Log Transform (Çarpık dağılımlı sütunlar için)
-        # ---------------------------------------------------------
-        working_df = self._log_transform_skewed(working_df)
-
-        # ---------------------------------------------------------
-        # 6. Feature Engineering — Oran Özellikleri
+        # KRİTİK DEĞİŞİKLİK:
+        # 5. ADIM: ÖNCE Feature Engineering (Ham değerler üzerinden)
         # ---------------------------------------------------------
         working_df = self._create_ratio_features(working_df)
 
         # ---------------------------------------------------------
-        # 7. Düşük Varyans Filtresi (VarianceThreshold)
+        # 6. ADIM: SONRA Log Transform (Türetilen oranlar dahil)
         # ---------------------------------------------------------
+        working_df = self._log_transform_skewed(working_df)
+
+        # 7. Düşük Varyans Filtresi
         working_df = self._filter_low_variance(working_df)
 
-        # ---------------------------------------------------------
-        # 8. Korelasyon Filtresi (Pearson > threshold olan çiftlerden birini düşür)
-        # ---------------------------------------------------------
+        # 8. Korelasyon Filtresi (Türetilen özellikleri koruyarak)
         working_df = self._filter_high_correlation(working_df)
 
-        # ---------------------------------------------------------
-        # 9. Sonuç
-        # ---------------------------------------------------------
+        # 9. Sonuç Matrisi
         self._feature_cols = list(working_df.columns)
         X = working_df.values.astype(np.float32)
 
@@ -172,80 +144,84 @@ class IForestBackdoorPreprocessor:
         return df
 
     # ==========================================================
-    # Private — Log Transform
+    # Geliştirilmiş Oran ve Feature Engineering Fonksiyonu
     # ==========================================================
+    def _create_ratio_features(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Backdoor trafiğine özel oran ve yoğunluk özellikleri türetir.
+        """
+        new_features = {}
 
+        # 1. Trafik Asimetrisi (Backdoor C2 trafiği gidiş-dönüş asimetrisi gösterir)
+        if "sbytes" in df.columns and "dbytes" in df.columns:
+            new_features["ratio_bytes"] = (df["sbytes"] + 1) / (df["dbytes"] + 1)
+
+        if "spkts" in df.columns and "dpkts" in df.columns:
+            new_features["ratio_pkts"] = (df["spkts"] + 1) / (df["dpkts"] + 1)
+
+        # Paket başına düşen yük
+        if "sbytes" in df.columns and "spkts" in df.columns:
+            new_features["bytes_per_spkt"] = df["sbytes"] / (df["spkts"] + 1)
+        if "dbytes" in df.columns and "dpkts" in df.columns:
+            new_features["bytes_per_dpkt"] = df["dbytes"] / (df["dpkts"] + 1)
+
+        # 2. TTL ve TCP Manipülasyonları
+        if "sttl" in df.columns and "dttl" in df.columns:
+            new_features["ttl_diff"] = (df["sttl"] - df["dttl"]).abs()
+            new_features["ttl_ratio"] = (df["sttl"] + 1) / (df["dttl"] + 1)
+
+        if "swin" in df.columns and "dwin" in df.columns:
+            new_features["win_ratio"] = (df["swin"] + 1) / (df["dwin"] + 1)
+
+        # 3. BACKDOOR KRİTİK: Bağlantı Frekansı ve Yoğunluğu (UNSW-NB15 ct_* sütunları)
+        # Backdoor hedefte sürekli aynı port/servis üzerinden bağlantı kurar
+        if "ct_srv_src" in df.columns and "ct_dst_src_ltm" in df.columns:
+            new_features["ratio_srv_dst"] = (df["ct_srv_src"] + 1) / (df["ct_dst_src_ltm"] + 1)
+
+        if "ct_state_ttl" in df.columns and "ct_srv_src" in df.columns:
+            new_features["ratio_state_srv"] = (df["ct_state_ttl"] + 1) / (df["ct_srv_src"] + 1)
+
+        # Paket boyutu farkı
+        if "smean" in df.columns and "dmean" in df.columns:
+            new_features["mean_pkt_diff"] = (df["smean"] - df["dmean"]).abs()
+
+        if new_features:
+            new_df = pd.DataFrame(new_features, index=df.index)
+            # Türetilen özellikleri tablonun başına alıyoruz ki korelasyon filtresi
+            # ham özellikleri elesin, türettiğimiz zengin oranları korusun!
+            df = pd.concat([new_df, df], axis=1)
+            print(f"  [IForest Preprocessor] {len(new_features)} adet oran özelliği eklendi.")
+
+        return df
+
+
+    # ==========================================================
+    # Geliştirilmiş Log Transform (Eşik 1.5'e çekildi)
+    # ==========================================================
     def _log_transform_skewed(self, df: pd.DataFrame) -> pd.DataFrame:
         """
-        Skewness > threshold olan sayısal sütunlara log1p(x) uygular.
-        IForest'ın rastgele threshold seçimini anlamlı kılmak için gerekli.
+        Oranlar ve ham özellikler dahil sağa çarpık tüm sütunlara log1p uygular.
+        Eşik 3.0 yerine 1.5 tutularak manifoldun merkezde sıkışması önlenir.
         """
         numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
         transformed = []
 
+        # skewness_threshold değerini 1.5 olarak kullanmak ağ trafiğinde daha dengeli dağılım sağlar
+        effective_threshold = min(self.skewness_threshold, 1.5)
+
         for col in numeric_cols:
-            skew_val = df[col].skew()
-            if abs(skew_val) > self.skewness_threshold:
-                # Negatif değerler varsa log uygulanamaz, sadece pozitif/sıfır olanlara uygula
-                if (df[col] >= 0).all():
+            # 0/1 binary veya one-hot sütunları atla
+            if df[col].nunique() <= 2:
+                continue
+
+            if (df[col] >= 0).all():
+                skew_val = float(df[col].skew())
+                if skew_val > effective_threshold:
                     df[col] = np.log1p(df[col])
                     transformed.append(col)
 
         if transformed:
-            print(f"  [IForest Preprocessor] Log1p dönüşümü uygulanan sütunlar ({len(transformed)}): {transformed[:8]}{'...' if len(transformed) > 8 else ''}")
-
-        return df
-
-    # ==========================================================
-    # Private — Feature Engineering
-    # ==========================================================
-
-    def _create_ratio_features(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        UNSW-NB15 backdoor veri setine özel oran özellikleri oluşturur.
-        Korelasyon anomalilerini tek bir sütunda yoğunlaştırır.
-        """
-        new_features = {}
-
-        # Byte oranı: Gelen/Giden dengesizliği (backdoor trafikte asimetrik olabilir)
-        if "sbytes" in df.columns and "dbytes" in df.columns:
-            new_features["bytes_ratio"] = df["sbytes"] / (df["dbytes"] + 1)
-
-        # Paket başına byte miktarı
-        if "sbytes" in df.columns and "spkts" in df.columns:
-            new_features["bytes_per_spkt"] = df["sbytes"] / (df["spkts"] + 1)
-
-        if "dbytes" in df.columns and "dpkts" in df.columns:
-            new_features["bytes_per_dpkt"] = df["dbytes"] / (df["dpkts"] + 1)
-
-        # Kayıp oranı: Toplam kayıp / toplam paket
-        if "sloss" in df.columns and "dloss" in df.columns and "spkts" in df.columns and "dpkts" in df.columns:
-            new_features["loss_ratio"] = (df["sloss"] + df["dloss"]) / (df["spkts"] + df["dpkts"] + 1)
-
-        # TTL farkı: Backdoor genelde TTL manipülasyonu yapar
-        if "sttl" in df.columns and "dttl" in df.columns:
-            new_features["ttl_diff"] = (df["sttl"] - df["dttl"]).abs()
-
-        # Jitter oranı: Kaynak/hedef jitter dengesizliği
-        if "sjit" in df.columns and "djit" in df.columns:
-            new_features["jit_ratio"] = df["sjit"] / (df["djit"] + 1)
-
-        # Load dengesizliği
-        if "sload" in df.columns and "dload" in df.columns:
-            new_features["load_ratio"] = df["sload"] / (df["dload"] + 1)
-
-        # TCP window oranı
-        if "swin" in df.columns and "dwin" in df.columns:
-            new_features["win_ratio"] = df["swin"] / (df["dwin"] + 1)
-
-        # Mean paket boyutu farkı
-        if "smean" in df.columns and "dmean" in df.columns:
-            new_features["mean_diff"] = (df["smean"] - df["dmean"]).abs()
-
-        if new_features:
-            new_df = pd.DataFrame(new_features, index=df.index)
-            df = pd.concat([df, new_df], axis=1)
-            print(f"  [IForest Preprocessor] {len(new_features)} oran özelliği oluşturuldu: {list(new_features.keys())}")
+            print(f"  [IForest Preprocessor] Log1p uygulanan özellik sayısı: {len(transformed)}")
 
         return df
 

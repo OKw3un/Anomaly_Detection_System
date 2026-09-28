@@ -1,7 +1,7 @@
 # IForest Uygunluk Analizi — Sonuç Raporu
 
 **Veri Seti:** `data\UNSW_NB15_traintest_backdoor.csv`
-**Tarih:** 2026-09-27 16:57
+**Tarih:** 2026-09-28 12:08
 
 ---
 
@@ -11,9 +11,9 @@
 |--------|------|
 | Feature Dağılım Ayrışması | 10.0/10 ██████████ |
 | KS Testi Ayrışması | 10.0/10 ██████████ |
-| KNN Local Density İzolasyonu | 0.5/10 ░░░░░░░░░░ |
+| KNN Local Density İzolasyonu | 4.0/10 ████░░░░░░ |
 
-**Genel Uygunluk Skoru: 6.8 / 10**
+**Genel Uygunluk Skoru: 8.0 / 10**
 
 ---
 

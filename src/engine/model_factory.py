@@ -40,7 +40,7 @@ MODEL_REGISTRY: Dict[str, Dict[str, Any]] = {
         "class": "IForest",
         "kwargs": {
             "n_estimators": 200,
-            "max_samples": 8,
+            "max_samples": 32,
             "contamination": 0.0244311804382717,
             "random_state": 42
         },

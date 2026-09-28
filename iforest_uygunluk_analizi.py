@@ -35,9 +35,7 @@ from sklearn.neighbors import NearestNeighbors
 
 # Projenin kök dizinine göre import
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from src.engine.preprocessing.iforest_backdoor_dataset_preprocessing import (
-    IForestBackdoorPreprocessor,
-)
+# from src.engine.preprocessing.iforest_backdoor_dataset_preprocessing import IForestBackdoorPreprocessor
 
 # ────────────────────────────────────────────────────────────────
 # Ayarlar
@@ -78,31 +76,40 @@ def load_data() -> pd.DataFrame:
 
 def preprocess(df: pd.DataFrame):
     """
-    IForestBackdoorPreprocessor ile veriyi dönüştürür.
-    Label sütununu ayırıp, X matrisi + y etiketleri + feature isimlerini döndürür.
+    Veri setini hiçbir modele özel mühendislik (oran türetme, log1p, korelasyon elemesi vb.)
+    uygulamadan, yalnızca sayısal matrise çeviren tarafsız (unbiased) temel ön işleme.
     """
     print("\n" + "─" * 70)
-    print("  Ön İşleme (IForestBackdoorPreprocessor)")
+    print("  Ön İşleme (Ham / Tarafsız Veri Seti Temsili)")
     print("─" * 70)
 
+    # 1. Label sütununu ayır
     y = df[LABEL_COL].values.copy()
+    working_df = df.drop(columns=[LABEL_COL], errors="ignore")
 
-    preprocessor = IForestBackdoorPreprocessor(
-        variance_threshold=0.01,
-        correlation_threshold=0.85,
-        skewness_threshold=3.0,
-    )
+    # 2. Varsa ID veya metin tabanlı gereksiz etiket sütunlarını ayıkla
+    id_candidates = ["id", "ID", "attack_cat", "Attack_cat"]
+    working_df = working_df.drop(columns=[c for c in id_candidates if c in working_df.columns], errors="ignore")
 
-    preprocessing_steps = {
-        "exclude_id_columns": [],
-        "exclude_label_columns": [LABEL_COL],
-        "impute_missing": True,
-        "encode_categorical": True,
-        "scale_continuous": False,    # IForest için ölçekleme yapılmaz
-    }
+    # 3. Eksik Değer Doldurma (Veriyi bozmadan en temel medyan/mod tamamlama)
+    num_cols = working_df.select_dtypes(include=[np.number]).columns.tolist()
+    cat_cols = working_df.select_dtypes(include=["object", "category"]).columns.tolist()
 
-    X, _ = preprocessor.fit_transform(df, preprocessing_steps)
-    feature_names = preprocessor.feature_names
+    for col in num_cols:
+        if working_df[col].isnull().any():
+            working_df[col] = working_df[col].fillna(working_df[col].median())
+
+    for col in cat_cols:
+        if working_df[col].isnull().any():
+            mode_val = working_df[col].mode(dropna=True)
+            working_df[col] = working_df[col].fillna(mode_val[0] if len(mode_val) > 0 else "UNKNOWN")
+
+    # 4. Kategorik Sütunları Standart One-Hot Yap (Kategori kimliklerini koru)
+    if cat_cols:
+        working_df = pd.get_dummies(working_df, columns=cat_cols, drop_first=True)
+
+    feature_names = list(working_df.columns)
+    X = working_df.values.astype(np.float32)
 
     print(f"\n   Sonuç matris boyutu: {X.shape}")
     print(f"   Özellik sayısı: {len(feature_names)}")
