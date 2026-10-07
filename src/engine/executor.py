@@ -458,21 +458,34 @@ class AnomalyEngine:
                         labels = wrapper.model.labels_.astype(int)
 
                 auprc_score = None
+                auc_roc_score = None
                 if y is not None:
-                    from sklearn.metrics import average_precision_score
+                    from sklearn.metrics import average_precision_score, roc_auc_score
+                    clean_scores = np.nan_to_num(final_scores, nan=0.0, posinf=1.0, neginf=0.0)
                     try:
                         # Ham (normalize edilmemiş) skorlar üzerinden hesapla
                         # MinMaxScaler skor sıralamasını bozabilir, AUPRC ranking-tabanlı bir metriktir
-                        auprc_score = average_precision_score(y, final_scores)
+                        auprc_score = float(average_precision_score(y, clean_scores))
                         print(f"      [METRİK] {model_name} AUPRC Skoru: {auprc_score:.4f} (Ham skorlardan)")
                     except Exception as e:
                         print(f"      [METRİK] AUPRC hesaplanamadı: {e}")
+
+                    try:
+                        if len(np.unique(y)) > 1:
+                            auc_roc_score = float(roc_auc_score(y, clean_scores))
+                            print(f"      [METRİK] {model_name} AUC-ROC Skoru: {auc_roc_score:.4f} (Ham skorlardan)")
+                        else:
+                            print(f"      [METRİK] AUC-ROC hesaplanamadı: Yalnızca tek sınıf mevcut.")
+                    except Exception as e:
+                        print(f"      [METRİK] AUC-ROC hesaplanamadı: {e}")
 
                 result.model_results[model_name] = {
                     "scores": scores,
                     "labels": labels,
                     "is_supervised": is_supervised,
-                    "auprc": auprc_score
+                    "auprc": auprc_score,
+                    "auc_roc": auc_roc_score,
+                    "roc_auc": auc_roc_score
                 }
 
                 # Modelin kendi ürettiği embedding'i varsa kaydet

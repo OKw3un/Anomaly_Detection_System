@@ -72,9 +72,15 @@ def run_analysis(request: AnalysisRequest):
 
     config["recommended_models"] = alg_list
 
-    # --- 2. Label Sütununu Çıkar (Supervised modeller için) ---
+    # --- 2. Label Sütununu Çıkar (Supervised modeller ve metrikler için) ---
     y = None
     label_cols = config.get("metadata", {}).get("label_columns", [])
+    if not label_cols:
+        for candidate in ["class", "Class", "label", "Label", "y", "target", "Target"]:
+            if candidate in df.columns:
+                label_cols = [candidate]
+                break
+
     if label_cols:
         label_col = label_cols[0]
         if label_col in df.columns:
@@ -114,10 +120,16 @@ def run_analysis(request: AnalysisRequest):
         # Etiketi 1 (anomali) olan satır indeksleri
         anomaly_indices = np.where(labels == 1)[0].tolist()
         
+        auc_roc_val = model_data.get("auc_roc")
+        if auc_roc_val is None:
+            auc_roc_val = model_data.get("roc_auc")
+
         model_results_list.append({
             "name": model_name,
             "anomalies": anomaly_indices,
-            "auprc": model_data.get("auprc")
+            "auprc": model_data.get("auprc"),
+            "auc_roc": auc_roc_val,
+            "roc_auc": auc_roc_val
         })
         
         # Oyları say

@@ -215,8 +215,40 @@ if 'results' in st.session_state:
                     
             auprc_val = model.get("auprc")
             auprc_text = f"\n\n📈 **AUPRC:** {auprc_val:.4f}" if auprc_val is not None else ""
+            
+            auc_roc_val = model.get("auc_roc") if model.get("auc_roc") is not None else model.get("roc_auc")
+            auc_roc_text = f"\n\n📊 **AUC-ROC:** {auc_roc_val:.4f}" if auc_roc_val is not None else ""
                     
-            cols[idx].info(f"**{model_name}** toplam **{anomaly_count}** satıra anomali dedi.{tp_text}{auprc_text}")
+            cols[idx].info(f"**{model_name}** toplam **{anomaly_count}** satıra anomali dedi.{tp_text}{auprc_text}{auc_roc_text}")
+
+        # Etiketli veri setlerinde modellerin toplu metrik tablosu (Birden fazla model varsa)
+        if has_label and len(model_results) > 1:
+            try:
+                tot_anom = sum(str(x) in ["1", "1.0", "True"] or x == 1 for x in df[target_col])
+            except Exception:
+                tot_anom = 0
+
+            perf_rows = []
+            for model in model_results:
+                m_name = model.get("name", "Model")
+                m_indices = model.get("anomalies", [])
+                tp_c = sum(str(x) in ["1", "1.0", "True"] or x == 1 for x in df.iloc[m_indices][target_col]) if len(m_indices) > 0 else 0
+                prec = (tp_c / len(m_indices) * 100) if len(m_indices) > 0 else 0.0
+                rec = (tp_c / tot_anom * 100) if tot_anom > 0 else 0.0
+                auprc_v = model.get("auprc")
+                auc_roc_v = model.get("auc_roc") if model.get("auc_roc") is not None else model.get("roc_auc")
+                perf_rows.append({
+                    "Algoritma": m_name,
+                    "Tahmin Edilen Anomali": len(m_indices),
+                    "Doğru Tespit (TP)": tp_c,
+                    "Precision (Hassasiyet)": f"%{prec:.2f}",
+                    "Recall (Duyarlılık)": f"%{rec:.2f}",
+                    "AUPRC": f"{auprc_v:.4f}" if auprc_v is not None else "—",
+                    "AUC-ROC": f"{auc_roc_v:.4f}" if auc_roc_v is not None else "—"
+                })
+            if perf_rows:
+                st.markdown("##### 📋 Algoritma Performans Karşılaştırması")
+                st.dataframe(pd.DataFrame(perf_rows), use_container_width=True, hide_index=True)
     else:
         st.info("Herhangi bir model sonucu dönmedi.")
 

@@ -21,6 +21,8 @@ class ModelResult(BaseModel):
     name: str
     anomalies: List[int] = Field(..., description="Modelin anomali bulduğu satır indeksleri")
     auprc: Optional[float] = Field(default=None, description="Eğer etiket (y) mevcutsa hesaplanan AUPRC skoru")
+    auc_roc: Optional[float] = Field(default=None, description="Eğer etiket (y) mevcutsa hesaplanan AUC-ROC skoru")
+    roc_auc: Optional[float] = Field(default=None, description="Eğer etiket (y) mevcutsa hesaplanan ROC-AUC skoru (alias)")
 
 class AnalysisResponse(BaseModel):
     dataset_name: str
