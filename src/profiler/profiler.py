@@ -41,6 +41,12 @@ class DataProfiler:
             if self.df[col].apply(lambda x: isinstance(x, (list, dict))).any():
                 self.df[col] = self.df[col].astype(str)
 
+        # Tamamen boş sütunları filtrele (hiçbir satırında veri bulunmayan sütunlar)
+        all_null_cols = [col for col in self.df.columns if self.df[col].isnull().all()]
+        if all_null_cols:
+            print(f"  [DataProfiler] {len(all_null_cols)} adet tamamen boş sütun analiz dışı bırakıldı: {all_null_cols}")
+            self.df = self.df.drop(columns=all_null_cols)
+
         self.cat_threshold = categorical_threshold
         self.high_cardinality_threshold = high_cardinality_threshold
         self.text_length_threshold = text_length_threshold

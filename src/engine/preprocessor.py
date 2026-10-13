@@ -54,6 +54,14 @@ class Preprocessor:
         row_ids = working_df.index.copy()
 
         # ---------------------------------------------------------
+        # 0. Tamamen boş (tüm satırları NaN / Null olan) sütunları temizle
+        # ---------------------------------------------------------
+        empty_cols = [c for c in working_df.columns if working_df[c].isnull().all()]
+        if empty_cols:
+            print(f"  [Preprocessor] {len(empty_cols)} adet tamamen boş sütun tespit edildi ve çıkarılıyor: {empty_cols}")
+            working_df = working_df.drop(columns=empty_cols)
+
+        # ---------------------------------------------------------
         # 1. ID ve Label sütunlarını ayır
         # ---------------------------------------------------------
 
@@ -183,10 +191,16 @@ class Preprocessor:
             else:
                 self.imputer = SimpleImputer(strategy="median")
 
-                if self._continuous_cols:
-                    working_df[self._continuous_cols] = (
+                # Sadece en az 1 gözlemlenmiş (non-null) değeri olan sütunları impute et
+                valid_continuous = [
+                    c for c in self._continuous_cols
+                    if not working_df[c].isnull().all()
+                ]
+
+                if valid_continuous:
+                    working_df[valid_continuous] = (
                         self.imputer.fit_transform(
-                            working_df[self._continuous_cols]
+                            working_df[valid_continuous]
                         )
                     )
 
